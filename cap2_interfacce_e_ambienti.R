@@ -1,9 +1,9 @@
-# Introduzione
+# Interfacce e ambient 
 
-# v1.1.2 13/10/2023
+# v1.0.2 13/10/2023
 
 # Qui, come per gli altri capitoli, ho trasformato in codice tutto quello che 
-# c'era di eseguibile nel testo o nei chunk di R. 
+# c'era di eseguibile nel testo o nei chunk di R.
 # Per commenti e spiegazioni fai riferimento al libro.
 # Se stai leggendo il libro sai già come esegui gruppi di comandi (se no vai
 # al capitolo 2 del libro...)
@@ -11,19 +11,14 @@
 
 # setup -------------------------------------------------------------------
 # questa sezione di codice va fatta girare tutta insieme
-# il segno "#" descrive un commento, che non verrà interpretato da R durante
-# l'esecuzione.
-# In realtà sarebbe buona pratica di stile usare "#'": si chiamano commenti in
-# stile ROxygen e possono servire se si vuole produrre al volo un report da uno script
-# siccome questo non è il nostro caso, non li userò.
-
-# installa/carica le librerie 
-# crea un vettore (invisibile, perché il nome è preceduto dal .)
+# Installo/carico le librerie 
+# creo un vettore (invisibile, perché il nome è preceduto dal .)
 # con i nomi delle librerie/pacchetti da caricare
-.cran_packages <- c("tidyverse", "tictoc", "beepr")
+.cran_packages <- c("tidyverse", "tictoc", "beepr", "car")
+# bisognerebbe aggiungere anche "Rcmdr"
 # verifico quali sono installati nel sistema
 .inst <- .cran_packages %in% installed.packages()
-# istallo quelli non presenti nel sistema
+# installo quelli non presenti nel sistema
 if(any(!.inst)) {
   install.packages(.cran_packages[!.inst], repos = "https://cloud.r-project.org")
 }
@@ -41,8 +36,7 @@ opar <- par(no.readonly=TRUE)
 par(ask=F) 
 # se vuoi impostare un seme per il generatore di numeri casuali 
 # (è importante per la riproducibilità per scopi didattici, altrimenti molte 
-# operazioni che usano generatori di numeri casuali daranno un risultato 
-# diverso ogni volta che si fa "girare" lo script) rimuovi il segno di commento
+# operazioni che usano generatori di numeri casuali daranno un risultato # diverso ogni volta che si fa "girare" lo script) rimuovi il segno di commento
 # (#) dall'istruzione successiva
 # set.seed(1234) 
 # imposta alcune opzioni utili in una sessione interattiva
@@ -55,34 +49,42 @@ play_audio <- T
 keep_time <- T
 # se T verrà stampato output addizionale
 verbose_output <- T
-# ad esempio (per riprodurre il suono rimuovi il segno di commento):
+# ad esempio: (rimuovi il segno di commento # per produrre il beep)
 # if(play_audio) beep(sound = 6) 
 # notifica la fine dell'esecuzione di questo gruppo di istruzioni
 
 
-# convenzioni -------------------------------------------------------------
+# Il pannello Source ------------------------------------------------------
 
-# Quando nel testo compare un blocco in grigio, come quello che segue si tratta 
-# di un comando o di una serie di comandi, e deve essere scritto nella console  
+data(mtcars)
+help("mtcars")
+View(mtcars)
+plot(mtcars$wt, mtcars$mpg)
+mean(mtcars$mpg)
 
-demo(graphics)
 
-# provare per credere: app, GUI e altre diavolerie ------------------------
+# Il pannello Console -----------------------------------------------------
 
-demo(graphics)
-# segui le istruzioni sulla console
- # prova ora con 
-help(demo)
+1+2*log10(10)-3
+a <- 1L
+b = c("a","b","c")
+c <- c(1, 2, 3)
+list(numero = a, vettore_string = b) -> la_mia_prima_lista
+calcola_media <- function(vettore_numerico){mean(vettore_numerico)}
+c
+calcola_media(c)
 
-# carica R commander
-library(Rcmdr)
-# Se appare un errore è perché il pacchetto non è ancora installato nel tuo sistema. 
-# In questo caso rimuovi il segno # dal seguente comando e eseguilo:                   
-install.packages("Rcmdr", dependencies = T)  
 
-# installa e lancia Radiant (ci vuole un po')
-install.packages("radiant")
-require(radiant)
-radiant::radiant()
+# Il tab Packages. --------------------------------------------------------
 
+# il comando successivo assegna l'elenco dei pacchetti disponibili in libreria 
+# (un vettore carattere) al nome mypckgs
+# i cui primi elementi vengono poi stampati a Console
+mypckgs <-  installed.packages()
+head(mypckgs, n = 5L)
+# le due operazioni seguenti sono state eseguite dal chunk di setup
+# installa il pacchetto car, un pacchetto di strumenti per la regressione 
+# install.packages("car", repos = "https://cran.mirror.garr.it/CRAN/")
+# carica il pacchetto nell'ambiente di lavoro: è anche possibile usare require()
+# library(car)
 
