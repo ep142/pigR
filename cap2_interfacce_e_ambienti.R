@@ -1,4 +1,4 @@
-# Interfacce e ambient 
+# Interfacce e ambienti 
 
 # v1.0.2 13/10/2023
 
