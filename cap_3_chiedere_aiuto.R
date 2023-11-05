@@ -1,6 +1,6 @@
 # Chiedere aiuto
 
-# v1.1 27/8/2023
+# v1.1.1 30/10/2023
 
 # Qui, come per gli altri capitoli, ho trasformato in codice tutto quello che 
 # c'era di eseguibile nel testo o nei chunk di R.
@@ -45,7 +45,10 @@ verbose_output <- T
 
 # creo un data frame (in realtà una tibble) con numeri casuali 
 # estratti da una distribuzione uniforme
-
+# installa il pacchetto e caricalo se necessario rimuovendo il segno di commento
+# ed eseguendo i due comandi successivi
+# install.packages ("tidyverse")
+# require(tidyverse)
 # numero di righe o casi nella tabella df
 n_casi <- 10000
 # creo la tibble

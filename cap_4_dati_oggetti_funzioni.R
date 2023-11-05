@@ -1,6 +1,6 @@
 # Dati, oggetti, funzioni, linguaggio
 
-# v1.3.3 27/08/2023
+# v1.3.3 31/10/2023
 
 # Qui, come per gli altri capitoli, ho trasformato in codice tutto quello che 
 # c'era di eseguibile nel testo o nei chunk di R.
@@ -57,7 +57,7 @@ View(iris)
 ?iris
 iris
 
-#Arthritis
+# Arthritis
 
 # carica la libreria (in realtà questo avviene in maniera automatica nel setup 
 # dello script usato per generare questo capitolo)
@@ -115,12 +115,15 @@ a
 class(a) # la classe di a
 typeof(a) # il tipo o modo di a
 # tre modi validi, per assegnare, ma il primo è preferibile perché meno ambiguo
+# il metodo migliore
 b <- c(1, 2, 3)
+# funziona anche questo ma si confonde con l'assegnazione di valori a parametri di funzioni
 b = c(1, 2, 3)
+# funziona ma è difficile da leggere 
 c(1, 2, 3) -> b
 b
 
-# un po' di magia
+# un po' di magia (a prima è una cosa, poi diventa un'altra)
 a
 a <- b
 a
@@ -181,7 +184,7 @@ cat("\nla somma di 5, 6 e 7 è\n")
 fai_la_somma(5,6,7)
 
 # un nome sbagliato, non sintattico
-1schifodinome <- 1
+# 1schifodinome <- 1
 # restituisce un errore
 `1schifodinome` <- 1
 `1schifodinome`
@@ -269,8 +272,6 @@ attributes(quanto_ord)
 # selezionare il comando o la parte di codice che vuoi formattare correttamente e
 # poi usa il menu <Code->Reformat Code> (in alcuni casi può essere utile <Reindent lines>)
 # per quanto il codice diventi più lungo è più facile leggerlo
-
-
 # altri modi di stampare --------------------------------------------------
 
 # caratteri speciali
@@ -353,8 +354,9 @@ matrice_logica <- matrix(c(logico, logico, logico),
 matrice_logica
 
 si9 <- rep("Yes",9)
-mantra <- rep(c("amore","pace"),6)
+dimmi_di_si <- matrix(si9, nrow= 3, ncol = 3)
 
+mantra <- rep(c("amore","pace"),6)
 matrice_carattere <- matrix(mantra,
                             nrow =3, ncol= 2, byrow = T, 
                             dimnames = list(c("A","B","C"),c("A","B")))
@@ -411,6 +413,7 @@ data_frame_4
 rownames(data_frame_4)
 # ora li assegno
 rownames(data_frame_4) <- letters[1:nrow(data_frame_4)]
+data_frame_4
 
 tre_per_tre <- as.data.frame(per_colonne)
 
@@ -604,7 +607,7 @@ la_mia_prima_lista_con_nomi[[5]][[4]][,1]
 sum(la_mia_prima_lista_con_nomi[[1]])
 
 # Questo invece non funzionerebbe, prova a scrivrlo nella console:
-sum(la_mia_prima_lista_con_nomi[1])
+# sum(la_mia_prima_lista_con_nomi[1])
 
 
 # usare i nomi ------------------------------------------------------------
@@ -676,8 +679,8 @@ subset(Arthritis, Age > 67, select = Sex:Improved)
 data(Arthritis)
 Arthr1 <- Arthritis[1:20,]
 Arthr2 <- Arthritis[21:40,]
-
-head(Age)
+# questo non funziona
+# head(Age)
 
 head(Arthr1$Age, 5)
 head(Arthr2$Age, 5)
@@ -727,7 +730,7 @@ z <- c(1,2,3,4,NA)
 # nelle operazioni fra vettori, il vettore più corto viene riciclato,
 # se necessario con un warning
 
-w <- c(1,2) # è un vettore di lunghezza infereiore a x
+w <- c(1,2) # è un vettore di lunghezza inferiore a y
 
 length(w) < length(y)
 w
@@ -759,12 +762,13 @@ una_matrice*0.5
 un_logico <- c(T,T,F)
 3*un_logico
 un_fattore <- factor(c("a", "b", "c", "b"))
-3*un_fattore
+# questo non funziona
+# 3*un_fattore
+# questo sì
 3*as.numeric(un_fattore)
 
 
 # funzioni built-in -------------------------------------------------------
-
 
 sqrt(c(1,4,9))
 
@@ -882,12 +886,15 @@ ls.str(pattern="tre+")
 copia_Arthritis <- Arthritis
 rm(Arthritis)
 # salvo l'abiente come immagine (vedi capitolo 5)
-save.image(file = "lambiente.Rdata)
+save.image(file = "lambiente.Rdata")
 # gli oggetti che iniziano con la A
-rm(ls(pattern = "^A"))
+
+rm(list = ls(pattern="^A"))
+
 # tutti gli oggetti
 rm(list = ls())
+
 # ricarico tutto
-load(file = "lambiente.Rdata)
+load(file = "lambiente.Rdata")
 
 

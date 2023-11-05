@@ -69,7 +69,6 @@ demo(graphics)
 
 # provare per credere: app, GUI e altre diavolerie ------------------------
 
-demo(graphics)
 # segui le istruzioni sulla console
  # prova ora con 
 help(demo)
@@ -80,7 +79,7 @@ library(Rcmdr)
 # In questo caso rimuovi il segno # dal seguente comando e eseguilo:                   
 install.packages("Rcmdr", dependencies = T)  
 
-# installa e lancia Radiant (ci vuole un po')
+# installa e lancia Radiant (ci vuole un po'); per uscire usa il tasto <esc>
 install.packages("radiant")
 require(radiant)
 radiant::radiant()
