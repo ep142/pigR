@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Introduzione | pigR: R, per pigri</title>
+  <meta name="description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Introduzione | pigR: R, per pigri" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Introduzione | pigR: R, per pigri" />
+  
+  <meta name="twitter:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+<meta name="author" content="E. Parente, Scuola SAFE, Università degli Studi della Basilicata" />
+
+
+<meta name="date" content="2023-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="inter.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cos’è pigR?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#di-cosa-hai-bisogno-per-leggere-e-capire-questo-libro."><i class="fa fa-check"></i>Di cosa hai bisogno per leggere (e capire) questo libro.</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#chi-siamo-noi-noi-noi"><i class="fa fa-check"></i>Chi siamo noi (noi, noi)?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#se-ti-piace"><i class="fa fa-check"></i>Se ti piace…</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cookies"><i class="fa fa-check"></i>Cookies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#la-foto-di-copertina."><i class="fa fa-check"></i>La foto di copertina.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduzione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#cosa-cè-da-imparare-in-questo-capitolo."><i class="fa fa-check"></i><b>1.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#convenzioni-e-guida-alla-lettura-e-alluso-del-codice."><i class="fa fa-check"></i><b>1.2</b> Convenzioni e guida alla lettura e all’uso del codice.</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#tutti-vogliono-imparare-a-usare-r."><i class="fa fa-check"></i><b>1.3</b> Tutti vogliono imparare a usare R.</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#provare-per-credere-app-gui-ide-e-altre-diavolerie."><i class="fa fa-check"></i><b>1.3.1</b> Provare per credere: App, GUI, IDE e altre diavolerie.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#laltra-faccia-della-medaglia-troppa-fatica."><i class="fa fa-check"></i><b>1.4</b> L’altra faccia della medaglia: troppa fatica.</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#r-per-pigri."><i class="fa fa-check"></i><b>1.5</b> R, per pigri.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inter.html"><a href="inter.html"><i class="fa fa-check"></i><b>2</b> Interfacce e ambienti</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inter.html"><a href="inter.html#cosa-cè-da-imparare-in-questo-capitolo.-1"><i class="fa fa-check"></i><b>2.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="2.2" data-path="inter.html"><a href="inter.html#rstudio."><i class="fa fa-check"></i><b>2.2</b> RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="inter.html"><a href="inter.html#linterfaccia-principale-di-rstudio."><i class="fa fa-check"></i><b>2.2.1</b> L’interfaccia principale di RStudio.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="inter.html"><a href="inter.html#il-pannello-source."><i class="fa fa-check"></i><b>2.2.2</b> Il pannello Source.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="inter.html"><a href="inter.html#il-pannello-console."><i class="fa fa-check"></i><b>2.2.3</b> Il pannello Console.</a></li>
+<li class="chapter" data-level="2.2.4" data-path="inter.html"><a href="inter.html#il-pannello-environment."><i class="fa fa-check"></i><b>2.2.4</b> Il pannello Environment.</a></li>
+<li class="chapter" data-level="2.2.5" data-path="inter.html"><a href="inter.html#il-tab-environment."><i class="fa fa-check"></i><b>2.2.5</b> Il tab Environment.</a></li>
+<li class="chapter" data-level="2.2.6" data-path="inter.html"><a href="inter.html#il-tab-history."><i class="fa fa-check"></i><b>2.2.6</b> Il tab History.</a></li>
+<li class="chapter" data-level="2.2.7" data-path="inter.html"><a href="inter.html#il-pannello-plots."><i class="fa fa-check"></i><b>2.2.7</b> Il pannello Plots.</a></li>
+<li class="chapter" data-level="2.2.8" data-path="inter.html"><a href="inter.html#il-tab-plots."><i class="fa fa-check"></i><b>2.2.8</b> Il tab Plots.</a></li>
+<li class="chapter" data-level="2.2.9" data-path="inter.html"><a href="inter.html#il-tab-files."><i class="fa fa-check"></i><b>2.2.9</b> Il tab Files.</a></li>
+<li class="chapter" data-level="2.2.10" data-path="inter.html"><a href="inter.html#tabpackages"><i class="fa fa-check"></i><b>2.2.10</b> Il tab Packages.</a></li>
+<li class="chapter" data-level="2.2.11" data-path="inter.html"><a href="inter.html#il-tab-help."><i class="fa fa-check"></i><b>2.2.11</b> Il tab Help.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="inter.html"><a href="inter.html#esercizi."><i class="fa fa-check"></i><b>2.3</b> Esercizi.</a></li>
+<li class="chapter" data-level="2.4" data-path="inter.html"><a href="inter.html#altrerisinter"><i class="fa fa-check"></i><b>2.4</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inter.html"><a href="inter.html#risorse-in-italiano."><i class="fa fa-check"></i><b>2.4.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inter.html"><a href="inter.html#risorse-in-inglese."><i class="fa fa-check"></i><b>2.4.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aiuto.html"><a href="aiuto.html"><i class="fa fa-check"></i><b>3</b> Chiedere aiuto</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aiuto.html"><a href="aiuto.html#cosa-cè-da-imparare-in-questo-capitolo.-2"><i class="fa fa-check"></i><b>3.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aiuto.html"><a href="aiuto.html#premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri"><i class="fa fa-check"></i><b>3.1.1</b> Premessa 1: nessuno legge i manuali (figuriamoci i pigRi)!</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aiuto.html"><a href="aiuto.html#gatti"><i class="fa fa-check"></i><b>3.1.2</b> Premessa 2: ci sono molti modi di pelare un gatto (e documentarlo).</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aiuto.html"><a href="aiuto.html#laiuto-di-r."><i class="fa fa-check"></i><b>3.2</b> L’aiuto di R.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="aiuto.html"><a href="aiuto.html#tabhelp"><i class="fa fa-check"></i><b>3.2.1</b> Il tab Help di RStudio.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="aiuto.html"><a href="aiuto.html#funzioni-per-chiedere-aiuto."><i class="fa fa-check"></i><b>3.2.2</b> <em>Funzioni per chiedere aiuto.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="aiuto.html"><a href="aiuto.html#strategieaiuto"><i class="fa fa-check"></i><b>3.3</b> Strategie per cercare aiuto (anche senza parere).</a></li>
+<li class="chapter" data-level="3.4" data-path="aiuto.html"><a href="aiuto.html#esercizi.-1"><i class="fa fa-check"></i><b>3.4</b> Esercizi.</a></li>
+<li class="chapter" data-level="3.5" data-path="aiuto.html"><a href="aiuto.html#altrerisaiuto"><i class="fa fa-check"></i><b>3.5</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="aiuto.html"><a href="aiuto.html#risorse-in-italiano.-1"><i class="fa fa-check"></i><b>3.5.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="3.5.2" data-path="aiuto.html"><a href="aiuto.html#risorse-in-inglese.-1"><i class="fa fa-check"></i><b>3.5.2</b> Risorse in inglese.</a></li>
+<li class="chapter" data-level="3.5.3" data-path="aiuto.html"><a href="aiuto.html#niente-video"><i class="fa fa-check"></i><b>3.5.3</b> Niente video?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datioggetti.html"><a href="datioggetti.html"><i class="fa fa-check"></i><b>4</b> Dati, oggetti, funzioni (e tutto il resto)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datioggetti.html"><a href="datioggetti.html#cosa-cè-da-imparare-in-questo-capitolo.-3"><i class="fa fa-check"></i><b>4.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datioggetti.html"><a href="datioggetti.html#premessa-1-esperimenti-e-osservazioni."><i class="fa fa-check"></i><b>4.1.1</b> Premessa 1: esperimenti e osservazioni.</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datioggetti.html"><a href="datioggetti.html#premessa2"><i class="fa fa-check"></i><b>4.1.2</b> Premessa 2. Misure e dati, osservazioni e variabili, tabelle.</a></li>
+<li class="chapter" data-level="4.1.3" data-path="datioggetti.html"><a href="datioggetti.html#anatab"><i class="fa fa-check"></i><b>4.1.3</b> Anatomia di una tabella.</a></li>
+<li class="chapter" data-level="4.1.4" data-path="datioggetti.html"><a href="datioggetti.html#un-piccolo-esercizio."><i class="fa fa-check"></i><b>4.1.4</b> Un piccolo esercizio.</a></li>
+<li class="chapter" data-level="4.1.5" data-path="datioggetti.html"><a href="datioggetti.html#tidyuntidydefinizione"><i class="fa fa-check"></i><b>4.1.5</b> Tidy vs. untidy (tabelle ordinate e disordinate).</a></li>
+<li class="chapter" data-level="4.1.6" data-path="datioggetti.html"><a href="datioggetti.html#missingdata"><i class="fa fa-check"></i><b>4.1.6</b> Dati mancanti (missing data).</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datioggetti.html"><a href="datioggetti.html#r-è-un-linguaggio-funzionale-che-supporta-la-programmazione-orientata-a-oggetti"><i class="fa fa-check"></i><b>4.2</b> R è un linguaggio funzionale che supporta la programmazione orientata a oggetti…</a></li>
+<li class="chapter" data-level="4.3" data-path="datioggetti.html"><a href="datioggetti.html#ilnomedellecose"><i class="fa fa-check"></i><b>4.3</b> Il nome delle cose.</a></li>
+<li class="chapter" data-level="4.4" data-path="datioggetti.html"><a href="datioggetti.html#strutturedati"><i class="fa fa-check"></i><b>4.4</b> Strutture di dati.</a></li>
+<li class="chapter" data-level="4.5" data-path="datioggetti.html"><a href="datioggetti.html#vettoriatomici"><i class="fa fa-check"></i><b>4.5</b> Vettori atomici.</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="datioggetti.html"><a href="datioggetti.html#vettori1D"><i class="fa fa-check"></i><b>4.5.1</b> Vettori ad una dimensione.</a></li>
+<li class="chapter" data-level="4.5.2" data-path="datioggetti.html"><a href="datioggetti.html#vettori-atomici-a-2-o-più-dimensioni-matrici-e-array."><i class="fa fa-check"></i><b>4.5.2</b> Vettori atomici a 2 o più dimensioni: matrici e array.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="datioggetti.html"><a href="datioggetti.html#i-data-frame-e-le-liste."><i class="fa fa-check"></i><b>4.6</b> I data frame e le liste.</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="datioggetti.html"><a href="datioggetti.html#dataframebenemale"><i class="fa fa-check"></i><b>4.6.1</b> I data frame, nel bene e nel male.</a></li>
+<li class="chapter" data-level="4.6.2" data-path="datioggetti.html"><a href="datioggetti.html#le-liste."><i class="fa fa-check"></i><b>4.6.2</b> Le liste.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="datioggetti.html"><a href="datioggetti.html#altre-cose-strane-tabelle-di-conte-serie-temporali-date-e-ore."><i class="fa fa-check"></i><b>4.7</b> <em>Altre cose strane: tabelle di conte, serie temporali, date e ore.</em></a></li>
+<li class="chapter" data-level="4.8" data-path="datioggetti.html"><a href="datioggetti.html#indsel"><i class="fa fa-check"></i><b>4.8</b> Indirizzare, selezionare.</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="datioggetti.html"><a href="datioggetti.html#indirizzare-per-posizione."><i class="fa fa-check"></i><b>4.8.1</b> Indirizzare per posizione.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="datioggetti.html"><a href="datioggetti.html#usare-i-nomi."><i class="fa fa-check"></i><b>4.8.2</b> Usare i nomi.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="datioggetti.html"><a href="datioggetti.html#usare-valori-logici."><i class="fa fa-check"></i><b>4.8.3</b> Usare valori logici.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="datioggetti.html"><a href="datioggetti.html#attach-with-within."><i class="fa fa-check"></i><b>4.9</b> <code>attach()</code>, <code>with()</code>, <code>within()</code>.</a></li>
+<li class="chapter" data-level="4.10" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in-e-funzioni-definite-dallutente."><i class="fa fa-check"></i><b>4.10</b> <em>Funzioni “built-in” e funzioni definite dall’utente.</em></a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="datioggetti.html"><a href="datioggetti.html#operatorisemplici"><i class="fa fa-check"></i><b>4.10.1</b> Semplici funzioni matematiche, trigonometriche, statistiche, logiche, etc.</a></li>
+<li class="chapter" data-level="4.10.2" data-path="datioggetti.html"><a href="datioggetti.html#operatori."><i class="fa fa-check"></i><b>4.10.2</b> Operatori.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in."><i class="fa fa-check"></i><b>4.10.3</b> Funzioni built-in.</a></li>
+<li class="chapter" data-level="4.10.4" data-path="datioggetti.html"><a href="datioggetti.html#userdeffunc"><i class="fa fa-check"></i><b>4.10.4</b> Funzioni definite dall’utente.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="datioggetti.html"><a href="datioggetti.html#programmare-con-stile."><i class="fa fa-check"></i><b>4.11</b> Programmare, con stile.</a></li>
+<li class="chapter" data-level="4.12" data-path="datioggetti.html"><a href="datioggetti.html#un-ambiente-affollato."><i class="fa fa-check"></i><b>4.12</b> Un ambiente affollato.</a></li>
+<li class="chapter" data-level="4.13" data-path="datioggetti.html"><a href="datioggetti.html#altrerisorsedati"><i class="fa fa-check"></i><b>4.13</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-italiano.-2"><i class="fa fa-check"></i><b>4.13.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="4.13.2" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-inglese.-2"><i class="fa fa-check"></i><b>4.13.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html"><i class="fa fa-check"></i><b>5</b> Dentro e fuori R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#cosa-cè-da-imparare-in-questo-capitolo.-4"><i class="fa fa-check"></i><b>5.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="5.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#ognicosaalsuoposto"><i class="fa fa-check"></i><b>5.2</b> Ogni cosa al suo posto: working directory, progetti, etc.</a></li>
+<li class="chapter" data-level="5.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#facciamolasemplice"><i class="fa fa-check"></i><b>5.3</b> Facciamola semplice: il menu <code>Import Dataset</code>.</a></li>
+<li class="chapter" data-level="5.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#usareadr"><i class="fa fa-check"></i><b>5.4</b> Gestire file di testo con <code>readr.</code></a></li>
+<li class="chapter" data-level="5.5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#tutti-i-comandi-o-quasi-per-importare-file-di-testo"><i class="fa fa-check"></i><b>5.5</b> Tutti i comandi (o quasi) per importare file di testo…</a></li>
+<li class="chapter" data-level="5.6" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-di-dati."><i class="fa fa-check"></i><b>5.6</b> Altri formati di dati.</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#da-e-per-excel."><i class="fa fa-check"></i><b>5.6.1</b> Da e per Excel.</a></li>
+<li class="chapter" data-level="5.6.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-foreign-e-hmisc-e-haven."><i class="fa fa-check"></i><b>5.6.2</b> Altri formati: <code>foreign</code> e <code>Hmisc</code> e <code>haven</code>.</a></li>
+<li class="chapter" data-level="5.6.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#un-richiamo-file-.rdata-e-.rds"><i class="fa fa-check"></i><b>5.6.3</b> Un richiamo: file <code>.Rdata</code> e <code>.rds</code></a></li>
+<li class="chapter" data-level="5.6.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#e-andato-tutto-bene"><i class="fa fa-check"></i><b>5.6.4</b> E’ andato tutto bene?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#lavorare-con-i-nomi-dei-file-e-le-directory."><i class="fa fa-check"></i><b>5.7</b> Lavorare con i nomi dei file e le directory.</a></li>
+<li class="chapter" data-level="5.8" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app1sintassi"><i class="fa fa-check"></i><b>5.8</b> <strong>Appendice 1</strong>. <em>Un piccolo dettaglio sulla sintassi.</em></a></li>
+<li class="chapter" data-level="5.9" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app2finqui"><i class="fa fa-check"></i><b>5.9</b> <strong>Appendice 2</strong>. <em>Se sei arrivat* fin qui…</em></a></li>
+<li class="chapter" data-level="5.10" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altrerisdentrofuori"><i class="fa fa-check"></i><b>5.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#risorse-in-inglese.-3"><i class="fa fa-check"></i><b>5.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="grafica.html"><a href="grafica.html"><i class="fa fa-check"></i><b>6</b> Introduzione alla grafica scientifica con R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="grafica.html"><a href="grafica.html#cosa-cè-da-imparare-in-questo-capitolo.-5"><i class="fa fa-check"></i><b>6.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="6.2" data-path="grafica.html"><a href="grafica.html#igraficifattibene"><i class="fa fa-check"></i><b>6.2</b> I grafici, fatti bene.</a></li>
+<li class="chapter" data-level="6.3" data-path="grafica.html"><a href="grafica.html#sistemigrafici"><i class="fa fa-check"></i><b>6.3</b> I sistemi grafici in R.</a></li>
+<li class="chapter" data-level="6.4" data-path="grafica.html"><a href="grafica.html#visualizzare-o-salvare-i-grafici-i-device."><i class="fa fa-check"></i><b>6.4</b> Visualizzare o salvare i grafici: i device.</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="grafica.html"><a href="grafica.html#devicegrafici"><i class="fa fa-check"></i><b>6.4.1</b> Salvare i grafici: i file come device grafici.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="grafica.html"><a href="grafica.html#ggsave"><i class="fa fa-check"></i><b>6.4.2</b> Salvare i grafici di <code>ggplot2</code> con <code>ggsave</code>.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="grafica.html"><a href="grafica.html#le-dimensioni-del-device-e-le-opzioni-grafiche."><i class="fa fa-check"></i><b>6.4.3</b> <em>Le dimensioni del device e le opzioni grafiche.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="grafica.html"><a href="grafica.html#r-a-colori."><i class="fa fa-check"></i><b>6.5</b> R, a colori.</a></li>
+<li class="chapter" data-level="6.6" data-path="grafica.html"><a href="grafica.html#graficaggplot2"><i class="fa fa-check"></i><b>6.6</b> La grammatica della grafica con ggplot2.</a></li>
+<li class="chapter" data-level="6.7" data-path="grafica.html"><a href="grafica.html#grafqual"><i class="fa fa-check"></i><b>6.7</b> Grafici per variabili qualitative.</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="grafica.html"><a href="grafica.html#diagrammi-a-barre."><i class="fa fa-check"></i><b>6.7.1</b> Diagrammi a barre.</a></li>
+<li class="chapter" data-level="6.7.2" data-path="grafica.html"><a href="grafica.html#fare-di-più-con-i-grafici-per-variabili-qualitative."><i class="fa fa-check"></i><b>6.7.2</b> <em>Fare di più con i grafici per variabili qualitative.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="grafica.html"><a href="grafica.html#grafquant"><i class="fa fa-check"></i><b>6.8</b> Grafici per variabili quantitative.</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="grafica.html"><a href="grafica.html#istogrammi-e-altre-rappresentazioni-della-densità."><i class="fa fa-check"></i><b>6.8.1</b> Istogrammi e altre rappresentazioni della densità.</a></li>
+<li class="chapter" data-level="6.8.2" data-path="grafica.html"><a href="grafica.html#boxplot"><i class="fa fa-check"></i><b>6.8.2</b> Boxplot.</a></li>
+<li class="chapter" data-level="6.8.3" data-path="grafica.html"><a href="grafica.html#rappresentazioni-di-indicatori-di-tendenza-centrale-e-di-variabilità."><i class="fa fa-check"></i><b>6.8.3</b> Rappresentazioni di indicatori di tendenza centrale e di variabilità.</a></li>
+<li class="chapter" data-level="6.8.4" data-path="grafica.html"><a href="grafica.html#scatterplots"><i class="fa fa-check"></i><b>6.8.4</b> Grafici a dispersione.</a></li>
+<li class="chapter" data-level="6.8.5" data-path="grafica.html"><a href="grafica.html#personalizzare-i-grafici-con-ggplot2."><i class="fa fa-check"></i><b>6.8.5</b> <em>Personalizzare i grafici con ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.6" data-path="grafica.html"><a href="grafica.html#estensionigg"><i class="fa fa-check"></i><b>6.8.6</b> <em>Estensioni per ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.7" data-path="grafica.html"><a href="grafica.html#qplot"><i class="fa fa-check"></i><b>6.8.7</b> <em>Veloce veloce: qplot()</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="grafica.html"><a href="grafica.html#graficabase"><i class="fa fa-check"></i><b>6.9</b> <em>La grafica di base in R: un salvagente?</em></a></li>
+<li class="chapter" data-level="6.10" data-path="grafica.html"><a href="grafica.html#altrerisgraf"><i class="fa fa-check"></i><b>6.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="grafica.html"><a href="grafica.html#risorse-in-inglese.-4"><i class="fa fa-check"></i><b>6.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statdesc.html"><a href="statdesc.html"><i class="fa fa-check"></i><b>7</b> Esplorare con i numeri</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statdesc.html"><a href="statdesc.html#cosa-cè-da-imparare-in-questo-capitolo.-6"><i class="fa fa-check"></i><b>7.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="7.2" data-path="statdesc.html"><a href="statdesc.html#una-piccola-premessa-gruppi-livelli-sottoinsiemi."><i class="fa fa-check"></i><b>7.2</b> Una piccola premessa: gruppi, livelli, sottoinsiemi.</a></li>
+<li class="chapter" data-level="7.3" data-path="statdesc.html"><a href="statdesc.html#statcontinui"><i class="fa fa-check"></i><b>7.3</b> Statistiche riassuntive per dati continui.</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="statdesc.html"><a href="statdesc.html#misuretendcentrale"><i class="fa fa-check"></i><b>7.3.1</b> Misure di tendenza centrale e di variabilità.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="statdesc.html"><a href="statdesc.html#altre-funzioni-utili."><i class="fa fa-check"></i><b>7.4</b> <em>Altre funzioni utili.</em></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="statdesc.html"><a href="statdesc.html#lavorare-sui-vettori."><i class="fa fa-check"></i><b>7.4.1</b> <em>Lavorare sui vettori.</em></a></li>
+<li class="chapter" data-level="7.4.2" data-path="statdesc.html"><a href="statdesc.html#funzioni-che-producono-statistiche-riassuntive."><i class="fa fa-check"></i><b>7.4.2</b> <em>Funzioni che producono statistiche riassuntive.</em></a></li>
+<li class="chapter" data-level="7.4.3" data-path="statdesc.html"><a href="statdesc.html#statsummarise"><i class="fa fa-check"></i><b>7.4.3</b> Statistiche, ordinate.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="statdesc.html"><a href="statdesc.html#statgruppi"><i class="fa fa-check"></i><b>7.4.4</b> Statistiche riassuntive per gruppi.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="statdesc.html"><a href="statdesc.html#enormale"><i class="fa fa-check"></i><b>7.5</b> Ma è normale?</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="statdesc.html"><a href="statdesc.html#normal-probability-plot."><i class="fa fa-check"></i><b>7.5.1</b> Normal probability plot.</a></li>
+<li class="chapter" data-level="7.5.2" data-path="statdesc.html"><a href="statdesc.html#testnorm"><i class="fa fa-check"></i><b>7.5.2</b> Test statistici per la normalità.</a></li>
+<li class="chapter" data-level="7.5.3" data-path="statdesc.html"><a href="statdesc.html#comefaremeglio"><i class="fa fa-check"></i><b>7.5.3</b> <em>Come fare di meglio con i risultati dei test</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="statdesc.html"><a href="statdesc.html#intervalli-di-confidenza."><i class="fa fa-check"></i><b>7.6</b> Intervalli di confidenza.</a></li>
+<li class="chapter" data-level="7.7" data-path="statdesc.html"><a href="statdesc.html#statdesccat"><i class="fa fa-check"></i><b>7.7</b> Riassumere i dati per le variabili categoriche.</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="statdesc.html"><a href="statdesc.html#tabelle-di-frequenza-e-contingenza."><i class="fa fa-check"></i><b>7.7.1</b> Tabelle di frequenza e contingenza.</a></li>
+<li class="chapter" data-level="7.7.2" data-path="statdesc.html"><a href="statdesc.html#gmosaico"><i class="fa fa-check"></i><b>7.7.2</b> <em>Grafici a mosaico</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="statdesc.html"><a href="statdesc.html#veloceveloce"><i class="fa fa-check"></i><b>7.8</b> <em>Veloce veloce</em></a></li>
+<li class="chapter" data-level="7.9" data-path="statdesc.html"><a href="statdesc.html#altrerisstatdesc"><i class="fa fa-check"></i><b>7.9</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="statdesc.html"><a href="statdesc.html#risorse-in-italiano.-3"><i class="fa fa-check"></i><b>7.9.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="7.9.2" data-path="statdesc.html"><a href="statdesc.html#risorse-in-inglese.-5"><i class="fa fa-check"></i><b>7.9.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="reportR.html"><a href="reportR.html"><i class="fa fa-check"></i><b>8</b> Creare report e notebook con R.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="reportR.html"><a href="reportR.html#cosa-cè-da-imparare-in-questo-capitolo.-7"><i class="fa fa-check"></i><b>8.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="8.2" data-path="reportR.html"><a href="reportR.html#reportminimo"><i class="fa fa-check"></i><b>8.2</b> Il minimo indispensabile.</a></li>
+<li class="chapter" data-level="8.3" data-path="reportR.html"><a href="reportR.html#gli-elementi-di-un-report-in-r-markdown."><i class="fa fa-check"></i><b>8.3</b> <em>Gli elementi di un report in R Markdown.</em></a></li>
+<li class="chapter" data-level="8.4" data-path="reportR.html"><a href="reportR.html#altri-formati-di-documento-con-r-markdown."><i class="fa fa-check"></i><b>8.4</b> <em>Altri formati di documento con R Markdown.</em></a></li>
+<li class="chapter" data-level="8.5" data-path="reportR.html"><a href="reportR.html#quarto."><i class="fa fa-check"></i><b>8.5</b> <em>Quarto.</em></a></li>
+<li class="chapter" data-level="8.6" data-path="reportR.html"><a href="reportR.html#altrerisreport"><i class="fa fa-check"></i><b>8.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="reportR.html"><a href="reportR.html#risorse-in-italiano.-4"><i class="fa fa-check"></i><b>8.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="8.6.2" data-path="reportR.html"><a href="reportR.html#risorse-in-inglese.-6"><i class="fa fa-check"></i><b>8.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>9</b> Lottare con i dati.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wrangling.html"><a href="wrangling.html#cosa-cè-da-imparare-in-questo-capitolo.-8"><i class="fa fa-check"></i><b>9.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="9.2" data-path="wrangling.html"><a href="wrangling.html#rendere-tidy-i-dati."><i class="fa fa-check"></i><b>9.2</b> Rendere tidy i dati.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="wrangling.html"><a href="wrangling.html#tidyresh"><i class="fa fa-check"></i><b>9.2.1</b> Riordinare con <code>tidyr</code> e <code>dplyr</code>: esempio minimo.</a></li>
+<li class="chapter" data-level="9.2.2" data-path="wrangling.html"><a href="wrangling.html#funzioni-avanzate-con-tidyr."><i class="fa fa-check"></i><b>9.2.2</b> <em>Funzioni avanzate con <code>tidyr</code>.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="wrangling.html"><a href="wrangling.html#dplyr"><i class="fa fa-check"></i><b>9.3</b> il cavallo di battaglia del <code>data wrangling</code>: <code>dplyr</code>.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="wrangling.html"><a href="wrangling.html#filterselect"><i class="fa fa-check"></i><b>9.3.1</b> Estrarre gruppi di righe o colonne.</a></li>
+<li class="chapter" data-level="9.3.2" data-path="wrangling.html"><a href="wrangling.html#riordinare-i-dati."><i class="fa fa-check"></i><b>9.3.2</b> Riordinare i dati.</a></li>
+<li class="chapter" data-level="9.3.3" data-path="wrangling.html"><a href="wrangling.html#muta"><i class="fa fa-check"></i><b>9.3.3</b> Trasformare con <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="9.3.4" data-path="wrangling.html"><a href="wrangling.html#summarise"><i class="fa fa-check"></i><b>9.3.4</b> Riassumere i dati con <code>summarise()</code>.</a></li>
+<li class="chapter" data-level="9.3.5" data-path="wrangling.html"><a href="wrangling.html#join"><i class="fa fa-check"></i><b>9.3.5</b> Database e tabelle relazionali: unire tabelle con _join.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="wrangling.html"><a href="wrangling.html#strutturecontrollo"><i class="fa fa-check"></i><b>9.4</b> Strutture di controllo.</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="wrangling.html"><a href="wrangling.html#loop"><i class="fa fa-check"></i><b>9.4.1</b> <em>Loop (o cicli) e cose simili.</em></a></li>
+<li class="chapter" data-level="9.4.2" data-path="wrangling.html"><a href="wrangling.html#functional"><i class="fa fa-check"></i><b>9.4.2</b> <em>Un’alternativa (veloce e ordinata) ai loop: i “functional”.</em></a></li>
+<li class="chapter" data-level="9.4.3" data-path="wrangling.html"><a href="wrangling.html#ifelsestat"><i class="fa fa-check"></i><b>9.4.3</b> <em>Esecuzione condizionale.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="wrangling.html"><a href="wrangling.html#Soluzione"><i class="fa fa-check"></i><b>9.5</b> La soluzione dell’esercizio.</a></li>
+<li class="chapter" data-level="9.6" data-path="wrangling.html"><a href="wrangling.html#altreriswrangling"><i class="fa fa-check"></i><b>9.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="wrangling.html"><a href="wrangling.html#risorse-in-italiano.-5"><i class="fa fa-check"></i><b>9.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="wrangling.html"><a href="wrangling.html#risorse-in-inglese.-7"><i class="fa fa-check"></i><b>9.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html"><i class="fa fa-check"></i><b>10</b> Citazioni, crediti, copyright, ringraziamenti.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#citazioni."><i class="fa fa-check"></i><b>10.1</b> Citazioni.</a></li>
+<li class="chapter" data-level="" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#credits-e-copyright."><i class="fa fa-check"></i>Credits e copyright.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pigR: R, per pigri</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introduzione<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>v1.1.3 30/10/2023</p>
+<div id="cosa-cè-da-imparare-in-questo-capitolo." class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Cosa c’è da imparare in questo capitolo.<a href="intro.html#cosa-cè-da-imparare-in-questo-capitolo." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Questa è una breve introduzione a R. Ti suggerisco di scorrere velocemente questo capitolo per farti un’idea generale del linguaggio e delle sue potenzialità.</p>
+</div>
+<div id="convenzioni-e-guida-alla-lettura-e-alluso-del-codice." class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Convenzioni e guida alla lettura e all’uso del codice.<a href="intro.html#convenzioni-e-guida-alla-lettura-e-alluso-del-codice." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Quando nel testo compare un blocco in grigio, come quello che segue</p>
+<p><code>&gt; demo(graphics)</code></p>
+<p>si tratta di un comando o di una serie di comandi, e deve essere scritto nella console<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> così come appare, senza il carattere <code>&gt;</code>, se presente (questo carattere indica il prompt dei comandi, roba che risale a decine e decine di anni fa…). Quando ometto il carattere <code>&gt;</code> vuol dire che quell’insieme di comandi è pensato per essere eseguito come script (va copiato e incollato in uno script e eseguito in gruppo o comando per comando).<br />
+<code>&lt;esc&gt;</code> indica che dovete pigiare (o sfiorare, o martellare) il tasto esc sulla vostra tastiera. Lo stesso vale per <code>&lt;cmd&gt;</code>, <code>&lt;ctrl&gt;</code> e simili.
+<code>&lt;File -&gt; Open recent&gt;</code> rappresenta una serie di click su menu e, eventualmente sottomenu, generalmente nella barra principale dei menu della GUI<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a> di R o RStudio.<br />
+Un comando del tipo <code>plotrix::fan.plot()</code> indica che il comando (in questo caso <code>fan.plot()</code>) appartiene ad un determinato pacchetto (in questo caso <code>plotrix</code>).</p>
+<hr />
+<p>Linee orizzontali delimitano figure o tabelle</p>
+<hr />
+<p>I titoli dei paragrafi che costituiscono degli approfondimenti sono <em>in corsivo</em>.</p>
+</div>
+<div id="tutti-vogliono-imparare-a-usare-r." class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Tutti vogliono imparare a usare R.<a href="intro.html#tutti-vogliono-imparare-a-usare-r." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se sei un ricercatore (più o meno in erba) devi <strong>per forza</strong> aver usato qualche forma di analisi grafica e statistica dei dati che hai prodotto. Nella peggiore delle ipotesi, avrai usato qualcuno dei rudimentali strumenti offerti dalla maggior parte dei software per fogli di calcolo. Nel migliore dei casi, avrai già avuto un’esperienza più o meno estesa con veri software per l’analisi statistica (stand alone o, sempre più frequentemente, basati sul cloud computing).<br />
+Tuttavia, se stai leggendo questo libro, stai più o meno seriamente considerando di imparare a usare R. R è, al tempo stesso un <strong>linguaggio</strong> (nel senso di <a href="https://it.wikipedia.org/wiki/Linguaggio_di_programmazione">linguaggio di programmazione</a>), un <strong>ambiente</strong>, nel senso di <a href="https://it.wikipedia.org/wiki/Ambiente_(programmazione)">ambiente di programmazione</a> e un’<strong>applicazione</strong>, che puoi scaricare da uno dei siti del <a href="https://cran.r-project.org/">CRAN</a>, che sta per Comprehensive R Archive Network<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.<br />
+R, abbastanza ovviamente, <strong>è il linguaggio e l’ambiente per l’analisi statistica e per la scienza dei dati</strong>, anche se altri linguaggi, come Python e Julia, possono essere più indicati per alcune applicazioni e, soprattutto, per l’analisi di big data. Ci sono diverse ragioni (4, <a href="https://www.r-bloggers.com/2014/03/why-use-r-five-reasons/">5</a>, 6, 8, <a href="https://data-flair.training/blogs/why-learn-r/">10</a>…, prova a cercare “reasons to learn R” con un motore di ricerca) per investire del tempo per imparare a usarlo:</p>
+<ul>
+<li><p><strong>è un software gratuito, libero ed aperto</strong>, mantenuto e sviluppato da una grande comunità di statistici e programmatori</p></li>
+<li><p><strong>è disponibile per diverse piattaforme</strong>: è possibile installarlo su <a href="https://cran.r-project.org">sistemi basati su UNIX, MacOS, Windows</a><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p></li>
+<li><p><strong>è il software statistico più ricco di funzionalità</strong>: fra l’applicazione base, <a href="https://cran.r-project.org">scaricabile dal CRAN</a> e le migliaia di librerie (o pacchetti, o packages<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>), scaricabili dal CRAN, o da repository più o meno specializzati come <a href="https://bioconductor.org">Bioconductor</a> o creati da singoli programmatori e disponibili su <a href="https://github.com">GitHub</a>, offre il più incredibile insieme di funzionalità per la programmazione, la gestione e l’analisi statistica e grafica di dati. Insomma, se c’è uno strumento nuovo è probabile che sia disponibile su R anni prima che sia reso disponibile (se mai lo sarà) in altri software, commerciali o gratuiti.</p></li>
+<li><p><strong>è potente</strong>: anche con un notebook relativamente poco performante è possibile eseguire in maniera efficace e rapida analisi molto complesse di set di dati relativamente grandi (alcuni GB). R, tuttavia, può essere usato su cluster di calcolo e gestire problemi veramente enormi<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>.</p></li>
+<li><p><strong>è popolare, trasparente e riproducibile</strong>: la comunità degli utilizzatori di R ha una fortissima tradizione di condivisione e aiuto reciproco, come testimoniato dalle decine di blog, forum, siti web dedicati, in maniera più o meno specifica, a R. Inoltre, se scrivi bene il codice e fornisci tutti i dati necessari, le tue analisi possono essere ripetute esattamente come le hai “pensate” (e persino migliorate!): in un mondo in cui sempre più spesso viene richiesto di fornire dati e software in maniera aperta questo è un aspetto assolutamente fondamentale. Infine, per come la vedo io, ha strumenti potentissimi per la presentazione dei risultati dell’analisi sotto una miriade di formati, inclusi quelli interattivi<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>.</p></li>
+<li><p><strong>può migliorare le tue prospettive di carriera</strong>: una buona conoscenza della programmazione in R sta diventando rapidamente un asset fondamentale per lavorare nella ricerca pubblica e privata e, in generale, nell’analisi dei dati.</p></li>
+</ul>
+<p>Vorrei poter aggiungere che saper usare R è una cosa fighissima e sexy (e migliora di molto la tua probabilità di rimorchiare ragazz*), ma non sono del tutto sicuro che sia vero. Quello che è vero è che programmare in R può essere molto soddisfacente.</p>
+<div id="provare-per-credere-app-gui-ide-e-altre-diavolerie." class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Provare per credere: App, GUI, IDE e altre diavolerie.<a href="intro.html#provare-per-credere-app-gui-ide-e-altre-diavolerie." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Installare R.</strong></p>
+<p>Puoi scaricare l’applicazione (o software o app) R dal <a href="https://cran.r-project.org">CRAN</a><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>. In alternativa, se ti fa piacere, puoi scaricare Microsoft R <a href="https://mran.microsoft.com/open">qui</a>. Fai attenzione alla versione del tuo sistema operativo e in generale alle caratteristiche della tua macchina: non tutte le versioni di R sono supportate dalle macchine più “antiche”, ma puoi sempre trovare la versione “legacy” adatta alla tua macchina. Se hai già installato altro software sul tuo computer non dovresti avere difficoltà. Altrimenti, usando un motore di ricerca puoi trovare facilmente dei video tutorial, anche in italiano<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>.</p>
+<p><strong>R GUI.</strong></p>
+<p>Concluso il processo di installazione troverai l’icona di R sul tuo desktop o dovunque siano le icone delle applicazioni sul tuo sistema, e potrai aprire l’interfaccia grafica (Graphical User Interface o GUI).<br />
+Quella che vedi qui sotto è la GUI di R 4.1 per MacOS.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:RGUI"></span>
+<img src="images/MacOSRGUI.jpg" alt="La Graphical User Interface di R per MacOS" width="90%" />
+<p class="caption">
+Figura 1.1: La Graphical User Interface di R per MacOS
+</p>
+</div>
+<hr />
+<p>Anche se ho aperto qualche finestra in più, ti renderai conto che si tratta di un’interfaccia minimalista: pochi menu, tab, frame, pochissime finestre…<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>. E, soprattutto c’è un inquietante cursore lampeggiante vicino al segno <code>&gt;</code> nella <strong>console</strong> (lo spazio principale in cui è possibile inserire i comandi e il segno <code>&gt;</code> è il prompt).
+In R i comandi vengono scritti nella console (e per eseguirli è sufficiente premere <code>&lt;invio&gt;</code>), ed è nella console che appaiono molti dei risultati delle analisi, oltre che messaggi (inclusi quelli di errore).
+Proviamo ad eseguire un comando. Nella console, scrivi dopo il prompt:</p>
+<p><code>&gt;demo(graphics)</code></p>
+<p>e premi invio. Se segui le istruzioni sulla console<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>, vedrai apparire una serie di demo delle capacità grafiche di R (c’è molto di più, credimi).<br />
+Ora, prova a scrivere:</p>
+<p><code>&gt;help(demo)</code></p>
+<p>Si aprirà una finestra con l’aiuto (le istruzioni) per l’uso della funzione/comando “demo”, che hai appena usato.<br />
+Complimenti, hai scritto ed eseguito i tuoi due primi comandi in R!!.</p>
+<p><strong>Altre GUI.</strong></p>
+<p>Facciamo un salto in avanti e proviamo a scrivere ed eseguire un altro comando<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>.</p>
+<p><code>&gt;library(Rcmdr)</code></p>
+<p>Se appare un errore è perché il pacchetto non è ancora installato nel tuo sistema. Vedremo in dettaglio l’installazione dei pacchetti in un capitolo successivo, ma, per installare R commander e i pacchetti di cui ha bisogno per funzionare (le “dependencies”) puoi eseguire il comando:</p>
+<p><code>&gt;install.packages("Rcmdr", dependencies = T)</code></p>
+<p>Se tutto va bene, sulla console appariranno un po’ di messaggi:<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:libRcmdr"></span>
+<img src="images/libraryRcmdr.jpg" alt="Caricare R Commander" width="90%" />
+<p class="caption">
+Figura 1.2: Caricare R Commander
+</p>
+</div>
+<hr />
+<p>Il risultato è l’apertura della GUI di R Commander, una <code>graphical user interface</code> piuttosto bruttina e minimalista che però consente di usare R in maniera simile a molti altri software di analisi grafica e statistica (ma credimi, non è quello che vuoi veramente, o, se lo vuoi, puoi smettere di leggere questo libro).</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:GUIRcmdr"></span>
+<img src="images/RcmdrGUI.jpg" alt="La GUI di R Commander" width="90%" />
+<p class="caption">
+Figura 1.3: La GUI di R Commander
+</p>
+</div>
+<hr />
+<p><strong>RStudio.</strong></p>
+<p><a href="https://www.rstudio.com">RStudio</a> è un ambiente di sviluppo integrato (IDE)<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a> disponibile sia come versione gratuita che con una serie di versioni professionali. L’installazione di RStudio richiede la presenza di R sul tuo sistema. Scaricare e installare RStudio è semplice. Scegli la <a href="https://www.rstudio.com/products/rstudio/download/">versione che preferisci</a>, scarica l’installer e segui le istruzioni<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>.<br />
+Una volta scaricato e installato il software, aprilo, ed ecco qui:</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:RStudio"></span>
+<img src="images/RStudioIDE.jpg" alt="RStudio" width="90%" />
+<p class="caption">
+Figura 1.4: RStudio
+</p>
+</div>
+<hr />
+<p>RStudio rende molto più facile lavorare con R ed è il software che useremo per tutto questo corso.</p>
+<p><strong>Radiant.</strong></p>
+<p><a href="https://radiant-rstats.github.io/docs/">Radiant</a> è una piattaforma interattiva per condurre analisi statistiche per l’analisi aziendale. In realtà, si tratta di un’interfaccia realizzata con RStudio, piuttosto completa.<br />
+L’uso è abbastanza semplice e intuitivo. E’ sufficiente scaricare il pacchetto dal CRAN e installarlo, caricarlo in memoria e lanciare l’interfaccia (per uscire usa il tasto <esc> nella console:</p>
+<pre><code>&gt;install.packages(&quot;radiant&quot;)
+&gt;require(radiant)
+&gt;radiant::radiant()</code></pre>
+<p>In alternativa, dopo aver installato il pacchetto, è possibile lanciarlo da RStudio con <code>&lt;Tools -&gt; Addins -&gt; Browse Addins...&gt;</code>.<br />
+Il software si apre di default nel vostro browser, ma può essere aperto nel Viewer di RStudio.</p>
+</div>
+</div>
+<div id="laltra-faccia-della-medaglia-troppa-fatica." class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> L’altra faccia della medaglia: troppa fatica.<a href="intro.html#laltra-faccia-della-medaglia-troppa-fatica." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Beh, ma ancora una volta, se sei qui è perché non hai voglia di perdere tempo o perché, essendo pigr*, non vuoi fare troppa fatica per imparare a usare R, o perché ci hai già provato e hai lasciato perdere. Molti avranno cercato di scoraggiarti, proponendoti <a href="https://www.r-bloggers.com/2019/07/whats-the-best-statistical-software-a-comparison-of-r-python-sas-spss-and-stata/">alternative più o meno valide</a>. Fra i (tanti) difetti di R viene citata la lentezza, le limitazioni nell’uso della memoria, etc., ma il principale è sicuramente lo sforzo richiesto per raggiungere un ragionevole livello di padronanza dell’uso di questo linguaggio per l’analisi dei dati.</p>
+<p><strong>“R has a steep learning curve”.</strong></p>
+<p>Avrai sicuramente letto che “R has a steep learning curve”: è una frase che non ha molto senso (se si pensa alla forma di una curva di apprendimento) ma che vuole fondamentalmente dire che, all’aumentare dell’esperienza o del tempo speso nell’apprendimento i progressi iniziali sono relativamente lenti (una curva che compara diversi software è <a href="https://sites.google.com/a/nyu.edu/statistical-software-guide/summary">qui</a>). D’altra parte, con R non si finisce mai di imparare e, sicuramente, l’esperienza di apprendimento di R, se sei motivat*, ripaga molto più degli sforzi comunque necessari per apprendere l’uso di molti software statistici professionali<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>. E’ certamente un processo frustrante, come puoi vedere dalla figura successiva<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>, ma se terrai duro, leggendo (beh, studiando, almeno un po’) questo libro arriverai sicuramente alla fase 2.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:learningcurve"></span>
+<img src="images/curvaapprendimento.jpg" alt="La vera curva di apprendimento di R." width="90%" />
+<p class="caption">
+Figura 1.5: La vera curva di apprendimento di R.
+</p>
+</div>
+<hr />
+<p>Ma perché può essere difficile imparare a usare R?</p>
+<ul>
+<li><p><strong>è un linguaggio</strong><a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> e, fondamentalmente, devi “scrivere”, sotto forma di singole istruzioni o script o app quello che vuoi fare, e quindi ti tocca conoscere la sintassi (l’insieme di regole che ti permettono di comporre un comando che funzioni)<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a> (figura <a href="intro.html#fig:esempicomandi">1.6</a>) e acquisire il vocabolario (R base ha centinaia di funzioni e migliaia di altre funzioni sono aggiunte dai pacchetti/librerie)</p></li>
+<li><p><strong>la documentazione è quasi esclusivamente in inglese</strong> (e talvolta in un inglese decisamente tecnico)</p></li>
+<li><p><strong>ci sono, letteralmente, molti modi di scuoiare un gatto</strong>: lo stesso risultato (in termini di operazioni preliminari di trasformazione e riorganizzazione dei dati, di analisi grafica e statistica) può essere ottenuto in molti modi diversi. Per esempio i pacchetti del <a href="https://www.tidyverse.org/">tidyverse</a> costituiscono in qualche modo un’evoluzione del linguaggio di base, basato su un concetto molto coerente di organizzazione della sintassi e delle strutture dei dati. Scegliere se concentrarsi sull’apprendimento della versione “base” di R o sugli equivalenti “tidy” di molte funzioni è un una scelta personale ma, per molte ragioni, è necessario avere una qualche conoscenza di entrambi i sistemi</p></li>
+<li><p><strong>R può essere usato in molti modi</strong>:</p>
+<ul>
+<li><p>in modo <strong>“interattivo”</strong>, per se stessi: immettendo i comandi ad uno alla volta nella console ed eseguendoli uno per volta: il risultato del comando produrrà altri oggetti, un output (che andrà su file o alla console) o un “effetto collaterale” (p.es. il salvataggio di un file). Questo è ovviamente il modo più semplice per iniziare, ma più inefficiente per “comunicare” i risultati dell’analisi e meno ripetibile<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>, ma è anche il modo in cui “si provano” i comandi.</p></li>
+<li><p>in modo <strong>“programmatico”</strong>, per se stessi, o per altri: i comandi (probabilmente testati in modo interattivo) vengono raccolti in uno script e, se si organizza il tutto sotto forma di un documento in <a href="https://rmarkdown.rstudio.com/articles_intro.html">R Markdown</a> e si usano altri accorgimenti (p.es. con l’uso di “progetti”) è possibile riprodurre e ripetere l’analisi (eventualmente con minime modificazioni) quante volte si vuole, generando report che includono i risultati delle analisi statistiche e grafiche, oltre che, eventualmente, il codice sotto forma di una varietà di formati (documenti in MS Word, html, pdf, slide, etc.).</p></li>
+<li><p><strong>sviluppando applicazioni</strong> interattive: con R (e diversi pacchetti aggiuntivi) si possono sviluppare documenti e applicazioni interattive, che consentono ad utenti anche inesperti di controllare l’output dell’analisi, scegliendo per esempio cosa rappresentare in un grafico (e, in alcuni casi, come farlo). Molti pacchetti di R (<a href="https://shiny.rstudio.com/">Shiny</a>, <a href="https://plotly.com/r/">Plotly</a>, <a href="https://rstudio.github.io/learnr/">learnr</a>, <a href="https://bookdown.org/">bookdown</a><a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>) consentono di sviluppare documenti, tutorial o applicazioni interattive, pronte per l’uso nel web.</p></li>
+</ul></li>
+</ul>
+<p>Questa enorme flessibilità è una della ragioni per cui chiunque voglia condurre analisi grafica e statistica in modo professionale dovrebbe imparare a usare R.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:esempicomandi"></span>
+<img src="images/comandiconsole.jpg" alt="Esempi di comandi scritti alla console." width="90%" />
+<p class="caption">
+Figura 1.6: Esempi di comandi scritti alla console.
+</p>
+</div>
+<hr />
+</div>
+<div id="r-per-pigri." class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> R, per pigri.<a href="intro.html#r-per-pigri." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>E quindi, eccoci qui: questo libro nasce proprio per aiutare te (che sei pigr* o non hai tempo) ad imparare ad usare R e condurre almeno il minimo indispensabile di analisi grafiche e statistiche tipicamente utilizzate nella ricerca biologica. L’approccio sarà sostanzialmente pragmatico, cercando di limitare al minimo le descrizioni formali e facendo il possibile per indirizzarti verso i percorsi di apprendimento più rapidi e verso le risorse (libri, siti web, etc.) più utili. Credo che questa sia, forse, la cosa più importante, anche se finirà per riflettere quelle che sono, inevitabilmente, inclinazioni personali: la documentazione su R è sterminata e non sempre molto efficace. Nelle note a piè di pagina e nei link troverai le risorse essenziali, ma anche ulteriori risorse per approfondire.<br />
+Dal momento che <strong>tutto</strong> (beh, quasi tutto<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> c’è qualcosa in altre lingue) il materiale interessante su R è in inglese, la scelta di scrivere in italiano potrebbe sembrare un po’ controintuitiva. Tuttavia, tu siete pigr* e io, per esperienza, so che il mix di inglese, informatica e statistica può essere decisamente letale.
+Nel caso la tua pigrizia ti spingesse a credere che imparare a fare analisi statistica con un qualsiasi altro software sia più semplice che farlo con R, vorrei dire un’altra volta che questo può essere vero, ma solo in parte. L’ultima volta che ho guardato i manuali d’uso di Systat erano qualcosa come 7 volumi e imparare ad usare bene un software professionale per l’analisi statistica non è sicuramente una passeggiata (per pigri).</p>
+<p>Quindi, <a href="https://youtu.be/nH9zYaiGoNk">iniziamo</a>!!</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="5">
+<li id="fn5"><p>eh, ma che cos’è una console… un po’ di pazienza, arrivate almeno al capitolo <a href="intro.html#intro">1</a><a href="intro.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Graphical User Interface<a href="intro.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>se ti interessa un pistolotto abbastanza lungo sulla storia di R il migliore è <a href="https://www.r-project.org/about.html">qui</a>, anche se è decisamente un tantino tecnico, ed è in inglese. Qualcosa in italiano la trovi <a href="https://cran.r-project.org/doc/contrib/Mineo-dispensaR.pdf">qui</a>. R è un linguaggio recente: la prima versione stabile appare nel 2000<a href="intro.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>esiste addirittura un’implementazione di Microsoft, <a href="https://mran.microsoft.com/open">Microsoft R</a> e RStudio rende disponibile una <a href="https://rstudio.cloud">versione cloud di R</a><a href="intro.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>al momento della revisione di questo capitolo, agosto 2023, nel solo CRAN sono disponibili oltre 20.000 pacchetti; il numero di pacchetti disponibili su varie fonti è ancora maggiore; <a href="https://rdrr.io">clicca qui</a> per delle statistiche aggiornate<a href="intro.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>qualche dettaglio in più, con un confronto con alcuni software commerciali, lo trovi <a href="https://www.r-bloggers.com/2014/03/why-use-r-five-reasons/">qui</a><a href="intro.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>questo libro è scritto in RStudio sotto forma di documento Rmarkdown, usando comandi di R per generare analisi statistiche e grafiche<a href="intro.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>in realtà dallo stesso sito potresti voler scaricare varie utility necessarie per la compilazione delle librerie o pacchetti, ma questo non è strettamente necessario, perché quasi tutti i pacchetti sono o saranno disponibili in un formato immediatamente installabile<a href="intro.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>ecco un <a href="https://www.youtube.com/watch?v=5PoyCyje6IQ">video di Federica web learning</a><a href="intro.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>puoi confrontarla con quella dei software statistici che conosci, o, semplicemente, cercare “SAS graphical user interface” su un motore di ricerca, sostituendo SAS con il tuo software favorito (beh, favorito fino all’altro ieri) e selezionando le immagini come risultati<a href="intro.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p>se ti stanchi usa il tasto <code>&lt;esc&gt;</code><a href="intro.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>questo particolare comando carica nell’“ambiente” un pacchetto già installato.<a href="intro.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>sono dei <code>warning</code> o avvisi, in rosso: richiedono l’attenzione dell’utente ma non indicano condizioni fatali, che non permetterebbero di portare a termine le operazioni<a href="intro.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>se vuoi saperne di più clicca <a href="https://it.wikipedia.org/wiki/Integrated_development_environment">qui</a><a href="intro.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p>usa un motore di ricerca per cercare “installare RStudio video” e appariranno i link a decine di video, più o meno efficaci, un tributo alla necessità di essere rassicurati, immagino.<a href="intro.html#fnref19" class="footnote-back">↩︎</a></p></li>
+<li id="fn20"><p>e ti spinge a pensare a quello che stai facendo, soprattutto in termini di analisi statistica, il che é un’ottima cosa<a href="intro.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p>non sono riuscito a trovare la fonte originale dell’immagine, che comunque ho modificato; il candidato più probabile è <a href="http://3.bp.blogspot.com/-2RteLPoaljI/UfwoRl2Bo6I/AAAAAAAAAtE/6pl6LzR5p2s/s1600/Learning-Curve.png">qui</a><a href="intro.html#fnref21" class="footnote-back">↩︎</a></p></li>
+<li id="fn22"><p>per quanto di alto livello, cioé relativamente vicino al linguaggio naturale<a href="intro.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>R può essere molto “sensibile”, basta usare male maiuscole o minuscole o non scrivere esattamente il nome di una funzione o di un parametro per ottenere soltanto un messaggio di errore, qualche volta molto criptico; fortunatamente RStudio ti aiuta con suggerimenti e altro, cosa che non fa la scontrosa GUI di R, che è progettata per i puri e duri<a href="intro.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>a meno che, come vedremo dopo, tu non conservi una traccia di quello che hai fatto sotto forma di uno script<a href="intro.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>incidentalmente questo libro è scritto con R markdown e trasformato in un libro con bookdown e, nel futuro, i tutorial saranno prodotti con learnr<a href="intro.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>sul sito di <a href="https://bookdown.org/">Bookdown</a><a href="intro.html#fnref26" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

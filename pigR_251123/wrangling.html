@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Lottare con i dati. | pigR: R, per pigri</title>
+  <meta name="description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Lottare con i dati. | pigR: R, per pigri" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Lottare con i dati. | pigR: R, per pigri" />
+  
+  <meta name="twitter:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+<meta name="author" content="E. Parente, Scuola SAFE, Università degli Studi della Basilicata" />
+
+
+<meta name="date" content="2023-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="reportR.html"/>
+<link rel="next" href="citazioni-crediti-copyright-ringraziamenti..html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cos’è pigR?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#di-cosa-hai-bisogno-per-leggere-e-capire-questo-libro."><i class="fa fa-check"></i>Di cosa hai bisogno per leggere (e capire) questo libro.</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#chi-siamo-noi-noi-noi"><i class="fa fa-check"></i>Chi siamo noi (noi, noi)?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#se-ti-piace"><i class="fa fa-check"></i>Se ti piace…</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cookies"><i class="fa fa-check"></i>Cookies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#la-foto-di-copertina."><i class="fa fa-check"></i>La foto di copertina.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduzione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#cosa-cè-da-imparare-in-questo-capitolo."><i class="fa fa-check"></i><b>1.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#convenzioni-e-guida-alla-lettura-e-alluso-del-codice."><i class="fa fa-check"></i><b>1.2</b> Convenzioni e guida alla lettura e all’uso del codice.</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#tutti-vogliono-imparare-a-usare-r."><i class="fa fa-check"></i><b>1.3</b> Tutti vogliono imparare a usare R.</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#provare-per-credere-app-gui-ide-e-altre-diavolerie."><i class="fa fa-check"></i><b>1.3.1</b> Provare per credere: App, GUI, IDE e altre diavolerie.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#laltra-faccia-della-medaglia-troppa-fatica."><i class="fa fa-check"></i><b>1.4</b> L’altra faccia della medaglia: troppa fatica.</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#r-per-pigri."><i class="fa fa-check"></i><b>1.5</b> R, per pigri.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inter.html"><a href="inter.html"><i class="fa fa-check"></i><b>2</b> Interfacce e ambienti</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inter.html"><a href="inter.html#cosa-cè-da-imparare-in-questo-capitolo.-1"><i class="fa fa-check"></i><b>2.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="2.2" data-path="inter.html"><a href="inter.html#rstudio."><i class="fa fa-check"></i><b>2.2</b> RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="inter.html"><a href="inter.html#linterfaccia-principale-di-rstudio."><i class="fa fa-check"></i><b>2.2.1</b> L’interfaccia principale di RStudio.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="inter.html"><a href="inter.html#il-pannello-source."><i class="fa fa-check"></i><b>2.2.2</b> Il pannello Source.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="inter.html"><a href="inter.html#il-pannello-console."><i class="fa fa-check"></i><b>2.2.3</b> Il pannello Console.</a></li>
+<li class="chapter" data-level="2.2.4" data-path="inter.html"><a href="inter.html#il-pannello-environment."><i class="fa fa-check"></i><b>2.2.4</b> Il pannello Environment.</a></li>
+<li class="chapter" data-level="2.2.5" data-path="inter.html"><a href="inter.html#il-tab-environment."><i class="fa fa-check"></i><b>2.2.5</b> Il tab Environment.</a></li>
+<li class="chapter" data-level="2.2.6" data-path="inter.html"><a href="inter.html#il-tab-history."><i class="fa fa-check"></i><b>2.2.6</b> Il tab History.</a></li>
+<li class="chapter" data-level="2.2.7" data-path="inter.html"><a href="inter.html#il-pannello-plots."><i class="fa fa-check"></i><b>2.2.7</b> Il pannello Plots.</a></li>
+<li class="chapter" data-level="2.2.8" data-path="inter.html"><a href="inter.html#il-tab-plots."><i class="fa fa-check"></i><b>2.2.8</b> Il tab Plots.</a></li>
+<li class="chapter" data-level="2.2.9" data-path="inter.html"><a href="inter.html#il-tab-files."><i class="fa fa-check"></i><b>2.2.9</b> Il tab Files.</a></li>
+<li class="chapter" data-level="2.2.10" data-path="inter.html"><a href="inter.html#tabpackages"><i class="fa fa-check"></i><b>2.2.10</b> Il tab Packages.</a></li>
+<li class="chapter" data-level="2.2.11" data-path="inter.html"><a href="inter.html#il-tab-help."><i class="fa fa-check"></i><b>2.2.11</b> Il tab Help.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="inter.html"><a href="inter.html#esercizi."><i class="fa fa-check"></i><b>2.3</b> Esercizi.</a></li>
+<li class="chapter" data-level="2.4" data-path="inter.html"><a href="inter.html#altrerisinter"><i class="fa fa-check"></i><b>2.4</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inter.html"><a href="inter.html#risorse-in-italiano."><i class="fa fa-check"></i><b>2.4.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inter.html"><a href="inter.html#risorse-in-inglese."><i class="fa fa-check"></i><b>2.4.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aiuto.html"><a href="aiuto.html"><i class="fa fa-check"></i><b>3</b> Chiedere aiuto</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aiuto.html"><a href="aiuto.html#cosa-cè-da-imparare-in-questo-capitolo.-2"><i class="fa fa-check"></i><b>3.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aiuto.html"><a href="aiuto.html#premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri"><i class="fa fa-check"></i><b>3.1.1</b> Premessa 1: nessuno legge i manuali (figuriamoci i pigRi)!</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aiuto.html"><a href="aiuto.html#gatti"><i class="fa fa-check"></i><b>3.1.2</b> Premessa 2: ci sono molti modi di pelare un gatto (e documentarlo).</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aiuto.html"><a href="aiuto.html#laiuto-di-r."><i class="fa fa-check"></i><b>3.2</b> L’aiuto di R.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="aiuto.html"><a href="aiuto.html#tabhelp"><i class="fa fa-check"></i><b>3.2.1</b> Il tab Help di RStudio.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="aiuto.html"><a href="aiuto.html#funzioni-per-chiedere-aiuto."><i class="fa fa-check"></i><b>3.2.2</b> <em>Funzioni per chiedere aiuto.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="aiuto.html"><a href="aiuto.html#strategieaiuto"><i class="fa fa-check"></i><b>3.3</b> Strategie per cercare aiuto (anche senza parere).</a></li>
+<li class="chapter" data-level="3.4" data-path="aiuto.html"><a href="aiuto.html#esercizi.-1"><i class="fa fa-check"></i><b>3.4</b> Esercizi.</a></li>
+<li class="chapter" data-level="3.5" data-path="aiuto.html"><a href="aiuto.html#altrerisaiuto"><i class="fa fa-check"></i><b>3.5</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="aiuto.html"><a href="aiuto.html#risorse-in-italiano.-1"><i class="fa fa-check"></i><b>3.5.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="3.5.2" data-path="aiuto.html"><a href="aiuto.html#risorse-in-inglese.-1"><i class="fa fa-check"></i><b>3.5.2</b> Risorse in inglese.</a></li>
+<li class="chapter" data-level="3.5.3" data-path="aiuto.html"><a href="aiuto.html#niente-video"><i class="fa fa-check"></i><b>3.5.3</b> Niente video?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datioggetti.html"><a href="datioggetti.html"><i class="fa fa-check"></i><b>4</b> Dati, oggetti, funzioni (e tutto il resto)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datioggetti.html"><a href="datioggetti.html#cosa-cè-da-imparare-in-questo-capitolo.-3"><i class="fa fa-check"></i><b>4.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datioggetti.html"><a href="datioggetti.html#premessa-1-esperimenti-e-osservazioni."><i class="fa fa-check"></i><b>4.1.1</b> Premessa 1: esperimenti e osservazioni.</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datioggetti.html"><a href="datioggetti.html#premessa2"><i class="fa fa-check"></i><b>4.1.2</b> Premessa 2. Misure e dati, osservazioni e variabili, tabelle.</a></li>
+<li class="chapter" data-level="4.1.3" data-path="datioggetti.html"><a href="datioggetti.html#anatab"><i class="fa fa-check"></i><b>4.1.3</b> Anatomia di una tabella.</a></li>
+<li class="chapter" data-level="4.1.4" data-path="datioggetti.html"><a href="datioggetti.html#un-piccolo-esercizio."><i class="fa fa-check"></i><b>4.1.4</b> Un piccolo esercizio.</a></li>
+<li class="chapter" data-level="4.1.5" data-path="datioggetti.html"><a href="datioggetti.html#tidyuntidydefinizione"><i class="fa fa-check"></i><b>4.1.5</b> Tidy vs. untidy (tabelle ordinate e disordinate).</a></li>
+<li class="chapter" data-level="4.1.6" data-path="datioggetti.html"><a href="datioggetti.html#missingdata"><i class="fa fa-check"></i><b>4.1.6</b> Dati mancanti (missing data).</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datioggetti.html"><a href="datioggetti.html#r-è-un-linguaggio-funzionale-che-supporta-la-programmazione-orientata-a-oggetti"><i class="fa fa-check"></i><b>4.2</b> R è un linguaggio funzionale che supporta la programmazione orientata a oggetti…</a></li>
+<li class="chapter" data-level="4.3" data-path="datioggetti.html"><a href="datioggetti.html#ilnomedellecose"><i class="fa fa-check"></i><b>4.3</b> Il nome delle cose.</a></li>
+<li class="chapter" data-level="4.4" data-path="datioggetti.html"><a href="datioggetti.html#strutturedati"><i class="fa fa-check"></i><b>4.4</b> Strutture di dati.</a></li>
+<li class="chapter" data-level="4.5" data-path="datioggetti.html"><a href="datioggetti.html#vettoriatomici"><i class="fa fa-check"></i><b>4.5</b> Vettori atomici.</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="datioggetti.html"><a href="datioggetti.html#vettori1D"><i class="fa fa-check"></i><b>4.5.1</b> Vettori ad una dimensione.</a></li>
+<li class="chapter" data-level="4.5.2" data-path="datioggetti.html"><a href="datioggetti.html#vettori-atomici-a-2-o-più-dimensioni-matrici-e-array."><i class="fa fa-check"></i><b>4.5.2</b> Vettori atomici a 2 o più dimensioni: matrici e array.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="datioggetti.html"><a href="datioggetti.html#i-data-frame-e-le-liste."><i class="fa fa-check"></i><b>4.6</b> I data frame e le liste.</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="datioggetti.html"><a href="datioggetti.html#dataframebenemale"><i class="fa fa-check"></i><b>4.6.1</b> I data frame, nel bene e nel male.</a></li>
+<li class="chapter" data-level="4.6.2" data-path="datioggetti.html"><a href="datioggetti.html#le-liste."><i class="fa fa-check"></i><b>4.6.2</b> Le liste.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="datioggetti.html"><a href="datioggetti.html#altre-cose-strane-tabelle-di-conte-serie-temporali-date-e-ore."><i class="fa fa-check"></i><b>4.7</b> <em>Altre cose strane: tabelle di conte, serie temporali, date e ore.</em></a></li>
+<li class="chapter" data-level="4.8" data-path="datioggetti.html"><a href="datioggetti.html#indsel"><i class="fa fa-check"></i><b>4.8</b> Indirizzare, selezionare.</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="datioggetti.html"><a href="datioggetti.html#indirizzare-per-posizione."><i class="fa fa-check"></i><b>4.8.1</b> Indirizzare per posizione.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="datioggetti.html"><a href="datioggetti.html#usare-i-nomi."><i class="fa fa-check"></i><b>4.8.2</b> Usare i nomi.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="datioggetti.html"><a href="datioggetti.html#usare-valori-logici."><i class="fa fa-check"></i><b>4.8.3</b> Usare valori logici.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="datioggetti.html"><a href="datioggetti.html#attach-with-within."><i class="fa fa-check"></i><b>4.9</b> <code>attach()</code>, <code>with()</code>, <code>within()</code>.</a></li>
+<li class="chapter" data-level="4.10" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in-e-funzioni-definite-dallutente."><i class="fa fa-check"></i><b>4.10</b> <em>Funzioni “built-in” e funzioni definite dall’utente.</em></a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="datioggetti.html"><a href="datioggetti.html#operatorisemplici"><i class="fa fa-check"></i><b>4.10.1</b> Semplici funzioni matematiche, trigonometriche, statistiche, logiche, etc.</a></li>
+<li class="chapter" data-level="4.10.2" data-path="datioggetti.html"><a href="datioggetti.html#operatori."><i class="fa fa-check"></i><b>4.10.2</b> Operatori.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in."><i class="fa fa-check"></i><b>4.10.3</b> Funzioni built-in.</a></li>
+<li class="chapter" data-level="4.10.4" data-path="datioggetti.html"><a href="datioggetti.html#userdeffunc"><i class="fa fa-check"></i><b>4.10.4</b> Funzioni definite dall’utente.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="datioggetti.html"><a href="datioggetti.html#programmare-con-stile."><i class="fa fa-check"></i><b>4.11</b> Programmare, con stile.</a></li>
+<li class="chapter" data-level="4.12" data-path="datioggetti.html"><a href="datioggetti.html#un-ambiente-affollato."><i class="fa fa-check"></i><b>4.12</b> Un ambiente affollato.</a></li>
+<li class="chapter" data-level="4.13" data-path="datioggetti.html"><a href="datioggetti.html#altrerisorsedati"><i class="fa fa-check"></i><b>4.13</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-italiano.-2"><i class="fa fa-check"></i><b>4.13.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="4.13.2" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-inglese.-2"><i class="fa fa-check"></i><b>4.13.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html"><i class="fa fa-check"></i><b>5</b> Dentro e fuori R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#cosa-cè-da-imparare-in-questo-capitolo.-4"><i class="fa fa-check"></i><b>5.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="5.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#ognicosaalsuoposto"><i class="fa fa-check"></i><b>5.2</b> Ogni cosa al suo posto: working directory, progetti, etc.</a></li>
+<li class="chapter" data-level="5.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#facciamolasemplice"><i class="fa fa-check"></i><b>5.3</b> Facciamola semplice: il menu <code>Import Dataset</code>.</a></li>
+<li class="chapter" data-level="5.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#usareadr"><i class="fa fa-check"></i><b>5.4</b> Gestire file di testo con <code>readr.</code></a></li>
+<li class="chapter" data-level="5.5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#tutti-i-comandi-o-quasi-per-importare-file-di-testo"><i class="fa fa-check"></i><b>5.5</b> Tutti i comandi (o quasi) per importare file di testo…</a></li>
+<li class="chapter" data-level="5.6" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-di-dati."><i class="fa fa-check"></i><b>5.6</b> Altri formati di dati.</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#da-e-per-excel."><i class="fa fa-check"></i><b>5.6.1</b> Da e per Excel.</a></li>
+<li class="chapter" data-level="5.6.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-foreign-e-hmisc-e-haven."><i class="fa fa-check"></i><b>5.6.2</b> Altri formati: <code>foreign</code> e <code>Hmisc</code> e <code>haven</code>.</a></li>
+<li class="chapter" data-level="5.6.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#un-richiamo-file-.rdata-e-.rds"><i class="fa fa-check"></i><b>5.6.3</b> Un richiamo: file <code>.Rdata</code> e <code>.rds</code></a></li>
+<li class="chapter" data-level="5.6.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#e-andato-tutto-bene"><i class="fa fa-check"></i><b>5.6.4</b> E’ andato tutto bene?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#lavorare-con-i-nomi-dei-file-e-le-directory."><i class="fa fa-check"></i><b>5.7</b> Lavorare con i nomi dei file e le directory.</a></li>
+<li class="chapter" data-level="5.8" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app1sintassi"><i class="fa fa-check"></i><b>5.8</b> <strong>Appendice 1</strong>. <em>Un piccolo dettaglio sulla sintassi.</em></a></li>
+<li class="chapter" data-level="5.9" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app2finqui"><i class="fa fa-check"></i><b>5.9</b> <strong>Appendice 2</strong>. <em>Se sei arrivat* fin qui…</em></a></li>
+<li class="chapter" data-level="5.10" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altrerisdentrofuori"><i class="fa fa-check"></i><b>5.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#risorse-in-inglese.-3"><i class="fa fa-check"></i><b>5.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="grafica.html"><a href="grafica.html"><i class="fa fa-check"></i><b>6</b> Introduzione alla grafica scientifica con R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="grafica.html"><a href="grafica.html#cosa-cè-da-imparare-in-questo-capitolo.-5"><i class="fa fa-check"></i><b>6.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="6.2" data-path="grafica.html"><a href="grafica.html#igraficifattibene"><i class="fa fa-check"></i><b>6.2</b> I grafici, fatti bene.</a></li>
+<li class="chapter" data-level="6.3" data-path="grafica.html"><a href="grafica.html#sistemigrafici"><i class="fa fa-check"></i><b>6.3</b> I sistemi grafici in R.</a></li>
+<li class="chapter" data-level="6.4" data-path="grafica.html"><a href="grafica.html#visualizzare-o-salvare-i-grafici-i-device."><i class="fa fa-check"></i><b>6.4</b> Visualizzare o salvare i grafici: i device.</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="grafica.html"><a href="grafica.html#devicegrafici"><i class="fa fa-check"></i><b>6.4.1</b> Salvare i grafici: i file come device grafici.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="grafica.html"><a href="grafica.html#ggsave"><i class="fa fa-check"></i><b>6.4.2</b> Salvare i grafici di <code>ggplot2</code> con <code>ggsave</code>.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="grafica.html"><a href="grafica.html#le-dimensioni-del-device-e-le-opzioni-grafiche."><i class="fa fa-check"></i><b>6.4.3</b> <em>Le dimensioni del device e le opzioni grafiche.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="grafica.html"><a href="grafica.html#r-a-colori."><i class="fa fa-check"></i><b>6.5</b> R, a colori.</a></li>
+<li class="chapter" data-level="6.6" data-path="grafica.html"><a href="grafica.html#graficaggplot2"><i class="fa fa-check"></i><b>6.6</b> La grammatica della grafica con ggplot2.</a></li>
+<li class="chapter" data-level="6.7" data-path="grafica.html"><a href="grafica.html#grafqual"><i class="fa fa-check"></i><b>6.7</b> Grafici per variabili qualitative.</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="grafica.html"><a href="grafica.html#diagrammi-a-barre."><i class="fa fa-check"></i><b>6.7.1</b> Diagrammi a barre.</a></li>
+<li class="chapter" data-level="6.7.2" data-path="grafica.html"><a href="grafica.html#fare-di-più-con-i-grafici-per-variabili-qualitative."><i class="fa fa-check"></i><b>6.7.2</b> <em>Fare di più con i grafici per variabili qualitative.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="grafica.html"><a href="grafica.html#grafquant"><i class="fa fa-check"></i><b>6.8</b> Grafici per variabili quantitative.</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="grafica.html"><a href="grafica.html#istogrammi-e-altre-rappresentazioni-della-densità."><i class="fa fa-check"></i><b>6.8.1</b> Istogrammi e altre rappresentazioni della densità.</a></li>
+<li class="chapter" data-level="6.8.2" data-path="grafica.html"><a href="grafica.html#boxplot"><i class="fa fa-check"></i><b>6.8.2</b> Boxplot.</a></li>
+<li class="chapter" data-level="6.8.3" data-path="grafica.html"><a href="grafica.html#rappresentazioni-di-indicatori-di-tendenza-centrale-e-di-variabilità."><i class="fa fa-check"></i><b>6.8.3</b> Rappresentazioni di indicatori di tendenza centrale e di variabilità.</a></li>
+<li class="chapter" data-level="6.8.4" data-path="grafica.html"><a href="grafica.html#scatterplots"><i class="fa fa-check"></i><b>6.8.4</b> Grafici a dispersione.</a></li>
+<li class="chapter" data-level="6.8.5" data-path="grafica.html"><a href="grafica.html#personalizzare-i-grafici-con-ggplot2."><i class="fa fa-check"></i><b>6.8.5</b> <em>Personalizzare i grafici con ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.6" data-path="grafica.html"><a href="grafica.html#estensionigg"><i class="fa fa-check"></i><b>6.8.6</b> <em>Estensioni per ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.7" data-path="grafica.html"><a href="grafica.html#qplot"><i class="fa fa-check"></i><b>6.8.7</b> <em>Veloce veloce: qplot()</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="grafica.html"><a href="grafica.html#graficabase"><i class="fa fa-check"></i><b>6.9</b> <em>La grafica di base in R: un salvagente?</em></a></li>
+<li class="chapter" data-level="6.10" data-path="grafica.html"><a href="grafica.html#altrerisgraf"><i class="fa fa-check"></i><b>6.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="grafica.html"><a href="grafica.html#risorse-in-inglese.-4"><i class="fa fa-check"></i><b>6.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statdesc.html"><a href="statdesc.html"><i class="fa fa-check"></i><b>7</b> Esplorare con i numeri</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statdesc.html"><a href="statdesc.html#cosa-cè-da-imparare-in-questo-capitolo.-6"><i class="fa fa-check"></i><b>7.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="7.2" data-path="statdesc.html"><a href="statdesc.html#una-piccola-premessa-gruppi-livelli-sottoinsiemi."><i class="fa fa-check"></i><b>7.2</b> Una piccola premessa: gruppi, livelli, sottoinsiemi.</a></li>
+<li class="chapter" data-level="7.3" data-path="statdesc.html"><a href="statdesc.html#statcontinui"><i class="fa fa-check"></i><b>7.3</b> Statistiche riassuntive per dati continui.</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="statdesc.html"><a href="statdesc.html#misuretendcentrale"><i class="fa fa-check"></i><b>7.3.1</b> Misure di tendenza centrale e di variabilità.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="statdesc.html"><a href="statdesc.html#altre-funzioni-utili."><i class="fa fa-check"></i><b>7.4</b> <em>Altre funzioni utili.</em></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="statdesc.html"><a href="statdesc.html#lavorare-sui-vettori."><i class="fa fa-check"></i><b>7.4.1</b> <em>Lavorare sui vettori.</em></a></li>
+<li class="chapter" data-level="7.4.2" data-path="statdesc.html"><a href="statdesc.html#funzioni-che-producono-statistiche-riassuntive."><i class="fa fa-check"></i><b>7.4.2</b> <em>Funzioni che producono statistiche riassuntive.</em></a></li>
+<li class="chapter" data-level="7.4.3" data-path="statdesc.html"><a href="statdesc.html#statsummarise"><i class="fa fa-check"></i><b>7.4.3</b> Statistiche, ordinate.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="statdesc.html"><a href="statdesc.html#statgruppi"><i class="fa fa-check"></i><b>7.4.4</b> Statistiche riassuntive per gruppi.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="statdesc.html"><a href="statdesc.html#enormale"><i class="fa fa-check"></i><b>7.5</b> Ma è normale?</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="statdesc.html"><a href="statdesc.html#normal-probability-plot."><i class="fa fa-check"></i><b>7.5.1</b> Normal probability plot.</a></li>
+<li class="chapter" data-level="7.5.2" data-path="statdesc.html"><a href="statdesc.html#testnorm"><i class="fa fa-check"></i><b>7.5.2</b> Test statistici per la normalità.</a></li>
+<li class="chapter" data-level="7.5.3" data-path="statdesc.html"><a href="statdesc.html#comefaremeglio"><i class="fa fa-check"></i><b>7.5.3</b> <em>Come fare di meglio con i risultati dei test</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="statdesc.html"><a href="statdesc.html#intervalli-di-confidenza."><i class="fa fa-check"></i><b>7.6</b> Intervalli di confidenza.</a></li>
+<li class="chapter" data-level="7.7" data-path="statdesc.html"><a href="statdesc.html#statdesccat"><i class="fa fa-check"></i><b>7.7</b> Riassumere i dati per le variabili categoriche.</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="statdesc.html"><a href="statdesc.html#tabelle-di-frequenza-e-contingenza."><i class="fa fa-check"></i><b>7.7.1</b> Tabelle di frequenza e contingenza.</a></li>
+<li class="chapter" data-level="7.7.2" data-path="statdesc.html"><a href="statdesc.html#gmosaico"><i class="fa fa-check"></i><b>7.7.2</b> <em>Grafici a mosaico</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="statdesc.html"><a href="statdesc.html#veloceveloce"><i class="fa fa-check"></i><b>7.8</b> <em>Veloce veloce</em></a></li>
+<li class="chapter" data-level="7.9" data-path="statdesc.html"><a href="statdesc.html#altrerisstatdesc"><i class="fa fa-check"></i><b>7.9</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="statdesc.html"><a href="statdesc.html#risorse-in-italiano.-3"><i class="fa fa-check"></i><b>7.9.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="7.9.2" data-path="statdesc.html"><a href="statdesc.html#risorse-in-inglese.-5"><i class="fa fa-check"></i><b>7.9.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="reportR.html"><a href="reportR.html"><i class="fa fa-check"></i><b>8</b> Creare report e notebook con R.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="reportR.html"><a href="reportR.html#cosa-cè-da-imparare-in-questo-capitolo.-7"><i class="fa fa-check"></i><b>8.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="8.2" data-path="reportR.html"><a href="reportR.html#reportminimo"><i class="fa fa-check"></i><b>8.2</b> Il minimo indispensabile.</a></li>
+<li class="chapter" data-level="8.3" data-path="reportR.html"><a href="reportR.html#gli-elementi-di-un-report-in-r-markdown."><i class="fa fa-check"></i><b>8.3</b> <em>Gli elementi di un report in R Markdown.</em></a></li>
+<li class="chapter" data-level="8.4" data-path="reportR.html"><a href="reportR.html#altri-formati-di-documento-con-r-markdown."><i class="fa fa-check"></i><b>8.4</b> <em>Altri formati di documento con R Markdown.</em></a></li>
+<li class="chapter" data-level="8.5" data-path="reportR.html"><a href="reportR.html#quarto."><i class="fa fa-check"></i><b>8.5</b> <em>Quarto.</em></a></li>
+<li class="chapter" data-level="8.6" data-path="reportR.html"><a href="reportR.html#altrerisreport"><i class="fa fa-check"></i><b>8.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="reportR.html"><a href="reportR.html#risorse-in-italiano.-4"><i class="fa fa-check"></i><b>8.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="8.6.2" data-path="reportR.html"><a href="reportR.html#risorse-in-inglese.-6"><i class="fa fa-check"></i><b>8.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>9</b> Lottare con i dati.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wrangling.html"><a href="wrangling.html#cosa-cè-da-imparare-in-questo-capitolo.-8"><i class="fa fa-check"></i><b>9.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="9.2" data-path="wrangling.html"><a href="wrangling.html#rendere-tidy-i-dati."><i class="fa fa-check"></i><b>9.2</b> Rendere tidy i dati.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="wrangling.html"><a href="wrangling.html#tidyresh"><i class="fa fa-check"></i><b>9.2.1</b> Riordinare con <code>tidyr</code> e <code>dplyr</code>: esempio minimo.</a></li>
+<li class="chapter" data-level="9.2.2" data-path="wrangling.html"><a href="wrangling.html#funzioni-avanzate-con-tidyr."><i class="fa fa-check"></i><b>9.2.2</b> <em>Funzioni avanzate con <code>tidyr</code>.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="wrangling.html"><a href="wrangling.html#dplyr"><i class="fa fa-check"></i><b>9.3</b> il cavallo di battaglia del <code>data wrangling</code>: <code>dplyr</code>.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="wrangling.html"><a href="wrangling.html#filterselect"><i class="fa fa-check"></i><b>9.3.1</b> Estrarre gruppi di righe o colonne.</a></li>
+<li class="chapter" data-level="9.3.2" data-path="wrangling.html"><a href="wrangling.html#riordinare-i-dati."><i class="fa fa-check"></i><b>9.3.2</b> Riordinare i dati.</a></li>
+<li class="chapter" data-level="9.3.3" data-path="wrangling.html"><a href="wrangling.html#muta"><i class="fa fa-check"></i><b>9.3.3</b> Trasformare con <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="9.3.4" data-path="wrangling.html"><a href="wrangling.html#summarise"><i class="fa fa-check"></i><b>9.3.4</b> Riassumere i dati con <code>summarise()</code>.</a></li>
+<li class="chapter" data-level="9.3.5" data-path="wrangling.html"><a href="wrangling.html#join"><i class="fa fa-check"></i><b>9.3.5</b> Database e tabelle relazionali: unire tabelle con _join.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="wrangling.html"><a href="wrangling.html#strutturecontrollo"><i class="fa fa-check"></i><b>9.4</b> Strutture di controllo.</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="wrangling.html"><a href="wrangling.html#loop"><i class="fa fa-check"></i><b>9.4.1</b> <em>Loop (o cicli) e cose simili.</em></a></li>
+<li class="chapter" data-level="9.4.2" data-path="wrangling.html"><a href="wrangling.html#functional"><i class="fa fa-check"></i><b>9.4.2</b> <em>Un’alternativa (veloce e ordinata) ai loop: i “functional”.</em></a></li>
+<li class="chapter" data-level="9.4.3" data-path="wrangling.html"><a href="wrangling.html#ifelsestat"><i class="fa fa-check"></i><b>9.4.3</b> <em>Esecuzione condizionale.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="wrangling.html"><a href="wrangling.html#Soluzione"><i class="fa fa-check"></i><b>9.5</b> La soluzione dell’esercizio.</a></li>
+<li class="chapter" data-level="9.6" data-path="wrangling.html"><a href="wrangling.html#altreriswrangling"><i class="fa fa-check"></i><b>9.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="wrangling.html"><a href="wrangling.html#risorse-in-italiano.-5"><i class="fa fa-check"></i><b>9.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="wrangling.html"><a href="wrangling.html#risorse-in-inglese.-7"><i class="fa fa-check"></i><b>9.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html"><i class="fa fa-check"></i><b>10</b> Citazioni, crediti, copyright, ringraziamenti.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#citazioni."><i class="fa fa-check"></i><b>10.1</b> Citazioni.</a></li>
+<li class="chapter" data-level="" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#credits-e-copyright."><i class="fa fa-check"></i>Credits e copyright.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pigR: R, per pigri</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="wrangling" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Lottare con i dati.<a href="wrangling.html#wrangling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>v1.1.1 5/11/2023</p>
+<div id="cosa-cè-da-imparare-in-questo-capitolo.-8" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Cosa c’è da imparare in questo capitolo.<a href="wrangling.html#cosa-cè-da-imparare-in-questo-capitolo.-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Partiamo da un fatto, del quale ti renderai conto appena inizierai ad usare R per analisi non interattive: le attività di preparazione e manipolazione (<em>data wrangling</em> in inglese: filtrare, ordinare, aggiungere e rimuovere colonne, unire file, cambiare la struttura di tabelle di dati, etc…) possono arrivare a “consumare” il 60% del tempo di un progetto di analisi (statistica) dei dati. È ovvio che sarebbe bene farlo in modo efficiente, trasparente e riproducibile. Eppure, questa è sicuramente l’attività più “respingente” per chi si accosta all’analisi statistica senza nessuna esperienza di programmazione. D’altra parte, proprio per l’importanza del <em>data wrangling</em>, e in generale, della programmazione in R, il materiale (ovviamente in inglese) disponibile, gratuitamente, in rete, sotto forma di filmati, libri, pagine web etc. è praticamente sterminato e, detto francamente, non credo proprio di poter fare di meglio.<br />
+Quindi, come al solito, proverò ad indicare un percorso di apprendimento minimo, costruito attorno al <a href="https://www.tidyverse.org/packages/">tidyverse</a>. La ragione è sempre la stessa: mentre tutte le operazioni di <em>data wrangling</em> possono essere realizzate con funzioni di R base (o con funzioni scritte dall’utente) la “logica” del <code>tidyverse</code> e della grammatica dei dati è sicuramente più vicina al linguaggio naturale.<br />
+Se pensi di usare R prevalentemente in modo interattivo, e non hai una particolare necessità di automatizzare e rendere ripetibili i tuoi flussi di analisi, puoi tranquillamente saltare questo capitolo, senza rimorsi (ammesso che tu ne abbia mai avuti<a href="#fn168" class="footnote-ref" id="fnref168"><sup>168</sup></a>). Altrimenti, ti tocca leggerlo più o meno tutto, magari scegliendo cosa approfondire in seguito, se e quando ti servirà<a href="#fn169" class="footnote-ref" id="fnref169"><sup>169</sup></a>.<br />
+Il capitolo è organizzato intorno alle principali operazioni di “manipolazione” dei dati, organizzati in data frame o tibble (vedi Paragrafo <a href="datioggetti.html#dataframebenemale">4.6.1</a>), che, in genere devono essere combinate in un flusso non sempre lineare:</p>
+<ul>
+<li><p>rendere “tidy” i dati (con <code>tidyr</code> in combinazione con <code>dplyr</code>)</p>
+<ul>
+<li><p>passare dai formati <code>long</code> a <code>wide</code>, e viceversa con <code>pivot_wider</code> e <code>pivot_longer</code></p></li>
+<li><p>unire diverse colonne con <code>unite</code> o separare una colonna in più colonne con <code>separate</code></p></li>
+</ul></li>
+<li><p>filtrare i dati (estraendo gruppi di osservazioni da un data frame o una tibble) con <code>dplyr::filter</code></p></li>
+<li><p>selezionare o rinominare un sottoinsieme di colonne con <code>dplyr::select</code> o <code>dplyr::rename</code></p></li>
+<li><p>riordinare i dati con <code>dplyr::arrange</code></p></li>
+<li><p>trasformare i dati usando una varietà di funzioni native di R, o disponibili in pacchetti o create dall’utente con <code>dplyr::mutate</code> o <code>dplyr::transmute</code></p></li>
+<li><p>riassumere più osservazioni in un’unica osservazione usando funzioni che prendono vettori come input (come per esempio <code>mean()</code>, <code>sum()</code>, etc.)</p></li>
+<li><p>unire diversi data frame usando variabili chiave con il gruppo di comandi <code>join</code> di <code>dplyr</code></p></li>
+</ul>
+<p>E molto altro ancora…</p>
+<p>Questo approccio ha alcune cose in comune:</p>
+<ul>
+<li><p>si parte da un <code>data frame</code> o una <code>tibble</code>, in generale all’inizio di un percorso di comandi separati da <code>pipe</code>: è l’oggetto dell’analisi</p></li>
+<li><p>si applicano una serie di funzioni (i verbi), eventualmente operando su gruppi di dati (individuati da <code>dplyr::group_by</code> o dall’argomento <code>.by</code>) sottoinsiemi di colonne con una modalità chiamata <code>tidy evaluation</code>, che non richiede l’uso delle modalità di selezione di R base (vedi paragrafo <a href="datioggetti.html#indsel">4.8</a>); avverbi (come <code>across</code> e <code>where</code>) possono essere usati per individuare in maniera più generale le variabili su cui operare; incidentalmente, nei comandi dei pacchetti del <code>tidyverse</code> non è necessario usare le notazioni con il $ nè le virgolette per indicare le variabili, come del resto hai già visto nel Capitolo <a href="grafica.html#grafica">6</a>, il che è una gran bella comodità.</p></li>
+<li><p>il risultato di queste operazioni è, come sempre, un oggetto (spesso una <code>tibble</code>), che può essere assegnato ad un nome o inviato alla console o far parte di un effetto collaterale (come il salvataggio di un file o la produzione di un grafico)</p></li>
+</ul>
+<p>In definitiva, si usa una vera e propria grammatica dei dati che rende le serie di comandi (i periodi) molto più comprensibili. Ne vedrai diversi esempi nei paragrafi successivi.</p>
+<p>Se ve lo state chiedendo la <code>pipe</code> è un operatore che passa i dati dal comando a sinistra a quello a destra. Le pipe sono state introdotte originariamente con il pacchetto <code>magrittr</code>(<a href="https://magrittr.tidyverse.org" class="uri">https://magrittr.tidyverse.org</a>) che usa come pipe principale <code>%&gt;%</code> (che hai visto già usare molto in questo libro). R 4.1 ha introdotto una <code>pipe</code> nativa, |&gt;, che si comporta in modo <a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/">abbastanza simile</a> alla pipe di <code>magrittr.</code></p>
+<p>Ovviamente le strutture di dati di R non sono solo <code>data frame</code>, ed esistono strumenti molto più flessibili, come quelli di <code>reshape2</code> (l’equivalente di <code>tidyr</code>) e <code>plyr</code> (l’equivalente di <code>dplyr</code>), che operano anche su matrici, array e liste, oppure i comandi di <code>data.table</code>, ottimizzati per oggetti di granid dimensioni.</p>
+<p>Infine, un flusso di lavoro può richiedere strutture di controllo che permettono di ripetere operazioni (i <code>loop</code> vedi Paragrafo <a href="wrangling.html#loop">9.4.1</a>) o svolgerle in modo condizionale (le strutture tipo <code>if...else</code>, vedi Paragrafo <a href="wrangling.html#ifelsestat">9.4.3</a>). I loop, che sono tipicamente lenti e verbosi intermini di codice, possono essere spesso sostituiti da “functionals” (vedi Paragrafo <a href="wrangling.html#functional">9.4.2</a>), funzioni che prendono come argomento altre funzioni e le applicano a vettori o strutture di altro tipo, spesso in maniera parallela. Cose utili, ma noiose: se vuoi puoi saltarle.</p>
+</div>
+<div id="rendere-tidy-i-dati." class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Rendere tidy i dati.<a href="wrangling.html#rendere-tidy-i-dati." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Del concetto dei dati <em>tidy</em> ho già parlato altrove (vedi paragrafo <a href="datioggetti.html#tidyuntidydefinizione">4.1.5</a>). Mentre i dati <code>tidy</code> si riconoscono subito, quelli <code>untidy</code> possono avere moltissimi priblemi diversi (inclusa dati mancanti in maniera implicita vedi paragrafo <a href="datioggetti.html#missingdata">4.1.6</a>).<br />
+Prova a usare questo codice in uno script nel <code>source pane</code>:</p>
+<pre><code>require(tidyverse)
+# tidyr fa fa parte del tidyverse
+data(cms_patient_care)
+?cms_patient_care
+View(cms_patient_care)
+data(billboard)
+?billboard
+View(billboard)
+data(who)
+?who
+View(who)
+data(relig_income)
+?relig_income
+View(relig_income)</code></pre>
+<ul>
+<li><p><code>cms_patinet_care</code> contiene più tipi di misure (<code>measure_abbr</code>) in una sola variabile (<code>score</code>) e dovrebbe essere trasformato da <code>long</code> a <code>wide</code>;</p></li>
+<li><p><code>billboard</code> ha il problema inverso: i dati della posizione in classifica sono nelle variabili wk1-wk76: dovremmo creare una variabile wk e trasformare da <code>wide</code> a <code>long</code>; potremmo poi rimuovere “wk” dalle entries della variabile wk e trasformarla in numerica;</p></li>
+<li><p><code>who</code> è un data set molto grande con una parte del report sulla tubercolosi della World Health Organization ed è letterlamente un incubo fatto di dati in formato sbagliato (wide, mentre dovrebbe essere long) e di nomi di variabili che contengono informazioni che dovrebbero formare altre variabili (metodi di diagnosi, genere, gruppo di età)</p></li>
+<li><p><code>relig_income</code> è un incubo di variabili con nomi non sintattici (vedi paragrafo <a href="datioggetti.html#ilnomedellecose">4.3</a> con dati di una sola variabile, la conta delle persone che ricadono in una determinata combinazione di religione e classe di reddito, sparsi in più variabili</p></li>
+</ul>
+<p>La <a href="https://tidyr.tidyverse.org/articles/pivot.html">vignetta “pivot”</a> di <code>tidyr</code> illustra come rendere ordinati molti di questi data frame. Prova ora a capire che operazioni dovresti compiere per rendere tidy i seguenti data set:</p>
+<ul>
+<li><p><code>tidyr::construction</code></p></li>
+<li><p><code>tidyr::us_rent_income</code></p></li>
+<li><p><code>tidyr::world_bank_pop</code> (qui potresti anche pensare a come puoi ricavare dati da <code>who</code>)</p></li>
+</ul>
+<div id="tidyresh" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Riordinare con <code>tidyr</code> e <code>dplyr</code>: esempio minimo.<a href="wrangling.html#tidyresh" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ora creiamo due piccolissimi data set di esempio per illustrare alcune delle funzioni di <code>tidyr</code> e <code>dplyr</code>.</p>
+<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="wrangling.html#cb731-1" tabindex="-1"></a>mlab <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb731-2"><a href="wrangling.html#cb731-2" tabindex="-1"></a>  <span class="sc">~</span>Specie,              <span class="sc">~</span>Specie_b, <span class="sc">~</span>Ceppo_specie, <span class="sc">~</span>Repl, <span class="sc">~</span>niente, <span class="sc">~</span>H,   <span class="sc">~</span>HM,  <span class="sc">~</span>M,</span>
+<span id="cb731-3"><a href="wrangling.html#cb731-3" tabindex="-1"></a>  <span class="st">&quot;Lb_brevis&quot;</span>,          <span class="st">&quot;L_br&quot;</span>,    <span class="st">&quot;L_br_E06&quot;</span>,    <span class="st">&quot;a&quot;</span>,   <span class="fl">0.40</span>,    <span class="fl">0.40</span>, <span class="fl">0.36</span>, <span class="fl">0.41</span>,</span>
+<span id="cb731-4"><a href="wrangling.html#cb731-4" tabindex="-1"></a>  <span class="st">&quot;Lb_brevis&quot;</span>,          <span class="st">&quot;L_br&quot;</span>,    <span class="st">&quot;L_br_E06&quot;</span>,    <span class="st">&quot;b&quot;</span>,   <span class="fl">0.30</span>,    <span class="fl">0.35</span>, <span class="fl">0.35</span>, <span class="fl">0.36</span>,</span>
+<span id="cb731-5"><a href="wrangling.html#cb731-5" tabindex="-1"></a>  <span class="st">&quot;Leuc_mesenteroides&quot;</span>, <span class="st">&quot;Le_me&quot;</span>,   <span class="st">&quot;Le_me_E08&quot;</span>,   <span class="st">&quot;a&quot;</span>,   <span class="fl">0.73</span>,    <span class="fl">0.82</span>, <span class="fl">0.74</span>, <span class="fl">0.76</span>,</span>
+<span id="cb731-6"><a href="wrangling.html#cb731-6" tabindex="-1"></a>  <span class="st">&quot;Leuc_mesenteroides&quot;</span>, <span class="st">&quot;Le_me&quot;</span>,   <span class="st">&quot;Le_me_E08&quot;</span>,   <span class="st">&quot;b&quot;</span>,   <span class="fl">0.63</span>,    <span class="fl">0.71</span>, <span class="fl">0.61</span>, <span class="fl">0.68</span>,</span>
+<span id="cb731-7"><a href="wrangling.html#cb731-7" tabindex="-1"></a>  <span class="st">&quot;Leuc_mesenteroides&quot;</span>, <span class="st">&quot;Le_me&quot;</span>,   <span class="st">&quot;Le_me_E09&quot;</span>,   <span class="st">&quot;a&quot;</span>,   <span class="fl">0.65</span>,    <span class="fl">0.78</span>, <span class="fl">0.89</span>, <span class="fl">0.63</span>,</span>
+<span id="cb731-8"><a href="wrangling.html#cb731-8" tabindex="-1"></a>  <span class="st">&quot;Leuc_mesenteroides&quot;</span>, <span class="st">&quot;Le_me&quot;</span>,   <span class="st">&quot;Le_me_E09&quot;</span>,   <span class="st">&quot;b&quot;</span>,   <span class="fl">0.62</span>,    <span class="fl">0.81</span>, <span class="fl">0.82</span>, <span class="fl">0.61</span>,</span>
+<span id="cb731-9"><a href="wrangling.html#cb731-9" tabindex="-1"></a>  <span class="st">&quot;Leuc_citreum&quot;</span>,       <span class="st">&quot;Le_ci&quot;</span>,   <span class="st">&quot;Le_ci_E05&quot;</span>,   <span class="st">&quot;a&quot;</span>,   <span class="fl">0.65</span>,    <span class="fl">0.86</span>, <span class="fl">0.86</span>, <span class="fl">0.70</span>,</span>
+<span id="cb731-10"><a href="wrangling.html#cb731-10" tabindex="-1"></a>  <span class="st">&quot;Leuc_citreum&quot;</span>,       <span class="st">&quot;Le_ci&quot;</span>,   <span class="st">&quot;Le_ci_E05&quot;</span>,   <span class="st">&quot;b&quot;</span>,   <span class="fl">0.79</span>,    <span class="fl">0.83</span>, <span class="fl">0.86</span>, <span class="fl">0.66</span></span>
+<span id="cb731-11"><a href="wrangling.html#cb731-11" tabindex="-1"></a>)</span>
+<span id="cb731-12"><a href="wrangling.html#cb731-12" tabindex="-1"></a>chiave_lab <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb731-13"><a href="wrangling.html#cb731-13" tabindex="-1"></a>  <span class="sc">~</span>abbr_genere, <span class="sc">~</span>abbr_specie, <span class="sc">~</span>genere,            <span class="sc">~</span>specie,</span>
+<span id="cb731-14"><a href="wrangling.html#cb731-14" tabindex="-1"></a>  <span class="st">&quot;L&quot;</span>,         <span class="st">&quot;br&quot;</span>,         <span class="st">&quot;Levilactobacillus&quot;</span>, <span class="st">&quot;brevis&quot;</span>,</span>
+<span id="cb731-15"><a href="wrangling.html#cb731-15" tabindex="-1"></a>  <span class="st">&quot;Le&quot;</span>,         <span class="st">&quot;me&quot;</span>,         <span class="st">&quot;Leuconostoc&quot;</span>,       <span class="st">&quot;mesenteroides&quot;</span>,</span>
+<span id="cb731-16"><a href="wrangling.html#cb731-16" tabindex="-1"></a>  <span class="st">&quot;Le&quot;</span>,         <span class="st">&quot;ci&quot;</span>,         <span class="st">&quot;Leuconostoc&quot;</span>,       <span class="st">&quot;citreum&quot;</span></span>
+<span id="cb731-17"><a href="wrangling.html#cb731-17" tabindex="-1"></a>)</span></code></pre></div>
+<p>E visualizziamo la prima tabella:</p>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="wrangling.html#cb732-1" tabindex="-1"></a><span class="fu">require</span>(kableExtra)</span>
+<span id="cb732-2"><a href="wrangling.html#cb732-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mlab, <span class="at">digits =</span><span class="dv">2</span>, </span>
+<span id="cb732-3"><a href="wrangling.html#cb732-3" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Crescita di batteri lattici (assorbanza a 650 nm) in presenza di diversi supplementi.&quot;</span>, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>) </span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabmlab">Tabella 9.1: </span>Crescita di batteri lattici (assorbanza a 650 nm) in presenza di diversi supplementi.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Specie
+</th>
+<th style="text-align:left;">
+Specie_b
+</th>
+<th style="text-align:left;">
+Ceppo_specie
+</th>
+<th style="text-align:left;">
+Repl
+</th>
+<th style="text-align:right;">
+niente
+</th>
+<th style="text-align:right;">
+H
+</th>
+<th style="text-align:right;">
+HM
+</th>
+<th style="text-align:right;">
+M
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Lb_brevis
+</td>
+<td style="text-align:left;">
+L_br
+</td>
+<td style="text-align:left;">
+L_br_E06
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lb_brevis
+</td>
+<td style="text-align:left;">
+L_br
+</td>
+<td style="text-align:left;">
+L_br_E06
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+<td style="text-align:right;">
+0.35
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leuc_mesenteroides
+</td>
+<td style="text-align:left;">
+Le_me
+</td>
+<td style="text-align:left;">
+Le_me_E08
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+0.74
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leuc_mesenteroides
+</td>
+<td style="text-align:left;">
+Le_me
+</td>
+<td style="text-align:left;">
+Le_me_E08
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+<td style="text-align:right;">
+0.71
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leuc_mesenteroides
+</td>
+<td style="text-align:left;">
+Le_me
+</td>
+<td style="text-align:left;">
+Le_me_E09
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+<td style="text-align:right;">
+0.78
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:right;">
+0.63
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leuc_mesenteroides
+</td>
+<td style="text-align:left;">
+Le_me
+</td>
+<td style="text-align:left;">
+Le_me_E09
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+0.81
+</td>
+<td style="text-align:right;">
+0.82
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leuc_citreum
+</td>
+<td style="text-align:left;">
+Le_ci
+</td>
+<td style="text-align:left;">
+Le_ci_E05
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+0.65
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+<td style="text-align:right;">
+0.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leuc_citreum
+</td>
+<td style="text-align:left;">
+Le_ci
+</td>
+<td style="text-align:left;">
+Le_ci_E05
+</td>
+<td style="text-align:left;">
+b
+</td>
+<td style="text-align:right;">
+0.79
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:right;">
+0.86
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La tabella <a href="wrangling.html#tab:tabmlab">9.1</a> riporta alcuni dati di un esperimento in cui 2 supplementi (H emina, M menaquinone) sono stati aggiunti da soli o in combinazione, ad un substrato per la crescita di batteri lattici, appartenenti a diverse specie. Nei dati originali erano presenti più ceppi (entità al di sotto della specie) per ciascuna specie. Le prime tre colonne contengono informazioni in parte incomplete (manca un’indicazione estesa del nome di genere presente nella seconda tabella), in parte ridondanti (la combinazione dell’abbreviazione specie_genere compare due volte), in parte contenute in altre colonne (la sigla del ceppo, E06 etc. è presente in una colonna che include anche l’abbreviazione di genere e specie). Inoltre la variabile misurata è in realtà una sola (la crescita, misurata come assorbanza - una misura indiretta della torbidità di un substrato in seguito alla crescita di microrganismi - a 650 nm).<br />
+Inoltre, i dati delle specie sono contenuti in una seconda tabella:</p>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="wrangling.html#cb733-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(chiave_lab, </span>
+<span id="cb733-2"><a href="wrangling.html#cb733-2" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Abbreviazioni di genere e specie per alcuni batteri lattici.&quot;</span>,</span>
+<span id="cb733-3"><a href="wrangling.html#cb733-3" tabindex="-1"></a>             <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabmetalab">Tabella 9.2: </span>Abbreviazioni di genere e specie per alcuni batteri lattici.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+abbr_genere
+</th>
+<th style="text-align:left;">
+abbr_specie
+</th>
+<th style="text-align:left;">
+genere
+</th>
+<th style="text-align:left;">
+specie
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+L
+</td>
+<td style="text-align:left;">
+br
+</td>
+<td style="text-align:left;">
+Levilactobacillus
+</td>
+<td style="text-align:left;">
+brevis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Le
+</td>
+<td style="text-align:left;">
+me
+</td>
+<td style="text-align:left;">
+Leuconostoc
+</td>
+<td style="text-align:left;">
+mesenteroides
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Le
+</td>
+<td style="text-align:left;">
+ci
+</td>
+<td style="text-align:left;">
+Leuconostoc
+</td>
+<td style="text-align:left;">
+citreum
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nota come nella tabella <a href="wrangling.html#tab:tabmetalab">9.2</a> manchi una colonna che unisca le abbreviazioni di genere e specie, in modo da fornire una chiave univoca che metta in corrispondenza le osservazioni di questa tabella con quelle della tabella <a href="wrangling.html#tab:tabmlab">9.1</a>.</p>
+<p>Qui potremmo essere interessati a compiere le seguenti operazioni:</p>
+<ol style="list-style-type: decimal">
+<li><p>trasformare il file da formato “largo” (wide), a “lungo”, creando una variabile che contenga i nomi delle prime 4 colonne (i diversi tipi di substrato) e un’altra che contenga i valori;</p></li>
+<li><p>estrarre la sigla del ceppo</p></li>
+<li><p>creare nella tabella <a href="wrangling.html#tab:tabmetalab">9.2</a> una nuova colonna unendo le colonne con l’abbreviazione di genere e specie</p></li>
+<li><p>aggiungere (merge) le informazioni della tabella <a href="wrangling.html#tab:tabmetalab">9.2</a> alla <a href="wrangling.html#tab:tabmlab">9.1</a> (lo faremo più avanti, vedi paragrafo <a href="wrangling.html#join">9.3.5</a>)</p></li>
+</ol>
+<p>Questo formato ci permetterebbe, fra le altre cose di eseguire una serie di analisi statistiche (per esempio il calcolo della media, per gruppi, delle due repliche, o <a href="http://www.biostathandbook.com/onewayanova.html">un’analisi della varianza</a>).<br />
+Ora dimostrerò le prime 2 operazioni, seguite dal calcolo della media, usando comandi di <code>tidyr</code>e <code>dplyr</code>, due pacchetti del <code>tidyverse</code>.</p>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="wrangling.html#cb734-1" tabindex="-1"></a><span class="co"># da largo a lungo</span></span>
+<span id="cb734-2"><a href="wrangling.html#cb734-2" tabindex="-1"></a>mlab_lungo <span class="ot">&lt;-</span> mlab <span class="sc">%&gt;%</span> </span>
+<span id="cb734-3"><a href="wrangling.html#cb734-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> niente<span class="sc">:</span>M, <span class="at">names_to =</span> <span class="st">&quot;trattamenti&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;A650&quot;</span>)</span>
+<span id="cb734-4"><a href="wrangling.html#cb734-4" tabindex="-1"></a><span class="co"># le prime 8 righe</span></span>
+<span id="cb734-5"><a href="wrangling.html#cb734-5" tabindex="-1"></a><span class="fu">head</span>(mlab_lungo, <span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 6
+##   Specie    Specie_b Ceppo_specie Repl  trattamenti  A650
+##   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt;
+## 1 Lb_brevis L_br     L_br_E06     a     niente       0.4 
+## 2 Lb_brevis L_br     L_br_E06     a     H            0.4 
+## 3 Lb_brevis L_br     L_br_E06     a     HM           0.36
+## 4 Lb_brevis L_br     L_br_E06     a     M            0.41
+## 5 Lb_brevis L_br     L_br_E06     b     niente       0.3 
+## 6 Lb_brevis L_br     L_br_E06     b     H            0.35
+## 7 Lb_brevis L_br     L_br_E06     b     HM           0.35
+## 8 Lb_brevis L_br     L_br_E06     b     M            0.36</code></pre>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="wrangling.html#cb736-1" tabindex="-1"></a><span class="co"># e ora le medie, creando, in più una variabile che contenga solo </span></span>
+<span id="cb736-2"><a href="wrangling.html#cb736-2" tabindex="-1"></a><span class="co"># la sigla del ceppo</span></span>
+<span id="cb736-3"><a href="wrangling.html#cb736-3" tabindex="-1"></a>mlab_medie <span class="ot">&lt;-</span> mlab_lungo <span class="sc">%&gt;%</span></span>
+<span id="cb736-4"><a href="wrangling.html#cb736-4" tabindex="-1"></a>  <span class="fu">separate</span>(Ceppo_specie, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;gen&quot;</span>,<span class="st">&quot;sp&quot;</span>,<span class="st">&quot;ceppo&quot;</span>), <span class="at">remove =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb736-5"><a href="wrangling.html#cb736-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mediaA650 =</span> <span class="fu">mean</span> (A650), </span>
+<span id="cb736-6"><a href="wrangling.html#cb736-6" tabindex="-1"></a>                   <span class="at">.by =</span> <span class="fu">c</span>(<span class="st">&quot;Ceppo_specie&quot;</span>, <span class="st">&quot;trattamenti&quot;</span>))</span>
+<span id="cb736-7"><a href="wrangling.html#cb736-7" tabindex="-1"></a></span>
+<span id="cb736-8"><a href="wrangling.html#cb736-8" tabindex="-1"></a><span class="co"># le prime 8 righe</span></span>
+<span id="cb736-9"><a href="wrangling.html#cb736-9" tabindex="-1"></a><span class="fu">head</span>(mlab_medie, <span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 3
+##   Ceppo_specie trattamenti mediaA650
+##   &lt;chr&gt;        &lt;chr&gt;           &lt;dbl&gt;
+## 1 L_br_E06     niente          0.35 
+## 2 L_br_E06     H               0.375
+## 3 L_br_E06     HM              0.355
+## 4 L_br_E06     M               0.385
+## 5 Le_me_E08    niente          0.68 
+## 6 Le_me_E08    H               0.765
+## 7 Le_me_E08    HM              0.675
+## 8 Le_me_E08    M               0.72</code></pre>
+<p>Nota che qui</p>
+<ul>
+<li><p>l’argomento <code>cols</code> di <code>pivot_longer</code> individua le colonne da utilizzare nell’operazione di “fusione” del data frame mentre <code>names_to</code> e <code>values_to</code> indicano i nomi delle variabili che conterranno rispettivamente i nomi delle colonne che vengono “fuse”</p></li>
+<li><p>ho usato l’argomento <code>.by</code> per ottenere una media per gruppi con <code>summarise</code></p></li>
+<li><p>ho separato la colonna <code>Ceppo_specie</code> in tre elementi usando <code>separate</code>, eliminando poi quelli che non servivano con <code>select</code>; consulta l’aiuto di <code>separate</code> per capire come è possibile omettere o indicare il carattere che separa gli elementi che vogliono disporre in colonne diverse</p></li>
+</ul>
+<p>Incidentalmente, quello che abbiamo creato è un <a href="https://stackoverflow.com/help/minimal-reproducible-example"><code>minimal reproducible example</code></a> che è molto utile per fornire un minimo di elementi riproducibili quando si chiede aiuto in un forum (vedi sezione <a href="aiuto.html#strategieaiuto">3.3</a>).</p>
+<p>Abbastanza prevedibilmente, il comando che in <code>tidyr</code> fa la cosa opposta a <code>separate</code> è <code>unite</code>:</p>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="wrangling.html#cb738-1" tabindex="-1"></a>chiave_lab <span class="ot">&lt;-</span> chiave_lab <span class="sc">%&gt;%</span> </span>
+<span id="cb738-2"><a href="wrangling.html#cb738-2" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="at">col =</span> <span class="st">&quot;gen_specie_abbr&quot;</span>, abbr_genere<span class="sc">:</span>abbr_specie, <span class="at">remove =</span> F, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb738-3"><a href="wrangling.html#cb738-3" tabindex="-1"></a>chiave_lab</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 5
+##   gen_specie_abbr abbr_genere abbr_specie genere            specie       
+##   &lt;chr&gt;           &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;        
+## 1 L_br            L           br          Levilactobacillus brevis       
+## 2 Le_me           Le          me          Leuconostoc       mesenteroides
+## 3 Le_ci           Le          ci          Leuconostoc       citreum</code></pre>
+<p>Bene, ora proviamo a fare il contrario, passando dal formato “long” a quello “wide”.<br />
+Prova prima di tutto questo codice, che restituirà un errore:</p>
+<pre><code>mlab_lungo %&gt;% 
+  dplyr::select(!Repl) %&gt;% 
+  pivot_wider(names_from = trattamenti, values_from = A650)</code></pre>
+<p>il problema è causato dalla rimozione della variabile <code>Repl</code>, che identificava in maniera unica i valori che devono essere inseriti nelle celle delle nuove variabili (i trattamenti). Infatti con valori unici il problema non si pone:</p>
+<pre><code>mlab_medie %&gt;% 
+  pivot_wider(names_from = trattamenti, values_from = mediaA650)</code></pre>
+<p>Fortunatamente, le ultime versioni di <code>tidyr</code> permettono di usare una funzione per aggregare dati multipli<a href="#fn170" class="footnote-ref" id="fnref170"><sup>170</sup></a>. Nell’esempio che segue usiamo la media:</p>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="wrangling.html#cb742-1" tabindex="-1"></a>mlab_lungo <span class="sc">%&gt;%</span> </span>
+<span id="cb742-2"><a href="wrangling.html#cb742-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">!</span>Repl) <span class="sc">%&gt;%</span> </span>
+<span id="cb742-3"><a href="wrangling.html#cb742-3" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> trattamenti, <span class="at">values_from =</span> A650, <span class="at">values_fn =</span> mean)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 7
+##   Specie             Specie_b Ceppo_specie niente     H    HM     M
+##   &lt;chr&gt;              &lt;chr&gt;    &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Lb_brevis          L_br     L_br_E06      0.35  0.375 0.355 0.385
+## 2 Leuc_mesenteroides Le_me    Le_me_E08     0.68  0.765 0.675 0.72 
+## 3 Leuc_mesenteroides Le_me    Le_me_E09     0.635 0.795 0.855 0.62 
+## 4 Leuc_citreum       Le_ci    Le_ci_E05     0.72  0.845 0.86  0.68</code></pre>
+<p>Naturalmente, ci sono molti più casi che tidyr può risolvere brillantemente, come la gestione dei dati mancanti oppure la gestione di colonne multiple durante il passaggio da “long” a “wide”. Se ne avessi bisogno, puoi consultare la <a href="https://tidyr.tidyverse.org/articles/pivot.html">vignetta “pivot”</a> di <code>tidyr</code> scrivendo nella console:</p>
+<pre><code>vignette(&quot;pivot&quot;, package = &quot;tidyr&quot;)</code></pre>
+</div>
+<div id="funzioni-avanzate-con-tidyr." class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> <em>Funzioni avanzate con <code>tidyr</code>.</em><a href="wrangling.html#funzioni-avanzate-con-tidyr." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>tidyr</code>, usato in combinazione con <code>broom</code> e <code>dplyr</code> può fare cose veramente pazzesche. Le operazioni per creare <code>nested data frames</code> (dataframe annidati, in cui una delle colonne è una colonna di data frames<a href="#fn171" class="footnote-ref" id="fnref171"><sup>171</sup></a>) e trasformarli di nuovo in data frame convenzionali permettono di automatizzare molte analisi statistiche. I due comandi rilevanti sono <code>nest()</code> e <code>unnest()</code>
+Prova a vedere cosa succede con questo codice per capire cos’è un <code>nested data frame</code>:</p>
+<pre><code>data(mpg)
+glimpse(mpg)
+mpg %&gt;% group_by(class) %&gt;% nest()
+# o anche
+mpg %&gt;% nest(.by = class)</code></pre>
+<p>L’argomento va un po’ oltre quello che posso trattare qui, quindi, se sei interessat* ti consiglio di leggere le <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/nest.html">vignette di tidyr</a> e <a href="https://cran.r-project.org/web/packages/broom/vignettes/broom_and_dplyr.html">broom</a>, o, meglio, il <a href="https://it.r4ds.hadley.nz/tidy-data.html">capitolo sui tidy data</a> della versione italaiana di “R for data science”.
+Un argomento correlato è il <code>rectangling</code>, cioè la trasformazione di liste annidate (che spesso derivano dall’importanzione di dati in formati JSON o XML): l’uso di comandi come <code>unnest_wider()</code> e <code>hoist()</code> può facilitare questi compiti, come dimostrato nella vignetta relativa:</p>
+<pre><code>vignette(&quot;rectangle&quot;, package = &quot;tidyr&quot;)</code></pre>
+</div>
+</div>
+<div id="dplyr" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> il cavallo di battaglia del <code>data wrangling</code>: <code>dplyr</code>.<a href="wrangling.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>dplyr</code>, insieme a <code>ggplot2</code> è decisamente il pacchetto del <code>tidyverse</code> che ti troverai ad usare più spesso. Le funzioni sono tantissime e, abbastanza ovviamente, hanno equivalenti nelle funzioni di R base e di alcuni pacchetti precedenti, come <code>plyr</code>. Per confrontare le funzioni prova a scrivere nella console:</p>
+<p>`<code>library(dplyr) vignette("base", package="dplyr")</code></p>
+<p>Qui mi limiterò a darti qualche esempio delle funzioni principali, raggruppandole in maniera, spero, logica. Ti accorgerai come quasi tutte le funzioni che ti mostrerò qui sono comparse nei capitoli precedenti e, tanto per cambiare, userò il data set <code>mpg</code>.</p>
+<div id="filterselect" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Estrarre gruppi di righe o colonne.<a href="wrangling.html#filterselect" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Abbastanza prevedibilmente il comando che si usa per filtrare le osservazioni in base ad uno o più criteri è <code>dplyr::filter()</code><a href="#fn172" class="footnote-ref" id="fnref172"><sup>172</sup></a>. Filter prende come argomento un data frame o una tibble, applica una condizione logica che individua una combinazione di osservazioni e restituisce (come tibble) il risultato.<br />
+Guarda che succede:</p>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="wrangling.html#cb747-1" tabindex="-1"></a><span class="fu">data</span>(mpg, <span class="at">verbose =</span> F)</span>
+<span id="cb747-2"><a href="wrangling.html#cb747-2" tabindex="-1"></a><span class="fu">glimpse</span>(mpg)</span></code></pre></div>
+<pre><code>## Rows: 234
+## Columns: 11
+## $ manufacturer &lt;chr&gt; &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;…
+## $ model        &lt;chr&gt; &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4 quattro&quot;, &quot;…
+## $ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…
+## $ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…
+## $ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 6, 8, 8, …
+## $ trans        &lt;chr&gt; &quot;auto(l5)&quot;, &quot;manual(m5)&quot;, &quot;manual(m6)&quot;, &quot;auto(av)&quot;, &quot;auto…
+## $ drv          &lt;chr&gt; &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4…
+## $ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…
+## $ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…
+## $ fl           &lt;chr&gt; &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p…
+## $ class        &lt;chr&gt; &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;c…</code></pre>
+<p>Selezioniamo le auto con 4 cilindri prodotte da audi</p>
+<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="wrangling.html#cb749-1" tabindex="-1"></a>audi4 <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(cyl <span class="sc">==</span> <span class="dv">4</span> <span class="sc">&amp;</span> manufacturer <span class="sc">==</span> <span class="st">&quot;audi&quot;</span>)</span>
+<span id="cb749-2"><a href="wrangling.html#cb749-2" tabindex="-1"></a><span class="fu">glimpse</span>(audi4)</span></code></pre></div>
+<pre><code>## Rows: 8
+## Columns: 11
+## $ manufacturer &lt;chr&gt; &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;…
+## $ model        &lt;chr&gt; &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4 quattro&quot;, &quot;a4 quattro&quot;, &quot;a4 q…
+## $ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 1.8, 1.8, 2.0, 2.0
+## $ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 2008
+## $ cyl          &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4
+## $ trans        &lt;chr&gt; &quot;auto(l5)&quot;, &quot;manual(m5)&quot;, &quot;manual(m6)&quot;, &quot;auto(av)&quot;, &quot;manu…
+## $ drv          &lt;chr&gt; &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;
+## $ cty          &lt;int&gt; 18, 21, 20, 21, 18, 16, 20, 19
+## $ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 25, 28, 27
+## $ fl           &lt;chr&gt; &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;
+## $ class        &lt;chr&gt; &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;c…</code></pre>
+<p>Selezioniamo le auto con che percorrono almeno 25 km con un gallone in autostrada</p>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="wrangling.html#cb751-1" tabindex="-1"></a>hwy25 <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(hwy <span class="sc">&gt;=</span> <span class="dv">25</span> )</span>
+<span id="cb751-2"><a href="wrangling.html#cb751-2" tabindex="-1"></a><span class="fu">glimpse</span>(hwy25)</span></code></pre></div>
+<pre><code>## Rows: 116
+## Columns: 11
+## $ manufacturer &lt;chr&gt; &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;…
+## $ model        &lt;chr&gt; &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4&quot;, &quot;a4 quattro&quot;, &quot;…
+## $ displ        &lt;dbl&gt; 1.8, 1.8, 2.0, 2.0, 2.8, 2.8, 3.1, 1.8, 1.8, 2.0, 2.0, 2.…
+## $ year         &lt;int&gt; 1999, 1999, 2008, 2008, 1999, 1999, 2008, 1999, 1999, 200…
+## $ cyl          &lt;int&gt; 4, 4, 4, 4, 6, 6, 6, 4, 4, 4, 4, 6, 6, 6, 6, 6, 8, 8, 8, …
+## $ trans        &lt;chr&gt; &quot;auto(l5)&quot;, &quot;manual(m5)&quot;, &quot;manual(m6)&quot;, &quot;auto(av)&quot;, &quot;auto…
+## $ drv          &lt;chr&gt; &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;f&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4&quot;, &quot;4…
+## $ cty          &lt;int&gt; 18, 21, 20, 21, 16, 18, 18, 18, 16, 20, 19, 15, 17, 17, 1…
+## $ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…
+## $ fl           &lt;chr&gt; &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p…
+## $ class        &lt;chr&gt; &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;c…</code></pre>
+<p>dplyr::filter() quindi usa un’espressione che restituisce un vettore logico (contenente vero per le osservazioni che soddisfano l’espressione, e che verranno mantenute nel data frame filtrato, e falso per quelle che non la soddisfano, che verranno espluse).<br />
+Gli operatori logici, che possono essere usati in combinazioni abbastanza complesse sono stati trattati nel paragrafo <a href="datioggetti.html#operatorisemplici">4.10.1</a>.</p>
+<p>Analoga alla necessità di estrarre alcune righe è quella di estrarre alcune colonne: il comando corrispondente è <code>dplyr::select()</code>. La sintassi, basata sulla non-standard evaluation, è molto più semplice di quella di R base (vedi sezione <a href="datioggetti.html#indsel">4.8</a>). Prova a usare i seguenti comandi in uno script:</p>
+<pre><code># selezionare le colonne per nome
+mpg %&gt;% dplyr::select(model, year, cyl)
+# selezionare per posizione (e riordinare le colonne) usando l&#39;operatore OR (|)
+mpg %&gt;% dplyr::select(11 | 2 | 9:8)
+# escludere colonne con l&#39;operatore NOT (!)
+mpg %&gt;% dplyr::select(!year &amp; !trans)
+# ma anche
+mpg %&gt;% dplyr::select(!c(year,trans))
+# selezionare e rinominare
+mpg %&gt;% dplyr::select(modello = model, anno = year, cilindri = cyl)</code></pre>
+<p>Incidentalmente, è possibile usare la funzione <code>rename(nuovo_nome = vecchio_nome)</code>
+per rinominare colonne, con lo stesso criterio che hai appena visto.<br />
+Come altre funzioni, <code>dplyr::select()</code> può usare l’avverbio <code>where()</code> per selezionare colonne in modo programmatico. <code>where()</code> e alcune funzioni helper (<code>contains</code>, <code>starts_with</code>, etc.<a href="#fn173" class="footnote-ref" id="fnref173"><sup>173</sup></a>) individuano delle condizioni logiche per la selezione di colonne in base a condizioni più specifiche. Ecco alcuni esempi, che puoi provare nella console o in uno script:</p>
+<pre><code># la colonna model e tutte le colonne numeriche
+mpg %&gt;% dplyr::select(model | where(is.numeric))
+# le colonne che contengono la lettera y 
+mpg %&gt;% dplyr::select(contains(&quot;y&quot;))</code></pre>
+</div>
+<div id="riordinare-i-dati." class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Riordinare i dati.<a href="wrangling.html#riordinare-i-dati." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ordinare le righe sulla base di uno o più criteri, in ordine discendente o ascendente, è facilissimo con <code>dplyr::arrange()</code>. L’ordinamento di default è ascendente; per ottenere un ordinamento in ordine decrescente si usa <code>desc()</code>. Si tratta di comandi molto intuitivi<a href="#fn174" class="footnote-ref" id="fnref174"><sup>174</sup></a></p>
+<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="wrangling.html#cb755-1" tabindex="-1"></a><span class="co"># non ordinato</span></span>
+<span id="cb755-2"><a href="wrangling.html#cb755-2" tabindex="-1"></a><span class="fu">head</span>(mpg, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 11
+##    manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…
+##  2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…
+##  3 audi         a4           2    2008     4 manu… f        20    31 p     comp…
+##  4 audi         a4           2    2008     4 auto… f        21    30 p     comp…
+##  5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…
+##  6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…
+##  7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…
+##  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
+##  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
+## 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…</code></pre>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="wrangling.html#cb757-1" tabindex="-1"></a><span class="co"># ordinato in ordine crescente di numero di cilindri e decrescente per </span></span>
+<span id="cb757-2"><a href="wrangling.html#cb757-2" tabindex="-1"></a><span class="co"># miglia per gallone in autostrada</span></span>
+<span id="cb757-3"><a href="wrangling.html#cb757-3" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(cyl, <span class="fu">desc</span>(hwy)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 11
+##   manufacturer model      displ  year   cyl trans  drv     cty   hwy fl    class
+##   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 volkswagen   jetta        1.9  1999     4 manua… f        33    44 d     comp…
+## 2 volkswagen   new beetle   1.9  1999     4 manua… f        35    44 d     subc…
+## 3 volkswagen   new beetle   1.9  1999     4 auto(… f        29    41 d     subc…
+## 4 toyota       corolla      1.8  2008     4 manua… f        28    37 r     comp…
+## 5 honda        civic        1.8  2008     4 auto(… f        25    36 r     subc…
+## 6 honda        civic        1.8  2008     4 auto(… f        24    36 c     subc…</code></pre>
+</div>
+<div id="muta" class="section level3 hasAnchor" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> Trasformare con <code>mutate()</code>.<a href="wrangling.html#muta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Hai già visto parecchi esempi di come sia possibile trasformare una colonna con un’operazione più o meno complessa con <code>dplyr::mutate()</code>. L’approccio è molto più semplice di quello utilizzato in R base, anche perché è possibile trasformare diverse colonne creandone di nuove in un unico comando in maniera simile a <code>base::transform()</code>, ma con parecchie più opzioni (che puoi scoprire leggendo l’aiuto).<br />
+Confronta questi tre esempi (che puoi eseguire in uno script): tutti e tre fanno la stessa cosa (trasformano i consumi in <code>mpg</code> da miglia per gallone a litri per 100 km).</p>
+<pre><code>library(tidyverse)
+library(magrittr) # per la assignment pipe
+data(mpg, verbose = F)
+# usando $
+mpg$hwyl100km &lt;- mpg$hwy*235.21
+mpg$ctyl100km &lt;- mpg$cty*235.21
+# usando transform
+mpg &lt;- base::transform(mpg, 
+                       hwyl100km = 235.21/hwy, 
+                       ctyl100km = 235.21/cty)
+# usando mutate
+mpg &lt;- mpg %&gt;%
+  mutate(
+    hwyl100km = 235.21/hwy, 
+    ctyl100km = 235.21/cty 
+  )
+# usando la assignment pipe, anch&#39;essa disponibile nel pacchetto magrittr 
+mpg %&lt;&gt;% mutate(
+  hwyl100km = 235.21/hwy, 
+  ctyl100km = 235.21/cty
+)
+# creando una nuova tibble in cui le colonne usate 
+# per il calcolo sono rimosse (si potrebbe fare con select)
+mpg2 &lt;- mpg %&gt;% mutate(
+  hwyl100km = 235.21/hwy, 
+  ctyl100km = 235.21/cty,
+  .keep = &quot;unused&quot;
+)</code></pre>
+<p>L’opzione <code>.keep</code> è piuttosto flessibile e permette, utilizzando l’opzione “none” di sostituire il vecchio comando transmute(), che produceva una nuova tibble contenente solo le colonne risultanti dal calcolo.<br />
+<code>mutate()</code> è un comando molto flessibile e trova applicazioni interessanti insieme ai comandi di <a href="https://cran.r-project.org/web/packages/broom/vignettes/broom.html">broom</a>, un pacchetto che, come ti ho già mostrato (paragrafo <a href="statdesc.html#comefaremeglio">7.5.3</a>), piuttosto che rendere tidy i dati rende tidy i risultati delle analisi statistiche.<br />
+Quando si desidera eseguire la stessa trasformazione su variabili multiple con mutate() è possibile utilizzare la combinazione di “avverbi” <code>across()</code> e <code>where()</code>. Ecco tre piccolissimi esempi (da eseguire alla console)
+Il primo esempio moltiplica per 1000 le prime due variabili numeriche e il secondo ne calcola il logaritmo decimale</p>
+<pre><code>&gt;mpg3 &lt;- mpg %&gt;% mutate(across(displ:year, ~.x*1000))
+&gt;mpg4 &lt;- mpg %&gt;% mutate(across(displ:year, log10))</code></pre>
+<p><code>~.x*1000</code> definisce quella che si chiama lambda o funzione anonima. Qui ho usato la notazione del pacchetto <code>purrr</code>. Due alternative:</p>
+<pre><code>&gt;mpg3 &lt;- mpg %&gt;% mutate(across(displ:year, function(x) x*1000))
+&gt;mpg3 &lt;- mpg %&gt;% mutate(across(displ:year, \(x) x*1000))</code></pre>
+<p>L’ultima opzione è stata introdotta con R 4.1 (ed è difficile dire se sia un miglioramento…).
+Infine, con <code>where()</code>, che hai già incontrato nel paragrafo <a href="wrangling.html#filterselect">9.3.1</a> e che con <code>mutate()</code> si usa all’interno di <code>across()</code> possiamo, per esempio, trasformare in fattori le colonne che sono di tipo carattere:</p>
+<pre><code>mpg5 &lt;- mpg %&gt;% mutate(across(where(is.character), as.factor))</code></pre>
+<p>L’argomento è un pochino complesso per questo libro, quindi, se sei interessat* ti consiglio di leggere l’aiuto di <code>across()</code>.</p>
+</div>
+<div id="summarise" class="section level3 hasAnchor" number="9.3.4">
+<h3><span class="header-section-number">9.3.4</span> Riassumere i dati con <code>summarise()</code>.<a href="wrangling.html#summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>mutate()</code> trasforma i dati creando una nuova osservazione per ciascuna osservazione presente nel data frame originale. <code>summarise()</code> invece, riassume gruppi di osservazioni in un unico valore, ed è particolarmente interessante per calcolare statistiche riassuntive come hai visto nel paragrafo <a href="statdesc.html#statsummarise">7.4.3</a>. Qui ti faccio solo alcuni esempi, utilizzando fra le altre cose, l’opzione <code>group_by()</code>:</p>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="wrangling.html#cb763-1" tabindex="-1"></a>mpg_riassunto <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb763-2"><a href="wrangling.html#cb763-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer, class) <span class="sc">%&gt;%</span></span>
+<span id="cb763-3"><a href="wrangling.html#cb763-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb763-4"><a href="wrangling.html#cb763-4" tabindex="-1"></a>    <span class="at">media_hwy =</span> <span class="fu">mean</span>(hwy, <span class="at">na.rm =</span> T),</span>
+<span id="cb763-5"><a href="wrangling.html#cb763-5" tabindex="-1"></a>    <span class="at">devst_why =</span> <span class="fu">sd</span>(hwy, <span class="at">na.rm =</span> T),</span>
+<span id="cb763-6"><a href="wrangling.html#cb763-6" tabindex="-1"></a>    <span class="at">media_cty =</span> <span class="fu">mean</span>(hwy, <span class="at">na.rm =</span> T),</span>
+<span id="cb763-7"><a href="wrangling.html#cb763-7" tabindex="-1"></a>    <span class="at">devst_cty_cty =</span> <span class="fu">sd</span>(hwy, <span class="at">na.rm =</span> T)</span>
+<span id="cb763-8"><a href="wrangling.html#cb763-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb763-9"><a href="wrangling.html#cb763-9" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;manufacturer&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb765-1"><a href="wrangling.html#cb765-1" tabindex="-1"></a>mpg_riassunto</span></code></pre></div>
+<pre><code>## # A tibble: 32 × 6
+##    manufacturer class      media_hwy devst_why media_cty devst_cty_cty
+##    &lt;chr&gt;        &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+##  1 audi         compact         26.9     2.02       26.9         2.02 
+##  2 audi         midsize         24       1          24           1    
+##  3 chevrolet    2seater         24.8     1.30       24.8         1.30 
+##  4 chevrolet    midsize         27.6     1.82       27.6         1.82 
+##  5 chevrolet    suv             17.1     2.20       17.1         2.20 
+##  6 dodge        minivan         22.4     2.06       22.4         2.06 
+##  7 dodge        pickup          16.1     2.21       16.1         2.21 
+##  8 dodge        suv             16       2          16           2    
+##  9 ford         pickup          16.4     0.787      16.4         0.787
+## 10 ford         subcompact      23.2     2.17       23.2         2.17 
+## # ℹ 22 more rows</code></pre>
+<p>Il comando <code>ungroup()</code> serve per rimuovere il raggruppamento. Un modo più semplice nelle versioni recenti di dplyr è usare l’opzione <code>.by</code>.</p>
+<pre><code>mpg_riassunto &lt;- mpg %&gt;%
+  dplyr::summarise(
+    media_hwy = mean(hwy, na.rm = T),
+    devst_why = sd(hwy, na.rm = T),
+    media_cty = mean(hwy, na.rm = T),
+    devst_cty_cty = sd(hwy, na.rm = T),
+    .by = c(manufacturer, class)
+  ) 
+mpg_riassunto</code></pre>
+<p>Incidentalmente, con <code>across()</code> e <code>where()</code> si possono fare cose interessanti. Prova questo:</p>
+<pre><code>&gt;mpg %&gt;%
+   dplyr::summarise(across(where(is.numeric),
+   list(media = mean, devst = sd)),
+   .by = class)</code></pre>
+<p>Carino, no?
+Come esercizio, partendo da <code>mpg</code>, riusciresti a creare una tabella in cui, dopo aver calcolato (raggruppate per class) media e deviazione standard di <code>hwy</code> e <code>cyl</code>, arrotondare a due cifre decimali il risultato e poi unire media e dev. st. in un’unica colonna separandole con il carattere “±”? Come suggerimento: sevi usare una combinazione di <code>summarise</code> con <code>across</code> e <code>.by</code>, poi usare le funzioni <code>round</code> e <code>unite...</code> Se proprio non ce la fai, vai al paragrafo <a href="wrangling.html#Soluzione">9.5</a>.</p>
+</div>
+<div id="join" class="section level3 hasAnchor" number="9.3.5">
+<h3><span class="header-section-number">9.3.5</span> Database e tabelle relazionali: unire tabelle con _join.<a href="wrangling.html#join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In molte situazioni i dati di cui abbiamo bisogno sono dispersi in più tabelle, collegate da una qualche chiave (per esempio un valore unico per una o più osservazioni presente in una colonna in due tabelle diverse).
+Unire tabelle per righe o colonne è possibile (con alcune limitazioni) usando comandi come <code>bind_cols()</code> e <code>bind_rows()</code> (due comandi di <code>dplyr</code> che corrispondono a <code>cbind()</code> e <code>rbind()</code>). Guarda questi due esempi, basati come al solito su <code>Arthritis</code>:</p>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="wrangling.html#cb769-1" tabindex="-1"></a><span class="fu">data</span>(Arthritis)</span>
+<span id="cb769-2"><a href="wrangling.html#cb769-2" tabindex="-1"></a><span class="co"># il comando slice() consente di selezionare righe</span></span>
+<span id="cb769-3"><a href="wrangling.html#cb769-3" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> Arthritis <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">52</span>)</span>
+<span id="cb769-4"><a href="wrangling.html#cb769-4" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> Arthritis <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">53</span><span class="sc">:</span><span class="dv">84</span>)</span>
+<span id="cb769-5"><a href="wrangling.html#cb769-5" tabindex="-1"></a>A3 <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(A1,A2)</span>
+<span id="cb769-6"><a href="wrangling.html#cb769-6" tabindex="-1"></a><span class="fu">head</span>(A3)</span></code></pre></div>
+<pre><code>##   ID Treatment  Sex Age Improved
+## 1 57   Treated Male  27     Some
+## 2 46   Treated Male  29     None
+## 3 77   Treated Male  30     None
+## 4 17   Treated Male  32   Marked
+## 5 36   Treated Male  46   Marked
+## 6 23   Treated Male  58   Marked</code></pre>
+<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb771-1"><a href="wrangling.html#cb771-1" tabindex="-1"></a><span class="fu">identical</span>(A3, Arthritis)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="wrangling.html#cb773-1" tabindex="-1"></a><span class="co"># è possibile perché sono presenti le stesse colonne</span></span>
+<span id="cb773-2"><a href="wrangling.html#cb773-2" tabindex="-1"></a>A4 <span class="ot">&lt;-</span> Arthritis <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(ID<span class="sc">:</span>Sex) </span>
+<span id="cb773-3"><a href="wrangling.html#cb773-3" tabindex="-1"></a>A5 <span class="ot">&lt;-</span> Arthritis <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(Age<span class="sc">:</span>Improved) </span>
+<span id="cb773-4"><a href="wrangling.html#cb773-4" tabindex="-1"></a>A6 <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(A4,A5)</span>
+<span id="cb773-5"><a href="wrangling.html#cb773-5" tabindex="-1"></a><span class="fu">head</span>(A6)</span></code></pre></div>
+<pre><code>##   ID Treatment  Sex Age Improved
+## 1 57   Treated Male  27     Some
+## 2 46   Treated Male  29     None
+## 3 77   Treated Male  30     None
+## 4 17   Treated Male  32   Marked
+## 5 36   Treated Male  46   Marked
+## 6 23   Treated Male  58   Marked</code></pre>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="wrangling.html#cb775-1" tabindex="-1"></a><span class="fu">identical</span>(A6,Arthritis)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>La situazione diventa un po’ più complessa se volessimo unire le informazioni presenti nei due file creati nel paragrafo <a href="wrangling.html#tidyresh">9.2.1</a>. Per farlo, potremmo per esempio creare in chiave_lab una colonna contenente l’abbreviazione di genere e specie unite da “_” e poi usare questa colonna come chiave per aggiungere i nomi estesi di genere e specie. Per farlo, possiamo usare i verbi a due tabelle <code>_join</code> di <code>dplyr</code>. Guarda cosa succede:</p>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb777-1"><a href="wrangling.html#cb777-1" tabindex="-1"></a>chiave_lab_2 <span class="ot">&lt;-</span> chiave_lab <span class="sc">%&gt;%</span></span>
+<span id="cb777-2"><a href="wrangling.html#cb777-2" tabindex="-1"></a>  <span class="fu">unite</span>(<span class="st">&quot;Specie_b&quot;</span>, abbr_genere, abbr_specie, <span class="at">sep =</span> <span class="st">&quot;_&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb777-3"><a href="wrangling.html#cb777-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Specie_b, genere, specie)</span>
+<span id="cb777-4"><a href="wrangling.html#cb777-4" tabindex="-1"></a>mlab_2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(mlab,chiave_lab_2)</span></code></pre></div>
+<pre><code>## Joining with `by = join_by(Specie_b)`</code></pre>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb779-1"><a href="wrangling.html#cb779-1" tabindex="-1"></a><span class="fu">head</span>(mlab_2)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 10
+##   Specie      Specie_b Ceppo_specie Repl  niente     H    HM     M genere specie
+##   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; 
+## 1 Lb_brevis   L_br     L_br_E06     a       0.4   0.4   0.36  0.41 Levil… brevis
+## 2 Lb_brevis   L_br     L_br_E06     b       0.3   0.35  0.35  0.36 Levil… brevis
+## 3 Leuc_mesen… Le_me    Le_me_E08    a       0.73  0.82  0.74  0.76 Leuco… mesen…
+## 4 Leuc_mesen… Le_me    Le_me_E08    b       0.63  0.71  0.61  0.68 Leuco… mesen…
+## 5 Leuc_mesen… Le_me    Le_me_E09    a       0.65  0.78  0.89  0.63 Leuco… mesen…
+## 6 Leuc_mesen… Le_me    Le_me_E09    b       0.62  0.81  0.82  0.61 Leuco… mesen…</code></pre>
+<p><code>Specie_b</code> è la chiave: è la chiave primaria in mlab e la chiave esterna in chiave_lab_2. La chiave primaria è, appunto, la colonna che si intende utilizzare nella tabella principlae per ottenere la corrispondenza dei casi, e ad essa devono corrispondere valori della chiave esterna nella seconda tabella. Non è necessario che le due chiavi abbiano lo stesso nome (ma almeno alcuni valori devono corrispondere), perché l’argomento <code>by</code> consente di usare colonne con nomi diversi; è anche possibile usare più di una colonna come chiave (in questo caso valgono le combinazioni delle colonne che si usano)</p>
+<p>Esistono due gruppi principali di _join:</p>
+<ul>
+<li><p><strong>mutating joins</strong>: la tabella che ne risulta contiene una combinazione di tutte colonne delle due tabelle originali (la o le colonne chiave non sono duplicate)</p>
+<ul>
+<li><p><code>ìnner_join()</code> conserva solo le osservazioni della tabella a sinistra che hanno una corrispondenza in quella a destra</p></li>
+<li><p><code>left_join()</code> usa tutti i casi della tabella a sinistra (la prima tabella che si usa nell’espressione join) e i casi corrispondenti della tabella a destra</p></li>
+<li><p>right_join()` usa tutti i casi della tabella a destra (la seconda tabella che si usa nell’espressione join) e i casi corrispondenti della tabella a sinistra</p></li>
+<li><p>full_join()` usa tutti i casi di entrambe le tabelle</p></li>
+</ul></li>
+<li><p><strong>filtering joins</strong>: contengono solo una parte dei casi delle due tabelle utilizzate:</p>
+<p><code>semi_join()</code> conserva solo le osservazioni di x che hanno una corrispondenza nella tabella a destra</p>
+<p><code>anti_join()</code> conserva solo le osservazioni della tabella a sinistra che non hanno una corrispondenza in quella a destra.</p></li>
+</ul>
+<p>Anche se l’uso dei _join è piuttosto intuitivo ci sono diverse sottigliezze:</p>
+<ul>
+<li><p>che succede se un’istanza della chiave non ha una corrispondenza in entrambele tabelle?</p></li>
+<li><p>che succede se ci sono valori multipli della chiave in una delle due tabelle?</p></li>
+</ul>
+<p>L’argomento è piuttosto complesso ed è trattato in maniera molto esaustiva in <a href="http://it.r4ds.hadley.nz/dati-relazionali.html">R4DS</a> che ti consiglio di leggere se e quando ne avrai bisogno. Intanto, per farti un’idea prova a cercare di capire come sono collegati i diversi data frame del pacchetto <code>nycflights13</code>. Prova a dare uno sguardo facendo girare questo script:</p>
+<pre><code>data(airlines)
+head(airlines)
+data(airports)
+head(airports)
+data(flights)
+head(flights)
+data(planes)
+head(planes)
+data(weather)
+head(weather)</code></pre>
+<p>La tabella principale è chiaramente <code>flights</code>, che contiene i dati dei voli. Usando le altre è possibile ottenere dati ulteriori che, se fossero stati presenti in <code>flights</code>, avrebbero reso la tabella pesantissima, duplicando inutilmente molte informazioni.</p>
+</div>
+</div>
+<div id="strutturecontrollo" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Strutture di controllo.<a href="wrangling.html#strutturecontrollo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Come hai visto nel paragrafo <a href="aiuto.html#gatti">3.1.2</a> e in diversi altri punti di questo libro eseguire un gruppo di istruzioni può richiedere delle strutture di controllo che indirizzino il flusso o eseguano in maniera iterativa gruppi più o meno complessi di funzioni. R è un linguaggio interpretato e, durante l’esecuzione dello script, le istruzioni vengono eseguite una alla volta: le strutture di controllo permettono di:</p>
+<ul>
+<li><p>ripetere un gruppo di istruzioni in base ad una condizione (loop for, while, repeat, etc.)</p></li>
+<li><p>eseguire in maniera alternativa dei gruppi di istruzioni (if … else)</p></li>
+</ul>
+<div id="loop" class="section level3 hasAnchor" number="9.4.1">
+<h3><span class="header-section-number">9.4.1</span> <em>Loop (o cicli) e cose simili.</em><a href="wrangling.html#loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>loop for</strong></p>
+<p>I loop più comuni sono sicuramente i loop for, presenti in praticamente tutti i linguaggi di programmazione.<br />
+La loro struttura è semplice:</p>
+<ul>
+<li><p>l’istruzione <code>for()</code> crea una sequenza, utilizzando un indice: <code>for(i in 1:10){corpo}</code> genera una sequenza di 10 iterazioni con l’indice i che va da 1 a 10</p></li>
+<li><p>all’interno della sequenza, generalmente fra parentesi graffe (che non sono necessarie se il corpo è composto da una sola espressione) c’è il corpo del loop, le operazioni che verranno eseguite una volta per ogni iterazione della sequenza</p></li>
+</ul>
+<p>Ecco un piccolo esempio, con un loop relativamente inefficiente che serve per calcolare l’età media di 50 campioni casuali di 10 osservazioni estratti dal data set Arthritis:</p>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="wrangling.html#cb782-1" tabindex="-1"></a><span class="co"># uso set.seed per impostare il seme del generatore di numeri casuali, </span></span>
+<span id="cb782-2"><a href="wrangling.html#cb782-2" tabindex="-1"></a><span class="co"># in modo che l&#39;operazione sia riproducibile (soltanto per scopi </span></span>
+<span id="cb782-3"><a href="wrangling.html#cb782-3" tabindex="-1"></a><span class="co"># didattici)</span></span>
+<span id="cb782-4"><a href="wrangling.html#cb782-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) </span>
+<span id="cb782-5"><a href="wrangling.html#cb782-5" tabindex="-1"></a></span>
+<span id="cb782-6"><a href="wrangling.html#cb782-6" tabindex="-1"></a><span class="co"># creo manualmente una prima iterazione, 10 righe, tutte con l&#39;indice 1</span></span>
+<span id="cb782-7"><a href="wrangling.html#cb782-7" tabindex="-1"></a></span>
+<span id="cb782-8"><a href="wrangling.html#cb782-8" tabindex="-1"></a>subsample10 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(</span>
+<span id="cb782-9"><a href="wrangling.html#cb782-9" tabindex="-1"></a>  <span class="fu">cbind</span>(</span>
+<span id="cb782-10"><a href="wrangling.html#cb782-10" tabindex="-1"></a>    <span class="at">indice =</span> <span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>),</span>
+<span id="cb782-11"><a href="wrangling.html#cb782-11" tabindex="-1"></a>    <span class="at">eta =</span> <span class="fu">sample</span>(Arthritis<span class="sc">$</span>Age, <span class="at">size=</span><span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb782-12"><a href="wrangling.html#cb782-12" tabindex="-1"></a>    )</span>
+<span id="cb782-13"><a href="wrangling.html#cb782-13" tabindex="-1"></a>)</span>
+<span id="cb782-14"><a href="wrangling.html#cb782-14" tabindex="-1"></a></span>
+<span id="cb782-15"><a href="wrangling.html#cb782-15" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">50</span>){ <span class="co"># la sequenza</span></span>
+<span id="cb782-16"><a href="wrangling.html#cb782-16" tabindex="-1"></a>  subsample <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">indice =</span> <span class="fu">rep</span>(i,<span class="dv">10</span>), </span>
+<span id="cb782-17"><a href="wrangling.html#cb782-17" tabindex="-1"></a>                     <span class="at">eta =</span> <span class="fu">sample</span>(Arthritis<span class="sc">$</span>Age, <span class="at">size=</span><span class="dv">10</span>, <span class="at">replace =</span> T))</span>
+<span id="cb782-18"><a href="wrangling.html#cb782-18" tabindex="-1"></a>  subsample10 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(subsample10, subsample)</span>
+<span id="cb782-19"><a href="wrangling.html#cb782-19" tabindex="-1"></a>  <span class="co"># questo è il corpo del loop</span></span>
+<span id="cb782-20"><a href="wrangling.html#cb782-20" tabindex="-1"></a>}</span>
+<span id="cb782-21"><a href="wrangling.html#cb782-21" tabindex="-1"></a>subsample10<span class="sc">$</span>indice <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(subsample10<span class="sc">$</span>indice)</span>
+<span id="cb782-22"><a href="wrangling.html#cb782-22" tabindex="-1"></a><span class="fu">glimpse</span>(subsample10)</span></code></pre></div>
+<pre><code>## Rows: 500
+## Columns: 2
+## $ indice &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, …
+## $ eta    &lt;dbl&gt; 58, 66, 55, 63, 46, 68, 32, 32, 55, 65, 64, 70, 31, 46, 32, 32,…</code></pre>
+<p>nota come l’indice <code>ì</code> è stato utilizzato all’interno del loop per tenere traccia dell’iterazione e aggiungerla al data frame.<br />
+Questo codice è veramente brutto e verboso e, in teoria, lento (l’operazione di <code>cbind</code> richiede che per ogni ciclo tutti i dati vengano copiati in memoria).
+In generale è più efficiente creare un contenitore vuoto della lunghezza desiderata (una lista, che può essere poi trasformata in data frame) e poi riempirlo.<br />
+Anche questo codice funziona:</p>
+<div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="wrangling.html#cb784-1" tabindex="-1"></a>iterazioni <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb784-2"><a href="wrangling.html#cb784-2" tabindex="-1"></a>subcampioni <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb784-3"><a href="wrangling.html#cb784-3" tabindex="-1"></a>contenitore <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, iterazioni)</span>
+<span id="cb784-4"><a href="wrangling.html#cb784-4" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>iterazioni){</span>
+<span id="cb784-5"><a href="wrangling.html#cb784-5" tabindex="-1"></a>  contenitore[[i]] <span class="ot">&lt;-</span> <span class="fu">sample</span>(Arthritis<span class="sc">$</span>Age, <span class="at">size=</span><span class="dv">10</span>, <span class="at">replace =</span> T)</span>
+<span id="cb784-6"><a href="wrangling.html#cb784-6" tabindex="-1"></a>}</span>
+<span id="cb784-7"><a href="wrangling.html#cb784-7" tabindex="-1"></a>subsamples_2 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb784-8"><a href="wrangling.html#cb784-8" tabindex="-1"></a>  <span class="at">indice =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>iterazioni, <span class="at">each =</span> subcampioni),</span>
+<span id="cb784-9"><a href="wrangling.html#cb784-9" tabindex="-1"></a>  <span class="at">eta =</span> <span class="fu">unlist</span>(contenitore)</span>
+<span id="cb784-10"><a href="wrangling.html#cb784-10" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Un modo semplice per generare una sequenza senza conoscerne in anticipo la lunghezza è usare <code>seq_along()</code></p>
+<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="wrangling.html#cb785-1" tabindex="-1"></a><span class="fu">seq_along</span>(Arthritis<span class="sc">$</span>ID)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+## [51] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+## [76] 76 77 78 79 80 81 82 83 84</code></pre>
+<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="wrangling.html#cb787-1" tabindex="-1"></a><span class="fu">seq_along</span>(Arthritis<span class="sc">$</span>Sex)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+## [51] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+## [76] 76 77 78 79 80 81 82 83 84</code></pre>
+<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="wrangling.html#cb789-1" tabindex="-1"></a><span class="co"># ma che succede se genero una sequenza sui livelli di un fattore?</span></span>
+<span id="cb789-2"><a href="wrangling.html#cb789-2" tabindex="-1"></a><span class="fu">seq_along</span>(<span class="fu">levels</span>(Arthritis<span class="sc">$</span>Sex))</span></code></pre></div>
+<pre><code>## [1] 1 2</code></pre>
+<p>E’ possibile annidare loop uno dentro l’altro. Per esempio prova ad eseguire questo codice in uno script:</p>
+<pre><code>for(i in 1:10){
+  for(j in 1:5){
+    for(k in 1:2) print(i*j*k)
+  }
+}</code></pre>
+<p>E’ possibile interrompere un loop utilizzando i comandi:</p>
+<ul>
+<li><p><code>next</code>: passa immediatamente all’iterazione successiva</p></li>
+<li><p><code>break</code>: esce dal loop</p></li>
+</ul>
+<p><strong>while, repeat.</strong></p>
+<p>Nei loop for la sequenza viene valutata alla fine del loop: se la sequenza ha lunghezza 1 il loop viene eseguito almeno una volta, se ha lunghezza 0 non viene eseguita; se anche si modifica l’indice della sequenza all’interno del loop il progresso del loop non cambia.</p>
+<p>Nei loop while il corpo della sequenza viene eseguito fin quando la condizione <code>while(condition)</code> è vera e questo può causare delle ripetizioni infinite. La condizione viene valutata all’inizio del loop. Prova il sequenge codice in uno script. E’ un loop testardo, che richiede interazione da parte dell’utente, e va eseguito un’istruzione per volta…</p>
+<pre><code>Readanswer &lt;- function(){
+  ans &lt;- readline(prompt=&quot;Per favore, immetti la tua RISPOSTA: &quot;)
+}
+answer &lt;- as.character(Readanswer())
+while(answer != 42){
+  cat(&quot;Scusa, ho bisogno della risposta alla domanda fondamentale sulla vita, l&#39;universo e tutto quanto&quot;,
+      &quot;\n&quot;,&quot;Riprova...&quot;, sep = &quot;&quot;)
+  answer &lt;- as.character(Readanswer())
+}
+?cat</code></pre>
+<p>Finché non darai la risposta giusta (notoriamente, 42) il loop andrà avanti all’infinito…
+<em>repeat</em> è n altro modo (stupido) per creare loop e richiede l’uso specifico di <code>break</code> (in genere in una condizione <code>if()</code>) per uscire dal loop. Ecco un loop piuttosto stupido che stampa buongiorno almeno 5 volte oppure si lamenta che sia già pomeriggio.</p>
+<pre><code>n &lt;- 0
+hour &lt;- as.numeric(format(Sys.time(),&quot;%H&quot;))
+repeat {
+  if (hour&lt;=12 &amp; n&lt;5){
+    print(&quot;Buongiorno!&quot;)
+    hour &lt;- as.numeric(format(Sys.time(),&quot;%H&quot;))
+    n&lt;-n+1
+  } else {
+    print(&quot;Accidenti, è già pomeriggio oppure ho eseguito il loop 5 volte!&quot;)
+    break
+  }
+}</code></pre>
+</div>
+<div id="functional" class="section level3 hasAnchor" number="9.4.2">
+<h3><span class="header-section-number">9.4.2</span> <em>Un’alternativa (veloce e ordinata) ai loop: i “functional”.</em><a href="wrangling.html#functional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un’alternativa, veloce e ordinata, alla maggior parte dei loop sono i così detti <em>funzionali</em> (<em>functionals</em> in inglese): si tratta di funzioni che hanno come argomento delle funzioni. Ne hai già visto un esempio nel paragrafo <a href="aiuto.html#gatti">3.1.2</a>. Ci sono molti tipi di funzionali in R:</p>
+<ul>
+<li><p>le funzioni di base del gruppo <code>apply</code>: <code>apply()</code>, <code>lapply()</code>, <code>sapply()</code>, <code>tapply()</code>, <code>mapply()</code></p></li>
+<li><p>le funzioni del pacchetto <code>plyr</code>, estremamente flessibili negli input e output</p></li>
+<li><p>le funzioni del pacchetto <code>purrr</code></p></li>
+</ul>
+<p>Per brevità, ti riporto una versione ridotta del codice presentato nel paragrafo <a href="aiuto.html#gatti">3.1.2</a>:</p>
+<div class="sourceCode" id="cb794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb794-1"><a href="wrangling.html#cb794-1" tabindex="-1"></a><span class="co"># creo un data frame (in realtà una tibble) con numeri casuali </span></span>
+<span id="cb794-2"><a href="wrangling.html#cb794-2" tabindex="-1"></a>n_casi <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb794-3"><a href="wrangling.html#cb794-3" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">a =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">b =</span> <span class="fu">rnorm</span>(n_casi),</span>
+<span id="cb794-4"><a href="wrangling.html#cb794-4" tabindex="-1"></a>              <span class="at">c =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">d =</span> <span class="fu">rnorm</span>(n_casi),</span>
+<span id="cb794-5"><a href="wrangling.html#cb794-5" tabindex="-1"></a>              <span class="at">e =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">f =</span> <span class="fu">rnorm</span>(n_casi),</span>
+<span id="cb794-6"><a href="wrangling.html#cb794-6" tabindex="-1"></a>              <span class="at">g =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">h =</span><span class="fu">rnorm</span>(n_casi))</span>
+<span id="cb794-7"><a href="wrangling.html#cb794-7" tabindex="-1"></a><span class="co"># calcolo le mediane con un loop</span></span>
+<span id="cb794-8"><a href="wrangling.html#cb794-8" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> <span class="fu">ncol</span>(df))</span>
+<span id="cb794-9"><a href="wrangling.html#cb794-9" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) { <span class="co"># la sequenza </span></span>
+<span id="cb794-10"><a href="wrangling.html#cb794-10" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]]) <span class="co"># il corpo del loop </span></span>
+<span id="cb794-11"><a href="wrangling.html#cb794-11" tabindex="-1"></a>} </span>
+<span id="cb794-12"><a href="wrangling.html#cb794-12" tabindex="-1"></a>output</span></code></pre></div>
+<pre><code>## [1]  0.006402963 -0.007366067 -0.005574402  0.007971636 -0.017403041
+## [6] -0.015778585 -0.001770304  0.002987635</code></pre>
+<div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="wrangling.html#cb796-1" tabindex="-1"></a><span class="co"># uso apply()</span></span>
+<span id="cb796-2"><a href="wrangling.html#cb796-2" tabindex="-1"></a>(mediane_apply <span class="ot">&lt;-</span> <span class="fu">apply</span>(df, <span class="dv">2</span>, median))</span></code></pre></div>
+<pre><code>##            a            b            c            d            e            f 
+##  0.006402963 -0.007366067 -0.005574402  0.007971636 -0.017403041 -0.015778585 
+##            g            h 
+## -0.001770304  0.002987635</code></pre>
+<div class="sourceCode" id="cb798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb798-1"><a href="wrangling.html#cb798-1" tabindex="-1"></a><span class="co"># uso la funzione map_dbl() del pacchetto purrr</span></span>
+<span id="cb798-2"><a href="wrangling.html#cb798-2" tabindex="-1"></a><span class="co"># map_dbl &quot;applica&quot; la funzione median alle colonne di df</span></span>
+<span id="cb798-3"><a href="wrangling.html#cb798-3" tabindex="-1"></a>(le_mie_mediane <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(df, median))</span></code></pre></div>
+<pre><code>##            a            b            c            d            e            f 
+##  0.006402963 -0.007366067 -0.005574402  0.007971636 -0.017403041 -0.015778585 
+##            g            h 
+## -0.001770304  0.002987635</code></pre>
+<p>Le mediane, ovviamente, sono identiche, e il codice è più o meno elegante e comprensibile.
+Questo argomento è decisamente troppo complesso per gli scopi di questo testo. Per saperne di più consulta, fra le altre cose, <a href="http://it.r4ds.hadley.nz/iterazioni.html?q=funzionali#cicli-for-vs.-funzionali">R4DS</a>, la <a href="https://purrr.tidyverse.org/articles/base.html">vignetta</a> che compara le funzioni di purrr con quelle di R base, o questo <a href="https://vita.had.co.nz/papers/plyr.pdf">vecchio articolo su plyr</a>.</p>
+</div>
+<div id="ifelsestat" class="section level3 hasAnchor" number="9.4.3">
+<h3><span class="header-section-number">9.4.3</span> <em>Esecuzione condizionale.</em><a href="wrangling.html#ifelsestat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In molti casi ci si può traovare nella situazione di voler far eseguire pezzetti diversi di codice a seconda di una condizione. In molte occasioni abbiamo visto l’uso della struttura più semplice:</p>
+<pre><code>if(condizione){
+  istruzioni se condizione è vera
+} else {
+  istruzioni se condizione è falsa
+}</code></pre>
+<p>Un esempio è la funzione <code>Readanswer()</code> proposta nel paragrafo precedente. La struttura è molto semplice:</p>
+<ul>
+<li><p>dopo if, fra le parentesi tonde c’è una condizione che deve restituire un vettore logico di lunghezza 1, con valore <code>TRUE</code> o <code>FALSE</code></p></li>
+<li><p>se la condizione è TRUE viene eseguito il comando o il gruppo di comandi (in questo caso devono essere fra parentesi graffe) immediatamente successivo</p></li>
+<li><p>se la condizione è FALSE viene eseguito il comando o gruppo di comandi dopo else (se esiste) o l’esecuzione salta al comando dopo</p></li>
+</ul>
+<p>Naturalmente, bisogna stare molto attenti a non definire oggetti in condizioni che potrebbero non essere eseguite e richiamarli più tardi.</p>
+<p>Prova a seguire questo esempio, abbastanza stupido, che dimostra anche l’uso degli <code>if</code> annidati (un <code>if</code> all’interno di un altro <code>if</code>, può servire a gestire situazioni in cui ci sono più di due condizioni):</p>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="wrangling.html#cb801-1" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">exists</span>(<span class="st">&quot;cinque&quot;</span>)) <span class="fu">rm</span>(cinque) <span class="co"># per eliminare l&#39;oggetto col nome cinque, se esiste</span></span>
+<span id="cb801-2"><a href="wrangling.html#cb801-2" tabindex="-1"></a>cinquenumeri <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb801-3"><a href="wrangling.html#cb801-3" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(cinquenumeri)){</span>
+<span id="cb801-4"><a href="wrangling.html#cb801-4" tabindex="-1"></a>  <span class="cf">if</span>(cinquenumeri[i]<span class="sc">%%</span><span class="dv">2</span><span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb801-5"><a href="wrangling.html#cb801-5" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;la posizione&quot;</span>, i, <span class="st">&quot;vale&quot;</span>, cinquenumeri[i], <span class="st">&quot; ed è pari</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb801-6"><a href="wrangling.html#cb801-6" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb801-7"><a href="wrangling.html#cb801-7" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="st">&quot;la posizione&quot;</span>, i, <span class="st">&quot;vale&quot;</span>, cinquenumeri[i], <span class="st">&quot;ed è dispari</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb801-8"><a href="wrangling.html#cb801-8" tabindex="-1"></a>    <span class="cf">if</span>(cinquenumeri[i] <span class="sc">==</span> <span class="dv">5</span>) {</span>
+<span id="cb801-9"><a href="wrangling.html#cb801-9" tabindex="-1"></a>      cinque<span class="ot">&lt;-</span><span class="st">&quot;cinque è il numero perfetto&quot;</span></span>
+<span id="cb801-10"><a href="wrangling.html#cb801-10" tabindex="-1"></a>      <span class="fu">print</span>(cinque)</span>
+<span id="cb801-11"><a href="wrangling.html#cb801-11" tabindex="-1"></a>      }</span>
+<span id="cb801-12"><a href="wrangling.html#cb801-12" tabindex="-1"></a>  }</span>
+<span id="cb801-13"><a href="wrangling.html#cb801-13" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## la posizione 1 vale 1 ed è dispari
+## la posizione 2 vale 2  ed è pari
+## la posizione 3 vale 3 ed è dispari
+## la posizione 4 vale 4  ed è pari
+## la posizione 5 vale 5 ed è dispari
+## [1] &quot;cinque è il numero perfetto&quot;</code></pre>
+<p>Prova, in uno script, ad usare per cinquenumeri un vettore di cinque numeri che non contenga il 5: che pensi che succederà?</p>
+<p>Gli <code>if()</code> sono molto usati nell’error trapping, una tecnica usata per “intrappolare” eventuali errori causati dall’esecuzione di una funzione o uno script, ridirigendo il flusso di esecuzione o generando un messaggio di errore o un warning. Se vuoi saperne di più prova a leggere [questa sezione] (<a href="https://adv-r.hadley.nz/conditions.html" class="uri">https://adv-r.hadley.nz/conditions.html</a>) di <a href="https://adv-r.hadley.nz/index.html">Advanced R</a>.</p>
+<p>In realtà, ci sono modi più semplici di gestire condizioni multiple, come il comando <code>switch()</code> di R base o il comando <code>dplyr::case_when()</code>:</p>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="wrangling.html#cb803-1" tabindex="-1"></a><span class="co"># cerca switch nell&#39;aiuto, se vuoi</span></span>
+<span id="cb803-2"><a href="wrangling.html#cb803-2" tabindex="-1"></a><span class="co"># ?switch</span></span>
+<span id="cb803-3"><a href="wrangling.html#cb803-3" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb803-4"><a href="wrangling.html#cb803-4" tabindex="-1"></a><span class="co"># un altro esempio stupido con la funzione modulo</span></span>
+<span id="cb803-5"><a href="wrangling.html#cb803-5" tabindex="-1"></a><span class="fu">case_when</span>(</span>
+<span id="cb803-6"><a href="wrangling.html#cb803-6" tabindex="-1"></a>  xx <span class="sc">%%</span> <span class="dv">15</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;divisibile per 15, 5 e 3&quot;</span>,</span>
+<span id="cb803-7"><a href="wrangling.html#cb803-7" tabindex="-1"></a>  xx <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;divisibile per 5&quot;</span>,</span>
+<span id="cb803-8"><a href="wrangling.html#cb803-8" tabindex="-1"></a>  xx <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;divisibile per 3&quot;</span>,</span>
+<span id="cb803-9"><a href="wrangling.html#cb803-9" tabindex="-1"></a>  <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fu">as.character</span>(xx)</span>
+<span id="cb803-10"><a href="wrangling.html#cb803-10" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>##  [1] &quot;1&quot;                        &quot;2&quot;                       
+##  [3] &quot;divisibile per 3&quot;         &quot;4&quot;                       
+##  [5] &quot;divisibile per 5&quot;         &quot;divisibile per 3&quot;        
+##  [7] &quot;7&quot;                        &quot;8&quot;                       
+##  [9] &quot;divisibile per 3&quot;         &quot;divisibile per 5&quot;        
+## [11] &quot;11&quot;                       &quot;divisibile per 3&quot;        
+## [13] &quot;13&quot;                       &quot;14&quot;                      
+## [15] &quot;divisibile per 15, 5 e 3&quot;</code></pre>
+<p>L’ultima istruzione serve, genericamente, per restituire il valore di <code>xx</code> come carattere.</p>
+<p>Infine, se si desidera operare con una condizione su un vettore di condizioni logiche di lunghezza maggiore di uno, è possibile usare il comando <code>ifelse()</code> o, meglio ancora, <code>dplyr::if_else()</code>: in entrambi i casi la struttura è:
+<code>if_else(vettore_logico, esegui se vero, esegui se falso)</code></p>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="wrangling.html#cb805-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb805-2"><a href="wrangling.html#cb805-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(x<span class="sc">&gt;</span><span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
+<span id="cb805-3"><a href="wrangling.html#cb805-3" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">if_else</span>(x<span class="sc">&gt;=</span><span class="dv">0</span>,<span class="st">&quot;positivo o zero&quot;</span>,<span class="st">&quot;negativo&quot;</span>)</span>
+<span id="cb805-4"><a href="wrangling.html#cb805-4" tabindex="-1"></a><span class="co"># nota che i due comandi trattano lo 0 in modi diversi</span></span>
+<span id="cb805-5"><a href="wrangling.html#cb805-5" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] 0 1 0 1 0</code></pre>
+<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="wrangling.html#cb807-1" tabindex="-1"></a>z</span></code></pre></div>
+<pre><code>## [1] &quot;negativo&quot;        &quot;positivo o zero&quot; &quot;negativo&quot;        &quot;positivo o zero&quot;
+## [5] &quot;positivo o zero&quot;</code></pre>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="wrangling.html#cb809-1" tabindex="-1"></a><span class="co"># guarda come ifelse() o if_else() possono essere usati per gestire </span></span>
+<span id="cb809-2"><a href="wrangling.html#cb809-2" tabindex="-1"></a><span class="co"># condizioni che causano dei warning</span></span>
+<span id="cb809-3"><a href="wrangling.html#cb809-3" tabindex="-1"></a><span class="fu">sqrt</span>(x) <span class="co"># genera dei warning</span></span></code></pre></div>
+<pre><code>## Warning in sqrt(x): NaNs produced</code></pre>
+<pre><code>## [1] NaN   1 NaN   1   0</code></pre>
+<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="wrangling.html#cb812-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">ifelse</span>(x<span class="sc">&gt;=</span><span class="dv">0</span>,x,<span class="cn">NA</span>)) <span class="co"># niente warning, ma restituisce, NA per i valori negativi</span></span></code></pre></div>
+<pre><code>## [1] NA  1 NA  1  0</code></pre>
+</div>
+</div>
+<div id="Soluzione" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> La soluzione dell’esercizio.<a href="wrangling.html#Soluzione" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Prova questo codice in uno script:</p>
+<pre><code>mpg %&gt;%
+  summarise(across(c(hwy,cty),
+                   list(media = mean, devst = sd)),
+            .by = class) %&gt;%
+  mutate(across(where(is.numeric), ~round(.x, digits = 2))) %&gt;%
+  unite(&quot;hwy&quot;,starts_with(&quot;hwy&quot;), sep=&quot;±&quot;) %&gt;%
+  unite(&quot;cty&quot;,starts_with(&quot;cty&quot;), sep=&quot;±&quot;)</code></pre>
+<p>Incidentalmente, questo è proprio i modo in cui mostreresti una tabella con media e deviazione standard in un lavoro scientifico: pensa che noia rifare la tabella a mano…</p>
+</div>
+<div id="altreriswrangling" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Altre risorse.<a href="wrangling.html#altreriswrangling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="risorse-in-italiano.-5" class="section level3 hasAnchor" number="9.6.1">
+<h3><span class="header-section-number">9.6.1</span> Risorse in italiano.<a href="wrangling.html#risorse-in-italiano.-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Documenti e pagine web.</strong></p>
+</div>
+<div id="risorse-in-inglese.-7" class="section level3 hasAnchor" number="9.6.2">
+<h3><span class="header-section-number">9.6.2</span> Risorse in inglese.<a href="wrangling.html#risorse-in-inglese.-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Come sempre, c’è a scegliere</p>
+<ul>
+<li><p>il sito del <a href="https://www.tidyverse.org/packages/">tidyverse</a> dà una visione organica dei pacchetti per la manipolazione “tidy” dei dati</p></li>
+<li><p>il concetto di “tidy data” è <a href="https://vita.had.co.nz/papers/tidy-data.pdf">descritto in maniera eccellente da Hadley Wickham</a></p></li>
+<li><p>le vignette dei pacchetti del tidyverse sono un’ottima guida per approfondire gli aspetti dei singoli pacchetti</p></li>
+<li><p>un’ottima guida allo stile di programmazione è <a href="https://style.tidyverse.org/index.html">quella del tidyverse</a></p></li>
+<li><p>si sono diversi eccellenti libri che includono ampi capitoli sul data wrangling o sono specializzati sulla programmazione con R:</p>
+<ul>
+<li><p>il solito <a href="https://r4ds.had.co.nz">R for data science</a> ormai disponibile anche in <a href="https://it.r4ds.hadley.nz/tidy-data.html">lingua italiana</a></p></li>
+<li><p><a href="https://rstudio-education.github.io/hopr/">Hands on programming with R</a> fornisce un’ottima introduzione per chi non è neanche abituato all’idea di ragionare per algoritmi</p></li>
+<li><p><a href="https://bookdown.org/rdpeng/rprogdatascience/">R programming for data science</a> sicuramente più articolato e completo e parecchio più noioso</p></li>
+<li><p><a href="http://adv-r.had.co.nz">Advanced R</a> è, ovviamente, la guida definitiva alla programmazione avanzata con R.</p></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="168">
+<li id="fn168"><p>rispetto all’analisi dei dati, è ovvio<a href="wrangling.html#fnref168" class="footnote-back">↩︎</a></p></li>
+<li id="fn169"><p>e, indovina? Ti servirà sicuramente…<a href="wrangling.html#fnref169" class="footnote-back">↩︎</a></p></li>
+<li id="fn170"><p>un po’ come accade nel vecchio pacchetto <code>reshape2</code><a href="wrangling.html#fnref170" class="footnote-back">↩︎</a></p></li>
+<li id="fn171"><p>ricorda, un data frame è una lista, quindi nulla vieta che una delle colonne sia una colonna di liste<a href="wrangling.html#fnref171" class="footnote-back">↩︎</a></p></li>
+<li id="fn172"><p>ho usato questa sintassi perché come vedrai, in funzione dell’ordine di caricamento dei pacchetti il comando filter potrebbe essere “mascherato” da altri comandi.<a href="wrangling.html#fnref172" class="footnote-back">↩︎</a></p></li>
+<li id="fn173"><p>scrivi nella console <code>&gt;help(language, package = "tidyselect")</code><a href="wrangling.html#fnref173" class="footnote-back">↩︎</a></p></li>
+<li id="fn174"><p>ma con qualche differenza dalle funzioni base: leggi l’aiuto, senti a me…<a href="wrangling.html#fnref174" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="reportR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="citazioni-crediti-copyright-ringraziamenti..html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

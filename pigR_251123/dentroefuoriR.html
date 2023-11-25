@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Dentro e fuori R | pigR: R, per pigri</title>
+  <meta name="description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Dentro e fuori R | pigR: R, per pigri" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Dentro e fuori R | pigR: R, per pigri" />
+  
+  <meta name="twitter:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+<meta name="author" content="E. Parente, Scuola SAFE, Università degli Studi della Basilicata" />
+
+
+<meta name="date" content="2023-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="datioggetti.html"/>
+<link rel="next" href="grafica.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cos’è pigR?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#di-cosa-hai-bisogno-per-leggere-e-capire-questo-libro."><i class="fa fa-check"></i>Di cosa hai bisogno per leggere (e capire) questo libro.</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#chi-siamo-noi-noi-noi"><i class="fa fa-check"></i>Chi siamo noi (noi, noi)?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#se-ti-piace"><i class="fa fa-check"></i>Se ti piace…</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cookies"><i class="fa fa-check"></i>Cookies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#la-foto-di-copertina."><i class="fa fa-check"></i>La foto di copertina.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduzione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#cosa-cè-da-imparare-in-questo-capitolo."><i class="fa fa-check"></i><b>1.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#convenzioni-e-guida-alla-lettura-e-alluso-del-codice."><i class="fa fa-check"></i><b>1.2</b> Convenzioni e guida alla lettura e all’uso del codice.</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#tutti-vogliono-imparare-a-usare-r."><i class="fa fa-check"></i><b>1.3</b> Tutti vogliono imparare a usare R.</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#provare-per-credere-app-gui-ide-e-altre-diavolerie."><i class="fa fa-check"></i><b>1.3.1</b> Provare per credere: App, GUI, IDE e altre diavolerie.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#laltra-faccia-della-medaglia-troppa-fatica."><i class="fa fa-check"></i><b>1.4</b> L’altra faccia della medaglia: troppa fatica.</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#r-per-pigri."><i class="fa fa-check"></i><b>1.5</b> R, per pigri.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inter.html"><a href="inter.html"><i class="fa fa-check"></i><b>2</b> Interfacce e ambienti</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inter.html"><a href="inter.html#cosa-cè-da-imparare-in-questo-capitolo.-1"><i class="fa fa-check"></i><b>2.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="2.2" data-path="inter.html"><a href="inter.html#rstudio."><i class="fa fa-check"></i><b>2.2</b> RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="inter.html"><a href="inter.html#linterfaccia-principale-di-rstudio."><i class="fa fa-check"></i><b>2.2.1</b> L’interfaccia principale di RStudio.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="inter.html"><a href="inter.html#il-pannello-source."><i class="fa fa-check"></i><b>2.2.2</b> Il pannello Source.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="inter.html"><a href="inter.html#il-pannello-console."><i class="fa fa-check"></i><b>2.2.3</b> Il pannello Console.</a></li>
+<li class="chapter" data-level="2.2.4" data-path="inter.html"><a href="inter.html#il-pannello-environment."><i class="fa fa-check"></i><b>2.2.4</b> Il pannello Environment.</a></li>
+<li class="chapter" data-level="2.2.5" data-path="inter.html"><a href="inter.html#il-tab-environment."><i class="fa fa-check"></i><b>2.2.5</b> Il tab Environment.</a></li>
+<li class="chapter" data-level="2.2.6" data-path="inter.html"><a href="inter.html#il-tab-history."><i class="fa fa-check"></i><b>2.2.6</b> Il tab History.</a></li>
+<li class="chapter" data-level="2.2.7" data-path="inter.html"><a href="inter.html#il-pannello-plots."><i class="fa fa-check"></i><b>2.2.7</b> Il pannello Plots.</a></li>
+<li class="chapter" data-level="2.2.8" data-path="inter.html"><a href="inter.html#il-tab-plots."><i class="fa fa-check"></i><b>2.2.8</b> Il tab Plots.</a></li>
+<li class="chapter" data-level="2.2.9" data-path="inter.html"><a href="inter.html#il-tab-files."><i class="fa fa-check"></i><b>2.2.9</b> Il tab Files.</a></li>
+<li class="chapter" data-level="2.2.10" data-path="inter.html"><a href="inter.html#tabpackages"><i class="fa fa-check"></i><b>2.2.10</b> Il tab Packages.</a></li>
+<li class="chapter" data-level="2.2.11" data-path="inter.html"><a href="inter.html#il-tab-help."><i class="fa fa-check"></i><b>2.2.11</b> Il tab Help.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="inter.html"><a href="inter.html#esercizi."><i class="fa fa-check"></i><b>2.3</b> Esercizi.</a></li>
+<li class="chapter" data-level="2.4" data-path="inter.html"><a href="inter.html#altrerisinter"><i class="fa fa-check"></i><b>2.4</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inter.html"><a href="inter.html#risorse-in-italiano."><i class="fa fa-check"></i><b>2.4.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inter.html"><a href="inter.html#risorse-in-inglese."><i class="fa fa-check"></i><b>2.4.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aiuto.html"><a href="aiuto.html"><i class="fa fa-check"></i><b>3</b> Chiedere aiuto</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aiuto.html"><a href="aiuto.html#cosa-cè-da-imparare-in-questo-capitolo.-2"><i class="fa fa-check"></i><b>3.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aiuto.html"><a href="aiuto.html#premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri"><i class="fa fa-check"></i><b>3.1.1</b> Premessa 1: nessuno legge i manuali (figuriamoci i pigRi)!</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aiuto.html"><a href="aiuto.html#gatti"><i class="fa fa-check"></i><b>3.1.2</b> Premessa 2: ci sono molti modi di pelare un gatto (e documentarlo).</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aiuto.html"><a href="aiuto.html#laiuto-di-r."><i class="fa fa-check"></i><b>3.2</b> L’aiuto di R.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="aiuto.html"><a href="aiuto.html#tabhelp"><i class="fa fa-check"></i><b>3.2.1</b> Il tab Help di RStudio.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="aiuto.html"><a href="aiuto.html#funzioni-per-chiedere-aiuto."><i class="fa fa-check"></i><b>3.2.2</b> <em>Funzioni per chiedere aiuto.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="aiuto.html"><a href="aiuto.html#strategieaiuto"><i class="fa fa-check"></i><b>3.3</b> Strategie per cercare aiuto (anche senza parere).</a></li>
+<li class="chapter" data-level="3.4" data-path="aiuto.html"><a href="aiuto.html#esercizi.-1"><i class="fa fa-check"></i><b>3.4</b> Esercizi.</a></li>
+<li class="chapter" data-level="3.5" data-path="aiuto.html"><a href="aiuto.html#altrerisaiuto"><i class="fa fa-check"></i><b>3.5</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="aiuto.html"><a href="aiuto.html#risorse-in-italiano.-1"><i class="fa fa-check"></i><b>3.5.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="3.5.2" data-path="aiuto.html"><a href="aiuto.html#risorse-in-inglese.-1"><i class="fa fa-check"></i><b>3.5.2</b> Risorse in inglese.</a></li>
+<li class="chapter" data-level="3.5.3" data-path="aiuto.html"><a href="aiuto.html#niente-video"><i class="fa fa-check"></i><b>3.5.3</b> Niente video?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datioggetti.html"><a href="datioggetti.html"><i class="fa fa-check"></i><b>4</b> Dati, oggetti, funzioni (e tutto il resto)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datioggetti.html"><a href="datioggetti.html#cosa-cè-da-imparare-in-questo-capitolo.-3"><i class="fa fa-check"></i><b>4.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datioggetti.html"><a href="datioggetti.html#premessa-1-esperimenti-e-osservazioni."><i class="fa fa-check"></i><b>4.1.1</b> Premessa 1: esperimenti e osservazioni.</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datioggetti.html"><a href="datioggetti.html#premessa2"><i class="fa fa-check"></i><b>4.1.2</b> Premessa 2. Misure e dati, osservazioni e variabili, tabelle.</a></li>
+<li class="chapter" data-level="4.1.3" data-path="datioggetti.html"><a href="datioggetti.html#anatab"><i class="fa fa-check"></i><b>4.1.3</b> Anatomia di una tabella.</a></li>
+<li class="chapter" data-level="4.1.4" data-path="datioggetti.html"><a href="datioggetti.html#un-piccolo-esercizio."><i class="fa fa-check"></i><b>4.1.4</b> Un piccolo esercizio.</a></li>
+<li class="chapter" data-level="4.1.5" data-path="datioggetti.html"><a href="datioggetti.html#tidyuntidydefinizione"><i class="fa fa-check"></i><b>4.1.5</b> Tidy vs. untidy (tabelle ordinate e disordinate).</a></li>
+<li class="chapter" data-level="4.1.6" data-path="datioggetti.html"><a href="datioggetti.html#missingdata"><i class="fa fa-check"></i><b>4.1.6</b> Dati mancanti (missing data).</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datioggetti.html"><a href="datioggetti.html#r-è-un-linguaggio-funzionale-che-supporta-la-programmazione-orientata-a-oggetti"><i class="fa fa-check"></i><b>4.2</b> R è un linguaggio funzionale che supporta la programmazione orientata a oggetti…</a></li>
+<li class="chapter" data-level="4.3" data-path="datioggetti.html"><a href="datioggetti.html#ilnomedellecose"><i class="fa fa-check"></i><b>4.3</b> Il nome delle cose.</a></li>
+<li class="chapter" data-level="4.4" data-path="datioggetti.html"><a href="datioggetti.html#strutturedati"><i class="fa fa-check"></i><b>4.4</b> Strutture di dati.</a></li>
+<li class="chapter" data-level="4.5" data-path="datioggetti.html"><a href="datioggetti.html#vettoriatomici"><i class="fa fa-check"></i><b>4.5</b> Vettori atomici.</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="datioggetti.html"><a href="datioggetti.html#vettori1D"><i class="fa fa-check"></i><b>4.5.1</b> Vettori ad una dimensione.</a></li>
+<li class="chapter" data-level="4.5.2" data-path="datioggetti.html"><a href="datioggetti.html#vettori-atomici-a-2-o-più-dimensioni-matrici-e-array."><i class="fa fa-check"></i><b>4.5.2</b> Vettori atomici a 2 o più dimensioni: matrici e array.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="datioggetti.html"><a href="datioggetti.html#i-data-frame-e-le-liste."><i class="fa fa-check"></i><b>4.6</b> I data frame e le liste.</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="datioggetti.html"><a href="datioggetti.html#dataframebenemale"><i class="fa fa-check"></i><b>4.6.1</b> I data frame, nel bene e nel male.</a></li>
+<li class="chapter" data-level="4.6.2" data-path="datioggetti.html"><a href="datioggetti.html#le-liste."><i class="fa fa-check"></i><b>4.6.2</b> Le liste.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="datioggetti.html"><a href="datioggetti.html#altre-cose-strane-tabelle-di-conte-serie-temporali-date-e-ore."><i class="fa fa-check"></i><b>4.7</b> <em>Altre cose strane: tabelle di conte, serie temporali, date e ore.</em></a></li>
+<li class="chapter" data-level="4.8" data-path="datioggetti.html"><a href="datioggetti.html#indsel"><i class="fa fa-check"></i><b>4.8</b> Indirizzare, selezionare.</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="datioggetti.html"><a href="datioggetti.html#indirizzare-per-posizione."><i class="fa fa-check"></i><b>4.8.1</b> Indirizzare per posizione.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="datioggetti.html"><a href="datioggetti.html#usare-i-nomi."><i class="fa fa-check"></i><b>4.8.2</b> Usare i nomi.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="datioggetti.html"><a href="datioggetti.html#usare-valori-logici."><i class="fa fa-check"></i><b>4.8.3</b> Usare valori logici.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="datioggetti.html"><a href="datioggetti.html#attach-with-within."><i class="fa fa-check"></i><b>4.9</b> <code>attach()</code>, <code>with()</code>, <code>within()</code>.</a></li>
+<li class="chapter" data-level="4.10" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in-e-funzioni-definite-dallutente."><i class="fa fa-check"></i><b>4.10</b> <em>Funzioni “built-in” e funzioni definite dall’utente.</em></a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="datioggetti.html"><a href="datioggetti.html#operatorisemplici"><i class="fa fa-check"></i><b>4.10.1</b> Semplici funzioni matematiche, trigonometriche, statistiche, logiche, etc.</a></li>
+<li class="chapter" data-level="4.10.2" data-path="datioggetti.html"><a href="datioggetti.html#operatori."><i class="fa fa-check"></i><b>4.10.2</b> Operatori.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in."><i class="fa fa-check"></i><b>4.10.3</b> Funzioni built-in.</a></li>
+<li class="chapter" data-level="4.10.4" data-path="datioggetti.html"><a href="datioggetti.html#userdeffunc"><i class="fa fa-check"></i><b>4.10.4</b> Funzioni definite dall’utente.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="datioggetti.html"><a href="datioggetti.html#programmare-con-stile."><i class="fa fa-check"></i><b>4.11</b> Programmare, con stile.</a></li>
+<li class="chapter" data-level="4.12" data-path="datioggetti.html"><a href="datioggetti.html#un-ambiente-affollato."><i class="fa fa-check"></i><b>4.12</b> Un ambiente affollato.</a></li>
+<li class="chapter" data-level="4.13" data-path="datioggetti.html"><a href="datioggetti.html#altrerisorsedati"><i class="fa fa-check"></i><b>4.13</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-italiano.-2"><i class="fa fa-check"></i><b>4.13.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="4.13.2" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-inglese.-2"><i class="fa fa-check"></i><b>4.13.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html"><i class="fa fa-check"></i><b>5</b> Dentro e fuori R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#cosa-cè-da-imparare-in-questo-capitolo.-4"><i class="fa fa-check"></i><b>5.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="5.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#ognicosaalsuoposto"><i class="fa fa-check"></i><b>5.2</b> Ogni cosa al suo posto: working directory, progetti, etc.</a></li>
+<li class="chapter" data-level="5.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#facciamolasemplice"><i class="fa fa-check"></i><b>5.3</b> Facciamola semplice: il menu <code>Import Dataset</code>.</a></li>
+<li class="chapter" data-level="5.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#usareadr"><i class="fa fa-check"></i><b>5.4</b> Gestire file di testo con <code>readr.</code></a></li>
+<li class="chapter" data-level="5.5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#tutti-i-comandi-o-quasi-per-importare-file-di-testo"><i class="fa fa-check"></i><b>5.5</b> Tutti i comandi (o quasi) per importare file di testo…</a></li>
+<li class="chapter" data-level="5.6" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-di-dati."><i class="fa fa-check"></i><b>5.6</b> Altri formati di dati.</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#da-e-per-excel."><i class="fa fa-check"></i><b>5.6.1</b> Da e per Excel.</a></li>
+<li class="chapter" data-level="5.6.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-foreign-e-hmisc-e-haven."><i class="fa fa-check"></i><b>5.6.2</b> Altri formati: <code>foreign</code> e <code>Hmisc</code> e <code>haven</code>.</a></li>
+<li class="chapter" data-level="5.6.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#un-richiamo-file-.rdata-e-.rds"><i class="fa fa-check"></i><b>5.6.3</b> Un richiamo: file <code>.Rdata</code> e <code>.rds</code></a></li>
+<li class="chapter" data-level="5.6.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#e-andato-tutto-bene"><i class="fa fa-check"></i><b>5.6.4</b> E’ andato tutto bene?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#lavorare-con-i-nomi-dei-file-e-le-directory."><i class="fa fa-check"></i><b>5.7</b> Lavorare con i nomi dei file e le directory.</a></li>
+<li class="chapter" data-level="5.8" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app1sintassi"><i class="fa fa-check"></i><b>5.8</b> <strong>Appendice 1</strong>. <em>Un piccolo dettaglio sulla sintassi.</em></a></li>
+<li class="chapter" data-level="5.9" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app2finqui"><i class="fa fa-check"></i><b>5.9</b> <strong>Appendice 2</strong>. <em>Se sei arrivat* fin qui…</em></a></li>
+<li class="chapter" data-level="5.10" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altrerisdentrofuori"><i class="fa fa-check"></i><b>5.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#risorse-in-inglese.-3"><i class="fa fa-check"></i><b>5.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="grafica.html"><a href="grafica.html"><i class="fa fa-check"></i><b>6</b> Introduzione alla grafica scientifica con R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="grafica.html"><a href="grafica.html#cosa-cè-da-imparare-in-questo-capitolo.-5"><i class="fa fa-check"></i><b>6.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="6.2" data-path="grafica.html"><a href="grafica.html#igraficifattibene"><i class="fa fa-check"></i><b>6.2</b> I grafici, fatti bene.</a></li>
+<li class="chapter" data-level="6.3" data-path="grafica.html"><a href="grafica.html#sistemigrafici"><i class="fa fa-check"></i><b>6.3</b> I sistemi grafici in R.</a></li>
+<li class="chapter" data-level="6.4" data-path="grafica.html"><a href="grafica.html#visualizzare-o-salvare-i-grafici-i-device."><i class="fa fa-check"></i><b>6.4</b> Visualizzare o salvare i grafici: i device.</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="grafica.html"><a href="grafica.html#devicegrafici"><i class="fa fa-check"></i><b>6.4.1</b> Salvare i grafici: i file come device grafici.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="grafica.html"><a href="grafica.html#ggsave"><i class="fa fa-check"></i><b>6.4.2</b> Salvare i grafici di <code>ggplot2</code> con <code>ggsave</code>.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="grafica.html"><a href="grafica.html#le-dimensioni-del-device-e-le-opzioni-grafiche."><i class="fa fa-check"></i><b>6.4.3</b> <em>Le dimensioni del device e le opzioni grafiche.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="grafica.html"><a href="grafica.html#r-a-colori."><i class="fa fa-check"></i><b>6.5</b> R, a colori.</a></li>
+<li class="chapter" data-level="6.6" data-path="grafica.html"><a href="grafica.html#graficaggplot2"><i class="fa fa-check"></i><b>6.6</b> La grammatica della grafica con ggplot2.</a></li>
+<li class="chapter" data-level="6.7" data-path="grafica.html"><a href="grafica.html#grafqual"><i class="fa fa-check"></i><b>6.7</b> Grafici per variabili qualitative.</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="grafica.html"><a href="grafica.html#diagrammi-a-barre."><i class="fa fa-check"></i><b>6.7.1</b> Diagrammi a barre.</a></li>
+<li class="chapter" data-level="6.7.2" data-path="grafica.html"><a href="grafica.html#fare-di-più-con-i-grafici-per-variabili-qualitative."><i class="fa fa-check"></i><b>6.7.2</b> <em>Fare di più con i grafici per variabili qualitative.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="grafica.html"><a href="grafica.html#grafquant"><i class="fa fa-check"></i><b>6.8</b> Grafici per variabili quantitative.</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="grafica.html"><a href="grafica.html#istogrammi-e-altre-rappresentazioni-della-densità."><i class="fa fa-check"></i><b>6.8.1</b> Istogrammi e altre rappresentazioni della densità.</a></li>
+<li class="chapter" data-level="6.8.2" data-path="grafica.html"><a href="grafica.html#boxplot"><i class="fa fa-check"></i><b>6.8.2</b> Boxplot.</a></li>
+<li class="chapter" data-level="6.8.3" data-path="grafica.html"><a href="grafica.html#rappresentazioni-di-indicatori-di-tendenza-centrale-e-di-variabilità."><i class="fa fa-check"></i><b>6.8.3</b> Rappresentazioni di indicatori di tendenza centrale e di variabilità.</a></li>
+<li class="chapter" data-level="6.8.4" data-path="grafica.html"><a href="grafica.html#scatterplots"><i class="fa fa-check"></i><b>6.8.4</b> Grafici a dispersione.</a></li>
+<li class="chapter" data-level="6.8.5" data-path="grafica.html"><a href="grafica.html#personalizzare-i-grafici-con-ggplot2."><i class="fa fa-check"></i><b>6.8.5</b> <em>Personalizzare i grafici con ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.6" data-path="grafica.html"><a href="grafica.html#estensionigg"><i class="fa fa-check"></i><b>6.8.6</b> <em>Estensioni per ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.7" data-path="grafica.html"><a href="grafica.html#qplot"><i class="fa fa-check"></i><b>6.8.7</b> <em>Veloce veloce: qplot()</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="grafica.html"><a href="grafica.html#graficabase"><i class="fa fa-check"></i><b>6.9</b> <em>La grafica di base in R: un salvagente?</em></a></li>
+<li class="chapter" data-level="6.10" data-path="grafica.html"><a href="grafica.html#altrerisgraf"><i class="fa fa-check"></i><b>6.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="grafica.html"><a href="grafica.html#risorse-in-inglese.-4"><i class="fa fa-check"></i><b>6.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statdesc.html"><a href="statdesc.html"><i class="fa fa-check"></i><b>7</b> Esplorare con i numeri</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statdesc.html"><a href="statdesc.html#cosa-cè-da-imparare-in-questo-capitolo.-6"><i class="fa fa-check"></i><b>7.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="7.2" data-path="statdesc.html"><a href="statdesc.html#una-piccola-premessa-gruppi-livelli-sottoinsiemi."><i class="fa fa-check"></i><b>7.2</b> Una piccola premessa: gruppi, livelli, sottoinsiemi.</a></li>
+<li class="chapter" data-level="7.3" data-path="statdesc.html"><a href="statdesc.html#statcontinui"><i class="fa fa-check"></i><b>7.3</b> Statistiche riassuntive per dati continui.</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="statdesc.html"><a href="statdesc.html#misuretendcentrale"><i class="fa fa-check"></i><b>7.3.1</b> Misure di tendenza centrale e di variabilità.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="statdesc.html"><a href="statdesc.html#altre-funzioni-utili."><i class="fa fa-check"></i><b>7.4</b> <em>Altre funzioni utili.</em></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="statdesc.html"><a href="statdesc.html#lavorare-sui-vettori."><i class="fa fa-check"></i><b>7.4.1</b> <em>Lavorare sui vettori.</em></a></li>
+<li class="chapter" data-level="7.4.2" data-path="statdesc.html"><a href="statdesc.html#funzioni-che-producono-statistiche-riassuntive."><i class="fa fa-check"></i><b>7.4.2</b> <em>Funzioni che producono statistiche riassuntive.</em></a></li>
+<li class="chapter" data-level="7.4.3" data-path="statdesc.html"><a href="statdesc.html#statsummarise"><i class="fa fa-check"></i><b>7.4.3</b> Statistiche, ordinate.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="statdesc.html"><a href="statdesc.html#statgruppi"><i class="fa fa-check"></i><b>7.4.4</b> Statistiche riassuntive per gruppi.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="statdesc.html"><a href="statdesc.html#enormale"><i class="fa fa-check"></i><b>7.5</b> Ma è normale?</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="statdesc.html"><a href="statdesc.html#normal-probability-plot."><i class="fa fa-check"></i><b>7.5.1</b> Normal probability plot.</a></li>
+<li class="chapter" data-level="7.5.2" data-path="statdesc.html"><a href="statdesc.html#testnorm"><i class="fa fa-check"></i><b>7.5.2</b> Test statistici per la normalità.</a></li>
+<li class="chapter" data-level="7.5.3" data-path="statdesc.html"><a href="statdesc.html#comefaremeglio"><i class="fa fa-check"></i><b>7.5.3</b> <em>Come fare di meglio con i risultati dei test</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="statdesc.html"><a href="statdesc.html#intervalli-di-confidenza."><i class="fa fa-check"></i><b>7.6</b> Intervalli di confidenza.</a></li>
+<li class="chapter" data-level="7.7" data-path="statdesc.html"><a href="statdesc.html#statdesccat"><i class="fa fa-check"></i><b>7.7</b> Riassumere i dati per le variabili categoriche.</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="statdesc.html"><a href="statdesc.html#tabelle-di-frequenza-e-contingenza."><i class="fa fa-check"></i><b>7.7.1</b> Tabelle di frequenza e contingenza.</a></li>
+<li class="chapter" data-level="7.7.2" data-path="statdesc.html"><a href="statdesc.html#gmosaico"><i class="fa fa-check"></i><b>7.7.2</b> <em>Grafici a mosaico</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="statdesc.html"><a href="statdesc.html#veloceveloce"><i class="fa fa-check"></i><b>7.8</b> <em>Veloce veloce</em></a></li>
+<li class="chapter" data-level="7.9" data-path="statdesc.html"><a href="statdesc.html#altrerisstatdesc"><i class="fa fa-check"></i><b>7.9</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="statdesc.html"><a href="statdesc.html#risorse-in-italiano.-3"><i class="fa fa-check"></i><b>7.9.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="7.9.2" data-path="statdesc.html"><a href="statdesc.html#risorse-in-inglese.-5"><i class="fa fa-check"></i><b>7.9.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="reportR.html"><a href="reportR.html"><i class="fa fa-check"></i><b>8</b> Creare report e notebook con R.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="reportR.html"><a href="reportR.html#cosa-cè-da-imparare-in-questo-capitolo.-7"><i class="fa fa-check"></i><b>8.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="8.2" data-path="reportR.html"><a href="reportR.html#reportminimo"><i class="fa fa-check"></i><b>8.2</b> Il minimo indispensabile.</a></li>
+<li class="chapter" data-level="8.3" data-path="reportR.html"><a href="reportR.html#gli-elementi-di-un-report-in-r-markdown."><i class="fa fa-check"></i><b>8.3</b> <em>Gli elementi di un report in R Markdown.</em></a></li>
+<li class="chapter" data-level="8.4" data-path="reportR.html"><a href="reportR.html#altri-formati-di-documento-con-r-markdown."><i class="fa fa-check"></i><b>8.4</b> <em>Altri formati di documento con R Markdown.</em></a></li>
+<li class="chapter" data-level="8.5" data-path="reportR.html"><a href="reportR.html#quarto."><i class="fa fa-check"></i><b>8.5</b> <em>Quarto.</em></a></li>
+<li class="chapter" data-level="8.6" data-path="reportR.html"><a href="reportR.html#altrerisreport"><i class="fa fa-check"></i><b>8.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="reportR.html"><a href="reportR.html#risorse-in-italiano.-4"><i class="fa fa-check"></i><b>8.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="8.6.2" data-path="reportR.html"><a href="reportR.html#risorse-in-inglese.-6"><i class="fa fa-check"></i><b>8.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>9</b> Lottare con i dati.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wrangling.html"><a href="wrangling.html#cosa-cè-da-imparare-in-questo-capitolo.-8"><i class="fa fa-check"></i><b>9.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="9.2" data-path="wrangling.html"><a href="wrangling.html#rendere-tidy-i-dati."><i class="fa fa-check"></i><b>9.2</b> Rendere tidy i dati.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="wrangling.html"><a href="wrangling.html#tidyresh"><i class="fa fa-check"></i><b>9.2.1</b> Riordinare con <code>tidyr</code> e <code>dplyr</code>: esempio minimo.</a></li>
+<li class="chapter" data-level="9.2.2" data-path="wrangling.html"><a href="wrangling.html#funzioni-avanzate-con-tidyr."><i class="fa fa-check"></i><b>9.2.2</b> <em>Funzioni avanzate con <code>tidyr</code>.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="wrangling.html"><a href="wrangling.html#dplyr"><i class="fa fa-check"></i><b>9.3</b> il cavallo di battaglia del <code>data wrangling</code>: <code>dplyr</code>.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="wrangling.html"><a href="wrangling.html#filterselect"><i class="fa fa-check"></i><b>9.3.1</b> Estrarre gruppi di righe o colonne.</a></li>
+<li class="chapter" data-level="9.3.2" data-path="wrangling.html"><a href="wrangling.html#riordinare-i-dati."><i class="fa fa-check"></i><b>9.3.2</b> Riordinare i dati.</a></li>
+<li class="chapter" data-level="9.3.3" data-path="wrangling.html"><a href="wrangling.html#muta"><i class="fa fa-check"></i><b>9.3.3</b> Trasformare con <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="9.3.4" data-path="wrangling.html"><a href="wrangling.html#summarise"><i class="fa fa-check"></i><b>9.3.4</b> Riassumere i dati con <code>summarise()</code>.</a></li>
+<li class="chapter" data-level="9.3.5" data-path="wrangling.html"><a href="wrangling.html#join"><i class="fa fa-check"></i><b>9.3.5</b> Database e tabelle relazionali: unire tabelle con _join.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="wrangling.html"><a href="wrangling.html#strutturecontrollo"><i class="fa fa-check"></i><b>9.4</b> Strutture di controllo.</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="wrangling.html"><a href="wrangling.html#loop"><i class="fa fa-check"></i><b>9.4.1</b> <em>Loop (o cicli) e cose simili.</em></a></li>
+<li class="chapter" data-level="9.4.2" data-path="wrangling.html"><a href="wrangling.html#functional"><i class="fa fa-check"></i><b>9.4.2</b> <em>Un’alternativa (veloce e ordinata) ai loop: i “functional”.</em></a></li>
+<li class="chapter" data-level="9.4.3" data-path="wrangling.html"><a href="wrangling.html#ifelsestat"><i class="fa fa-check"></i><b>9.4.3</b> <em>Esecuzione condizionale.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="wrangling.html"><a href="wrangling.html#Soluzione"><i class="fa fa-check"></i><b>9.5</b> La soluzione dell’esercizio.</a></li>
+<li class="chapter" data-level="9.6" data-path="wrangling.html"><a href="wrangling.html#altreriswrangling"><i class="fa fa-check"></i><b>9.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="wrangling.html"><a href="wrangling.html#risorse-in-italiano.-5"><i class="fa fa-check"></i><b>9.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="wrangling.html"><a href="wrangling.html#risorse-in-inglese.-7"><i class="fa fa-check"></i><b>9.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html"><i class="fa fa-check"></i><b>10</b> Citazioni, crediti, copyright, ringraziamenti.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#citazioni."><i class="fa fa-check"></i><b>10.1</b> Citazioni.</a></li>
+<li class="chapter" data-level="" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#credits-e-copyright."><i class="fa fa-check"></i>Credits e copyright.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pigR: R, per pigri</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dentroefuoriR" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Dentro e fuori R<a href="dentroefuoriR.html#dentroefuoriR" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>v1.2.1 3/11/2023</p>
+<div id="cosa-cè-da-imparare-in-questo-capitolo.-4" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Cosa c’è da imparare in questo capitolo.<a href="dentroefuoriR.html#cosa-cè-da-imparare-in-questo-capitolo.-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aprire, salvare e condividere file di dati è una necessità costante per chi si occupa di statistica e analisi dei dati. Le tabelle di dati possono essere salvate in una varietà di formati, alcuni gestibili da tutti i software (file di testo, a spaziatura fissa o delimitati, come i file .dat, .txt, .tab, .tsv, .csv)<a href="#fn103" class="footnote-ref" id="fnref103"><sup>103</sup></a> e altri proprietari (.xlsx, .numbers, etc., ma anche fogli di calcolo on line come Google Fogli). Nella tua vita precedente ti sei abituat* a usare le funzioni e i menu del sistema operativo del tuo computer o del tuo programma preferito per fogli di calcolo per navigare nel file system, creare, aprire e chiudere cartelle, cercare, aprire e salvare file. Per quanto tu possa sfruttare molte delle funzioni di RStudio per fare praticamente le stesse cose (vedi dopo), se hai deciso di fare lo sforzo di leggere questo libro è per fare qualcosa di più e, soprattutto per poterlo fare in maniera riproducibile e, se possibile, automatizzata.<br />
+Come al solito, sei liber* di scegliere il tuo percorso. Se non hai tempo, o voglia, leggi solo le prime tre sezioni (<a href="dentroefuoriR.html#ognicosaalsuoposto">5.2</a>; <a href="dentroefuoriR.html#facciamolasemplice">5.3</a>; <a href="dentroefuoriR.html#usareadr">5.4</a>) e lascia il resto per dopo. Nei capitoli successivi troverai diversi esempi di comandi per leggere e salvare file di testo.<br />
+Se sei interessat* ad operazioni più complesse, leggi anche le <em>Appendici</em> <a href="dentroefuoriR.html#app1sintassi">5.8</a> e <a href="dentroefuoriR.html#app2finqui">5.9</a>.</p>
+</div>
+<div id="ognicosaalsuoposto" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Ogni cosa al suo posto: working directory, progetti, etc.<a href="dentroefuoriR.html#ognicosaalsuoposto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Quando inizi una sessione di R (aprendo direttamente R o aprendo RStudio), il software sceglie automaticamente una cartella di lavoro (<em>working directory</em>), che diventerà il luogo in cui verranno cercati o salvati i file, a meno che tu non fornisca indicazioni diverse. Di default la tua working directory è la tua home come utente<a href="#fn104" class="footnote-ref" id="fnref104"><sup>104</sup></a>. Per conoscere quale è la tua working directory scrivi nella console<a href="#fn105" class="footnote-ref" id="fnref105"><sup>105</sup></a>:</p>
+<pre><code>&gt;getwd()</code></pre>
+<p>Nel mio caso (uso un progetto, vedi dopo), il risultato è:</p>
+<pre><code>&gt;&quot;/Users/eugenio/pigR&quot;</code></pre>
+<p>Quindi, la cartella su cui sto lavorando è <code>pigR</code>, che è contenuta nella mia home, <code>eugenio</code>, che a sua volta è contenuta nella cartella <code>Users</code> del mio file system. Io uso MacOS, quindi il delimitatore è <code>/</code>, mentre nei sistemi Windows è <code>\</code>.</p>
+<p>Puoi cambiare la working directory con il comando <code>setwd()</code>.
+Guarda cosa succede usando questi comandi: copiali e incollali in uno script vuoto o scrivili nella console (ho già omesso il prompt) ed eseguili per <a href="https://youtu.be/UWxKfUo8Zao?si=bKXvxcJQaBpprc81">vedere l’effetto che fa</a>:</p>
+<pre><code># stampo a console la wd e attribuisco il nome lamiawd all&#39;oggetto restituito
+# dalla funzione getwd()
+
+lamiawd &lt;- getwd()
+
+# che tipo di oggetto è?
+# cambio la wd. Il comando non è specifico per il mio sistema, perché .. indica la
+# cartella che contiene la cartella su cui sto lavorando
+
+setwd(&quot;..&quot;)
+getwd()
+
+# riporto al wd a quella originale
+
+setwd(lamiawd)</code></pre>
+<p>Ovviamente, puoi anche fare le stesse operazioni usando i menu di R studio (figura <a href="dentroefuoriR.html#fig:scelgowd">5.1</a>), che ti consentono di scegliere la working directory usando dei semplici menu interattivi.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scelgowd"></span>
+<img src="images/wd.jpg" alt="Scegliere la working directory da menu." width="90%" />
+<p class="caption">
+Figura 5.1: Scegliere la working directory da menu.
+</p>
+</div>
+<hr />
+<p>Mentre quando si lavora in modo interattivo è abbastanza facile fare queste operazioni, quando si lavora con uno script, un documento interattivo o un rapporto R Markdown (vedi capitoli successivi) questo non è possibile. Inoltre, diventa laboriosissimo indicare con chiarezza dove si è lavorato o riprodurre il flusso di analisi o, peggio ancora, farlo riprodurre a qualcun altro.</p>
+<p>Fortunatamente, RStudio mette a disposizione un sistema molto più efficiente: la creazione di <strong>progetti</strong>. Un progetto è fondamentalmente una cartella in cui è contenuto tutto il materiale (script, file di dati, file di immagini, storia, etc.) per un determinato progetto di lavoro. RStudio si occupa di creare tutta una serie di cartelle e file nascosti che, quando riapriamo un progetto, ci permette di riprendere esattamente dal punto dove avevamo lasciato (specialmente se ci ricordiamo di salvare l’ambiente di lavoro quando usciamo da R). Basta trasferire l’intera cartella a qualcun altro perché all’apertura del progetto tutto ritorni esattamente nello stato in cui lo hai lasciato tu. Geniale!!!!</p>
+<p>Ci sono 3 modi diversi di creare un progetto:</p>
+<ul>
+<li><p>usando il menu in alto a destra in RStudio (vedi figura <a href="dentroefuoriR.html#fig:menuprogetti">5.2</a>)</p></li>
+<li><p>usando l’icona di accesso rapido in alto a sinistra (un piccolo cubo con la lettera R e un <code>+</code> bianco in campo verde)</p></li>
+<li><p>usando il menu <code>File -&gt; New project</code></p></li>
+</ul>
+<p>Il progetto può essere creato in una cartella (directory) esistente o in una nuova cartella<a href="#fn106" class="footnote-ref" id="fnref106"><sup>106</sup></a>.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:menuprogetti"></span>
+<img src="images/menu_progetti.jpg" alt="Il menu progetti." width="90%" />
+<p class="caption">
+Figura 5.2: Il menu progetti.
+</p>
+</div>
+<hr />
+<p>Una volta creato un progetto, il suo nome comparirà sotto la voce File -&gt; Open Recent Projects e nel menu progetti (figura <a href="dentroefuoriR.html#fig:menuprogetti">5.2</a>). E’ anche possibile aprire un progetto semplicemente con un doppio click.</p>
+</div>
+<div id="facciamolasemplice" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Facciamola semplice: il menu <code>Import Dataset</code>.<a href="dentroefuoriR.html#facciamolasemplice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Come ho già detto da qualche parte, se sei fortunat* lavorerai prevalentemente con tabelle di dati, create da te con un programma di foglio di calcolo e potrai salvarle sia in formato testo (sai farlo, vero?) che nel formato proprietario della app che stai usando (o in formato MS Excel, magari creato usando Fogli di Google, o Numbers, o chissà che). In questo caso, dovresti sapere come è fatto il tuo file e non dovresti avere troppi problemi a importarlo, perché sicuramente avrai seguito i miei consigli sulla struttura delle tabelle (<a href="datioggetti.html#anatab">4.1.3</a>) e sui nomi delle variabili (<a href="datioggetti.html#ilnomedellecose">4.3</a>). In altri casi potresti trovarti ad aprire file di cui non conosci la struttura, non sai se contengono o meno righe di commento, come sono indicati i missing data, etc. Fortunatamente per te, RStudio mette a disposizione nel pannello dell’ambiente un po’ di menu semplici e diretti per aprire file in formato .RData o in formato testo o Excel.<br />
+Proviamo subito con un semplice esercizio. Per sicurezza esporterai prima un dataset di R in diversi formati (è semplice, basta seguire le istruzioni) e poi lo importerai in maniera interattiva.</p>
+<ol style="list-style-type: decimal">
+<li><p>Crea un progetto in una cartella esistente o in una nuova cartella<a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a></p></li>
+<li><p>Crea un nuovo script con <code>File-&gt;New-&gt;R Script</code></p></li>
+<li><p>Copia e incolla questo codice (dovresti già aver installato i pacchetti necessari nei capitoli precedenti, altrimenti segui le istruzioni presentate nel Paragrafo <a href="inter.html#tabpackages">2.2.10</a>)</p></li>
+</ol>
+<pre><code>library(tidyverse)
+library (readxl)
+library(vcd)
+library(openxlsx)
+data(&quot;Arthritis&quot;)
+# salva un file delimitato da , con . come separatore decimale
+write_csv(Arthritis, file = &quot;Arthritis_comma.csv&quot;)
+# salva un file delimitato da ; con . come separatore decimale
+write_csv2(Arthritis, file = &quot;Arthritis_semicolon.csv&quot;)
+# salva un file delimitato da tabulazioni con . come separatore decimale
+write_tsv(Arthritis, file = &quot;Arthritis_tab.txt&quot;)
+# salva un file .xlsx
+write.xlsx(Arthritis, file = &quot;Arthritis.xlsx&quot;)</code></pre>
+<p>Ora fai girare lo script seguendo uno dei metodi descritti nel Capitolo <a href="inter.html#inter">2</a>. Come risultato, i file che hai salvato dovrebbero apparire nella tua working directory. Useremo questi file per provare a importare i dati con la funzionalità ‘Import Dataset’ di RStudio. E’ possibile anche aprire lo stesso menu da <code>File-&gt;Import Dataset</code>.</p>
+<p>Ora proviamo a importare uno qualsiasi dei file. Nell’esempio successivo userò Arthritis_semicolon.csv, ma tu puoi sceglierne un altro, ovviamente scegliendo di conseguenza le opzioni migliori.</p>
+<p>Nelle Figure <a href="dentroefuoriR.html#fig:importdataset1">5.3</a> e <a href="dentroefuoriR.html#fig:importdataset2">5.4</a> sono illustrati i passaggi da seguire.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:importdataset1"></span>
+<img src="images/import_dataset_1.jpg" alt="Aprire il menu Import Dataset." width="90%" />
+<p class="caption">
+Figura 5.3: Aprire il menu Import Dataset.
+</p>
+</div>
+<hr />
+<p>Prima di tutto seleziona <code>Import Dataset -&gt; From Text (readr)</code>. <code>readr</code> è uno dei pacchetti dei <code>tidyverse</code> ed è ottimizzato per aprire e salvare in modo veloce ed efficiente file di testo.<br />
+La finestra che otterrai è mostrata nella figura <a href="dentroefuoriR.html#fig:importdataset2">5.4</a>. puoi scegliere il file che vuoi aprire navigando fra le cartelle con il tasto <Browse><a href="#fn108" class="footnote-ref" id="fnref108"><sup>108</sup></a>. Successivamente, selezionando le opzioni dei campi, dei checkbox e dei menu a tendina, sarà possibile impportare correttamente il file.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:importdataset2"></span>
+<img src="images/import_dataset_2.jpg" alt="Importare file di testo." width="90%" />
+<p class="caption">
+Figura 5.4: Importare file di testo.
+</p>
+</div>
+<hr />
+<p>Le funzioni dei campi, checkbox e menu dovrebbero essere abbastanza intuitive. Ad ogni modo:</p>
+<ul>
+<li><p><code>Name</code> consente di assegnare un nome all’oggetto importato</p></li>
+<li><p><code>Skip</code> consente di selezionare il numero di righe da scartare all’inizio del file: alcuni file di testo contengono commenti seguiti poi dai dati</p></li>
+<li><p><code>FirstRow as Names</code> indica, se selezionato, che la prima riga contiene i nomi delle variabili (di solito è così; in alternativa R userà dei nomi di default)</p></li>
+<li><p><code>Trim spaces</code> se selezionato eliminerà eventuali spazi vuoti prima o dopo il contenuto delle celle</p></li>
+<li><p><code>Open data viewer</code>, se selezionato, aprirà la tabella nel <code>Viewer</code> dopo l’importazione</p></li>
+<li><p><code>Delimiter</code> consente di scegliere il delimitatore delle colonne: se non siete certi provate e vedrete come il contenuto si distribuisce in colonne con le diverse opzioni</p></li>
+<li><p><code>Quotes</code> permette di determinare come vengono trattate le virgolette contenute nei campi</p></li>
+<li><p><code>Locale</code> consente di selezionare le opzioni che determineranno lingua, sistemi di data, delimitatore decimale etc.<a href="#fn109" class="footnote-ref" id="fnref109"><sup>109</sup></a></p></li>
+<li><p><code>Escape</code> consente di scegliere il carattere di escape, che serve per importare correttamente caratteri speciali, come <code>/</code></p></li>
+<li><p><code>Comment</code> consente di scegliere il carattere che precede i commenti</p></li>
+<li><p><code>NA</code> consente di scegliere il modo in cui sono codificati, nel file di importazione, i missing data; anche qui, potete fare un po’ di prove e vedere che succede, magari usando la barra di scorrimento verticale per dare un’occhiata.</p></li>
+</ul>
+<p>I comandi corrispondenti a queste azioni sono generati in automatico e possono essere copiati ed incollati in uno script (per rendere riproducibile l’azione).</p>
+<pre><code>library(readr)
+Arthritis_semicolon &lt;- read_delim(&quot;Arthritis_semicolon.csv&quot;, 
+    delim = &quot;;&quot;, escape_double = FALSE, trim_ws = TRUE)
+View(Arthritis_semicolon)</code></pre>
+<p>Se non lo si indica specificamente con un’opzione<a href="#fn110" class="footnote-ref" id="fnref110"><sup>110</sup></a>, <code>readr</code> determina automaticamente il tipo delle colonne dalle prime 1.000 osservazioni.<br />
+In realtà le opzioni di <code>readr</code> sono molto più numerose e forniscono un’enorme flessibilità nell’importazione dei dati. Le funzioni di <code>readr</code> sono in genere superiori alle corrispondenti funzioni di R base (vedi <a href="https://r4ds.had.co.nz/data-import.html">qui</a> il perché). Tuttavia, è importante ricordare che le funzioni di <code>readr</code> creano o usano <code>tibbles</code> e le <code>tibbles</code> non hanno, fra le altre cose, nomi di riga. Sono quindi inadatte ad alcune strutture di dati, come le matrici e gli array o i data frame con nomi di riga, che possono essere utili in diverse situazioni.<br />
+Lo stesso menu <code>Import Dataset</code> permette di importare molti altri tipi di file e di usare, se preferite, le funzioni di base. Sentitevi liberi di sperimentare, magari con i file che avete appena creato.</p>
+</div>
+<div id="usareadr" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Gestire file di testo con <code>readr.</code><a href="dentroefuoriR.html#usareadr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lavorare in maniera interattiva con il menu <code>Import Dataset</code> va bene finché non devi automatizzare il tuo flusso di lavoro o condividerlo con altri. In questo caso, devi abituarti a usare i comandi generati da questo menu in maniera programmatica<a href="#fn111" class="footnote-ref" id="fnref111"><sup>111</sup></a>. Rispetto alle funzioni di base è veloce ed efficiente e può leggere direttamente file da posizioni sul web. Prova a scrivere nella console:</p>
+<pre><code>study_metadata &lt;- read_tsv(&quot;https://tinyurl.com/34u6a9md&quot;)</code></pre>
+<p>Il comando importa la tabella presente all’indirizzo indicato e assegna l’oggetto<a href="#fn112" class="footnote-ref" id="fnref112"><sup>112</sup></a> al nome <code>study_metadata</code>. E’ addirittura possibile decomprimere e aprire file compressi.</p>
+<p><code>readr</code> offre una serie di comandi per importare file di testo delimitati in tibble e per salvare <code>tibble</code> come file di testo (tabella <a href="dentroefuoriR.html#tab:cmdimp">5.1</a>)</p>
+<table>
+<caption><span id="tab:cmdimp">Tabella 5.1: </span>Comandi per importare e esportare file di testo con <code>readr</code>.</caption>
+<colgroup>
+<col width="21%" />
+<col width="18%" />
+<col width="18%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Delimitatore</th>
+<th align="left">per importare</th>
+<th align="left">per esportare</th>
+<th align="left">Commenti</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">qualsiasi</td>
+<td align="left">read_delim()</td>
+<td align="left">write_delim()</td>
+<td align="left">richiedono più configurazione</td>
+</tr>
+<tr class="even">
+<td align="left">tabulazione</td>
+<td align="left">read_tsv()</td>
+<td align="left">write_tsv()</td>
+<td align="left">legge sia .tsv che .txt</td>
+</tr>
+<tr class="odd">
+<td align="left">virgola</td>
+<td align="left">read_csv()</td>
+<td align="left">write_csv()</td>
+<td align="left">è quello più comune</td>
+</tr>
+<tr class="even">
+<td align="left">punto e virgola</td>
+<td align="left">read_cvs2()</td>
+<td align="left">write_csv2()</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Tieni presente che la <code>,</code> è usata nei paesi che usano come delimitatore decimale il punto e il <code>;</code> è usato nei paesi che usano come delimitatore decimale la virgola.<br />
+Questi sono i comandi più comuni. I comandi di importazione hanno la struttura:</p>
+<pre><code>il_mio_oggetto &lt;- read_delim(file, ...)</code></pre>
+<p>dove <code>...</code> sono le opzioni (leggi l’aiuto delle funzioni!). Come hai visto <code>file</code> può essere un percorso di file<a href="#fn113" class="footnote-ref" id="fnref113"><sup>113</sup></a> o anche una URL. Il risultato è una tibble<a href="#fn114" class="footnote-ref" id="fnref114"><sup>114</sup></a>. Aprire file da una URL può essere particolarmente utile se lavori con una <a href="https://rstudio.cloud">versione cloud di R</a>].<br />
+I comandi per l’esportazione hanno la struttura:</p>
+<pre><code>write_delim(il_mio_oggetto, file, ...)</code></pre>
+<p>Fra le altre cose, offrono l’opzione <code>append</code> che, con <code>append = T</code>, permette di aggiungere dati alla fine di un file invece di sovrascriverlo.</p>
+<p><code>readr</code> può importare e esportare file molto grandi (e mostrare una barra di avanzamento mentre lo fa), ma gli oggetti importati non possono eccedere il limite di RAM utilizzabile (vedi dopo per qualche alternativa).</p>
+<p>Infine, <code>readr</code> può importare file delimitati da spazi (<code>read_table</code>) o con campi di larghezza fissa (<code>read_fwf</code>) e molte altre cose. Vedi le pagine di aiuto o vai al <a href="https://readr.tidyverse.org">sito di <code>readr</code></a> per saperne di più.</p>
+</div>
+<div id="tutti-i-comandi-o-quasi-per-importare-file-di-testo" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Tutti i comandi (o quasi) per importare file di testo…<a href="dentroefuoriR.html#tutti-i-comandi-o-quasi-per-importare-file-di-testo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Esistono molti modi di pelare un gatto e con R, l’importazione e l’esportazione di file di testo possono essere ottenute con diversi pacchetti. La tabella successiva ti offre un piccolo confronto.</p>
+<table>
+<caption><span id="tab:cmdimptxt">Tabella 5.2: </span>Comandi per importare e esportare file di testo in R.</caption>
+<thead>
+<tr class="header">
+<th align="left">Delimitatore</th>
+<th align="left">base/ultils</th>
+<th align="left">readr</th>
+<th align="left">data.table</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">qualsiasi</td>
+<td align="left">read.table()</td>
+<td align="left">read_delim()</td>
+<td align="left">fread()</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">write.table()</td>
+<td align="left">write_delim()</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">tabulazione</td>
+<td align="left">read.delim()</td>
+<td align="left">read_tsv()</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">write.delim()</td>
+<td align="left">write_tsv()</td>
+<td align="left">|</td>
+</tr>
+<tr class="odd">
+<td align="left">virgola</td>
+<td align="left">read.csv()</td>
+<td align="left">read_csv()</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">write.csv()</td>
+<td align="left">write_csv()</td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">punto e virgola</td>
+<td align="left">read.cvs2()</td>
+<td align="left">read_csv2()</td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">write.csv2()</td>
+<td align="left">write_csv2()</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>L’uso del <code>.</code> invece di <code>_</code> non è la sola differenza dei comandi base e quelli di <code>readr</code>.
+I comandi base:</p>
+<ul>
+<li><p>possono solo leggere da file</p></li>
+<li><p>creano data frame (e quindi conservano i nomi di riga)</p></li>
+<li><p>possono salvare sia matrici che data frame</p></li>
+<li><p>hanno dei default un pochino meno intuitivi</p></li>
+</ul>
+<p>Per esempio, <code>read.csv2()</code> assume, contemporaneamente, che il separatore sia il punto e virgola e che il delimitatore decimale sia il la virgola. Leggi l’aiuto dei singoli comandi per saperne di più.<br />
+<code>data.table::fread()</code> è una funzione molto potente e veloce per l’importazione di file di testo da file o da URL. Esistono molti confronti fra questa funzione e quelle di R e base e <code>readr</code>: prova a cercare da sol* con Google.<br />
+Come ultima cosa: in R è possibile aprire “connessioni” con file o URL per leggere o scrivere dati con vari sistemi. Questo argomento è un po’ oltre gli obiettivi di questo corso; consulta la Sezione <a href="dentroefuoriR.html#altrerisdentrofuori">5.10</a> per saperne di più.</p>
+</div>
+<div id="altri-formati-di-dati." class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Altri formati di dati.<a href="dentroefuoriR.html#altri-formati-di-dati." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Se collabori con altri analisti e ricercatori ti potrebbe capitare di dover importare ed esportare in altri formati. A parte formati specialistici (come i formati utilizzati per i network, gml, o quelli usati per gli alberi filogenetici), che sono gestiti da pacchetti specifici, è abbastanza frequente importare ed esportare dati in un formato leggibile da Microsoft Excel<a href="#fn115" class="footnote-ref" id="fnref115"><sup>115</sup></a> o formati specifici per altri software statistici (SPSS, SAS, Stata, Systat).<br />
+A parte questo, R ha un’incredibile quantità di pacchetti e funzioni per importare dati da database in diversi formati e per ottenere dati da social media e dal web. Vedi nella Sezione <a href="dentroefuoriR.html#altrerisdentrofuori">5.10</a> per qualche suggerimento specifico.</p>
+<div id="da-e-per-excel." class="section level3 hasAnchor" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> Da e per Excel.<a href="dentroefuoriR.html#da-e-per-excel." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il modo forse più efficiente e coerente con il <code>tidyverse</code> per importare tabelle da Excel è usare le funzioni <code>read_excel()</code> (giudica il formato dall’estensione), <code>read_xls()</code> o <code>read_xlsx()</code> (leggono i file del formato corrispondente) di <code>readxl</code>. Quest’ultimo è un pacchetto del tidyverse che non viene caricato esplicitamente con <code>library(tidyverse)</code> e va quindi installato e caricato a parte. Se hai salvato <code>Arthritis</code> in formato .xlsx prova a eseguire questi comandi<a href="#fn116" class="footnote-ref" id="fnref116"><sup>116</sup></a>:</p>
+<pre><code>&gt;arthritis_xlsx &lt;- read_excel(&quot;Arthritis.xlsx&quot;)
+&gt;arthritis_xlsx</code></pre>
+<p>Come vedi, i comandi del tidyverse hanno bisogno di pochissima configurazione e producono delle tibble.
+Curiosamente, <code>readxl</code> non ha funzioni per esportare i dati in Excel: readr offre due funzioni, <code>write_excel_csv()</code> e <code>write_excel_csv2()</code> che permettono di produrre file .csv più compatibili con Excel (che in realtà può importare facilmente file di testo, ma è sicuramente preferibile farlo da menu).<br />
+Il pacchetto <code>openxlsx</code> offre funzioni che permettono, in maniera più articolata di importare<a href="#fn117" class="footnote-ref" id="fnref117"><sup>117</sup></a> ed esportare file in formati .xls e .xlsx. Prevedibilmente, i nomi di questi funzioni sono <code>read.xlsx()</code> e <code>write.xlsx()</code>. Le opzioni di questi comandi sono piuttosto articolati. Prova a leggerne l’aiuto. Se non ricordi come, vai al Capitolo <a href="aiuto.html#aiuto">3</a>.</p>
+</div>
+<div id="altri-formati-foreign-e-hmisc-e-haven." class="section level3 hasAnchor" number="5.6.2">
+<h3><span class="header-section-number">5.6.2</span> Altri formati: <code>foreign</code> e <code>Hmisc</code> e <code>haven</code>.<a href="dentroefuoriR.html#altri-formati-foreign-e-hmisc-e-haven." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I pacchetti <code>foreign</code>, <code>Hmisc</code> e <code>haven</code> forniscono vari comandi per importare file di dati da altri software di analisi statistica. La Tabella <a href="dentroefuoriR.html#tab:altriformati">5.3</a> mostra alcuni esempi.</p>
+<table>
+<caption><span id="tab:altriformati">Tabella 5.3: </span>Comandi per importare e esportare file di testo in R.</caption>
+<thead>
+<tr class="header">
+<th align="left">Software</th>
+<th align="left">foreign</th>
+<th align="left">Hmisc</th>
+<th align="left">haven</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">STATA</td>
+<td align="left">read.dta()</td>
+<td align="left"></td>
+<td align="left">read_dta()</td>
+</tr>
+<tr class="even">
+<td align="left">SPSS</td>
+<td align="left">read.spss()</td>
+<td align="left">spss.get()</td>
+<td align="left">read_sav()</td>
+</tr>
+<tr class="odd">
+<td align="left">Systat</td>
+<td align="left">read.systat()</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left">SAS</td>
+<td align="left">read.ssd()</td>
+<td align="left">sas.get()</td>
+<td align="left">read_sas()</td>
+</tr>
+<tr class="odd">
+<td align="left">MINITAB</td>
+<td align="left">read.mtp()</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Tutti questi comandi restituiscono data frame. <code>foreign</code> fornisce solo alcuni comandi per l’esportazione. Fai riferimento all’aiuto per la sintassi e le opzioni. Le funzioni di <code>Hmisc</code> hanno in genere default più semplici. <code>haven</code> è un pacchetto del <code>tidyverse</code> e quindi restituisce <code>tibbles</code>.</p>
+</div>
+<div id="un-richiamo-file-.rdata-e-.rds" class="section level3 hasAnchor" number="5.6.3">
+<h3><span class="header-section-number">5.6.3</span> Un richiamo: file <code>.Rdata</code> e <code>.rds</code><a href="dentroefuoriR.html#un-richiamo-file-.rdata-e-.rds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R ha i propri formati per il salvataggio di file di dati in formati binari, estremamente compatti. Ne ho parlato in precedenza (Capitolo <a href="datioggetti.html#datioggetti">4</a>). Ecco un piccolo riassunto con esempi:</p>
+<ul>
+<li><p><code>save.image(file = "ilmiofile.Rdata")</code>: salva un’immagine dell’ambiente di lavoro, con gli oggetti e i loro nomi</p></li>
+<li><p><code>save(Arthirtis, Arthritis_semicolon, file = "imieioggetti.Rdata")</code>: salva una serie di oggetti (indicati con i loro nomi o come stringhe di caratteri<a href="#fn118" class="footnote-ref" id="fnref118"><sup>118</sup></a>); gli oggetti vengono salvati con i loro nomi</p></li>
+<li><p><code>load(file = "ilmiofile.Rdata")</code>: carica nell’ambiente di lavoro tutti gli oggetti contenuti nel file Rdata. copompresi i loro nomi</p></li>
+<li><p><code>saveRDS(Arthirtis, file = "Arthritis.rds")</code>: salva un singolo oggetto. L’oggetto salvato può essere ricaricato attribuendogli un altro nome</p></li>
+<li><p><code>readRDS(file = "Arthritis.rds")</code>: legge un singolo oggetto, che di solito viene attribuito a un nome, per esempio <code>arthritis_2 &lt;- readRDS(file = "Arthritis.rds")</code></p></li>
+</ul>
+<p>Nota che <code>readr</code> fornisce due versioni alternative a <code>readRDS()</code> e <code>saveRDS()</code>, rispettivamente <code>read_rds()</code> e <code>write_rds()</code><a href="#fn119" class="footnote-ref" id="fnref119"><sup>119</sup></a>.</p>
+</div>
+<div id="e-andato-tutto-bene" class="section level3 hasAnchor" number="5.6.4">
+<h3><span class="header-section-number">5.6.4</span> E’ andato tutto bene?<a href="dentroefuoriR.html#e-andato-tutto-bene" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ma come si fa a sapere se l’importazione è andata bene? Se tutte le variabili sono state importate nel formato (numerico, testo, logico, etc.) corretto? Se dati mancanti, commenti o righe vuote iniziali, finali etc. hanno causato problemi? Se ci sono spazi vuoti prima e dopo il testo di una colonna? Se i caratteri speciali sono stati improtati correttamente?<br />
+Innanzitutto, se non conosci con certezza la struttura della tabella che vuoi importare (magari semplicemente perché la ha creata qualcun altro) è sempre una buona idea dare una sbirciatina usando un programma di lettura di semplici file di testo (come Textedit in MacOS)
+Per tabelle molto piccole (&lt;1000 righe, qualche decina di colonne) è abbastanza facile aprire la tabella nel Viewer<a href="#fn120" class="footnote-ref" id="fnref120"><sup>120</sup></a> dopo l’importazione.<br />
+Per tabelle più grandi ci sono varie strategie (e stampare la tabella in console non è una di quelle):</p>
+<ul>
+<li><p>usare il comando <code>pillar::glimpse()</code><a href="#fn121" class="footnote-ref" id="fnref121"><sup>121</sup></a>, che fornisce una rappreentazione compatta mostrando i tipi delle variabili e alcune osservazioni;</p></li>
+<li><p>usare il comando <code>summary()</code>, che fornisce alcune statistiche riassuntive sulle colonne (adattandole a seconda del tipo dei dati nella colonna)</p></li>
+<li><p>fare qualche elaborazione grafica (vedi Capitolo <a href="grafica.html#grafica">6</a>)</p></li>
+</ul>
+<p>Prova tu stess* scrivendo nella console i seguenti comandi e confrontandone l’output (ricorda che <code>Arthritis</code> è un data frame):</p>
+<pre><code>&gt;View(Arthritis)
+&gt;Arthritis
+&gt;class(Arthritis)
+&gt;Arthritis_2 &lt;- as_tibble(Arthritis)
+&gt;Arthritis_2
+&gt;glimpse(Arthritis_2)
+&gt;summary(Arthritis)</code></pre>
+</div>
+</div>
+<div id="lavorare-con-i-nomi-dei-file-e-le-directory." class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Lavorare con i nomi dei file e le directory.<a href="dentroefuoriR.html#lavorare-con-i-nomi-dei-file-e-le-directory." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Capire l’uso dei percorsi per file e cartelle in R non è facile se sei abituat* a gestire questi compiti nelle interfacce grafiche del tuo sistema operativo. RStudio ti offre diverse opzioni per usare interfacce semplici e immediate (vedi sopra e vedi Capitolo <a href="inter.html#inter">2</a>).<br />
+Anche se imparare a usare i percorsi dei file non è necessario se vuoi lavorare in modo interattivo, è essenziale sia per ottenere analisi riproducibili e generalizzabili (riutilizzabile con altri tipi di file dello stesso tipo) e per lavorare con i report di RMarkdown<a href="#fn122" class="footnote-ref" id="fnref122"><sup>122</sup></a>. Nell’esempio successivo troverai un certo numero di comandi utili a gestire file e cartelle in maniera programmatica. Prova a usare questi comandi sul tuo sistema e nota le differenze nell’output. Se sei arrivat* fino a qui non sei del tutto pigr* e quindi dovresti fare, prima o poi, uno sforzo per leggere l’aiuto di questi comandi per sfruttarli al meglio.<br />
+Prima di tutto, i percorsi di file e directory sono specifici per ogni piattaforma; prova questo:</p>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="dentroefuoriR.html#cb562-1" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/eugenio/Library/CloudStorage/Dropbox/appunti e varie pigR/pigR_bookdown&quot;</code></pre>
+<p>Come sono separati i nomi delle cartelle nel percorso? Con <code>/</code> (caratteristico dei sistemi Unix) o <code>\</code> (caratteristico dei sistemi Windows e usato come carattere <code>escape</code> in R)?</p>
+<p>L’uso di delimitatori diversi per i percorsi pone un problema: quando apri e salvi i file devi definire i percorsi. Ammettiamo che tu voglia preparare un esempio con una cartella contenente uno script e alcuni file: se tu definissi i percorsi, anche relativi (alla cartella di lavoro, vedi sopra), sul tuo sistema, lo script non funzionerebbe necessariamente in un altro sistema operativo. Un modo per definire i percorsi indipendente dalla piattaforma è <code>file.path()</code>. In questo comando gli elementi del percorso (a loro volta singole cartelle o gruppi di cartelle) sono separati da “,”. Prova ad eseguire il comando descritto nell’esempio successivo sul tuo sistema e osserva cosa succede.</p>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="dentroefuoriR.html#cb564-1" tabindex="-1"></a>mypath <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">getwd</span>(), <span class="st">&quot;DataL3&quot;</span>)</span>
+<span id="cb564-2"><a href="dentroefuoriR.html#cb564-2" tabindex="-1"></a>mypath </span></code></pre></div>
+<pre><code>## [1] &quot;/Users/eugenio/Library/CloudStorage/Dropbox/appunti e varie pigR/pigR_bookdown/DataL3&quot;</code></pre>
+<p>E’ particolarmente utile ottenere una lista dei file e cartelle in una determinata cartella. Il comando relativo è <code>list.files()</code>. Guarda gli esempi successivi e prova ad eseguire gli stessi comandi sul tuo sistema.</p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="dentroefuoriR.html#cb566-1" tabindex="-1"></a>la_mia_lista_di_file <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">getwd</span>())</span>
+<span id="cb566-2"><a href="dentroefuoriR.html#cb566-2" tabindex="-1"></a><span class="fu">str</span>(la_mia_lista_di_file) </span></code></pre></div>
+<pre><code>##  chr [1:23] &quot;_book&quot; &quot;_bookdown_files&quot; &quot;_bookdown.yml&quot; &quot;_main_files&quot; ...</code></pre>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="dentroefuoriR.html#cb568-1" tabindex="-1"></a><span class="co"># che cos&#39;é? Che tipo di oggetto? Puoi immaginare comandi con cui usarlo?</span></span>
+<span id="cb568-2"><a href="dentroefuoriR.html#cb568-2" tabindex="-1"></a></span>
+<span id="cb568-3"><a href="dentroefuoriR.html#cb568-3" tabindex="-1"></a>la_mia_lista_di_file</span></code></pre></div>
+<pre><code>##  [1] &quot;_book&quot;                                   
+##  [2] &quot;_bookdown_files&quot;                         
+##  [3] &quot;_bookdown.yml&quot;                           
+##  [4] &quot;_main_files&quot;                             
+##  [5] &quot;_main.Rmd&quot;                               
+##  [6] &quot;01--Introduzione.Rmd&quot;                    
+##  [7] &quot;02--Interfacce-e-ambienti.Rmd&quot;           
+##  [8] &quot;03--Chiedere-aiuto.Rmd&quot;                  
+##  [9] &quot;04--Dati_oggetti_funzioni_linguaggio.Rmd&quot;
+## [10] &quot;05--Dentro_e_fuori.Rmd&quot;                  
+## [11] &quot;06--Grafica.Rmd&quot;                         
+## [12] &quot;07--Descrivere-con-i-numeri.Rmd&quot;         
+## [13] &quot;08--Creare_report.Rmd&quot;                   
+## [14] &quot;09--Lottare_con_i_dati.Rmd&quot;              
+## [15] &quot;10--Credits.Rmd&quot;                         
+## [16] &quot;images&quot;                                  
+## [17] &quot;index.Rmd&quot;                               
+## [18] &quot;lavori&quot;                                  
+## [19] &quot;pigR_bookdown.Rproj&quot;                     
+## [20] &quot;pigR_epub_book&quot;                          
+## [21] &quot;pigR_gitbook&quot;                            
+## [22] &quot;pigR_reviewer&quot;                           
+## [23] &quot;renderepub.R&quot;</code></pre>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="dentroefuoriR.html#cb570-1" tabindex="-1"></a><span class="co"># ora uso . per accedere gerarchicamente i livelli del file system</span></span>
+<span id="cb570-2"><a href="dentroefuoriR.html#cb570-2" tabindex="-1"></a><span class="co"># nella cartella di lavoro</span></span>
+<span id="cb570-3"><a href="dentroefuoriR.html#cb570-3" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;_book&quot;                                   
+##  [2] &quot;_bookdown_files&quot;                         
+##  [3] &quot;_bookdown.yml&quot;                           
+##  [4] &quot;_main_files&quot;                             
+##  [5] &quot;_main.Rmd&quot;                               
+##  [6] &quot;01--Introduzione.Rmd&quot;                    
+##  [7] &quot;02--Interfacce-e-ambienti.Rmd&quot;           
+##  [8] &quot;03--Chiedere-aiuto.Rmd&quot;                  
+##  [9] &quot;04--Dati_oggetti_funzioni_linguaggio.Rmd&quot;
+## [10] &quot;05--Dentro_e_fuori.Rmd&quot;                  
+## [11] &quot;06--Grafica.Rmd&quot;                         
+## [12] &quot;07--Descrivere-con-i-numeri.Rmd&quot;         
+## [13] &quot;08--Creare_report.Rmd&quot;                   
+## [14] &quot;09--Lottare_con_i_dati.Rmd&quot;              
+## [15] &quot;10--Credits.Rmd&quot;                         
+## [16] &quot;images&quot;                                  
+## [17] &quot;index.Rmd&quot;                               
+## [18] &quot;lavori&quot;                                  
+## [19] &quot;pigR_bookdown.Rproj&quot;                     
+## [20] &quot;pigR_epub_book&quot;                          
+## [21] &quot;pigR_gitbook&quot;                            
+## [22] &quot;pigR_reviewer&quot;                           
+## [23] &quot;renderepub.R&quot;</code></pre>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="dentroefuoriR.html#cb572-1" tabindex="-1"></a><span class="co"># un livello superiore</span></span>
+<span id="cb572-2"><a href="dentroefuoriR.html#cb572-2" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">&quot;..&quot;</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;bookdown-demo-main&quot;                         
+##  [2] &quot;BUP-Scheda_Autore_pigR.docx&quot;                
+##  [3] &quot;BUP-Scheda_Autore.docx&quot;                     
+##  [4] &quot;capitolo_2_le_GUI.docx&quot;                     
+##  [5] &quot;Capitolo_3_aiutoR.docx&quot;                     
+##  [6] &quot;capitolo_4_elementi_base_linguaggio.docx&quot;   
+##  [7] &quot;da_spostare_in_pigR_bookdown&quot;               
+##  [8] &quot;Errori battitura.docx&quot;                      
+##  [9] &quot;immagini_dim_originali&quot;                     
+## [10] &quot;Indice pigR.docx&quot;                           
+## [11] &quot;notabene.rtf&quot;                               
+## [12] &quot;pexels-mark-stebnicki-2252541 small.jpeg&quot;   
+## [13] &quot;pexels-mark-stebnicki-2252541_300.jpg&quot;      
+## [14] &quot;pexels-mark-stebnicki-2252541.jpg&quot;          
+## [15] &quot;pigR_bookdown&quot;                              
+## [16] &quot;pigR_note.docx&quot;                             
+## [17] &quot;pigR_Rmd&quot;                                   
+## [18] &quot;Proposta di pubblicazione, tempi rapidi.rtf&quot;
+## [19] &quot;PROPOSTA EDITORIALE HOEPLI.pdf&quot;             
+## [20] &quot;Re_ proposta editoriale per BUP.rtf&quot;        
+## [21] &quot;screenshotsRstudio&quot;</code></pre>
+<p>Prova ad eseguire il comando successivo dalla console:</p>
+<pre><code>&gt; list.files(&quot;.&quot;, recursive = T)</code></pre>
+<p>Cosa succede? Prova ad attribuire il risultato di questo comando ad un nome. Che oggetto è? Che usi potresti farne?
+Determinare con esattezza il percorso di un file può essere difficile, specialmente se il file si trova “annidato” molto profondamente nel tuo sistema. A parte le funzionalità del pannello dell’ambiente aprire e salvare file e quelle del pannello <code>File</code> di RStudio per esplorare il tuo file system, un comando interessante è <code>file.choose()</code>, che apre un menu interattivo per la scelta di un file e ne restituisce il percorso. Prova ad eseguire questi comandi nella tua console:</p>
+<pre><code>&gt; il_nome_del_file &lt;- file.choose()</code></pre>
+<p>Due comandi interessanti per ottenere, dato un percorso, la directory che contiene il file di interesse e il nome del file sono:</p>
+<pre><code>&gt; dirname(il_nome_del_file)
+&gt; basename(il_nome_del_file)</code></pre>
+<p>Guarda che succede ora. Prova a ricostruire quello che fanno questi comandi usando l’aiuto:</p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="dentroefuoriR.html#cb577-1" tabindex="-1"></a><span class="fu">head</span>(la_mia_lista_di_file)</span></code></pre></div>
+<pre><code>## [1] &quot;_book&quot;                &quot;_bookdown_files&quot;      &quot;_bookdown.yml&quot;       
+## [4] &quot;_main_files&quot;          &quot;_main.Rmd&quot;            &quot;01--Introduzione.Rmd&quot;</code></pre>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="dentroefuoriR.html#cb579-1" tabindex="-1"></a>la_mia_wd <span class="ot">&lt;-</span> <span class="fu">getwd</span>()</span>
+<span id="cb579-2"><a href="dentroefuoriR.html#cb579-2" tabindex="-1"></a>il_nome_della_mia_wd <span class="ot">&lt;-</span> <span class="fu">basename</span>(la_mia_wd)</span>
+<span id="cb579-3"><a href="dentroefuoriR.html#cb579-3" tabindex="-1"></a><span class="co"># la tilde abbrevia il percorso a una cartella, path.expand() lo espande</span></span>
+<span id="cb579-4"><a href="dentroefuoriR.html#cb579-4" tabindex="-1"></a><span class="fu">file.path</span>(<span class="st">&quot;~&quot;</span>,<span class="st">&quot;il_nome_della_mia_wd&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;~/il_nome_della_mia_wd&quot;</code></pre>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="dentroefuoriR.html#cb581-1" tabindex="-1"></a><span class="fu">path.expand</span>(<span class="fu">file.path</span>(<span class="st">&quot;~&quot;</span>,<span class="st">&quot;il_nome_della_mia_wd&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/eugenio/il_nome_della_mia_wd&quot;</code></pre>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="dentroefuoriR.html#cb583-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">list.files</span>(<span class="fu">path.expand</span>(<span class="fu">file.path</span>(<span class="st">&quot;~&quot;</span>,<span class="st">&quot;il_nome_della_mia_wd&quot;</span>))),<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## character(0)</code></pre>
+<p>R fornisce alcuni utili comandi per verificare l’esistenza di cartelle in una determinata posizione o per crearle. Prova a leggere l’aiuto:</p>
+<pre><code>&gt;?dir.create</code></pre>
+<p>Prova ad eseguire questo breve esempio: il codice cerca una cartella dal nome “lavori” all’interno della cartella di lavoro e, se non c’è, la crea:</p>
+<pre><code>la_mia_wd &lt;- getwd()
+if(!dir.exists(file.path(la_mia_wd,&quot;lavori&quot;))) dir.create(file.path(la_mia_wd,&quot;lavori&quot;))</code></pre>
+</div>
+<div id="app1sintassi" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> <strong>Appendice 1</strong>. <em>Un piccolo dettaglio sulla sintassi.</em><a href="dentroefuoriR.html#app1sintassi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nei capitoli precedenti e in questo hai visto moltissimi comandi/funzioni, ciascuno dei quali può avere da poche a molte opzioni, alcune delle quali hanno dei valori default e altre no. Ovviamente le opzioni che non hanno un default vanno necessariamente fornite (come il percorso di un file in un comando che salva o apre un file). I valori di default, in genere sono abbastanza sensati e vanno cambiati solo se necessario. Curiosamente, i nomi delle opzioni non sono sempre necessari (anche se è meglio scriverli, per rendere più facilmente interpretabile il codice). Questi comandi sono equivalenti:</p>
+<pre><code>write_tsv(Arthritis, file = &quot;Arthritis.tsv&quot;, append = F)
+write_tsv(Arthritis, &quot;Arthritis.tsv&quot;)
+write_tsv(Arthritis, na = &quot;NA&quot;, file = &quot;Arthritis.tsv&quot;)</code></pre>
+<p>Non è necessario dare un nome ad un’opzione se compare esattamente nella sequenza prevista dal comando. E’ anche possibile indicare le opzioni in disordine, ma in questo caso è necessario usare il nome.</p>
+</div>
+<div id="app2finqui" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> <strong>Appendice 2</strong>. <em>Se sei arrivat* fin qui…</em><a href="dentroefuoriR.html#app2finqui" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La ragione principale per imparare a usare R dovrebbe essere quella di risolvere alcuni problemi in maniera efficiente ed automatizzata. Il numero di casi speciali che ti potresti trovare ad affrontare è praticamente infinito.
+E’ abbastanza comune trovarsi nella situazione di dover importare molti file con la stessa struttura in un unico data frame. L’operazione può essere condotta in maniera interattiva, ma con un elevato rischio di errore e poca riproducibilità. Cerca di capire cosa fa questo piccolo script (usando l’aiuto quando incontri un comando che non conosci) e poi prova ad eseguirlo (ometto il prompt per facilitarti le cose)<a href="#fn123" class="footnote-ref" id="fnref123"><sup>123</sup></a>:</p>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="dentroefuoriR.html#cb588-1" tabindex="-1"></a><span class="co"># preparazione, divido Arthritis in k=5 pezzi</span></span>
+<span id="cb588-2"><a href="dentroefuoriR.html#cb588-2" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">5</span> </span>
+<span id="cb588-3"><a href="dentroefuoriR.html#cb588-3" tabindex="-1"></a><span class="cf">if</span>(j<span class="sc">&gt;</span><span class="fu">nrow</span>(Arthritis)) <span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">ATTENZIONE: scegli un valore più piccolo per k</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb588-4"><a href="dentroefuoriR.html#cb588-4" tabindex="-1"></a><span class="co"># crea opzionalmente una directory per contenere i file</span></span>
+<span id="cb588-5"><a href="dentroefuoriR.html#cb588-5" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span>(<span class="st">&quot;kArthritis&quot;</span> <span class="sc">%in%</span> <span class="fu">list.files</span>(<span class="fu">file.path</span>(<span class="st">&quot;.&quot;</span>)))) <span class="fu">dir.create</span>(<span class="fu">file.path</span>(<span class="st">&quot;.&quot;</span>,<span class="st">&quot;kArthritis&quot;</span>))</span>
+<span id="cb588-6"><a href="dentroefuoriR.html#cb588-6" tabindex="-1"></a><span class="co"># crea un indice per le righe dei pezzi da salvare</span></span>
+<span id="cb588-7"><a href="dentroefuoriR.html#cb588-7" tabindex="-1"></a>indice <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">gl</span>(j, <span class="dv">1</span>, <span class="fu">nrow</span>(Arthritis)))</span>
+<span id="cb588-8"><a href="dentroefuoriR.html#cb588-8" tabindex="-1"></a><span class="co"># creo una copia</span></span>
+<span id="cb588-9"><a href="dentroefuoriR.html#cb588-9" tabindex="-1"></a>Arthritis_3 <span class="ot">&lt;-</span> Arthritis</span>
+<span id="cb588-10"><a href="dentroefuoriR.html#cb588-10" tabindex="-1"></a>Arthritis_3<span class="sc">$</span>indice <span class="ot">&lt;-</span> indice</span>
+<span id="cb588-11"><a href="dentroefuoriR.html#cb588-11" tabindex="-1"></a><span class="co"># uso un loop (più avanti vedremo come questo può essere sostituito da un functional) per</span></span>
+<span id="cb588-12"><a href="dentroefuoriR.html#cb588-12" tabindex="-1"></a><span class="co"># salvare pezzi separati</span></span>
+<span id="cb588-13"><a href="dentroefuoriR.html#cb588-13" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span>j)){</span>
+<span id="cb588-14"><a href="dentroefuoriR.html#cb588-14" tabindex="-1"></a>  minidf <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(Arthritis_3, indice <span class="sc">==</span> i)</span>
+<span id="cb588-15"><a href="dentroefuoriR.html#cb588-15" tabindex="-1"></a>  nome_file <span class="ot">&lt;-</span> <span class="fu">str_c</span>(<span class="st">&quot;Arthritis_&quot;</span>,i,<span class="st">&quot;.tsv&quot;</span>, <span class="at">sep =</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb588-16"><a href="dentroefuoriR.html#cb588-16" tabindex="-1"></a>  <span class="fu">write_tsv</span>(dplyr<span class="sc">::</span><span class="fu">select</span>(minidf, <span class="sc">-</span>indice), <span class="at">file =</span> <span class="fu">file.path</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;kArthritis&quot;</span>, nome_file))</span>
+<span id="cb588-17"><a href="dentroefuoriR.html#cb588-17" tabindex="-1"></a>}</span>
+<span id="cb588-18"><a href="dentroefuoriR.html#cb588-18" tabindex="-1"></a><span class="co"># ora uso un loop per rimettere insieme i pezzi, usando i nomi dei file come indice</span></span>
+<span id="cb588-19"><a href="dentroefuoriR.html#cb588-19" tabindex="-1"></a><span class="co"># quanti file di tipo .tsv ci sono?</span></span>
+<span id="cb588-20"><a href="dentroefuoriR.html#cb588-20" tabindex="-1"></a>nomi_file <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="fu">file.path</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;kArthritis&quot;</span>))</span>
+<span id="cb588-21"><a href="dentroefuoriR.html#cb588-21" tabindex="-1"></a>quali_sono_tsv <span class="ot">&lt;-</span> <span class="fu">str_detect</span>(nomi_file, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">.tsv&quot;</span>)</span>
+<span id="cb588-22"><a href="dentroefuoriR.html#cb588-22" tabindex="-1"></a>nomi_file<span class="ot">&lt;-</span>nomi_file[quali_sono_tsv]</span>
+<span id="cb588-23"><a href="dentroefuoriR.html#cb588-23" tabindex="-1"></a><span class="co"># creo una list vuota della lunghezza giusta</span></span>
+<span id="cb588-24"><a href="dentroefuoriR.html#cb588-24" tabindex="-1"></a>lista_file <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="at">length =</span> <span class="fu">length</span>(nomi_file))</span>
+<span id="cb588-25"><a href="dentroefuoriR.html#cb588-25" tabindex="-1"></a><span class="co"># questo loop legge i nomi dei file negli slot della lista</span></span>
+<span id="cb588-26"><a href="dentroefuoriR.html#cb588-26" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(nomi_file)){</span>
+<span id="cb588-27"><a href="dentroefuoriR.html#cb588-27" tabindex="-1"></a>  lista_file[[i]] <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="fu">file.path</span>(<span class="st">&quot;.&quot;</span>,<span class="st">&quot;kArthritis&quot;</span>, nomi_file[i]))</span>
+<span id="cb588-28"><a href="dentroefuoriR.html#cb588-28" tabindex="-1"></a>  <span class="fu">names</span>(lista_file)[i]<span class="ot">&lt;-</span>nomi_file[i]</span>
+<span id="cb588-29"><a href="dentroefuoriR.html#cb588-29" tabindex="-1"></a>}</span>
+<span id="cb588-30"><a href="dentroefuoriR.html#cb588-30" tabindex="-1"></a></span>
+<span id="cb588-31"><a href="dentroefuoriR.html#cb588-31" tabindex="-1"></a></span>
+<span id="cb588-32"><a href="dentroefuoriR.html#cb588-32" tabindex="-1"></a><span class="co"># trasforma la lista in un data frame (e se si potesse fare con un loop?)</span></span>
+<span id="cb588-33"><a href="dentroefuoriR.html#cb588-33" tabindex="-1"></a><span class="co"># modo n. 1, bruttino</span></span>
+<span id="cb588-34"><a href="dentroefuoriR.html#cb588-34" tabindex="-1"></a>Arthritis_frankenstein_brutto <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, lista_file)</span>
+<span id="cb588-35"><a href="dentroefuoriR.html#cb588-35" tabindex="-1"></a><span class="co"># modo n. 2 con map_dfr(), un functional, cioé un comando che applica una funzione a una lista</span></span>
+<span id="cb588-36"><a href="dentroefuoriR.html#cb588-36" tabindex="-1"></a><span class="co"># e restituisce un data frame</span></span>
+<span id="cb588-37"><a href="dentroefuoriR.html#cb588-37" tabindex="-1"></a>Arthritis_frankenstein <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(lista_file, bind_rows) <span class="co"># senza conservare i nomi dei file</span></span>
+<span id="cb588-38"><a href="dentroefuoriR.html#cb588-38" tabindex="-1"></a>Arthritis_frankenstein_nomi <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(lista_file, bind_rows, <span class="at">.id =</span> <span class="st">&quot;nomi_file&quot;</span>) <span class="co"># con i nomi dei file</span></span>
+<span id="cb588-39"><a href="dentroefuoriR.html#cb588-39" tabindex="-1"></a></span>
+<span id="cb588-40"><a href="dentroefuoriR.html#cb588-40" tabindex="-1"></a><span class="co"># e, per farla ancora più semplice</span></span>
+<span id="cb588-41"><a href="dentroefuoriR.html#cb588-41" tabindex="-1"></a>percorsi <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">&quot;.&quot;</span>,<span class="st">&quot;kArthritis&quot;</span>, nomi_file)</span>
+<span id="cb588-42"><a href="dentroefuoriR.html#cb588-42" tabindex="-1"></a>Arthritis_frankenstein_nomi_2 <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(percorsi, read_tsv, <span class="at">.id =</span> <span class="st">&quot;nomi_file&quot;</span>)</span></code></pre></div>
+<p>Perché darsi tutta questa pena a scrivere tante righe di codice per fare una cosa che si poteva fare in modo interattivo? Intanto, si può scrivere codice in modo succinto. E poi, perché magari i file potevano essere 1000…, e anche perché magari ti potresti trovare a fare la stessa cosa cento volte e non la vuoi fare ogni volta in un modo diverso (in fondo, sei pigr*). E anche e soprattutto perché è più stimolante così. Naturalmente, nel mondo reale potevano andare male un sacco di cose e un programmatore prudente dovrebbe tenerne conto creando delle “trappole per gli errori”: se qualcosa non va come previsto, è bene che una funzione o una serie di comandi restituiscano il risultato che rappresenta il miglior compromesso possibile, magari insieme ad un messaggio di errore o warning facile da capire.</p>
+</div>
+<div id="altrerisdentrofuori" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Altre risorse.<a href="dentroefuoriR.html#altrerisdentrofuori" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Il materiale in questo capitolo è presentato in molte delle risorse citate nel Capitolo <a href="datioggetti.html#datioggetti">4</a>. Qui riporto solo le risorse nuove.</p>
+<div id="risorse-in-inglese.-3" class="section level3 hasAnchor" number="5.10.1">
+<h3><span class="header-section-number">5.10.1</span> Risorse in inglese.<a href="dentroefuoriR.html#risorse-in-inglese.-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Documenti e pagine web.</strong></p>
+<p>Riporto qui alcuni libri e documenti disponibili online nei quali potrai trovare capitoli rilevanti per il contenuto di questo capitolo:</p>
+<ul>
+<li><p>Libri: provate questi</p>
+<ul>
+<li><p><a href="https://jhudatascience.org/tidyversecourse/get-data.html">questo capitolo</a> riassume un po’ tutto quello che c’è da sapere sull’importazione (ordinata) di dati</p></li>
+<li><p>come sempre <a href="https://r4ds.had.co.nz/data-import.html">R for data science</a> fornisce esempi ed esercizi interessanti</p></li>
+</ul></li>
+<li><p>documenti e siti web:</p>
+<ul>
+<li><p>questa <a href="https://cran.r-project.org/doc/manuals/R-data.pdf">guida ufficiale</a> del CRAN all’importazione di dati è completa e aggiornata</p></li>
+<li><p><a href="https://www.scrapingbee.com/blog/web-scraping-r/">questo</a> è un articolo interessante sul web scraping (come importare contenuti dal web) con R</p></li>
+<li><p><a href="https://bookdown.org/rdpeng/RProgDA/working-with-large-datasets.html">questo</a> è uno dei tanti articoli avanzati per gestire data set molto grandi (e che potrebbero eccedere la RAM) con R. Con poca fatica potete trovare molte risorse simili. Anche <a href="https://inbo.github.io/tutorials/tutorials/r_large_data_files_handling/">questo</a> articolo fornisce alcune soluzioni interessanti. Pacchetti o funzioni più o meno specializzate, come <code>data.table::fread()</code> o le funzioni di <code>bigreadr</code> possono servire per affrontare problemi di importazione veramente grossi.</p></li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="103">
+<li id="fn103"><p>Questa è decisamente la scelta migliore per condividere file con altri.<a href="dentroefuoriR.html#fnref103" class="footnote-back">↩︎</a></p></li>
+<li id="fn104"><p>è possibile cambiare questo default nelle preferenze di RStudio<a href="dentroefuoriR.html#fnref104" class="footnote-back">↩︎</a></p></li>
+<li id="fn105"><p>ricordati di omettere il carattere per il prompt, &gt;<a href="dentroefuoriR.html#fnref105" class="footnote-back">↩︎</a></p></li>
+<li id="fn106"><p>Attenzione a creare progetti in cartelle di Google Drive se usate l’app di Google drive: in qualche caso ci sono problemi di sincronizzazione, specialmente nella gestione di alcuni tipi di documenti dinamici, come i notebook. Dropbox funziona molto meglio<a href="dentroefuoriR.html#fnref106" class="footnote-back">↩︎</a></p></li>
+<li id="fn107"><p>dovrebbe essere semplice e intuitivo ma, se non riesci, guarda <a href="https://www.youtube.com/watch?v=UHipVkCKFZc">questo video</a><a href="dentroefuoriR.html#fnref107" class="footnote-back">↩︎</a></p></li>
+<li id="fn108"><p>o incollare direttamente il percorso del file<a href="dentroefuoriR.html#fnref108" class="footnote-back">↩︎</a></p></li>
+<li id="fn109"><p>personalmente io preferisco settare l’intero sistema con un locale con punto decimale come US o UK<a href="dentroefuoriR.html#fnref109" class="footnote-back">↩︎</a></p></li>
+<li id="fn110"><p>in effetti un vettore carattere con i tipi delle diverse colonne<a href="dentroefuoriR.html#fnref110" class="footnote-back">↩︎</a></p></li>
+<li id="fn111"><p>e magari fare qualche sforzo in più per capire come usare i percorsi dei file<a href="dentroefuoriR.html#fnref111" class="footnote-back">↩︎</a></p></li>
+<li id="fn112"><p>una tabella scaricata da uno dei miei repository su GitHub<a href="dentroefuoriR.html#fnref112" class="footnote-back">↩︎</a></p></li>
+<li id="fn113"><p>se usi solo il nome del file con l’estensione appropriata il file verrà cercato nella working directory, vedi nei paragrafi precedenti. Puoi anche specificare un percorso diverso, vedi dopo. <code>file</code> è, in effetti, un vettore carattere di lunghezza 1 e puoi crearlo con una funzione!<a href="dentroefuoriR.html#fnref113" class="footnote-back">↩︎</a></p></li>
+<li id="fn114"><p>se non la attribuisci ad un oggetto la visualizzi soltanto in console!<a href="dentroefuoriR.html#fnref114" class="footnote-back">↩︎</a></p></li>
+<li id="fn115"><p>e quindi da quasi tutti gli altri software per fogli di calcolo, che in genere hanno funzioni di importazione per questo formato<a href="dentroefuoriR.html#fnref115" class="footnote-back">↩︎</a></p></li>
+<li id="fn116"><p>come al solito, sia che tu li esegua dalla console che che li esegua come uno script ricordati di cancellare <code>&gt;</code>: il prompt appare automaticamente nella console e non è necessario negli script<a href="dentroefuoriR.html#fnref116" class="footnote-back">↩︎</a></p></li>
+<li id="fn117"><p>in data frame<a href="dentroefuoriR.html#fnref117" class="footnote-back">↩︎</a></p></li>
+<li id="fn118"><p>quindi con il nome fra virgolette; questo può essere comodo in alcune circostanze, quando i nomi vengono ricavati da un comando che produce, come risultato, una stringa di caratteri<a href="dentroefuoriR.html#fnref118" class="footnote-back">↩︎</a></p></li>
+<li id="fn119"><p>come avrai potuto notare, i nomi delle funzioni del tidyverse sono un pochino più coerenti e facili da ricordare di quelli di R base: in <code>readr</code>, tutte le funzioni sono write_xxx e read_xxx: come conseguenza quando inizi a digitare in RStudio i suggerimenti che ottieni sono un pochino più appropriati<a href="dentroefuoriR.html#fnref119" class="footnote-back">↩︎</a></p></li>
+<li id="fn120"><p>facendo doppio click sul nome dell’oggetto corrispondente nel pannello dell’ambiente o usando il comando <code>View()</code><a href="dentroefuoriR.html#fnref120" class="footnote-back">↩︎</a></p></li>
+<li id="fn121"><p><code>pillar</code> viene caricato come dependency quando carichi il pacchetto <code>tidyverse</code><a href="dentroefuoriR.html#fnref121" class="footnote-back">↩︎</a></p></li>
+<li id="fn122"><p>se non usi menu interattivi nel report non è possibile aprire manualmente file o cambiare la cartella di lavoro<a href="dentroefuoriR.html#fnref122" class="footnote-back">↩︎</a></p></li>
+<li id="fn123"><p>lo script assume che i file di testo che vuoi aprire abbiano tutti la stessa struttura in colonne<a href="dentroefuoriR.html#fnref123" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="datioggetti.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="grafica.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

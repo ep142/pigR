@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Interfacce e ambienti | pigR: R, per pigri</title>
+  <meta name="description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Interfacce e ambienti | pigR: R, per pigri" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Interfacce e ambienti | pigR: R, per pigri" />
+  
+  <meta name="twitter:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+<meta name="author" content="E. Parente, Scuola SAFE, Università degli Studi della Basilicata" />
+
+
+<meta name="date" content="2023-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="aiuto.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cos’è pigR?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#di-cosa-hai-bisogno-per-leggere-e-capire-questo-libro."><i class="fa fa-check"></i>Di cosa hai bisogno per leggere (e capire) questo libro.</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#chi-siamo-noi-noi-noi"><i class="fa fa-check"></i>Chi siamo noi (noi, noi)?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#se-ti-piace"><i class="fa fa-check"></i>Se ti piace…</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cookies"><i class="fa fa-check"></i>Cookies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#la-foto-di-copertina."><i class="fa fa-check"></i>La foto di copertina.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduzione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#cosa-cè-da-imparare-in-questo-capitolo."><i class="fa fa-check"></i><b>1.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#convenzioni-e-guida-alla-lettura-e-alluso-del-codice."><i class="fa fa-check"></i><b>1.2</b> Convenzioni e guida alla lettura e all’uso del codice.</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#tutti-vogliono-imparare-a-usare-r."><i class="fa fa-check"></i><b>1.3</b> Tutti vogliono imparare a usare R.</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#provare-per-credere-app-gui-ide-e-altre-diavolerie."><i class="fa fa-check"></i><b>1.3.1</b> Provare per credere: App, GUI, IDE e altre diavolerie.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#laltra-faccia-della-medaglia-troppa-fatica."><i class="fa fa-check"></i><b>1.4</b> L’altra faccia della medaglia: troppa fatica.</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#r-per-pigri."><i class="fa fa-check"></i><b>1.5</b> R, per pigri.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inter.html"><a href="inter.html"><i class="fa fa-check"></i><b>2</b> Interfacce e ambienti</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inter.html"><a href="inter.html#cosa-cè-da-imparare-in-questo-capitolo.-1"><i class="fa fa-check"></i><b>2.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="2.2" data-path="inter.html"><a href="inter.html#rstudio."><i class="fa fa-check"></i><b>2.2</b> RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="inter.html"><a href="inter.html#linterfaccia-principale-di-rstudio."><i class="fa fa-check"></i><b>2.2.1</b> L’interfaccia principale di RStudio.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="inter.html"><a href="inter.html#il-pannello-source."><i class="fa fa-check"></i><b>2.2.2</b> Il pannello Source.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="inter.html"><a href="inter.html#il-pannello-console."><i class="fa fa-check"></i><b>2.2.3</b> Il pannello Console.</a></li>
+<li class="chapter" data-level="2.2.4" data-path="inter.html"><a href="inter.html#il-pannello-environment."><i class="fa fa-check"></i><b>2.2.4</b> Il pannello Environment.</a></li>
+<li class="chapter" data-level="2.2.5" data-path="inter.html"><a href="inter.html#il-tab-environment."><i class="fa fa-check"></i><b>2.2.5</b> Il tab Environment.</a></li>
+<li class="chapter" data-level="2.2.6" data-path="inter.html"><a href="inter.html#il-tab-history."><i class="fa fa-check"></i><b>2.2.6</b> Il tab History.</a></li>
+<li class="chapter" data-level="2.2.7" data-path="inter.html"><a href="inter.html#il-pannello-plots."><i class="fa fa-check"></i><b>2.2.7</b> Il pannello Plots.</a></li>
+<li class="chapter" data-level="2.2.8" data-path="inter.html"><a href="inter.html#il-tab-plots."><i class="fa fa-check"></i><b>2.2.8</b> Il tab Plots.</a></li>
+<li class="chapter" data-level="2.2.9" data-path="inter.html"><a href="inter.html#il-tab-files."><i class="fa fa-check"></i><b>2.2.9</b> Il tab Files.</a></li>
+<li class="chapter" data-level="2.2.10" data-path="inter.html"><a href="inter.html#tabpackages"><i class="fa fa-check"></i><b>2.2.10</b> Il tab Packages.</a></li>
+<li class="chapter" data-level="2.2.11" data-path="inter.html"><a href="inter.html#il-tab-help."><i class="fa fa-check"></i><b>2.2.11</b> Il tab Help.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="inter.html"><a href="inter.html#esercizi."><i class="fa fa-check"></i><b>2.3</b> Esercizi.</a></li>
+<li class="chapter" data-level="2.4" data-path="inter.html"><a href="inter.html#altrerisinter"><i class="fa fa-check"></i><b>2.4</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inter.html"><a href="inter.html#risorse-in-italiano."><i class="fa fa-check"></i><b>2.4.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inter.html"><a href="inter.html#risorse-in-inglese."><i class="fa fa-check"></i><b>2.4.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aiuto.html"><a href="aiuto.html"><i class="fa fa-check"></i><b>3</b> Chiedere aiuto</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aiuto.html"><a href="aiuto.html#cosa-cè-da-imparare-in-questo-capitolo.-2"><i class="fa fa-check"></i><b>3.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aiuto.html"><a href="aiuto.html#premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri"><i class="fa fa-check"></i><b>3.1.1</b> Premessa 1: nessuno legge i manuali (figuriamoci i pigRi)!</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aiuto.html"><a href="aiuto.html#gatti"><i class="fa fa-check"></i><b>3.1.2</b> Premessa 2: ci sono molti modi di pelare un gatto (e documentarlo).</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aiuto.html"><a href="aiuto.html#laiuto-di-r."><i class="fa fa-check"></i><b>3.2</b> L’aiuto di R.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="aiuto.html"><a href="aiuto.html#tabhelp"><i class="fa fa-check"></i><b>3.2.1</b> Il tab Help di RStudio.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="aiuto.html"><a href="aiuto.html#funzioni-per-chiedere-aiuto."><i class="fa fa-check"></i><b>3.2.2</b> <em>Funzioni per chiedere aiuto.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="aiuto.html"><a href="aiuto.html#strategieaiuto"><i class="fa fa-check"></i><b>3.3</b> Strategie per cercare aiuto (anche senza parere).</a></li>
+<li class="chapter" data-level="3.4" data-path="aiuto.html"><a href="aiuto.html#esercizi.-1"><i class="fa fa-check"></i><b>3.4</b> Esercizi.</a></li>
+<li class="chapter" data-level="3.5" data-path="aiuto.html"><a href="aiuto.html#altrerisaiuto"><i class="fa fa-check"></i><b>3.5</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="aiuto.html"><a href="aiuto.html#risorse-in-italiano.-1"><i class="fa fa-check"></i><b>3.5.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="3.5.2" data-path="aiuto.html"><a href="aiuto.html#risorse-in-inglese.-1"><i class="fa fa-check"></i><b>3.5.2</b> Risorse in inglese.</a></li>
+<li class="chapter" data-level="3.5.3" data-path="aiuto.html"><a href="aiuto.html#niente-video"><i class="fa fa-check"></i><b>3.5.3</b> Niente video?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datioggetti.html"><a href="datioggetti.html"><i class="fa fa-check"></i><b>4</b> Dati, oggetti, funzioni (e tutto il resto)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datioggetti.html"><a href="datioggetti.html#cosa-cè-da-imparare-in-questo-capitolo.-3"><i class="fa fa-check"></i><b>4.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datioggetti.html"><a href="datioggetti.html#premessa-1-esperimenti-e-osservazioni."><i class="fa fa-check"></i><b>4.1.1</b> Premessa 1: esperimenti e osservazioni.</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datioggetti.html"><a href="datioggetti.html#premessa2"><i class="fa fa-check"></i><b>4.1.2</b> Premessa 2. Misure e dati, osservazioni e variabili, tabelle.</a></li>
+<li class="chapter" data-level="4.1.3" data-path="datioggetti.html"><a href="datioggetti.html#anatab"><i class="fa fa-check"></i><b>4.1.3</b> Anatomia di una tabella.</a></li>
+<li class="chapter" data-level="4.1.4" data-path="datioggetti.html"><a href="datioggetti.html#un-piccolo-esercizio."><i class="fa fa-check"></i><b>4.1.4</b> Un piccolo esercizio.</a></li>
+<li class="chapter" data-level="4.1.5" data-path="datioggetti.html"><a href="datioggetti.html#tidyuntidydefinizione"><i class="fa fa-check"></i><b>4.1.5</b> Tidy vs. untidy (tabelle ordinate e disordinate).</a></li>
+<li class="chapter" data-level="4.1.6" data-path="datioggetti.html"><a href="datioggetti.html#missingdata"><i class="fa fa-check"></i><b>4.1.6</b> Dati mancanti (missing data).</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datioggetti.html"><a href="datioggetti.html#r-è-un-linguaggio-funzionale-che-supporta-la-programmazione-orientata-a-oggetti"><i class="fa fa-check"></i><b>4.2</b> R è un linguaggio funzionale che supporta la programmazione orientata a oggetti…</a></li>
+<li class="chapter" data-level="4.3" data-path="datioggetti.html"><a href="datioggetti.html#ilnomedellecose"><i class="fa fa-check"></i><b>4.3</b> Il nome delle cose.</a></li>
+<li class="chapter" data-level="4.4" data-path="datioggetti.html"><a href="datioggetti.html#strutturedati"><i class="fa fa-check"></i><b>4.4</b> Strutture di dati.</a></li>
+<li class="chapter" data-level="4.5" data-path="datioggetti.html"><a href="datioggetti.html#vettoriatomici"><i class="fa fa-check"></i><b>4.5</b> Vettori atomici.</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="datioggetti.html"><a href="datioggetti.html#vettori1D"><i class="fa fa-check"></i><b>4.5.1</b> Vettori ad una dimensione.</a></li>
+<li class="chapter" data-level="4.5.2" data-path="datioggetti.html"><a href="datioggetti.html#vettori-atomici-a-2-o-più-dimensioni-matrici-e-array."><i class="fa fa-check"></i><b>4.5.2</b> Vettori atomici a 2 o più dimensioni: matrici e array.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="datioggetti.html"><a href="datioggetti.html#i-data-frame-e-le-liste."><i class="fa fa-check"></i><b>4.6</b> I data frame e le liste.</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="datioggetti.html"><a href="datioggetti.html#dataframebenemale"><i class="fa fa-check"></i><b>4.6.1</b> I data frame, nel bene e nel male.</a></li>
+<li class="chapter" data-level="4.6.2" data-path="datioggetti.html"><a href="datioggetti.html#le-liste."><i class="fa fa-check"></i><b>4.6.2</b> Le liste.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="datioggetti.html"><a href="datioggetti.html#altre-cose-strane-tabelle-di-conte-serie-temporali-date-e-ore."><i class="fa fa-check"></i><b>4.7</b> <em>Altre cose strane: tabelle di conte, serie temporali, date e ore.</em></a></li>
+<li class="chapter" data-level="4.8" data-path="datioggetti.html"><a href="datioggetti.html#indsel"><i class="fa fa-check"></i><b>4.8</b> Indirizzare, selezionare.</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="datioggetti.html"><a href="datioggetti.html#indirizzare-per-posizione."><i class="fa fa-check"></i><b>4.8.1</b> Indirizzare per posizione.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="datioggetti.html"><a href="datioggetti.html#usare-i-nomi."><i class="fa fa-check"></i><b>4.8.2</b> Usare i nomi.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="datioggetti.html"><a href="datioggetti.html#usare-valori-logici."><i class="fa fa-check"></i><b>4.8.3</b> Usare valori logici.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="datioggetti.html"><a href="datioggetti.html#attach-with-within."><i class="fa fa-check"></i><b>4.9</b> <code>attach()</code>, <code>with()</code>, <code>within()</code>.</a></li>
+<li class="chapter" data-level="4.10" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in-e-funzioni-definite-dallutente."><i class="fa fa-check"></i><b>4.10</b> <em>Funzioni “built-in” e funzioni definite dall’utente.</em></a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="datioggetti.html"><a href="datioggetti.html#operatorisemplici"><i class="fa fa-check"></i><b>4.10.1</b> Semplici funzioni matematiche, trigonometriche, statistiche, logiche, etc.</a></li>
+<li class="chapter" data-level="4.10.2" data-path="datioggetti.html"><a href="datioggetti.html#operatori."><i class="fa fa-check"></i><b>4.10.2</b> Operatori.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in."><i class="fa fa-check"></i><b>4.10.3</b> Funzioni built-in.</a></li>
+<li class="chapter" data-level="4.10.4" data-path="datioggetti.html"><a href="datioggetti.html#userdeffunc"><i class="fa fa-check"></i><b>4.10.4</b> Funzioni definite dall’utente.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="datioggetti.html"><a href="datioggetti.html#programmare-con-stile."><i class="fa fa-check"></i><b>4.11</b> Programmare, con stile.</a></li>
+<li class="chapter" data-level="4.12" data-path="datioggetti.html"><a href="datioggetti.html#un-ambiente-affollato."><i class="fa fa-check"></i><b>4.12</b> Un ambiente affollato.</a></li>
+<li class="chapter" data-level="4.13" data-path="datioggetti.html"><a href="datioggetti.html#altrerisorsedati"><i class="fa fa-check"></i><b>4.13</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-italiano.-2"><i class="fa fa-check"></i><b>4.13.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="4.13.2" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-inglese.-2"><i class="fa fa-check"></i><b>4.13.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html"><i class="fa fa-check"></i><b>5</b> Dentro e fuori R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#cosa-cè-da-imparare-in-questo-capitolo.-4"><i class="fa fa-check"></i><b>5.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="5.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#ognicosaalsuoposto"><i class="fa fa-check"></i><b>5.2</b> Ogni cosa al suo posto: working directory, progetti, etc.</a></li>
+<li class="chapter" data-level="5.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#facciamolasemplice"><i class="fa fa-check"></i><b>5.3</b> Facciamola semplice: il menu <code>Import Dataset</code>.</a></li>
+<li class="chapter" data-level="5.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#usareadr"><i class="fa fa-check"></i><b>5.4</b> Gestire file di testo con <code>readr.</code></a></li>
+<li class="chapter" data-level="5.5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#tutti-i-comandi-o-quasi-per-importare-file-di-testo"><i class="fa fa-check"></i><b>5.5</b> Tutti i comandi (o quasi) per importare file di testo…</a></li>
+<li class="chapter" data-level="5.6" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-di-dati."><i class="fa fa-check"></i><b>5.6</b> Altri formati di dati.</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#da-e-per-excel."><i class="fa fa-check"></i><b>5.6.1</b> Da e per Excel.</a></li>
+<li class="chapter" data-level="5.6.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-foreign-e-hmisc-e-haven."><i class="fa fa-check"></i><b>5.6.2</b> Altri formati: <code>foreign</code> e <code>Hmisc</code> e <code>haven</code>.</a></li>
+<li class="chapter" data-level="5.6.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#un-richiamo-file-.rdata-e-.rds"><i class="fa fa-check"></i><b>5.6.3</b> Un richiamo: file <code>.Rdata</code> e <code>.rds</code></a></li>
+<li class="chapter" data-level="5.6.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#e-andato-tutto-bene"><i class="fa fa-check"></i><b>5.6.4</b> E’ andato tutto bene?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#lavorare-con-i-nomi-dei-file-e-le-directory."><i class="fa fa-check"></i><b>5.7</b> Lavorare con i nomi dei file e le directory.</a></li>
+<li class="chapter" data-level="5.8" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app1sintassi"><i class="fa fa-check"></i><b>5.8</b> <strong>Appendice 1</strong>. <em>Un piccolo dettaglio sulla sintassi.</em></a></li>
+<li class="chapter" data-level="5.9" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app2finqui"><i class="fa fa-check"></i><b>5.9</b> <strong>Appendice 2</strong>. <em>Se sei arrivat* fin qui…</em></a></li>
+<li class="chapter" data-level="5.10" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altrerisdentrofuori"><i class="fa fa-check"></i><b>5.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#risorse-in-inglese.-3"><i class="fa fa-check"></i><b>5.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="grafica.html"><a href="grafica.html"><i class="fa fa-check"></i><b>6</b> Introduzione alla grafica scientifica con R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="grafica.html"><a href="grafica.html#cosa-cè-da-imparare-in-questo-capitolo.-5"><i class="fa fa-check"></i><b>6.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="6.2" data-path="grafica.html"><a href="grafica.html#igraficifattibene"><i class="fa fa-check"></i><b>6.2</b> I grafici, fatti bene.</a></li>
+<li class="chapter" data-level="6.3" data-path="grafica.html"><a href="grafica.html#sistemigrafici"><i class="fa fa-check"></i><b>6.3</b> I sistemi grafici in R.</a></li>
+<li class="chapter" data-level="6.4" data-path="grafica.html"><a href="grafica.html#visualizzare-o-salvare-i-grafici-i-device."><i class="fa fa-check"></i><b>6.4</b> Visualizzare o salvare i grafici: i device.</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="grafica.html"><a href="grafica.html#devicegrafici"><i class="fa fa-check"></i><b>6.4.1</b> Salvare i grafici: i file come device grafici.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="grafica.html"><a href="grafica.html#ggsave"><i class="fa fa-check"></i><b>6.4.2</b> Salvare i grafici di <code>ggplot2</code> con <code>ggsave</code>.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="grafica.html"><a href="grafica.html#le-dimensioni-del-device-e-le-opzioni-grafiche."><i class="fa fa-check"></i><b>6.4.3</b> <em>Le dimensioni del device e le opzioni grafiche.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="grafica.html"><a href="grafica.html#r-a-colori."><i class="fa fa-check"></i><b>6.5</b> R, a colori.</a></li>
+<li class="chapter" data-level="6.6" data-path="grafica.html"><a href="grafica.html#graficaggplot2"><i class="fa fa-check"></i><b>6.6</b> La grammatica della grafica con ggplot2.</a></li>
+<li class="chapter" data-level="6.7" data-path="grafica.html"><a href="grafica.html#grafqual"><i class="fa fa-check"></i><b>6.7</b> Grafici per variabili qualitative.</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="grafica.html"><a href="grafica.html#diagrammi-a-barre."><i class="fa fa-check"></i><b>6.7.1</b> Diagrammi a barre.</a></li>
+<li class="chapter" data-level="6.7.2" data-path="grafica.html"><a href="grafica.html#fare-di-più-con-i-grafici-per-variabili-qualitative."><i class="fa fa-check"></i><b>6.7.2</b> <em>Fare di più con i grafici per variabili qualitative.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="grafica.html"><a href="grafica.html#grafquant"><i class="fa fa-check"></i><b>6.8</b> Grafici per variabili quantitative.</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="grafica.html"><a href="grafica.html#istogrammi-e-altre-rappresentazioni-della-densità."><i class="fa fa-check"></i><b>6.8.1</b> Istogrammi e altre rappresentazioni della densità.</a></li>
+<li class="chapter" data-level="6.8.2" data-path="grafica.html"><a href="grafica.html#boxplot"><i class="fa fa-check"></i><b>6.8.2</b> Boxplot.</a></li>
+<li class="chapter" data-level="6.8.3" data-path="grafica.html"><a href="grafica.html#rappresentazioni-di-indicatori-di-tendenza-centrale-e-di-variabilità."><i class="fa fa-check"></i><b>6.8.3</b> Rappresentazioni di indicatori di tendenza centrale e di variabilità.</a></li>
+<li class="chapter" data-level="6.8.4" data-path="grafica.html"><a href="grafica.html#scatterplots"><i class="fa fa-check"></i><b>6.8.4</b> Grafici a dispersione.</a></li>
+<li class="chapter" data-level="6.8.5" data-path="grafica.html"><a href="grafica.html#personalizzare-i-grafici-con-ggplot2."><i class="fa fa-check"></i><b>6.8.5</b> <em>Personalizzare i grafici con ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.6" data-path="grafica.html"><a href="grafica.html#estensionigg"><i class="fa fa-check"></i><b>6.8.6</b> <em>Estensioni per ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.7" data-path="grafica.html"><a href="grafica.html#qplot"><i class="fa fa-check"></i><b>6.8.7</b> <em>Veloce veloce: qplot()</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="grafica.html"><a href="grafica.html#graficabase"><i class="fa fa-check"></i><b>6.9</b> <em>La grafica di base in R: un salvagente?</em></a></li>
+<li class="chapter" data-level="6.10" data-path="grafica.html"><a href="grafica.html#altrerisgraf"><i class="fa fa-check"></i><b>6.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="grafica.html"><a href="grafica.html#risorse-in-inglese.-4"><i class="fa fa-check"></i><b>6.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statdesc.html"><a href="statdesc.html"><i class="fa fa-check"></i><b>7</b> Esplorare con i numeri</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statdesc.html"><a href="statdesc.html#cosa-cè-da-imparare-in-questo-capitolo.-6"><i class="fa fa-check"></i><b>7.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="7.2" data-path="statdesc.html"><a href="statdesc.html#una-piccola-premessa-gruppi-livelli-sottoinsiemi."><i class="fa fa-check"></i><b>7.2</b> Una piccola premessa: gruppi, livelli, sottoinsiemi.</a></li>
+<li class="chapter" data-level="7.3" data-path="statdesc.html"><a href="statdesc.html#statcontinui"><i class="fa fa-check"></i><b>7.3</b> Statistiche riassuntive per dati continui.</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="statdesc.html"><a href="statdesc.html#misuretendcentrale"><i class="fa fa-check"></i><b>7.3.1</b> Misure di tendenza centrale e di variabilità.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="statdesc.html"><a href="statdesc.html#altre-funzioni-utili."><i class="fa fa-check"></i><b>7.4</b> <em>Altre funzioni utili.</em></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="statdesc.html"><a href="statdesc.html#lavorare-sui-vettori."><i class="fa fa-check"></i><b>7.4.1</b> <em>Lavorare sui vettori.</em></a></li>
+<li class="chapter" data-level="7.4.2" data-path="statdesc.html"><a href="statdesc.html#funzioni-che-producono-statistiche-riassuntive."><i class="fa fa-check"></i><b>7.4.2</b> <em>Funzioni che producono statistiche riassuntive.</em></a></li>
+<li class="chapter" data-level="7.4.3" data-path="statdesc.html"><a href="statdesc.html#statsummarise"><i class="fa fa-check"></i><b>7.4.3</b> Statistiche, ordinate.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="statdesc.html"><a href="statdesc.html#statgruppi"><i class="fa fa-check"></i><b>7.4.4</b> Statistiche riassuntive per gruppi.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="statdesc.html"><a href="statdesc.html#enormale"><i class="fa fa-check"></i><b>7.5</b> Ma è normale?</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="statdesc.html"><a href="statdesc.html#normal-probability-plot."><i class="fa fa-check"></i><b>7.5.1</b> Normal probability plot.</a></li>
+<li class="chapter" data-level="7.5.2" data-path="statdesc.html"><a href="statdesc.html#testnorm"><i class="fa fa-check"></i><b>7.5.2</b> Test statistici per la normalità.</a></li>
+<li class="chapter" data-level="7.5.3" data-path="statdesc.html"><a href="statdesc.html#comefaremeglio"><i class="fa fa-check"></i><b>7.5.3</b> <em>Come fare di meglio con i risultati dei test</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="statdesc.html"><a href="statdesc.html#intervalli-di-confidenza."><i class="fa fa-check"></i><b>7.6</b> Intervalli di confidenza.</a></li>
+<li class="chapter" data-level="7.7" data-path="statdesc.html"><a href="statdesc.html#statdesccat"><i class="fa fa-check"></i><b>7.7</b> Riassumere i dati per le variabili categoriche.</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="statdesc.html"><a href="statdesc.html#tabelle-di-frequenza-e-contingenza."><i class="fa fa-check"></i><b>7.7.1</b> Tabelle di frequenza e contingenza.</a></li>
+<li class="chapter" data-level="7.7.2" data-path="statdesc.html"><a href="statdesc.html#gmosaico"><i class="fa fa-check"></i><b>7.7.2</b> <em>Grafici a mosaico</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="statdesc.html"><a href="statdesc.html#veloceveloce"><i class="fa fa-check"></i><b>7.8</b> <em>Veloce veloce</em></a></li>
+<li class="chapter" data-level="7.9" data-path="statdesc.html"><a href="statdesc.html#altrerisstatdesc"><i class="fa fa-check"></i><b>7.9</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="statdesc.html"><a href="statdesc.html#risorse-in-italiano.-3"><i class="fa fa-check"></i><b>7.9.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="7.9.2" data-path="statdesc.html"><a href="statdesc.html#risorse-in-inglese.-5"><i class="fa fa-check"></i><b>7.9.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="reportR.html"><a href="reportR.html"><i class="fa fa-check"></i><b>8</b> Creare report e notebook con R.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="reportR.html"><a href="reportR.html#cosa-cè-da-imparare-in-questo-capitolo.-7"><i class="fa fa-check"></i><b>8.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="8.2" data-path="reportR.html"><a href="reportR.html#reportminimo"><i class="fa fa-check"></i><b>8.2</b> Il minimo indispensabile.</a></li>
+<li class="chapter" data-level="8.3" data-path="reportR.html"><a href="reportR.html#gli-elementi-di-un-report-in-r-markdown."><i class="fa fa-check"></i><b>8.3</b> <em>Gli elementi di un report in R Markdown.</em></a></li>
+<li class="chapter" data-level="8.4" data-path="reportR.html"><a href="reportR.html#altri-formati-di-documento-con-r-markdown."><i class="fa fa-check"></i><b>8.4</b> <em>Altri formati di documento con R Markdown.</em></a></li>
+<li class="chapter" data-level="8.5" data-path="reportR.html"><a href="reportR.html#quarto."><i class="fa fa-check"></i><b>8.5</b> <em>Quarto.</em></a></li>
+<li class="chapter" data-level="8.6" data-path="reportR.html"><a href="reportR.html#altrerisreport"><i class="fa fa-check"></i><b>8.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="reportR.html"><a href="reportR.html#risorse-in-italiano.-4"><i class="fa fa-check"></i><b>8.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="8.6.2" data-path="reportR.html"><a href="reportR.html#risorse-in-inglese.-6"><i class="fa fa-check"></i><b>8.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>9</b> Lottare con i dati.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wrangling.html"><a href="wrangling.html#cosa-cè-da-imparare-in-questo-capitolo.-8"><i class="fa fa-check"></i><b>9.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="9.2" data-path="wrangling.html"><a href="wrangling.html#rendere-tidy-i-dati."><i class="fa fa-check"></i><b>9.2</b> Rendere tidy i dati.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="wrangling.html"><a href="wrangling.html#tidyresh"><i class="fa fa-check"></i><b>9.2.1</b> Riordinare con <code>tidyr</code> e <code>dplyr</code>: esempio minimo.</a></li>
+<li class="chapter" data-level="9.2.2" data-path="wrangling.html"><a href="wrangling.html#funzioni-avanzate-con-tidyr."><i class="fa fa-check"></i><b>9.2.2</b> <em>Funzioni avanzate con <code>tidyr</code>.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="wrangling.html"><a href="wrangling.html#dplyr"><i class="fa fa-check"></i><b>9.3</b> il cavallo di battaglia del <code>data wrangling</code>: <code>dplyr</code>.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="wrangling.html"><a href="wrangling.html#filterselect"><i class="fa fa-check"></i><b>9.3.1</b> Estrarre gruppi di righe o colonne.</a></li>
+<li class="chapter" data-level="9.3.2" data-path="wrangling.html"><a href="wrangling.html#riordinare-i-dati."><i class="fa fa-check"></i><b>9.3.2</b> Riordinare i dati.</a></li>
+<li class="chapter" data-level="9.3.3" data-path="wrangling.html"><a href="wrangling.html#muta"><i class="fa fa-check"></i><b>9.3.3</b> Trasformare con <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="9.3.4" data-path="wrangling.html"><a href="wrangling.html#summarise"><i class="fa fa-check"></i><b>9.3.4</b> Riassumere i dati con <code>summarise()</code>.</a></li>
+<li class="chapter" data-level="9.3.5" data-path="wrangling.html"><a href="wrangling.html#join"><i class="fa fa-check"></i><b>9.3.5</b> Database e tabelle relazionali: unire tabelle con _join.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="wrangling.html"><a href="wrangling.html#strutturecontrollo"><i class="fa fa-check"></i><b>9.4</b> Strutture di controllo.</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="wrangling.html"><a href="wrangling.html#loop"><i class="fa fa-check"></i><b>9.4.1</b> <em>Loop (o cicli) e cose simili.</em></a></li>
+<li class="chapter" data-level="9.4.2" data-path="wrangling.html"><a href="wrangling.html#functional"><i class="fa fa-check"></i><b>9.4.2</b> <em>Un’alternativa (veloce e ordinata) ai loop: i “functional”.</em></a></li>
+<li class="chapter" data-level="9.4.3" data-path="wrangling.html"><a href="wrangling.html#ifelsestat"><i class="fa fa-check"></i><b>9.4.3</b> <em>Esecuzione condizionale.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="wrangling.html"><a href="wrangling.html#Soluzione"><i class="fa fa-check"></i><b>9.5</b> La soluzione dell’esercizio.</a></li>
+<li class="chapter" data-level="9.6" data-path="wrangling.html"><a href="wrangling.html#altreriswrangling"><i class="fa fa-check"></i><b>9.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="wrangling.html"><a href="wrangling.html#risorse-in-italiano.-5"><i class="fa fa-check"></i><b>9.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="wrangling.html"><a href="wrangling.html#risorse-in-inglese.-7"><i class="fa fa-check"></i><b>9.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html"><i class="fa fa-check"></i><b>10</b> Citazioni, crediti, copyright, ringraziamenti.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#citazioni."><i class="fa fa-check"></i><b>10.1</b> Citazioni.</a></li>
+<li class="chapter" data-level="" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#credits-e-copyright."><i class="fa fa-check"></i>Credits e copyright.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pigR: R, per pigri</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inter" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Interfacce e ambienti<a href="inter.html#inter" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>v1.1 30/10/2023</p>
+<div id="cosa-cè-da-imparare-in-questo-capitolo.-1" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Cosa c’è da imparare in questo capitolo.<a href="inter.html#cosa-cè-da-imparare-in-questo-capitolo.-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A questo punto dovresti già aver installato <a href="https://cran.r-project.org">R</a> e <a href="https://www.rstudio.com">RStudio</a> e la libreria Rcmdr, necessaria per eseguire l’interfaccia grafica di R Commander. Se non lo hai fatto, ti tocca tornare al capitolo <a href="intro.html#intro">1</a> (senza passare dal via).</p>
+<p>In questo capitolo imparerai abbastanza dell’ambiente di sviluppo RStudio (nella sua versione gratuita) da poter eseguire i primi comandi, installare pacchetti, ottenere aiuto e cominciare ad esplorare set di dati o aprire file, tutti argomenti necessari per affrontare i prossimi capitoli. In questo capitolo <strong>NON</strong> descriverò la GUI di R né R Commander. Le ragioni di questa scelta sono state spiegate nel capitolo <a href="intro.html#intro">1</a>. Se vuoi saperne di più sulla GUI di R puoi consultare la Sezione <a href="inter.html#altrerisinter">2.4</a>.</p>
+</div>
+<div id="rstudio." class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> RStudio.<a href="inter.html#rstudio." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Mentre la GUI di R è sicuramente adatta ai puristi (e, incidentalmente fornisce un interfaccia minima che ti espone al minimo possibile di errori dovuti alla GUI piuttosto che al codice), RStudio è diventato l’ambiente più utilizzato per sfruttare al massimo le potenzialità di R: facilita moltissimo un gran numero di attività di routine (esecuzione di comandi e script, apertura e salvataggio di file, visualizzazione dei grafici, redazione di report, etc.) e attività per utenti più esperti (collegamanto a repositories come GitHub, pubblicazione in rete, accesso al terminale, etc.).</p>
+<div id="linterfaccia-principale-di-rstudio." class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> L’interfaccia principale di RStudio.<a href="inter.html#linterfaccia-principale-di-rstudio." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>All’apertura, RStudio mostra una finestra divisa in 3 o 4 pannelli (<em>panes</em>; il pannello del codice, <code>source pane</code> non è sempre presente e, in generale, la configurazione dei pannelli dipende dal contesto e dalle preferenze impostate dall’utente)<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:RStudioint2"></span>
+<img src="images/RStudio4pannelli.jpg" alt="L'interfaccia di RStudio per MacOS." width="90%" />
+<p class="caption">
+Figura 2.1: L’interfaccia di RStudio per MacOS.
+</p>
+</div>
+<hr />
+<p>La barra dei menu include elementi tipici di molti altri software (<code>&lt;File&gt;</code>, <code>&lt;Edit&gt;</code>, <code>&lt;View&gt;</code>, <code>&lt;Window&gt;</code>, <code>&lt;Help&gt;</code>) ed elementi specifici di RStudio, come <code>&lt;Code&gt;</code>, <code>&lt;Plots&gt;</code>, <code>&lt;Session&gt;</code>, <code>&lt;Build&gt;</code>, <code>&lt;Debug&gt;</code>, <code>&lt;Profile&gt;</code>, <code>&lt;Tools&gt;</code>. I menu sono contestuali, con elementi che possono variare in funzione del tab (o scheda) attivo e dei suoi contenuti. Molte funzionalità sono ovvie, altre le descriverò quando sarà necessario. I quattro pannelli principali<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> sono:</p>
+<ul>
+<li><p><strong>Source</strong>: il pannello del codice, dove verranno creati o aperti script, documenti di R Markdown (un formato per la creazione di rapporti) e altri documenti eseguibili e dove verranno visualizzati oggetti come tabelle (data frame, in R)</p></li>
+<li><p><strong>Console</strong>: è l’equivalente della console di R, ma permette anche di accedere al Terminale (per l’esecuzione di comandi di sistema) e altri pannelli, come, fra le altre cose, quelli di debugging (per esplorare e correggere gli errori di esecuzione delle funzioni). E’ qui che il prompt dei comandi lampeggia sinistramente</p></li>
+<li><p><strong>Environment</strong>: a sua volta contiene una serie di tab o schede che permettono di accedere, fra le altre cose:</p>
+<ul>
+<li><p><strong>Environment</strong>: o ambiente, è dove appariranno gli oggetti, che potranno essere visualizzati o “interrogati” (vedi capitolo <a href="aiuto.html#aiuto">3</a>)</p></li>
+<li><p><strong>History</strong>: storia, un registro dei comandi che sono stati eseguiti durante una sessione di lavoro<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a></p></li>
+</ul></li>
+<li><p><strong>Plots</strong>: a sua volta contiene una serie di tab che permettono di accedere, a:</p></li>
+<li><p><strong>Files</strong>: un semplice browser della gerarchia dei file nella cartella di lavoro (vedi capitoli <a href="intro.html#intro">1</a> e <a href="datioggetti.html#datioggetti">4</a>)</p></li>
+<li><p><strong>Plots</strong>: è qui che vengono visualizzati i grafici generati durante un’analisi, sotto forma di uno stack (pila) navigabile. Discuteremo di questo aspetto nel capitolo <a href="grafica.html#grafica">6</a></p></li>
+<li><p><strong>Packages</strong>: dove è possibile accedere ai pacchetti installati nel sistema, installarne altri o aggiornarli</p></li>
+<li><p><strong>Help</strong>: permette di accedere alle funzioni di aiuto</p></li>
+<li><p><strong>Viewer</strong>: permette di visualizzare documenti .html</p></li>
+</ul>
+<p>Tutti i pannelli e tab hanno menu contestuali a icone, che permettono di accedere rapidamente alle funzioni più importanti, e, in alcuni casi, campi che consentono di effettuare una ricerca di testo all’interno del pannello. E’ inoltre possibile personalizzare e ridimensionare i pannelli: portando il cursore sul bordo del pannello vedrai apparire una doppia freccia, cliccando e trascinato puoi ridimensionare; cliccando sui rettangoli in alto a destra in ogni pannello puoi collassarli o espanderli.<br />
+RStudio è un’interfaccia complessa e molto ricca di funzionalità e non ha molto senso descriverle dettagliatamente tutte. Nella Sezione <a href="inter.html#altrerisinter">2.4</a> troverai riferimenti a filmati, documenti e pagine web. Di seguito, esploreremo le funzioni più importanti dei pannelli principali, mentre altre saranno descritte ogni volta che sarà necessario.</p>
+</div>
+<div id="il-pannello-source." class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Il pannello Source.<a href="inter.html#il-pannello-source." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bene, ora tocca a te esplorare l’interfaccia. Apri un nuovo file di script. Puoi farlo via menu (<code>&lt;File -&gt; New file -&gt; R script&gt;</code>), con la sequenza di tasti <code>&lt;cmd-shift-N&gt;</code>, o usando l’icona ad accesso rapido per la creazione di nuovi file.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:newscript"></span>
+<img src="images/opennewscript.jpg" alt="Aprire un nuovo file di script." width="90%" />
+<p class="caption">
+Figura 2.2: Aprire un nuovo file di script.
+</p>
+</div>
+<hr />
+<p>Il risultato è una finestra desolantemente (o promettentemente) vuota, nella quale puoi scrivere comandi che potranno essere eseguiti singolarmente o in batch (più righe o l’intero script) per automatizzare un flusso di analisi. La finestra non è altro che un piccolo editor di testi, con alcune funzioni che rendono particolarmente conveniente l’uso di RStudio rispetto alla GUI di R.
+Prova ora a scrivere i comandi visualizzati nella figura <a href="inter.html#fig:primoscript">2.3</a>, uno per volta, premendo il tasto invio alla fine di ogni riga. Noterai, mentre scrivi, che RStudio offre una serie di suggerimenti (vedi l’esempio per <code>mean()</code>), che è possibile autocompletare premendo il tasto di tabulazione, generando ulteriori suggerimenti o facendo apparire dei piccoli “fumetti” che fungono da promemoria per la sintassi di una funzione o addirittura aprendo e chiudendo parentesi e virgolette per te. Prova con <code>mean</code>: inizia a scrivere lentamente, una lettera per volta, e vedrai che appare un piccolo menu a tendina, le cui opzioni si restringono man mano che vai avanti. Puoi usare i tasti freccia in basso o in alto per navigare nel menu e premere tab o cliccare con il mouse quando sei soddisfatt*<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>. La funzione verrà completata (compresa di parentesi), e il cursore verrà posizionato all’interno delle parentesi: nota come spostando il cursore dopo una parentesi chiusa sia possibile individuare la parentesi aperta corrispondente, una cosa utilissima quando ci sono molte parentesi annidate!. A questo punto, all’interno delle parentesi scrivi <code>mtcars$mpg</code>, senza premere invio<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:primoscript"></span>
+<img src="images/commandsscript.jpg" alt="Il mio primo script." width="90%" />
+<p class="caption">
+Figura 2.3: Il mio primo script.
+</p>
+</div>
+<hr />
+<p>Avrai notato che premendo invio non viene prodotto alcun output: il cursore si muove semplicemente alla riga successiva. La differenza fondamentale fra il pannello <strong>Source</strong> e la <strong>Console</strong> è che i comandi scritti nel primo non sono destinati ad essere eseguiti in modo interattivo, ma, appunto, in gruppi o tutti insieme.<br />
+A questo punto dovresti avere nella console i seguenti comandi:</p>
+<pre><code>data(mtcars)
+help(&quot;mtcars&quot;)
+View(mtcars)
+plot(mtcars$wt, mtcars$mpg)
+mean(mtcars$mpg)</code></pre>
+<p>Prova a selezionarli tutti e a premere <code>&lt;cmd-invio&gt;</code> o ad usare l’icona di accesso rapido <code>Run</code> che vedi in alto nel pannello <strong>Source</strong><a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>. Il risultato è nella figura <a href="inter.html#fig:outprimoscript">2.4</a>.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:outprimoscript"></span>
+<img src="images/firstscript.jpg" alt="L'output del mio primo script." width="90%" />
+<p class="caption">
+Figura 2.4: L’output del mio primo script.
+</p>
+</div>
+<hr />
+<p>Ed ecco qui l’output inserito direttamente in questo testo<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="inter.html#cb3-1" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb3-2"><a href="inter.html#cb3-2" tabindex="-1"></a><span class="fu">help</span>(<span class="st">&quot;mtcars&quot;</span>)</span>
+<span id="cb3-3"><a href="inter.html#cb3-3" tabindex="-1"></a><span class="fu">head</span>(mtcars, <span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="inter.html#cb5-1" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>wt, mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<p><img src="_main_files/figure-html/mtcars-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="inter.html#cb6-1" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg)</span></code></pre></div>
+<pre><code>## [1] 20.09062</code></pre>
+<p>Qui, per rendere l’output meno lungo, qui ho stampato solo 20 righe di <code>mtcars</code> usando il comando <code>head(mtcars, 20)</code>.<br />
+Come potrai notare:</p>
+<ul>
+<li><p>nel pannello <strong>Source</strong> è apparsa, in un nuovo tab, la tabella corrispondente all’oggetto <code>mtcars</code>;</p></li>
+<li><p>nella <strong>Console</strong> è apparso “l’eco” dei comandi (come se fossero stati scritti ed eseguiti lì) e il risultato della funzione <code>mean(mtcars$mpg)</code>, che calcola appunto la media aritmetica della variabile <code>mpg</code> del data frame <code>mtcars</code>;</p></li>
+<li><p>nel pannello <strong>Environment</strong> è apparso l’oggetto <code>mtcars</code>;</p></li>
+<li><p>nel pannello <strong>Plot</strong> è apparso il grafico a dispersione delle due variabili <code>weight</code> e <code>mpg</code>;</p></li>
+<li><p>cliccando sul tab <strong>Help</strong> del pannello <strong>Plot</strong> è possibile vedere l’output della funzione <code>help("mtcars")</code>, una descrizione di questo particolare set di dati, uno dei molti inclusi con la versione base e i pacchetti di R</p></li>
+</ul>
+<p>Nota inoltre che il nome del tab dello script è in rosso (<code>Untitled1</code>): puoi facilmente attivare questo tab cliccando sul titolo e salvare lo script con <code>&lt;File-&gt;Save&gt;</code>, che aprirà la caratteristica finestra di salvataggio del tuo sistema operativo<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>.</p>
+<p><strong>Eccellente!</strong> Hai condotto la tua prima (micro)analisi grafica e statistica con R operando in modo “batch”. Adesso prenditi un po’ di tempo per esplorare il tab contenente i dati, cliccando sui nomi delle variabili, usando la barra di scrolling, provando ad usare l’icona filter o a scrivere qualcosa nel campo di ricerca (con la lente d’ingrandimento). Quando sei pront* chiudi questo tab cliccando sulla piccola <code>x</code> immediatamente a fianco del nome del tab<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>.<br />
+Prova ora ad esplorare il tab dello script (che dovrebbe avere il nome Untitled1, o qualcosa di simile) e le icone di accesso rapido. Nota come le righe siano numerate e come una barra verticale grigia segni il limite di 80 caratteri.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a> Dato che si tratta di un piccolo editor di testi puoi usare funzioni come trova e sostituisci, conta parole, (menu <code>&lt;Edit&gt;</code>) etc.: in realtà, potresti scrivere uno script di R in qualsiasi editor di testi e incollarlo in una finestra di script vuoto o salvarlo come testo e aprirlo in RStudio… Chiudendo questo tab (come per il precedente basta cliccare sulla x accanto al nome) apparirà un menu a comparsa che ti chiederà se vuoi salvare lo script. Puoi scegliere una qualsiasi delle opzioni: torneremo sul salvataggio degli script più avanti.</p>
+</div>
+<div id="il-pannello-console." class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Il pannello Console.<a href="inter.html#il-pannello-console." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Prova ora a scrivere i comandi direttamente nella <strong>Console</strong>, premendo invio alla fine di ogni comando:</p>
+<pre><code>&gt;data(mtcars)
+&gt;help(&quot;mtcars&quot;)
+&gt;View(mtcars)
+&gt;plot(mtcars$wt, mtcars$mpg)
+&gt;mean(mtcars$mpg)</code></pre>
+<p>Stai ora operando in modo <strong>interattivo</strong>: l’effetto di ogni comando è immediato<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a>, ma non è differente da quello che hai osservato prima<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>.<br />
+Prova ora a scrivere, sempre nella <strong>Console</strong>, i seguenti comandi:</p>
+<pre><code>&gt;1+2*log10(10)-3
+&gt;a &lt;- 1L
+&gt;b = c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
+&gt;c &lt;- c(1, 2, 3)
+&gt;list(numero = a, vettore_string = b) -&gt; la_mia_prima_lista
+&gt;calcola_media &lt;- function(vettore_numerico){mean(vettore_numerico)}
+&gt;c
+&gt;calcola_media(c)</code></pre>
+<ol style="list-style-type: decimal">
+<li>Il primo comando permette di dimostrare come la console possa funzionare come una piccola calcolatrice, restituendo immediatamente il risultato di un calcolo, senza attribuirlo a nessun oggetto (il risultato è qui sotto).</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="inter.html#cb10-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fu">log10</span>(<span class="dv">10</span>)<span class="sc">-</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Il secondo comando assegna un oggetto (un vettore di lunghezza 1, con valore 1, intero) al nome <code>a</code>.</p></li>
+<li><p>il terzo comando assegna al nome <code>b</code> il valore di un vettore carattere di lunghezza 3 (un oggetto).</p></li>
+<li><p>il quarto comando assegna al nome <code>c</code> un vettore di numeri (reali) di lunghezza 3 (un oggetto).</p></li>
+<li><p>il quinto comando assegna al nome <code>la_mia_prima_lista</code> una lista (un particolare oggetto di R vedi capitolo <a href="aiuto.html#aiuto">3</a>).</p></li>
+<li><p>il sesto comando assegna al nome <code>calcola_media</code> una funzione definita dall’utente.</p></li>
+<li><p>il settimo comando “stampa” nella console il valore dell’oggetto c.<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a></p></li>
+<li><p>l’ottavo comando usa il vettore c come argomento della funzione <code>calcola_media</code> e invia il risultato alla console<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a></p></li>
+</ol>
+<p>Ed ecco i risultati:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="inter.html#cb12-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fu">log10</span>(<span class="dv">10</span>)<span class="sc">-</span><span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="inter.html#cb14-1" tabindex="-1"></a>a <span class="ot">&lt;-</span> 1L</span>
+<span id="cb14-2"><a href="inter.html#cb14-2" tabindex="-1"></a>b <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>)</span>
+<span id="cb14-3"><a href="inter.html#cb14-3" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb14-4"><a href="inter.html#cb14-4" tabindex="-1"></a><span class="fu">list</span>(<span class="at">numero =</span> a, <span class="at">vettore_string =</span> b) <span class="ot">-&gt;</span> la_mia_prima_lista</span>
+<span id="cb14-5"><a href="inter.html#cb14-5" tabindex="-1"></a>calcola_media <span class="ot">&lt;-</span> <span class="cf">function</span>(vettore_numerico){<span class="fu">mean</span>(vettore_numerico)}</span>
+<span id="cb14-6"><a href="inter.html#cb14-6" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="inter.html#cb16-1" tabindex="-1"></a><span class="fu">calcola_media</span>(c)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Della sintassi di questi comandi discuteremo più avanti. E’ importante notare come:</p>
+<ol style="list-style-type: decimal">
+<li><p>il primo comando produce un output (il risultato del calcolo) nella console, ma non determina la creazione di nessun oggetto nell’ambiente. Il settimo comando usa un oggetto già creato per ottenere un output nella console.</p></li>
+<li><p>i comandi da 2 a 6 creano oggetti (che appaiono nel pannello <strong>Environment</strong>, vedi dopo) ma non producono un output nella Console.</p></li>
+<li><p>tre comandi (vedi sotto) usano tre modi, tutti validi, di attribuire valori, ma il preferito è sicuramente il secondo (<code>c &lt;- c(1, 2, 3)</code>)</p></li>
+</ol>
+<pre><code># assegnare con =
+b = c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;)
+
+# assegnare con &lt;-, il modo preferito
+c &lt;- c(1, 2, 3)
+
+# assegnare con -&gt;
+list(numero = a, vettore_string = b) -&gt; la_mia_prima_lista</code></pre>
+<p><strong>Bene!!!</strong>: con poco sforzo, sei riuscit* a scrivere i primi comandi in R, a creare oggetti e a fare calcoli!!!</p>
+<p>Incidentalmente, il pannello Console contiene altri tab, alcuni contestuali, come quelli relativi a RMarkdown<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a> o per il debugging<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>) e altri come <strong>Terminal</strong><a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a> e <strong>Jobs</strong><a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a> sono decisamente destinati a utenti meno “pigri”.</p>
+</div>
+<div id="il-pannello-environment." class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Il pannello Environment.<a href="inter.html#il-pannello-environment." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>E’ un pannello particolarmente importante, che può contenere diversi tab, che ti troverai ad usare di frequente.</p>
+</div>
+<div id="il-tab-environment." class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Il tab Environment.<a href="inter.html#il-tab-environment." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il <strong>tab <code>Environment</code></strong> del pannello Environment permette di esplorare l’ambiente di lavoro e gli oggetti in esso contenuti, di salvare e importare oggetti di diverso tipo. Il piccolo spazio con la lente di ingrandimento in alto a destra, come di consueto, consente di condurre una ricerca per nome in ambienti particolarmente affollati.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:riqenvironment"></span>
+<img src="images/environmenttab.jpg" alt="Il pannello Environment." width="90%" />
+<p class="caption">
+Figura 2.5: Il pannello Environment.
+</p>
+</div>
+<hr />
+<p>Se hai seguito le istruzioni del paragrafo precedente, il tuo ambiente di lavoro dovrebbe contenere gli stessi oggetti riportati nella figura <a href="inter.html#fig:riqenvironment">2.5</a>. Alcuni dei tasti di accesso rapido e dei menu contestuali possono variare in funzione di azioni precedenti o delle versioni di RStudio.
+Nel capitolo <a href="datioggetti.html#datioggetti">4</a> descriverò in dettaglio come aprire e salvare file, ma, per iniziare possiamo fare una piccola prova:</p>
+<ol style="list-style-type: decimal">
+<li><p>clicca sull’icona per il salvataggio dell’ambiente (il floppy disk), nella finestra di salvataggio che si apre scegli una destinazione e un nome per il file e clicca su <code>&lt;Save&gt;</code>. In questo modo hai salvato l’intero ambiente di lavoro sotto forma di file binario <code>.Rdata</code>: questo formato contiene sia gli oggetti che i loro nomi<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>. Contemporaneamente, vedrai apparire nella console l’eco di questo comando da menu.</p></li>
+<li><p>clicca sulla piccola icona a forma di scopa: questo comando richiede una conferma ed elimina tutti gli oggetti dall’ambiente di lavoro.<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>. Anche in questo caso lo stesso risultato poteva essere ottenuto con un comando.<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a></p></li>
+<li><p>usa l’icona a forma di cartella per riaprire il file che avevi salvato al punto 1: vedrai riapparire esattamente gli stessi oggetti.</p></li>
+</ol>
+<p>Prova ora a “esplorare” gli oggetti, cliccando, dove esistono, sui piccoli triangoli bianchi su sfondo blu accanto ai nomi, o sui nomi degli oggetti: osserva l’effetto delle tue azioni e guarda cosa appare nella Console in seguito ad ogni azione…</p>
+</div>
+<div id="il-tab-history." class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Il tab History.<a href="inter.html#il-tab-history." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il tab <strong>History</strong> del pannello Environment consente di accedere rapidamente ai comandi eseguiti. La “storia” dei comandi può essere salvata<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a> e i file salvati possono essere aperti nel medesimo tab. Gruppi di comandi selezionati possono essere spostati nella Console o nello script attivo nel pannello degli Script, dove poi possono essere eseguiti. E’ inoltre possibile rimuovere singoli comandi, o, usando l’icona a forma di scopa, l’intera storia dei comandi.<br />
+Incidentalmente, è possibile richiamare i comandi direttamente dalla Console, usando i tasti <code>&lt;freccia su&gt;</code> (richiama i comandi precedenti) o <code>&lt;freccia giù&gt;</code> (richiama quelli successivi al comando appena richiamato, se esistono).</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:riqhistory"></span>
+<img src="images/historytab.jpg" alt="Il tab History." width="90%" />
+<p class="caption">
+Figura 2.6: Il tab History.
+</p>
+</div>
+<hr />
+<p>Prova tu stess*:</p>
+<ol style="list-style-type: decimal">
+<li><p>attiva la Console cliccando al suo interno o con la combinazione di tasti <code>&lt;ctrl-2&gt;</code>;</p></li>
+<li><p>usa il tasto <code>&lt;freccia su&gt;</code> per scorrere fra i comandi, scegline uno e eseguilo premendo invio.</p></li>
+<li><p>prova a salvare tutta la History, cancellarla e importare quella salvata.</p></li>
+</ol>
+</div>
+<div id="il-pannello-plots." class="section level3 hasAnchor" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> Il pannello Plots.<a href="inter.html#il-pannello-plots." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il pannello <strong>Plots</strong> dà accesso a diverse risorse importanti, tramite i tab <strong>Plots</strong>, <strong>Files</strong>, <strong>Packages</strong>, <strong>Help</strong> e <strong>Viewer</strong>. I primi 4 verranno descritti in maggiore dettaglio qui sotto; l’ultimo tab (Viewer) permette di esplorare documenti .html, come quelli generati a partire da RMarkdown.</p>
+</div>
+<div id="il-tab-plots." class="section level3 hasAnchor" number="2.2.8">
+<h3><span class="header-section-number">2.2.8</span> Il tab Plots.<a href="inter.html#il-tab-plots." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il tab <strong>Plots</strong> del pannello Plots, croce e delizia degli utenti di RStudio, è mostrato nella figura <a href="inter.html#fig:tabplots">2.7</a>.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tabplots"></span>
+<img src="images/plotstab.jpg" alt="Il tab Plots." width="90%" />
+<p class="caption">
+Figura 2.7: Il tab Plots.
+</p>
+</div>
+<hr />
+<p>La figura mostra l’output del comando <code>plot(mtcars$wt, mtcars$mpg)</code>, con un grafico a dispersione un tantino minimalista<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>. Il tab accumula, sotto forma di stack (pila) i grafici prodotti dalla sessione. E’ possibile navigare in questo tab usando le icone ad accesso rapido o il menu <code>&lt;Plots&gt;</code>. Fra le icone ad accesso rapido di questo tab:</p>
+<ul>
+<li><p>le due frecce permettono di navigare fra i grafici prodotti;</p></li>
+<li><p>il tasto Zoom permette di ingrandire il grafico e di ridimensionarlo dinamicamente (trascinandone i bordi): questa caratteristica può generare confusione perché, se si salva il grafico, le dimensioni e il rapporto fra le proporzioni<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a> non sono quelle visibili nel pannello. Il tasto <strong>Export</strong> apre un menu a comparsa che consente di esportare il grafico in un formato immagine<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>;</p></li>
+<li><p>i due tasti successivi consentono di eliminare dallo stack il grafico corrente o tutti i grafici</p></li>
+<li><p>l’opzione Publish permette di pubblicare il grafico online<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a></p></li>
+</ul>
+<p>Discuteremo in maggiore dettaglio della grafica con R nel capitolo <a href="grafica.html#grafica">6</a>.</p>
+</div>
+<div id="il-tab-files." class="section level3 hasAnchor" number="2.2.9">
+<h3><span class="header-section-number">2.2.9</span> Il tab Files.<a href="inter.html#il-tab-files." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il tab <strong>Files</strong> del pannello Plot permette di navigare il file system del tuo computer. La barra dei menu mostra il percorso di cartelle e sottocartelle (in genere a partire dalla Home). Cliccando sui file è possibile aprirli (in RStudio o con l’applicazione più adatta).</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tabfiles"></span>
+<img src="images/Filestab.jpg" alt="Il tab Files." width="90%" />
+<p class="caption">
+Figura 2.8: Il tab Files.
+</p>
+</div>
+<hr />
+<p>Prova (con un po’ di prudenza) a esplorare questo tab e, in particolare, il menu a comparsa disponibile sotto l’icona <strong>More</strong>.</p>
+</div>
+<div id="tabpackages" class="section level3 hasAnchor" number="2.2.10">
+<h3><span class="header-section-number">2.2.10</span> Il tab Packages.<a href="inter.html#tabpackages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il tab <strong>Packages</strong> del pannello Plot è, indubbiamente, uno dei più utili: è qui che, con poco sforzo, puoi verificare quale pacchetti sono installati nella tua libreria, aggiornarli, caricarli nell’ambiente di lavoro, esplorarne l’aiuto, installarne di nuovi etc.<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a> I tasti di accesso rapido e le funzioni di questo tab sono molto intuitivi, e non necessitano di particolari spiegazioni, nemmeno per i più pigri.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tabpackages"></span>
+<img src="images/packagestab.jpg" alt="Il tab Packages." width="90%" />
+<p class="caption">
+Figura 2.9: Il tab Packages.
+</p>
+</div>
+<hr />
+<p>Per dimostrare l’uso di questo tab:</p>
+<ol style="list-style-type: decimal">
+<li><p>osserva come i pacchetti caricati nell’ambiente hanno un segno di spunta; per ogni pacchetto è disponibile una breve descrizione;</p></li>
+<li><p>cliccando sul nome di un pacchetto è possibile accedere all’aiuto del pacchetto;</p></li>
+<li><p>le due piccole icone alla fine di ogni riga consentono di visualizzare un pacchetto sul repository del CRAN ed eliminarlo dalla libreria;</p></li>
+<li><p>il tasto <strong>Update</strong> richiama una lista dei pacchetti per i quali è disponibile una versione più aggiornata; il menu a comparsa che si apre è di uso molto intuitivo e non richiede particolari spiegazioni;<a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a></p></li>
+<li><p>il tasto <strong>Install</strong> ti consente di installare, in maniera interattiva, nuovi pacchetti; come si vede dalla figura <a href="inter.html#fig:tabpackages">2.9</a> mentre digiti ti appariranno delle opzioni di autocompilazione; è inoltre possibile installare più di un pacchetto contemporaneamente.<br />
+Prova ora a installare il pacchetto <a href="https://www.tidyverse.org">tidyverse</a>: si tratta di un insieme di pacchetti per la scienza dei dati che useremo spessissimo in questo libro, basati sul concetto di <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidy data</a>, di cui parleremo ampiamente nel capitolo <a href="wrangling.html#wrangling">9</a><a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>.</p></li>
+</ol>
+<p>Come sempre, è possibile utilizzare i comandi per:</p>
+<ol style="list-style-type: decimal">
+<li><p>sapere quali pacchetti sono installati nella tua libreria;</p></li>
+<li><p>installare nuovi pacchetti;</p></li>
+<li><p>caricarli in memoria;</p></li>
+</ol>
+<p>Un esempio di codice è riportato di seguito (nota come tutte queste funzioni sono usate con le opzioni di default; nel capitolo <a href="aiuto.html#aiuto">3</a>, dedicato all’aiuto, esploreremo in dettaglio altre opzioni)</p>
+<pre><code># il comando successivo assegna l&#39;elenco dei pacchetti disponibili in libreria 
+# (un vettore carattere) al nome mypckgs
+# i cui primi elementi vengono poi stampati a Console
+&gt; mypckgs &lt;-  installed.packages()
+&gt; head(mypckgs, n = 5L)
+# installa il pacchetto car, un pacchetto di strumenti per la regressione 
+&gt; install.packages(&quot;car&quot;, repos = &quot;https://cran.mirror.garr.it/CRAN/&quot;)
+# carica il pacchetto nell&#39;ambiente di lavoro: è anche possibile usare require()
+&gt; library(car)</code></pre>
+</div>
+<div id="il-tab-help." class="section level3 hasAnchor" number="2.2.11">
+<h3><span class="header-section-number">2.2.11</span> Il tab Help.<a href="inter.html#il-tab-help." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Anche questo tab è disponibile nel pannello Plots. Questo è probabilmente uno dei tab che “visiterai” più spesso. Le sue funzionalità verranno descritte nel capitolo <a href="aiuto.html#aiuto">3</a>.<br />
+Le icone di accesso rapido e i campi di ricerca sono piuttosto intuitivi: prova a cercare aiuto sulle funzioni che sono state illustrate nei paragrafi precedenti o a raggiungere la “Home” e esplorare alcuni degli argomenti dell’aiuto, in particolare quelli relativi alla IDE di RStudio.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tabhelp"></span>
+<img src="images/Helptab.jpg" alt="Il tab Help." width="90%" />
+<p class="caption">
+Figura 2.10: Il tab Help.
+</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="esercizi." class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Esercizi.<a href="inter.html#esercizi." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Bene, come hai visto, qualche piccolo esercizio ti è stato proposto nei paragrafi precedenti. Per quanto pigri, senza pratica ed esercizio non c’è proprio modo di imparare ad usare R. Nei capitoli successivi ti proporrò qualche esercizio un pochino più complesso. Ricorda che sono disponibili risorse interattive, come <code>learnR</code>. Alcuni tutorial online sono disponibili <a href="https://rstudio.github.io/learnr/">qui</a>.</p>
+</div>
+<div id="altrerisinter" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Altre risorse.<a href="inter.html#altrerisinter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Come sempre, ti indicherò soltanto le risorse minime che ritengo migliori o più efficaci da un punto di vista didattico. Sentiti liber* di esplorare secondo il tuo estro il vasto mare della documentazione su R.</p>
+<div id="risorse-in-italiano." class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Risorse in italiano.<a href="inter.html#risorse-in-italiano." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Documenti e pagine web</strong></p>
+<p>Purtroppo i documenti e le pagine su R in lingua italiana sono piuttosto rar* e spesso non aggiornat*. Un manuale vecchiotto sul linguaggio è <a href="https://cran.r-project.org/doc/contrib/Mineo-dispensaR.pdf">qui</a>. Francamente non sono riuscito a trovare altro che valga la pena di citare (se non forse il materiale, piuttosto formale, per qualche corso universitario).</p>
+<p><strong>Video.</strong></p>
+<p>Un <a href="https://www.youtube.com/watch?v=5PoyCyje6IQ">video di Federica web learning</a> sull’installazione di R e RStudio con una breve descrizione delle interfacce</p>
+</div>
+<div id="risorse-in-inglese." class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Risorse in inglese.<a href="inter.html#risorse-in-inglese." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Documenti e pagine web.</strong></p>
+<p>Ecco una selezione di eccellenti capitoli introduttivi da libri in inglese, tutti disponibili online e gratuiti (se siete pigri sceglietene uno qualsiasi):</p>
+<ul>
+<li><p>Il <a href="https://moderndive.netlify.app/1-getting-started.html">capitolo 1</a> di ModernDive</p></li>
+<li><p>Il <a href="https://benwhalley.github.io/just-enough-r/r-basics.html">capitolo 1</a> di Just enough R</p></li>
+<li><p>Il <a href="https://rbasics.netlify.app/3-rstudiobasics.html">capitolo 3</a> di R and RStudio basics (un po’ più orientato al lavoro nel cloud)</p></li>
+</ul>
+<p>Il materiale didattico presente sul sito di <a href="https://education.rstudio.com/learn/beginner/">RStudio Education</a> è eccellente e prevede percorsi differenziati per utenti principianti, intermedi ed avanzati. Potete scaricare una cheat sheet per la IDE di RStudio <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf">qui</a>. In generale le cheat sheet forniscono un riferimento rapido all’interfaccia e ai comandi ed è sempre utile averle a portata di mano.</p>
+<p>Molti altri eccellenti e dettagliati documenti sono disponibili nella <a href="https://cran.r-project.org">sezione sulla documentazione del CRAN</a>. In particolare un manuale (vecchiotto) per R commander è <a href="https://cran.r-project.org/doc/contrib/Karp-Rcommander-intro2.pdf">qui</a>.</p>
+<p><strong>Video.</strong></p>
+<p>Ci sono probabilmente migliaia di video che descrivono l’installazione di R, RStudio e le relative GUI. <a href="https://youtu.be/BvKETZ6kr9Q">Questo</a> è un buon esempio (circa 50 min). Il video ufficiale di RStudio è <a href="https://www.rstudio.com/products/rstudio/?wvideo=520zbd3tij">qui</a>.<br />
+Un video di circa 30 minuti sulle GUI di R, R commander e RStudio con sottotitoli accettabili è <a href="https://youtu.be/7A0VPxwjh3w">qui</a>
+Per diversi video è possibile attivare i sottotitoli in italiano (con pochissime garanzie sulla qualità delle traduzioni).</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="27">
+<li id="fn27"><p>incluso lo schema di colori, visita le <code>&lt;Preferences&gt;</code> sotto la voce <code>&lt;Appearence&gt;</code>, <code>&lt;Pane layout&gt;</code>, etc.<a href="inter.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>è possibile spostarsi rapidamente fra questi pannelli usando l’abbreviazione di tastiera <code>&lt;ctrl-1&gt;</code>, <code>&lt;ctrl-2&gt;</code>, <code>&lt;ctrl-3</code>&gt; o <code>&lt;ctrl-4&gt;</code>; nel menu <code>&lt;View&gt;</code> viene indicata come <code>&lt;^1&gt;</code> etc.<a href="inter.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>o persino una sessione precedente; R può ricaricare, all’apertura, l’ambiente e la storia della sessione precedente<a href="inter.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p>Questo libro è assolutamente gender neutral, ma spero di riuscire a ricordarmelo sempre.<a href="inter.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<li id="fn31"><p>se premessi invio, semplicemente, la parentesi chiusa andrebbe a capo, provare per credere<a href="inter.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn32"><p>in altri casi <code>&lt;Run&gt;</code> permette di aprire un menu contestuale con molte opzioni diverse<a href="inter.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p>RMarkdown consente di integrare i risultati dell’analisi statistica e grafica in un testo come questo; ne parleremo diffusamente più avanti<strong>riferimento</strong><a href="inter.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p>in questo caso è possibile scegliere la destinazione del file<a href="inter.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p>niente paura, potremo riaprire il tab <strong>View</strong> per l’oggetto <code>mtcars</code> in almeno due modi diversi<a href="inter.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<li id="fn36"><p>un residuo dell’era dei dinosauri<a href="inter.html#fnref36" class="footnote-back">↩︎</a></p></li>
+<li id="fn37"><p>se il comando è completo ed interpretabile, altrimenti otterrai un cursore a forma di <code>+</code> che indica che R è in attesa del completamento del comando, o un messaggio di errore<a href="inter.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<li id="fn38"><p>e incidentalmente corrisponde a quello che sarebbe accaduto se avessi premuto <code>&lt;cmd-invio&gt;</code> al termine di ogni riga dello script, provare per credere.<a href="inter.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p>è l’equivalente di scrivere <code>print(c)</code><a href="inter.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p>l’equivalente è scrivere mean(c)<a href="inter.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p>la libreria di R usata per creare report, e, fra le altre cose, questo libro<a href="inter.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p>la ricerca di errori in una funzione o, più in generale, nel codice<a href="inter.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p>accesso diretto allo shell di sistema, per interagire con il sistema operativo tramite la linea di comando; può essere utile per lanciare programmi non accessibili tramite l’interfaccia grafica<a href="inter.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>consente di avviare l’esecuzione di script R o Python in “background”, permettendo di condurre calcoli lunghi o complicati mentre l’utente usa la sessione di RStudio per altri scopi<a href="inter.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p>questo è equivalente a usare il comando <code>save.image()</code>; vedremo che è possibile salvare anche solo alcuni degli oggetti usando il comando <code>save()</code><a href="inter.html#fnref45" class="footnote-back">↩︎</a></p></li>
+<li id="fn46"><p>non preoccuparti, li recuperiamo fra un attimo o puoi eseguire i comandi descritti nei paragrafi precedenti<a href="inter.html#fnref46" class="footnote-back">↩︎</a></p></li>
+<li id="fn47"><p><code>rm(list = ls())</code><a href="inter.html#fnref47" class="footnote-back">↩︎</a></p></li>
+<li id="fn48"><p>con estensione .Rhistory<a href="inter.html#fnref48" class="footnote-back">↩︎</a></p></li>
+<li id="fn49"><p>le opzioni del comando plot() sono formidabili, e difficili da ricordare…<a href="inter.html#fnref49" class="footnote-back">↩︎</a></p></li>
+<li id="fn50"><p>che, di default, rispetta la sezione aurea, con un rapporto di 1,61 fra larghezza e lunghezza<a href="inter.html#fnref50" class="footnote-back">↩︎</a></p></li>
+<li id="fn51"><p>è meglio non fare troppo conto su questa opzione, perché la risoluzione di esportazione è quella dello schermo, ampiamente insufficiente per una pubblicazione scientifica<a href="inter.html#fnref51" class="footnote-back">↩︎</a></p></li>
+<li id="fn52"><p>se avete settato correttamente le opzioni nelle preferenze<a href="inter.html#fnref52" class="footnote-back">↩︎</a></p></li>
+<li id="fn53"><p>naturalmente, è possibile fare tutte queste cose con i comandi, vedi dopo<a href="inter.html#fnref53" class="footnote-back">↩︎</a></p></li>
+<li id="fn54"><p>in alcuni casi, durante il processo di aggiornamento ti verrà segnalato che esiste una versione “source” più aggiornata della versione “binary” e ti verrà offerta l’opzione se installare la versione più aggiornata, che potrebbe richiedere la compilazione; in questo caso potresti avere bisogno fi alcuni strumenti di sviluppo, installabili direttamente dal sito del CRAN (compilatori C++ o FORTRAN) se non sono già presenti sul tuo sistema; in linea di massima è più semplice installare le versioni binarie, che non richiedono compilazione<a href="inter.html#fnref54" class="footnote-back">↩︎</a></p></li>
+<li id="fn55"><p>nota come la casella <code>Install dependencies</code> del menu a comparsa Install è selezionata di default: le “dependencies” sono i pacchetti da cui, letteralmente, dipende il pacchetto che stai installando, perché le funzioni del pacchetto, a loro volta, ne usano le funzioni; installando alcuni pacchetti vedrai installate numerosissime dependencies, quindi la tua libreria si arricchirà rapidamente<a href="inter.html#fnref55" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="aiuto.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

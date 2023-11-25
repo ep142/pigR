@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Chiedere aiuto | pigR: R, per pigri</title>
+  <meta name="description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Chiedere aiuto | pigR: R, per pigri" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Chiedere aiuto | pigR: R, per pigri" />
+  
+  <meta name="twitter:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+<meta name="author" content="E. Parente, Scuola SAFE, Università degli Studi della Basilicata" />
+
+
+<meta name="date" content="2023-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="inter.html"/>
+<link rel="next" href="datioggetti.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cos’è pigR?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#di-cosa-hai-bisogno-per-leggere-e-capire-questo-libro."><i class="fa fa-check"></i>Di cosa hai bisogno per leggere (e capire) questo libro.</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#chi-siamo-noi-noi-noi"><i class="fa fa-check"></i>Chi siamo noi (noi, noi)?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#se-ti-piace"><i class="fa fa-check"></i>Se ti piace…</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cookies"><i class="fa fa-check"></i>Cookies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#la-foto-di-copertina."><i class="fa fa-check"></i>La foto di copertina.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduzione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#cosa-cè-da-imparare-in-questo-capitolo."><i class="fa fa-check"></i><b>1.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#convenzioni-e-guida-alla-lettura-e-alluso-del-codice."><i class="fa fa-check"></i><b>1.2</b> Convenzioni e guida alla lettura e all’uso del codice.</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#tutti-vogliono-imparare-a-usare-r."><i class="fa fa-check"></i><b>1.3</b> Tutti vogliono imparare a usare R.</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#provare-per-credere-app-gui-ide-e-altre-diavolerie."><i class="fa fa-check"></i><b>1.3.1</b> Provare per credere: App, GUI, IDE e altre diavolerie.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#laltra-faccia-della-medaglia-troppa-fatica."><i class="fa fa-check"></i><b>1.4</b> L’altra faccia della medaglia: troppa fatica.</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#r-per-pigri."><i class="fa fa-check"></i><b>1.5</b> R, per pigri.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inter.html"><a href="inter.html"><i class="fa fa-check"></i><b>2</b> Interfacce e ambienti</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inter.html"><a href="inter.html#cosa-cè-da-imparare-in-questo-capitolo.-1"><i class="fa fa-check"></i><b>2.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="2.2" data-path="inter.html"><a href="inter.html#rstudio."><i class="fa fa-check"></i><b>2.2</b> RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="inter.html"><a href="inter.html#linterfaccia-principale-di-rstudio."><i class="fa fa-check"></i><b>2.2.1</b> L’interfaccia principale di RStudio.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="inter.html"><a href="inter.html#il-pannello-source."><i class="fa fa-check"></i><b>2.2.2</b> Il pannello Source.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="inter.html"><a href="inter.html#il-pannello-console."><i class="fa fa-check"></i><b>2.2.3</b> Il pannello Console.</a></li>
+<li class="chapter" data-level="2.2.4" data-path="inter.html"><a href="inter.html#il-pannello-environment."><i class="fa fa-check"></i><b>2.2.4</b> Il pannello Environment.</a></li>
+<li class="chapter" data-level="2.2.5" data-path="inter.html"><a href="inter.html#il-tab-environment."><i class="fa fa-check"></i><b>2.2.5</b> Il tab Environment.</a></li>
+<li class="chapter" data-level="2.2.6" data-path="inter.html"><a href="inter.html#il-tab-history."><i class="fa fa-check"></i><b>2.2.6</b> Il tab History.</a></li>
+<li class="chapter" data-level="2.2.7" data-path="inter.html"><a href="inter.html#il-pannello-plots."><i class="fa fa-check"></i><b>2.2.7</b> Il pannello Plots.</a></li>
+<li class="chapter" data-level="2.2.8" data-path="inter.html"><a href="inter.html#il-tab-plots."><i class="fa fa-check"></i><b>2.2.8</b> Il tab Plots.</a></li>
+<li class="chapter" data-level="2.2.9" data-path="inter.html"><a href="inter.html#il-tab-files."><i class="fa fa-check"></i><b>2.2.9</b> Il tab Files.</a></li>
+<li class="chapter" data-level="2.2.10" data-path="inter.html"><a href="inter.html#tabpackages"><i class="fa fa-check"></i><b>2.2.10</b> Il tab Packages.</a></li>
+<li class="chapter" data-level="2.2.11" data-path="inter.html"><a href="inter.html#il-tab-help."><i class="fa fa-check"></i><b>2.2.11</b> Il tab Help.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="inter.html"><a href="inter.html#esercizi."><i class="fa fa-check"></i><b>2.3</b> Esercizi.</a></li>
+<li class="chapter" data-level="2.4" data-path="inter.html"><a href="inter.html#altrerisinter"><i class="fa fa-check"></i><b>2.4</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inter.html"><a href="inter.html#risorse-in-italiano."><i class="fa fa-check"></i><b>2.4.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inter.html"><a href="inter.html#risorse-in-inglese."><i class="fa fa-check"></i><b>2.4.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aiuto.html"><a href="aiuto.html"><i class="fa fa-check"></i><b>3</b> Chiedere aiuto</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aiuto.html"><a href="aiuto.html#cosa-cè-da-imparare-in-questo-capitolo.-2"><i class="fa fa-check"></i><b>3.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aiuto.html"><a href="aiuto.html#premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri"><i class="fa fa-check"></i><b>3.1.1</b> Premessa 1: nessuno legge i manuali (figuriamoci i pigRi)!</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aiuto.html"><a href="aiuto.html#gatti"><i class="fa fa-check"></i><b>3.1.2</b> Premessa 2: ci sono molti modi di pelare un gatto (e documentarlo).</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aiuto.html"><a href="aiuto.html#laiuto-di-r."><i class="fa fa-check"></i><b>3.2</b> L’aiuto di R.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="aiuto.html"><a href="aiuto.html#tabhelp"><i class="fa fa-check"></i><b>3.2.1</b> Il tab Help di RStudio.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="aiuto.html"><a href="aiuto.html#funzioni-per-chiedere-aiuto."><i class="fa fa-check"></i><b>3.2.2</b> <em>Funzioni per chiedere aiuto.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="aiuto.html"><a href="aiuto.html#strategieaiuto"><i class="fa fa-check"></i><b>3.3</b> Strategie per cercare aiuto (anche senza parere).</a></li>
+<li class="chapter" data-level="3.4" data-path="aiuto.html"><a href="aiuto.html#esercizi.-1"><i class="fa fa-check"></i><b>3.4</b> Esercizi.</a></li>
+<li class="chapter" data-level="3.5" data-path="aiuto.html"><a href="aiuto.html#altrerisaiuto"><i class="fa fa-check"></i><b>3.5</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="aiuto.html"><a href="aiuto.html#risorse-in-italiano.-1"><i class="fa fa-check"></i><b>3.5.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="3.5.2" data-path="aiuto.html"><a href="aiuto.html#risorse-in-inglese.-1"><i class="fa fa-check"></i><b>3.5.2</b> Risorse in inglese.</a></li>
+<li class="chapter" data-level="3.5.3" data-path="aiuto.html"><a href="aiuto.html#niente-video"><i class="fa fa-check"></i><b>3.5.3</b> Niente video?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datioggetti.html"><a href="datioggetti.html"><i class="fa fa-check"></i><b>4</b> Dati, oggetti, funzioni (e tutto il resto)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datioggetti.html"><a href="datioggetti.html#cosa-cè-da-imparare-in-questo-capitolo.-3"><i class="fa fa-check"></i><b>4.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datioggetti.html"><a href="datioggetti.html#premessa-1-esperimenti-e-osservazioni."><i class="fa fa-check"></i><b>4.1.1</b> Premessa 1: esperimenti e osservazioni.</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datioggetti.html"><a href="datioggetti.html#premessa2"><i class="fa fa-check"></i><b>4.1.2</b> Premessa 2. Misure e dati, osservazioni e variabili, tabelle.</a></li>
+<li class="chapter" data-level="4.1.3" data-path="datioggetti.html"><a href="datioggetti.html#anatab"><i class="fa fa-check"></i><b>4.1.3</b> Anatomia di una tabella.</a></li>
+<li class="chapter" data-level="4.1.4" data-path="datioggetti.html"><a href="datioggetti.html#un-piccolo-esercizio."><i class="fa fa-check"></i><b>4.1.4</b> Un piccolo esercizio.</a></li>
+<li class="chapter" data-level="4.1.5" data-path="datioggetti.html"><a href="datioggetti.html#tidyuntidydefinizione"><i class="fa fa-check"></i><b>4.1.5</b> Tidy vs. untidy (tabelle ordinate e disordinate).</a></li>
+<li class="chapter" data-level="4.1.6" data-path="datioggetti.html"><a href="datioggetti.html#missingdata"><i class="fa fa-check"></i><b>4.1.6</b> Dati mancanti (missing data).</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datioggetti.html"><a href="datioggetti.html#r-è-un-linguaggio-funzionale-che-supporta-la-programmazione-orientata-a-oggetti"><i class="fa fa-check"></i><b>4.2</b> R è un linguaggio funzionale che supporta la programmazione orientata a oggetti…</a></li>
+<li class="chapter" data-level="4.3" data-path="datioggetti.html"><a href="datioggetti.html#ilnomedellecose"><i class="fa fa-check"></i><b>4.3</b> Il nome delle cose.</a></li>
+<li class="chapter" data-level="4.4" data-path="datioggetti.html"><a href="datioggetti.html#strutturedati"><i class="fa fa-check"></i><b>4.4</b> Strutture di dati.</a></li>
+<li class="chapter" data-level="4.5" data-path="datioggetti.html"><a href="datioggetti.html#vettoriatomici"><i class="fa fa-check"></i><b>4.5</b> Vettori atomici.</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="datioggetti.html"><a href="datioggetti.html#vettori1D"><i class="fa fa-check"></i><b>4.5.1</b> Vettori ad una dimensione.</a></li>
+<li class="chapter" data-level="4.5.2" data-path="datioggetti.html"><a href="datioggetti.html#vettori-atomici-a-2-o-più-dimensioni-matrici-e-array."><i class="fa fa-check"></i><b>4.5.2</b> Vettori atomici a 2 o più dimensioni: matrici e array.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="datioggetti.html"><a href="datioggetti.html#i-data-frame-e-le-liste."><i class="fa fa-check"></i><b>4.6</b> I data frame e le liste.</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="datioggetti.html"><a href="datioggetti.html#dataframebenemale"><i class="fa fa-check"></i><b>4.6.1</b> I data frame, nel bene e nel male.</a></li>
+<li class="chapter" data-level="4.6.2" data-path="datioggetti.html"><a href="datioggetti.html#le-liste."><i class="fa fa-check"></i><b>4.6.2</b> Le liste.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="datioggetti.html"><a href="datioggetti.html#altre-cose-strane-tabelle-di-conte-serie-temporali-date-e-ore."><i class="fa fa-check"></i><b>4.7</b> <em>Altre cose strane: tabelle di conte, serie temporali, date e ore.</em></a></li>
+<li class="chapter" data-level="4.8" data-path="datioggetti.html"><a href="datioggetti.html#indsel"><i class="fa fa-check"></i><b>4.8</b> Indirizzare, selezionare.</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="datioggetti.html"><a href="datioggetti.html#indirizzare-per-posizione."><i class="fa fa-check"></i><b>4.8.1</b> Indirizzare per posizione.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="datioggetti.html"><a href="datioggetti.html#usare-i-nomi."><i class="fa fa-check"></i><b>4.8.2</b> Usare i nomi.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="datioggetti.html"><a href="datioggetti.html#usare-valori-logici."><i class="fa fa-check"></i><b>4.8.3</b> Usare valori logici.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="datioggetti.html"><a href="datioggetti.html#attach-with-within."><i class="fa fa-check"></i><b>4.9</b> <code>attach()</code>, <code>with()</code>, <code>within()</code>.</a></li>
+<li class="chapter" data-level="4.10" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in-e-funzioni-definite-dallutente."><i class="fa fa-check"></i><b>4.10</b> <em>Funzioni “built-in” e funzioni definite dall’utente.</em></a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="datioggetti.html"><a href="datioggetti.html#operatorisemplici"><i class="fa fa-check"></i><b>4.10.1</b> Semplici funzioni matematiche, trigonometriche, statistiche, logiche, etc.</a></li>
+<li class="chapter" data-level="4.10.2" data-path="datioggetti.html"><a href="datioggetti.html#operatori."><i class="fa fa-check"></i><b>4.10.2</b> Operatori.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in."><i class="fa fa-check"></i><b>4.10.3</b> Funzioni built-in.</a></li>
+<li class="chapter" data-level="4.10.4" data-path="datioggetti.html"><a href="datioggetti.html#userdeffunc"><i class="fa fa-check"></i><b>4.10.4</b> Funzioni definite dall’utente.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="datioggetti.html"><a href="datioggetti.html#programmare-con-stile."><i class="fa fa-check"></i><b>4.11</b> Programmare, con stile.</a></li>
+<li class="chapter" data-level="4.12" data-path="datioggetti.html"><a href="datioggetti.html#un-ambiente-affollato."><i class="fa fa-check"></i><b>4.12</b> Un ambiente affollato.</a></li>
+<li class="chapter" data-level="4.13" data-path="datioggetti.html"><a href="datioggetti.html#altrerisorsedati"><i class="fa fa-check"></i><b>4.13</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-italiano.-2"><i class="fa fa-check"></i><b>4.13.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="4.13.2" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-inglese.-2"><i class="fa fa-check"></i><b>4.13.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html"><i class="fa fa-check"></i><b>5</b> Dentro e fuori R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#cosa-cè-da-imparare-in-questo-capitolo.-4"><i class="fa fa-check"></i><b>5.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="5.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#ognicosaalsuoposto"><i class="fa fa-check"></i><b>5.2</b> Ogni cosa al suo posto: working directory, progetti, etc.</a></li>
+<li class="chapter" data-level="5.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#facciamolasemplice"><i class="fa fa-check"></i><b>5.3</b> Facciamola semplice: il menu <code>Import Dataset</code>.</a></li>
+<li class="chapter" data-level="5.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#usareadr"><i class="fa fa-check"></i><b>5.4</b> Gestire file di testo con <code>readr.</code></a></li>
+<li class="chapter" data-level="5.5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#tutti-i-comandi-o-quasi-per-importare-file-di-testo"><i class="fa fa-check"></i><b>5.5</b> Tutti i comandi (o quasi) per importare file di testo…</a></li>
+<li class="chapter" data-level="5.6" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-di-dati."><i class="fa fa-check"></i><b>5.6</b> Altri formati di dati.</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#da-e-per-excel."><i class="fa fa-check"></i><b>5.6.1</b> Da e per Excel.</a></li>
+<li class="chapter" data-level="5.6.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-foreign-e-hmisc-e-haven."><i class="fa fa-check"></i><b>5.6.2</b> Altri formati: <code>foreign</code> e <code>Hmisc</code> e <code>haven</code>.</a></li>
+<li class="chapter" data-level="5.6.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#un-richiamo-file-.rdata-e-.rds"><i class="fa fa-check"></i><b>5.6.3</b> Un richiamo: file <code>.Rdata</code> e <code>.rds</code></a></li>
+<li class="chapter" data-level="5.6.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#e-andato-tutto-bene"><i class="fa fa-check"></i><b>5.6.4</b> E’ andato tutto bene?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#lavorare-con-i-nomi-dei-file-e-le-directory."><i class="fa fa-check"></i><b>5.7</b> Lavorare con i nomi dei file e le directory.</a></li>
+<li class="chapter" data-level="5.8" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app1sintassi"><i class="fa fa-check"></i><b>5.8</b> <strong>Appendice 1</strong>. <em>Un piccolo dettaglio sulla sintassi.</em></a></li>
+<li class="chapter" data-level="5.9" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app2finqui"><i class="fa fa-check"></i><b>5.9</b> <strong>Appendice 2</strong>. <em>Se sei arrivat* fin qui…</em></a></li>
+<li class="chapter" data-level="5.10" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altrerisdentrofuori"><i class="fa fa-check"></i><b>5.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#risorse-in-inglese.-3"><i class="fa fa-check"></i><b>5.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="grafica.html"><a href="grafica.html"><i class="fa fa-check"></i><b>6</b> Introduzione alla grafica scientifica con R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="grafica.html"><a href="grafica.html#cosa-cè-da-imparare-in-questo-capitolo.-5"><i class="fa fa-check"></i><b>6.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="6.2" data-path="grafica.html"><a href="grafica.html#igraficifattibene"><i class="fa fa-check"></i><b>6.2</b> I grafici, fatti bene.</a></li>
+<li class="chapter" data-level="6.3" data-path="grafica.html"><a href="grafica.html#sistemigrafici"><i class="fa fa-check"></i><b>6.3</b> I sistemi grafici in R.</a></li>
+<li class="chapter" data-level="6.4" data-path="grafica.html"><a href="grafica.html#visualizzare-o-salvare-i-grafici-i-device."><i class="fa fa-check"></i><b>6.4</b> Visualizzare o salvare i grafici: i device.</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="grafica.html"><a href="grafica.html#devicegrafici"><i class="fa fa-check"></i><b>6.4.1</b> Salvare i grafici: i file come device grafici.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="grafica.html"><a href="grafica.html#ggsave"><i class="fa fa-check"></i><b>6.4.2</b> Salvare i grafici di <code>ggplot2</code> con <code>ggsave</code>.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="grafica.html"><a href="grafica.html#le-dimensioni-del-device-e-le-opzioni-grafiche."><i class="fa fa-check"></i><b>6.4.3</b> <em>Le dimensioni del device e le opzioni grafiche.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="grafica.html"><a href="grafica.html#r-a-colori."><i class="fa fa-check"></i><b>6.5</b> R, a colori.</a></li>
+<li class="chapter" data-level="6.6" data-path="grafica.html"><a href="grafica.html#graficaggplot2"><i class="fa fa-check"></i><b>6.6</b> La grammatica della grafica con ggplot2.</a></li>
+<li class="chapter" data-level="6.7" data-path="grafica.html"><a href="grafica.html#grafqual"><i class="fa fa-check"></i><b>6.7</b> Grafici per variabili qualitative.</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="grafica.html"><a href="grafica.html#diagrammi-a-barre."><i class="fa fa-check"></i><b>6.7.1</b> Diagrammi a barre.</a></li>
+<li class="chapter" data-level="6.7.2" data-path="grafica.html"><a href="grafica.html#fare-di-più-con-i-grafici-per-variabili-qualitative."><i class="fa fa-check"></i><b>6.7.2</b> <em>Fare di più con i grafici per variabili qualitative.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="grafica.html"><a href="grafica.html#grafquant"><i class="fa fa-check"></i><b>6.8</b> Grafici per variabili quantitative.</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="grafica.html"><a href="grafica.html#istogrammi-e-altre-rappresentazioni-della-densità."><i class="fa fa-check"></i><b>6.8.1</b> Istogrammi e altre rappresentazioni della densità.</a></li>
+<li class="chapter" data-level="6.8.2" data-path="grafica.html"><a href="grafica.html#boxplot"><i class="fa fa-check"></i><b>6.8.2</b> Boxplot.</a></li>
+<li class="chapter" data-level="6.8.3" data-path="grafica.html"><a href="grafica.html#rappresentazioni-di-indicatori-di-tendenza-centrale-e-di-variabilità."><i class="fa fa-check"></i><b>6.8.3</b> Rappresentazioni di indicatori di tendenza centrale e di variabilità.</a></li>
+<li class="chapter" data-level="6.8.4" data-path="grafica.html"><a href="grafica.html#scatterplots"><i class="fa fa-check"></i><b>6.8.4</b> Grafici a dispersione.</a></li>
+<li class="chapter" data-level="6.8.5" data-path="grafica.html"><a href="grafica.html#personalizzare-i-grafici-con-ggplot2."><i class="fa fa-check"></i><b>6.8.5</b> <em>Personalizzare i grafici con ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.6" data-path="grafica.html"><a href="grafica.html#estensionigg"><i class="fa fa-check"></i><b>6.8.6</b> <em>Estensioni per ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.7" data-path="grafica.html"><a href="grafica.html#qplot"><i class="fa fa-check"></i><b>6.8.7</b> <em>Veloce veloce: qplot()</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="grafica.html"><a href="grafica.html#graficabase"><i class="fa fa-check"></i><b>6.9</b> <em>La grafica di base in R: un salvagente?</em></a></li>
+<li class="chapter" data-level="6.10" data-path="grafica.html"><a href="grafica.html#altrerisgraf"><i class="fa fa-check"></i><b>6.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="grafica.html"><a href="grafica.html#risorse-in-inglese.-4"><i class="fa fa-check"></i><b>6.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statdesc.html"><a href="statdesc.html"><i class="fa fa-check"></i><b>7</b> Esplorare con i numeri</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statdesc.html"><a href="statdesc.html#cosa-cè-da-imparare-in-questo-capitolo.-6"><i class="fa fa-check"></i><b>7.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="7.2" data-path="statdesc.html"><a href="statdesc.html#una-piccola-premessa-gruppi-livelli-sottoinsiemi."><i class="fa fa-check"></i><b>7.2</b> Una piccola premessa: gruppi, livelli, sottoinsiemi.</a></li>
+<li class="chapter" data-level="7.3" data-path="statdesc.html"><a href="statdesc.html#statcontinui"><i class="fa fa-check"></i><b>7.3</b> Statistiche riassuntive per dati continui.</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="statdesc.html"><a href="statdesc.html#misuretendcentrale"><i class="fa fa-check"></i><b>7.3.1</b> Misure di tendenza centrale e di variabilità.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="statdesc.html"><a href="statdesc.html#altre-funzioni-utili."><i class="fa fa-check"></i><b>7.4</b> <em>Altre funzioni utili.</em></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="statdesc.html"><a href="statdesc.html#lavorare-sui-vettori."><i class="fa fa-check"></i><b>7.4.1</b> <em>Lavorare sui vettori.</em></a></li>
+<li class="chapter" data-level="7.4.2" data-path="statdesc.html"><a href="statdesc.html#funzioni-che-producono-statistiche-riassuntive."><i class="fa fa-check"></i><b>7.4.2</b> <em>Funzioni che producono statistiche riassuntive.</em></a></li>
+<li class="chapter" data-level="7.4.3" data-path="statdesc.html"><a href="statdesc.html#statsummarise"><i class="fa fa-check"></i><b>7.4.3</b> Statistiche, ordinate.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="statdesc.html"><a href="statdesc.html#statgruppi"><i class="fa fa-check"></i><b>7.4.4</b> Statistiche riassuntive per gruppi.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="statdesc.html"><a href="statdesc.html#enormale"><i class="fa fa-check"></i><b>7.5</b> Ma è normale?</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="statdesc.html"><a href="statdesc.html#normal-probability-plot."><i class="fa fa-check"></i><b>7.5.1</b> Normal probability plot.</a></li>
+<li class="chapter" data-level="7.5.2" data-path="statdesc.html"><a href="statdesc.html#testnorm"><i class="fa fa-check"></i><b>7.5.2</b> Test statistici per la normalità.</a></li>
+<li class="chapter" data-level="7.5.3" data-path="statdesc.html"><a href="statdesc.html#comefaremeglio"><i class="fa fa-check"></i><b>7.5.3</b> <em>Come fare di meglio con i risultati dei test</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="statdesc.html"><a href="statdesc.html#intervalli-di-confidenza."><i class="fa fa-check"></i><b>7.6</b> Intervalli di confidenza.</a></li>
+<li class="chapter" data-level="7.7" data-path="statdesc.html"><a href="statdesc.html#statdesccat"><i class="fa fa-check"></i><b>7.7</b> Riassumere i dati per le variabili categoriche.</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="statdesc.html"><a href="statdesc.html#tabelle-di-frequenza-e-contingenza."><i class="fa fa-check"></i><b>7.7.1</b> Tabelle di frequenza e contingenza.</a></li>
+<li class="chapter" data-level="7.7.2" data-path="statdesc.html"><a href="statdesc.html#gmosaico"><i class="fa fa-check"></i><b>7.7.2</b> <em>Grafici a mosaico</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="statdesc.html"><a href="statdesc.html#veloceveloce"><i class="fa fa-check"></i><b>7.8</b> <em>Veloce veloce</em></a></li>
+<li class="chapter" data-level="7.9" data-path="statdesc.html"><a href="statdesc.html#altrerisstatdesc"><i class="fa fa-check"></i><b>7.9</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="statdesc.html"><a href="statdesc.html#risorse-in-italiano.-3"><i class="fa fa-check"></i><b>7.9.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="7.9.2" data-path="statdesc.html"><a href="statdesc.html#risorse-in-inglese.-5"><i class="fa fa-check"></i><b>7.9.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="reportR.html"><a href="reportR.html"><i class="fa fa-check"></i><b>8</b> Creare report e notebook con R.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="reportR.html"><a href="reportR.html#cosa-cè-da-imparare-in-questo-capitolo.-7"><i class="fa fa-check"></i><b>8.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="8.2" data-path="reportR.html"><a href="reportR.html#reportminimo"><i class="fa fa-check"></i><b>8.2</b> Il minimo indispensabile.</a></li>
+<li class="chapter" data-level="8.3" data-path="reportR.html"><a href="reportR.html#gli-elementi-di-un-report-in-r-markdown."><i class="fa fa-check"></i><b>8.3</b> <em>Gli elementi di un report in R Markdown.</em></a></li>
+<li class="chapter" data-level="8.4" data-path="reportR.html"><a href="reportR.html#altri-formati-di-documento-con-r-markdown."><i class="fa fa-check"></i><b>8.4</b> <em>Altri formati di documento con R Markdown.</em></a></li>
+<li class="chapter" data-level="8.5" data-path="reportR.html"><a href="reportR.html#quarto."><i class="fa fa-check"></i><b>8.5</b> <em>Quarto.</em></a></li>
+<li class="chapter" data-level="8.6" data-path="reportR.html"><a href="reportR.html#altrerisreport"><i class="fa fa-check"></i><b>8.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="reportR.html"><a href="reportR.html#risorse-in-italiano.-4"><i class="fa fa-check"></i><b>8.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="8.6.2" data-path="reportR.html"><a href="reportR.html#risorse-in-inglese.-6"><i class="fa fa-check"></i><b>8.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>9</b> Lottare con i dati.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wrangling.html"><a href="wrangling.html#cosa-cè-da-imparare-in-questo-capitolo.-8"><i class="fa fa-check"></i><b>9.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="9.2" data-path="wrangling.html"><a href="wrangling.html#rendere-tidy-i-dati."><i class="fa fa-check"></i><b>9.2</b> Rendere tidy i dati.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="wrangling.html"><a href="wrangling.html#tidyresh"><i class="fa fa-check"></i><b>9.2.1</b> Riordinare con <code>tidyr</code> e <code>dplyr</code>: esempio minimo.</a></li>
+<li class="chapter" data-level="9.2.2" data-path="wrangling.html"><a href="wrangling.html#funzioni-avanzate-con-tidyr."><i class="fa fa-check"></i><b>9.2.2</b> <em>Funzioni avanzate con <code>tidyr</code>.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="wrangling.html"><a href="wrangling.html#dplyr"><i class="fa fa-check"></i><b>9.3</b> il cavallo di battaglia del <code>data wrangling</code>: <code>dplyr</code>.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="wrangling.html"><a href="wrangling.html#filterselect"><i class="fa fa-check"></i><b>9.3.1</b> Estrarre gruppi di righe o colonne.</a></li>
+<li class="chapter" data-level="9.3.2" data-path="wrangling.html"><a href="wrangling.html#riordinare-i-dati."><i class="fa fa-check"></i><b>9.3.2</b> Riordinare i dati.</a></li>
+<li class="chapter" data-level="9.3.3" data-path="wrangling.html"><a href="wrangling.html#muta"><i class="fa fa-check"></i><b>9.3.3</b> Trasformare con <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="9.3.4" data-path="wrangling.html"><a href="wrangling.html#summarise"><i class="fa fa-check"></i><b>9.3.4</b> Riassumere i dati con <code>summarise()</code>.</a></li>
+<li class="chapter" data-level="9.3.5" data-path="wrangling.html"><a href="wrangling.html#join"><i class="fa fa-check"></i><b>9.3.5</b> Database e tabelle relazionali: unire tabelle con _join.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="wrangling.html"><a href="wrangling.html#strutturecontrollo"><i class="fa fa-check"></i><b>9.4</b> Strutture di controllo.</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="wrangling.html"><a href="wrangling.html#loop"><i class="fa fa-check"></i><b>9.4.1</b> <em>Loop (o cicli) e cose simili.</em></a></li>
+<li class="chapter" data-level="9.4.2" data-path="wrangling.html"><a href="wrangling.html#functional"><i class="fa fa-check"></i><b>9.4.2</b> <em>Un’alternativa (veloce e ordinata) ai loop: i “functional”.</em></a></li>
+<li class="chapter" data-level="9.4.3" data-path="wrangling.html"><a href="wrangling.html#ifelsestat"><i class="fa fa-check"></i><b>9.4.3</b> <em>Esecuzione condizionale.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="wrangling.html"><a href="wrangling.html#Soluzione"><i class="fa fa-check"></i><b>9.5</b> La soluzione dell’esercizio.</a></li>
+<li class="chapter" data-level="9.6" data-path="wrangling.html"><a href="wrangling.html#altreriswrangling"><i class="fa fa-check"></i><b>9.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="wrangling.html"><a href="wrangling.html#risorse-in-italiano.-5"><i class="fa fa-check"></i><b>9.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="wrangling.html"><a href="wrangling.html#risorse-in-inglese.-7"><i class="fa fa-check"></i><b>9.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html"><i class="fa fa-check"></i><b>10</b> Citazioni, crediti, copyright, ringraziamenti.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#citazioni."><i class="fa fa-check"></i><b>10.1</b> Citazioni.</a></li>
+<li class="chapter" data-level="" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#credits-e-copyright."><i class="fa fa-check"></i>Credits e copyright.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pigR: R, per pigri</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="aiuto" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Chiedere aiuto<a href="aiuto.html#aiuto" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>v1.2 30/10/2023</p>
+<div id="cosa-cè-da-imparare-in-questo-capitolo.-2" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Cosa c’è da imparare in questo capitolo.<a href="aiuto.html#cosa-cè-da-imparare-in-questo-capitolo.-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cercare aiuto in R è una necessità costante, anche per utenti esperti: la documentazione, prevalentemente in inglese, è dispersa in un gran numero di fonti e cercare una funzione che permetta di raggiungere un determinato scopo e poi impararne la sintassi e i valori che restituisce non è sempre facile.<br />
+In questo capitolo cercherò di:</p>
+<ul>
+<li><p>dare il minimo di informazioni indispensabili per utilizzare le funzioni di aiuto (Help) di R e in particolare su come sfruttare al meglio il tab <code>Help</code> di RStudio</p></li>
+<li><p>fornire un elenco delle risorse (siti web, forum, blog, etc.) più utili</p></li>
+<li><p>dare qualche piccolo suggerimento per sviluppare una strategia di ricerca di aiuto efficace</p></li>
+</ul>
+<p>Non tutto il materiale di questo capitolo è essenziale, benché leggerlo con attenzione potrebbe facilitare l’apprendimento di R. Se proprio hai fretta, puoi leggere solo il paragrafo <a href="aiuto.html#tabhelp">3.2.1</a> sul tab <code>Help</code> di RStudio e quello sulle strategie per cercare aiuto, e magari tornare a questo capitolo in seguito. I paragrafi con il titolo in <em>corsivo</em> sono degli approfondimenti.</p>
+<div id="premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Premessa 1: nessuno legge i manuali (figuriamoci i pigRi)!<a href="aiuto.html#premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Diciamo le cose come stanno: al giorno d’oggi ci aspettiamo che il software sia a prova di idiota (tipicamente noi) e che per imparare ad usarlo sia sufficiente fare qualche tentativo. Purtroppo, anche se molte funzioni di R sono abbastanza intuitive, anche nel nome<a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a> e hanno parametri semplici da utilizzare, senza conoscerne l’ortografia (come si scrive il nome di una funzione o di un comando) e la sintassi (quali parametri sono necessari e come vanno forniti alla funzione) non si va proprio da nessuna parte. Insomma, un po’ di cose vi tocca leggerle. Prendi la figura <a href="aiuto.html#fig:rtfm">3.1</a> come un’amichevole esortazione: che tu sia pigR* o troppo occupat*, questo libro è il posto giusto per trovare il minimo indispensabile di informazioni su come cercare aiuto in R.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rtfm"></span>
+<img src="images/rtfm.jpg" alt="Leggi il f*****o manuale." width="90%" />
+<p class="caption">
+Figura 3.1: Leggi il f*****o manuale.
+</p>
+</div>
+<hr />
+</div>
+<div id="gatti" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Premessa 2: ci sono molti modi di pelare un gatto (e documentarlo).<a href="aiuto.html#gatti" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un altro aspetto che può confondere le idee ai principianti è che in R lo stesso risultato può essere ottenuto in molti modi diversi. In pratica, anche per le cose più semplici, ci sono molti modi per pelare un gatto: questo dipende dal fatto che persone diverse hanno stili diversi di programmazione o usano per lo stesso scopo pacchetti diversi. Comprendere il codice scritto da altri è molto importante nell’apprendimento di R.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:gattopelato"></span>
+<img src="images/gattopelato.jpg" alt="La pelle del gatto." width="90%" />
+<p class="caption">
+Figura 3.2: La pelle del gatto.
+</p>
+</div>
+<hr />
+<p>Immaginiamo di voler calcolare la mediana (un indicatore di tendenza centrale, adatto a descrivere un gran numero di distribuzioni continue, vedi capitolo <a href="statdesc.html#statdesc">7</a>) per un certo numero di vettori (vedi capitolo <a href="datioggetti.html#datioggetti">4</a>) della stessa lunghezza, riuniti in una tabella (in realtà un tipo particolare di data frame, una tibble, vedi capitolo <a href="datioggetti.html#datioggetti">4</a>). Si tratta di un’operazione banale, che richiede una sola funzione, ma il problema può essere approcciato in molti modi diversi, più o meno efficienti (in termini di tempo di calcolo) e più o meno leggibili (in termini di comprensibilità del codice). Un modo semplice per confrontare l’efficienza è quella di misurare il tempo necessario per svolgere un determinato calcolo. Nell’esempio successivo confronterò 5 modi diversi di calcolare la mediana sulle colonne di una tabella (qui di 8 colonne e 10.000 righe, ma puoi aumentare arbitrariamente sia il numero di righe che di colonne) usando funzioni di R base e del pacchetto <code>tidyverse</code>. Non preoccuparti ora di capire fino in fondo la sintassi, ma nota come nell’ouptput le mediane siano sempre uguali<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>, mentre cambia il tempo di esecuzione.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="aiuto.html#cb20-1" tabindex="-1"></a><span class="co"># creo un data frame (in realtà una tibble) con numeri casuali </span></span>
+<span id="cb20-2"><a href="aiuto.html#cb20-2" tabindex="-1"></a><span class="co"># estratti da una distribuzione uniforme</span></span>
+<span id="cb20-3"><a href="aiuto.html#cb20-3" tabindex="-1"></a><span class="co"># installa il pacchetto e caricalo se necessario rimuovendo il segno di commento</span></span>
+<span id="cb20-4"><a href="aiuto.html#cb20-4" tabindex="-1"></a><span class="co"># ed eseguendo i due comandi successivi</span></span>
+<span id="cb20-5"><a href="aiuto.html#cb20-5" tabindex="-1"></a><span class="co"># install.packages (&quot;tidyverse&quot;)</span></span>
+<span id="cb20-6"><a href="aiuto.html#cb20-6" tabindex="-1"></a><span class="co"># require(tidyverse)</span></span>
+<span id="cb20-7"><a href="aiuto.html#cb20-7" tabindex="-1"></a><span class="co"># numero di righe o casi nella tabella df</span></span>
+<span id="cb20-8"><a href="aiuto.html#cb20-8" tabindex="-1"></a>n_casi <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb20-9"><a href="aiuto.html#cb20-9" tabindex="-1"></a><span class="co"># creo la tibble</span></span>
+<span id="cb20-10"><a href="aiuto.html#cb20-10" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">a =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">b =</span> <span class="fu">rnorm</span>(n_casi),</span>
+<span id="cb20-11"><a href="aiuto.html#cb20-11" tabindex="-1"></a>              <span class="at">c =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">d =</span> <span class="fu">rnorm</span>(n_casi),</span>
+<span id="cb20-12"><a href="aiuto.html#cb20-12" tabindex="-1"></a>              <span class="at">e =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">f =</span> <span class="fu">rnorm</span>(n_casi),</span>
+<span id="cb20-13"><a href="aiuto.html#cb20-13" tabindex="-1"></a>              <span class="at">g =</span> <span class="fu">rnorm</span>(n_casi), <span class="at">h =</span><span class="fu">rnorm</span>(n_casi))</span>
+<span id="cb20-14"><a href="aiuto.html#cb20-14" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="aiuto.html#cb20-15" tabindex="-1"></a><span class="co"># il data frame</span></span>
+<span id="cb20-16"><a href="aiuto.html#cb20-16" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>## # A tibble: 10,000 × 8
+##          a      b       c      d      e      f      g      h
+##      &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 -0.613  -1.41  -0.648   2.07  -1.66  -0.209  0.565  1.13 
+##  2 -0.467   1.23   1.17   -0.166 -0.553 -1.22   1.14  -0.961
+##  3  0.774   0.337  0.0334 -1.86   2.02  -1.36   0.547 -0.656
+##  4 -0.326   1.18  -0.609  -0.476 -0.717 -0.969  0.617 -2.35 
+##  5  1.27   -0.676  0.480  -0.204  1.27   0.135  1.29   1.21 
+##  6 -0.651   0.457  0.413  -0.789 -1.05  -0.286 -0.556 -2.30 
+##  7  0.0842 -1.42   0.344   0.370 -0.212  2.57   0.529 -0.122
+##  8  0.840  -1.05  -0.394  -1.22  -0.838  0.393  1.95   1.33 
+##  9 -2.48    0.253  0.331  -1.11   1.69  -0.340  0.338  0.753
+## 10  0.509   0.429  1.68    1.05   0.304  1.49   1.03   1.24 
+## # ℹ 9,990 more rows</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="aiuto.html#cb22-1" tabindex="-1"></a>tempo0 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>() <span class="co"># inizializza it tempo con il tempo di sistema</span></span>
+<span id="cb22-2"><a href="aiuto.html#cb22-2" tabindex="-1"></a><span class="co"># 1. uso la stessa funzione su ciascuna colonna e unisco i risultati</span></span>
+<span id="cb22-3"><a href="aiuto.html#cb22-3" tabindex="-1"></a><span class="co"># in un vettore con la funzione c()</span></span>
+<span id="cb22-4"><a href="aiuto.html#cb22-4" tabindex="-1"></a>mediane <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">median</span>(df<span class="sc">$</span>a), </span>
+<span id="cb22-5"><a href="aiuto.html#cb22-5" tabindex="-1"></a>             <span class="fu">median</span>(df<span class="sc">$</span>b),</span>
+<span id="cb22-6"><a href="aiuto.html#cb22-6" tabindex="-1"></a>             <span class="fu">median</span>(df<span class="sc">$</span>c),</span>
+<span id="cb22-7"><a href="aiuto.html#cb22-7" tabindex="-1"></a>             <span class="fu">median</span>(df<span class="sc">$</span>d),</span>
+<span id="cb22-8"><a href="aiuto.html#cb22-8" tabindex="-1"></a>             <span class="fu">median</span>(df<span class="sc">$</span>e),</span>
+<span id="cb22-9"><a href="aiuto.html#cb22-9" tabindex="-1"></a>             <span class="fu">median</span>(df<span class="sc">$</span>f),</span>
+<span id="cb22-10"><a href="aiuto.html#cb22-10" tabindex="-1"></a>             <span class="fu">median</span>(df<span class="sc">$</span>g),</span>
+<span id="cb22-11"><a href="aiuto.html#cb22-11" tabindex="-1"></a>             <span class="fu">median</span>(df<span class="sc">$</span>h))</span>
+<span id="cb22-12"><a href="aiuto.html#cb22-12" tabindex="-1"></a><span class="co"># memorizzo il valore del tempo trascorso</span></span>
+<span id="cb22-13"><a href="aiuto.html#cb22-13" tabindex="-1"></a>chiamate_multiple <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()<span class="sc">-</span>tempo0</span>
+<span id="cb22-14"><a href="aiuto.html#cb22-14" tabindex="-1"></a><span class="co"># stampo a console un messaggio informativo con la funzione cat(); \n crea</span></span>
+<span id="cb22-15"><a href="aiuto.html#cb22-15" tabindex="-1"></a><span class="co"># un ritorno a capo</span></span>
+<span id="cb22-16"><a href="aiuto.html#cb22-16" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;mediane con chiamate singole</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## mediane con chiamate singole</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="aiuto.html#cb24-1" tabindex="-1"></a><span class="co"># &quot;stampo&quot; a console il risultato</span></span>
+<span id="cb24-2"><a href="aiuto.html#cb24-2" tabindex="-1"></a>mediane</span></code></pre></div>
+<pre><code>## [1]  0.011721821 -0.003522343  0.008740360  0.021575367  0.007703442
+## [6]  0.007912362  0.003686531  0.012488419</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="aiuto.html#cb26-1" tabindex="-1"></a><span class="co"># il risultato è un vettore, privo dell&#39;attributo nomi </span></span>
+<span id="cb26-2"><a href="aiuto.html#cb26-2" tabindex="-1"></a><span class="co"># (identificante ogni elemento del vettore), </span></span>
+<span id="cb26-3"><a href="aiuto.html#cb26-3" tabindex="-1"></a><span class="co"># che poteva essere aggiunto usando, per esempio a = median(df$a)</span></span>
+<span id="cb26-4"><a href="aiuto.html#cb26-4" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="aiuto.html#cb26-5" tabindex="-1"></a><span class="co"># 2. uso di un loop sulle colonne</span></span>
+<span id="cb26-6"><a href="aiuto.html#cb26-6" tabindex="-1"></a>tempo0 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb26-7"><a href="aiuto.html#cb26-7" tabindex="-1"></a><span class="co"># inizializzo un vettore che riceverà i risultati</span></span>
+<span id="cb26-8"><a href="aiuto.html#cb26-8" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;double&quot;</span>, <span class="at">length =</span> <span class="fu">ncol</span>(df))</span>
+<span id="cb26-9"><a href="aiuto.html#cb26-9" tabindex="-1"></a><span class="co"># creo l&#39;output con un loop for </span></span>
+<span id="cb26-10"><a href="aiuto.html#cb26-10" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) { <span class="co"># la sequenza </span></span>
+<span id="cb26-11"><a href="aiuto.html#cb26-11" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]]) <span class="co"># il corpo del loop </span></span>
+<span id="cb26-12"><a href="aiuto.html#cb26-12" tabindex="-1"></a>} </span>
+<span id="cb26-13"><a href="aiuto.html#cb26-13" tabindex="-1"></a>uso_un_loop <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()<span class="sc">-</span>tempo0</span>
+<span id="cb26-14"><a href="aiuto.html#cb26-14" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;mediane con loop for</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## mediane con loop for</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="aiuto.html#cb28-1" tabindex="-1"></a>output</span></code></pre></div>
+<pre><code>## [1]  0.011721821 -0.003522343  0.008740360  0.021575367  0.007703442
+## [6]  0.007912362  0.003686531  0.012488419</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="aiuto.html#cb30-1" tabindex="-1"></a><span class="co"># 3. uso di apply()</span></span>
+<span id="cb30-2"><a href="aiuto.html#cb30-2" tabindex="-1"></a>tempo0 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb30-3"><a href="aiuto.html#cb30-3" tabindex="-1"></a><span class="co"># apply &quot;applica&quot; la funzione median alla dimensione 2 (le colonne) di df</span></span>
+<span id="cb30-4"><a href="aiuto.html#cb30-4" tabindex="-1"></a>mediane_apply <span class="ot">&lt;-</span> <span class="fu">apply</span>(df, <span class="dv">2</span>, median)</span>
+<span id="cb30-5"><a href="aiuto.html#cb30-5" tabindex="-1"></a>uso_apply <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()<span class="sc">-</span>tempo0</span>
+<span id="cb30-6"><a href="aiuto.html#cb30-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;mediane con apply</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## mediane con apply</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="aiuto.html#cb32-1" tabindex="-1"></a>mediane_apply</span></code></pre></div>
+<pre><code>##            a            b            c            d            e            f 
+##  0.011721821 -0.003522343  0.008740360  0.021575367  0.007703442  0.007912362 
+##            g            h 
+##  0.003686531  0.012488419</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="aiuto.html#cb34-1" tabindex="-1"></a><span class="co"># 4. uso la funzione map_dbl() del pacchetto purrr del tidyverse</span></span>
+<span id="cb34-2"><a href="aiuto.html#cb34-2" tabindex="-1"></a>tempo0 <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb34-3"><a href="aiuto.html#cb34-3" tabindex="-1"></a><span class="co"># map_dbl &quot;applica&quot; la funzione median alle colonne di df</span></span>
+<span id="cb34-4"><a href="aiuto.html#cb34-4" tabindex="-1"></a>le_mie_mediane <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(df, median)</span>
+<span id="cb34-5"><a href="aiuto.html#cb34-5" tabindex="-1"></a>con_purrr <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()<span class="sc">-</span>tempo0</span>
+<span id="cb34-6"><a href="aiuto.html#cb34-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">mediane con purrr:map_dbl()</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## mediane con purrr:map_dbl()</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="aiuto.html#cb36-1" tabindex="-1"></a>le_mie_mediane</span></code></pre></div>
+<pre><code>##            a            b            c            d            e            f 
+##  0.011721821 -0.003522343  0.008740360  0.021575367  0.007703442  0.007912362 
+##            g            h 
+##  0.003686531  0.012488419</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="aiuto.html#cb38-1" tabindex="-1"></a><span class="co"># creo un vettore con i tempi calcolati per ciascuna modalità</span></span>
+<span id="cb38-2"><a href="aiuto.html#cb38-2" tabindex="-1"></a>tempi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">multiple =</span> chiamate_multiple, <span class="at">loop =</span> uso_un_loop, </span>
+<span id="cb38-3"><a href="aiuto.html#cb38-3" tabindex="-1"></a>                   <span class="at">apply =</span> uso_apply, <span class="at">purrr =</span> con_purrr)</span>
+<span id="cb38-4"><a href="aiuto.html#cb38-4" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">tempi di esecuzione</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## tempi di esecuzione</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="aiuto.html#cb40-1" tabindex="-1"></a>tempi</span></code></pre></div>
+<pre><code>## Time differences in secs
+##    multiple        loop       apply       purrr 
+## 0.003331900 0.006615162 0.003798962 0.003101110</code></pre>
+<p>Confronta la velocità di esecuzione dei diversi approcci (che potrebbe differire solo di pochi millisecondi).<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a> I diversi <em>chunk</em> di codice hanno una differente leggibilità: per alcuni è molto facile, anche per un principiante, capire qual’é l’intenzione di chi ha scritto il codice (e quindi è relativamente facile adattarlo alle proprie esigenze), altri (come l’uso di <code>map_dbl()</code>) sono piuttosto criptici ma molto concisi.<br />
+Quindi, quando (fra pochissimo!) sarai un* programmat* espert* cerca di avere pietà del tuo io passato e futuro (o dei pigri come te) e cerca di scrivere codice chiaro e interpretabile.<br />
+Nel frattempo vorrei rassicurare tutte e tutti che nessun gatto è stato scuoiato per realizzare questo libro.</p>
+</div>
+</div>
+<div id="laiuto-di-r." class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> L’aiuto di R.<a href="aiuto.html#laiuto-di-r." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Disclaimer</strong> questa sezione è <strong>veramente noiosa</strong> ma ti tocca leggerla, anche se frettolosamente.</p>
+<p>R base e i diversi pacchetti sono documentati in molti modi diversi. Per ogni funzione è disponbile una descrizione, che comprende diversi elementi. Ogni pacchetto, sul sito del CRAN è accompagnato da un documento .pdf che descrive, in ordine alfabetico, tutte le funzioni. Per alcuni pacchetti, inoltre, sono disponibili dei documenti più descrittivi, generalmente disponibili come .pdf e/o .html, chiamati vignette. Tutti questi elementi possono essere raggiunti dall’interno di R o RStudio.
+La documentazione è tutta in inglese, ma usando Google translate in qualche caso è possibile ottenere una ragionevole traduzione. In realtà una conoscenza anche minima dell’inglese tecnico ti permetterà di comprendere abbastanza facilmente i documenti di aiuto. Tuttavia, devi tenere presente che i documenti di aiuto sono scritti da programmatori che possono essere più o meno capaci di comunicare in maniera semplice e efficace e sono, talvolta, pigRi e fRettolosi.</p>
+<div id="tabhelp" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Il tab Help di RStudio.<a href="aiuto.html#tabhelp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Il tab Help del pannello Plot di RStudio (in genere in basso a destra, vedi capitolo <a href="inter.html#inter">2</a>) è il punto di accesso principale all’aiuto di R facilita enormemente la ricerca di informazione sulle funzioni.<br />
+Se clicchi sull’icona a forma di casetta in alto a sinistra nel tab (vedi figura <a href="aiuto.html#fig:tabhelphelp">3.3</a>) puoi raggiungere la home page dell’aiuto, con una serie di link utili.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:tabhelphelp"></span>
+<img src="images/Helptab.jpg" alt="Il tab Help." width="90%" />
+<p class="caption">
+Figura 3.3: Il tab Help.
+</p>
+</div>
+<hr />
+<p>In realtà, al di là dei suggerimenti contestuali che offre RStudio quando si digita qualcosa nella Console o in uno script, ti troverai frequentemente a cercare aiuto su una funzione specifica. È possibile farlo digitandone il nome nel campo di ricerca in alto a destra nel tab Help. Prova a digitare <code>apply</code> nel campo di ricerca, come mostrato nella figura <a href="aiuto.html#fig:aiutoapply">3.4</a>.<a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>.</p>
+<hr />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:aiutoapply"></span>
+<img src="images/aiutoapply.jpg" alt="L'aiuto sulla funzione apply." width="90%" />
+<p class="caption">
+Figura 3.4: L’aiuto sulla funzione apply.
+</p>
+</div>
+<hr />
+<p>Gli elementi importanti del testo che si ottiene invocando l’aiuto sono:</p>
+<ul>
+<li><p>il nome della funzione e il pacchetto cui appartiene (in alto a sinistra, in questo caso <code>apply {base}</code>)</p></li>
+<li><p>un titolo descrittivo</p></li>
+<li><p>una breve descrizione (<strong>Description</strong>) testuale della funzione</p></li>
+<li><p>la sezione <strong>Usage</strong>, con la sintassi della funzione</p></li>
+<li><p>la sezione <strong>Arguments</strong> con l’elenco degli argomenti della funzione, ed, eventualmente, dei loro nomi</p></li>
+<li><p>la sezione <strong>Details</strong> che fornisce dettagli sull’uso della funzione ed eventuali richiami ad altre funzioni</p></li>
+<li><p>la sezione <strong>Value</strong>, particolarmente importante perché descrive con precisione quello che la funzione restituisce<a href="#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a></p></li>
+<li><p>la sezione <strong>References</strong> con riferimenti bligliografici per la funzione</p></li>
+<li><p>la sezione <strong>See Also</strong> con richiami ipertestuali ad altre funzioni correlate</p></li>
+<li><p>la sezione <strong>Examples</strong>, con esempi dell’uso della funzione<a href="#fn61" class="footnote-ref" id="fnref61"><sup>61</sup></a></p></li>
+<li><p>un piè di pagina con la versione del pacchetto cui appartiene la funzione e un link ipertestuale all’indice del pacchetto<a href="#fn62" class="footnote-ref" id="fnref62"><sup>62</sup></a>.</p></li>
+</ul>
+</div>
+<div id="funzioni-per-chiedere-aiuto." class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> <em>Funzioni per chiedere aiuto.</em><a href="aiuto.html#funzioni-per-chiedere-aiuto." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Oltre che utilizzando il tab Help in RStudio è ovviamente possibile accedere all’aiuto usando una serie di comandi dalla Console. Il blocco di codice successivo mostra una serie di comandi che permettono di accedere:</p>
+<ul>
+<li><p>alla pagina di partenza dell’aiuto (<code>help.start()</code>)</p></li>
+<li><p>all’aiuto per una specifica funzione, il cui nome è noto (<code>help()</code> o <code>?</code> seguito dal nome della funzione)</p></li>
+<li><p>ad una ricerca generale nelle pagine di aiuto (<code>help.search()</code> o <code>??</code> seguito dalla parola chiave)</p></li>
+<li><p>a tutte le funzioni che contengono una determinata parola chiave (<code>apropos()</code>)</p></li>
+<li><p>agli esempi per una determinata funzione (<code>example()</code>)</p></li>
+<li><p>ad una determinata vignetta di un dato pacchetto (<code>vignette()</code>)</p></li>
+<li><p>ad una ricerca sul sito di R, comprese le discussioni e i forum (<code>RSiteSearch()</code>)</p></li>
+</ul>
+<p>Prova a scrivere (o a copiare e incollare) i seguenti comandi in uno script e ad eseguirli uno alla volta (con <code>command-invio</code> alla fine di ogni comando):</p>
+<pre><code># aprire la pagina di aiuto
+help.start()
+# aprire la pagina di aiuto per una pagina specifica
+help(&quot;plot&quot;) 
+# le virgolette sono opzionali; se non si usa l&#39;opzione package verrà mostrato 
+# l&#39;aiuto per l&#39;ultimo pacchetto  caricato in memoria (vedi capitolo 4)
+?plot
+# cercare nell&#39;aiuto con una parola chiave
+help.search(&quot;array&quot;) 
+# in questo caso le virgolette sono obbligatorie
+??array
+# far girare il codice degli esempi di una funzione
+example(&quot;pretty&quot;) 
+# caricare una vignetta 
+vignette(&quot;embedding&quot;, package = &quot;car&quot;) 
+# cercare le funzioni il cui nome contiene la parola (&quot;plot&quot;)
+apropos(&quot;plot&quot;, mode = &quot;function&quot;)
+# cercare nel sito di R una parola chiave
+RSiteSearch(&quot;scatterplot&quot;)
+# ottenere una lista dei data set presenti nei pacchetti caricati in memoria
+data()</code></pre>
+<p>Ovviamente, in maniera piuttosto ricorsiva, puoi cercare aiuto su ciascuna di queste funzioni: prova a scrivere nella <code>Console</code>:</p>
+<pre><code>&gt;help(help)</code></pre>
+<p>Un <em>caveat</em>: il risultato della funzione <code>help()</code>, se non usi l’opzione <code>package</code> potrebbe dipendere dall’ordine con il quale sono caricati i pacchetti; per esempio <code>help("filter")</code> restituirà un risultato diverso se è stato caricato, direttamente o indirettamente, il pacchetto dplyr; prova a scrivere ed eseguire le seguenti linee di codice (se <code>library(dplyr</code>) non funziona prova prima <code>install.packages("tidyverse")</code>):</p>
+<pre><code>library(dplyr)  
+help(filter)  
+help(filter, package =&quot;dplyr&quot;)  
+help(filter, package =&quot;stats&quot;)  </code></pre>
+</div>
+</div>
+<div id="strategieaiuto" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Strategie per cercare aiuto (anche senza parere).<a href="aiuto.html#strategieaiuto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A seconda del tuo grado di “ignoranza” potrebbe essere opportuno usare strategie diverse per cercare aiuto:</p>
+<ul>
+<li><p>se conosci il nome della funzione sulla quale vuoi cercare aiuto e sai di che pacchetto fa parte: usa il tab <code>Help</code> o la funzione <code>help()</code>: in RStudio l’aiuto apparirà nel tab <code>Help</code>, leggi almeno le sezioni <code>Description</code> e <code>Usage</code>; è sicuramente utile leggere <code>Arguments</code> e <code>Value</code> e, se non sei certo di aver capito, provare a far girare gli esempi con <code>example()</code></p></li>
+<li><p>se conosci il nome della funzione (anche approssimativamente) ma non sei cert* del pacchetto cui appartiene: in questo caso help() potrebbe non funzionare, perché restituisce un risultato solo se il pacchetto cui appartiene la funzione è caricato, cosa che è sempre vera con i pacchetti che vengono caricati con R base (<code>base, datasets, graphics, grDevices, methods, stats, utils</code>). In questo caso hai due opzioni:</p>
+<ul>
+<li><p>usare <code>help.search()</code> o <code>apropos()</code>: il risultato potrebbe essere difficile da gestire, con un output lungo e non sempre chiarissimo.</p></li>
+<li><p>usare siti di documentazione; ce ne sono due principali, che hanno i vantaggio di condurre la ricerca su praticamente tutti i pacchetti esistenti: <a href="https://www.rdocumentation.org">RDocumentation</a> ricerca il CRAN e Bioconductor e restituisce risultati sia per i pacchetti che per le funzioni; <a href="https://rdrr.io">rdrr.io</a> è molto più completo (ma afflitto da molti più banner pubblicitari) e, fra le altre cose, consente di far girare brevi scripts (snippets) direttamente nel browser.</p></li>
+</ul></li>
+<li><p>se non conosci nemmeno il nome della funzione che stai cercando ma hai almeno una vaga idea su cosa vuoi fare: qui le cose si fanno difficili, specialmente se non hai una buona conoscenza della lingua inglese, però non disperare, perché hai diverse opzioni:</p>
+<ul>
+<li><p>usare Google o il tuo motore di ricerca preferito per condurre una ricerca nel web; prova per esempio a digitare “ANOVA con R” o “aprire un file di testo con R” o “analisi dei network con R”: troverai un discreto numero di hits che, generalmente, ti rimanderanno ai pochi blog o siti su R in italiano o al materiale didattico di qualche corso universitario. Naturalmente la ricerca in inglese è decisamente più produttiva: prova con “ANOVA with R”, “importing text files with R”, “network analysis with R”. In entrambi i casi, con poco sforzo troverai probabilmente la soluzione che cerchi ed avrai il vantaggio di sfruttare l’algoritmo di Google per ottenere per primi i risultati più rilevanti</p></li>
+<li><p>condurre la ricerca su uno dei molti forum o blog su R (vedi la sezione <a href="aiuto.html#altrerisaiuto">3.5</a>): in generale i risultati saranno un tantino più pertinenti e le spiegazioni più dettagliate.</p></li>
+<li><p>studiare uno dei molti eccellenti libri (compreso questo) su R: lo so, richiede tempo, ma è un buon investimento</p></li>
+</ul></li>
+</ul>
+<p>In molti casi potresti avere necessità più specifiche, come capire il significato di un messaggio di errore o risolvere un problema di programmazione specifico: anche in questo caso, a parte la lettura di un buon libro, una ricerca libera sul web, specialmente se condotta in inglese, ti permetterà di trovare rapidamente quello che cerchi. Se non lo trovi, puoi persino provare ad avviare un nuovo argomento su un forum: il principale vantaggio di R è probabilmente quello di avere una vasta comunità di utenti, che rispondono (quasi sempre) con gentilezza anche alle domande più stupide. Una lista dei forum e blog più importanti è nella sezione <a href="aiuto.html#altrerisaiuto">3.5</a>. Ricorda però che riceverai delle risposte chiare se poni il tuo problema in maniera chiara, per esempio con quello che si chiama <a href="http://adv-r.had.co.nz/Reproducibility.html">reproducible example</a>. Un po’ di traduzioni in italiano di post su questo tema sono <a href="https://www.it-swarm.it/it/r/come-fare-un-grande-esempio-riproducibile-di-r/973174441/">qui</a>.</p>
+</div>
+<div id="esercizi.-1" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Esercizi.<a href="aiuto.html#esercizi.-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In attesa di tutorial e esercizi veri e propri realizzati con <a href="https://rstudio.github.io/learnr/">learnR</a> prova a rispondere a queste domande:</p>
+<ul>
+<li><p>Cosa restituisce il comando <code>&gt;help("library")</code>?<a href="#fn63" class="footnote-ref" id="fnref63"><sup>63</sup></a> Dove appare l’output in RStudio? In R?</p></li>
+<li><p>cosa succede se digiti nella Console <code>&gt;??library</code>. Come potrai notare l’output di questo comando è piuttosto lungo (dipende da quanti pacchetti hai installato). Ti viene in mente qualche strategia per cercare più rapidamente i risultati più rilevanti?</p></li>
+<li><p>quale comando useresti per trovare una funzione il cui nome contiene una determinata parola chiave (magari anche con una <a href="https://cran.r-project.org/web/packages/stringr/vignettes/regular-expressions.html">espressione regolare</a>)?</p></li>
+<li><p>che importanti informazioni riporta la sezione <code>Value</code> di una determinata pagina di aiuto? Prova con ?mean, ?saveRDS, ?points e confronta i risultati.</p></li>
+<li><p>quale importante sito sulla documentazione di R consente anche di eseguire frammenti di codice?</p></li>
+</ul>
+</div>
+<div id="altrerisaiuto" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Altre risorse.<a href="aiuto.html#altrerisaiuto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Come sempre, ti indicherò soltanto le risorse minime che, in maniera forse arbitraria, ritengo migliori o più efficaci da un punto di vista didattico. Sentiti liber* di esplorare secondo il tuo estro il vasto mare della documentazione su R.</p>
+<div id="risorse-in-italiano.-1" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Risorse in italiano.<a href="aiuto.html#risorse-in-italiano.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong><em>Documenti e pagine web</em></strong></p>
+<p>Ci sono pochissimi forum e wiki in Italiano e, purtroppo, non vengono aggiornati molto di frequente. La ragione principale è, probabilmente, che anche i programmatori e gli utenti italiani preferiscono l’inglese (e non hanno tutti i torti). Prova con questi blog e Wiki:</p>
+<ul>
+<li><p><a href="http://www.insular.it">InsulaR</a>: il sito della comunità cagliaritana degli utenti di R</p></li>
+<li><p><a href="https://www.agnesevardanega.eu/wiki/r/start">Una interessante wiki</a> curata da una docente in scienze sociali</p></li>
+</ul>
+</div>
+<div id="risorse-in-inglese.-1" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Risorse in inglese.<a href="aiuto.html#risorse-in-inglese.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong><em>Documenti e pagine web.</em></strong></p>
+<p>I libri, documenti, pagine, forum e wiki su R in inglese sono talmente tanto numerosi che è difficile trovare la propria strada. A parte i due siti fondamentali sulla documentazione (RDdocumentation e rdrr.io), giusto per fare un po’ di ordine provo a citare almeno i 5 link principali per le categorie più importanti (tralasciando ovviamente la documentazione presente sul sito del CRAN). Il criterio di ordinamento è, semplicemente, quello del mio personale livello di gradimento.</p>
+<ul>
+<li><p>Libri: eh, sì, ci sono i libri prima di tutto; con un po’ di abilità potete cercare nell’indice quello che vi serve e trovare rapidamente soluzioni ben strutturate. Provate innanzitutto questi (l’ultimo è per utenti avanzati):</p>
+<ul>
+<li><p><a href="http://r4ds.had.co.nz">R for data science</a>: libro assolutamente fondamentale per introdurvi all’analisi dei dati (non necessariamente alla statistica) con R; disponibile on line gratuitamente ma anche come formato cartaceo e epub, ora anche nella <a href="https://it.r4ds.hadley.nz/index.html">versione italiana</a></p></li>
+<li><p><a href="https://benwhalley.github.io/just-enough-r/">Just enough R</a>: un approccio abbastanza minimalista all’apprendimento della statistica con R<a href="#fn64" class="footnote-ref" id="fnref64"><sup>64</sup></a></p></li>
+<li><p><a href="https://moderndive.netlify.app">Statistical inference via data science</a>: direi un ottimo approccio “tidy” all’inferenza statistica</p></li>
+<li><p><a href="https://dtkaplan.github.io/SM2-bookdown/">Statistical modelling with R</a>: un libro di statistica con R decisamente più avanzato</p></li>
+<li><p><a href="https://adv-r.hadley.nz">Advanced R</a> probailmente la bibbia della programmazione con R, solo per avanzati</p></li>
+</ul></li>
+<li><p>Blog e forum: cito quelli che io visiterei (e visito) per primi se sto cercando risposte alle <a href="https://www.youtube.com/watch?v=fI6CmdSVwVE">domande fondamentali</a>; fra le altre cose, blog e forum hanno i “mi piace”<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a></p>
+<ul>
+<li><p><a href="https://www.r-bloggers.com">R bloggers</a>: il blog migliore su R con migliaia di contributori. Incidentalmente, <a href="https://www.r-bloggers.com/2019/03/getting-help-in-r/">qui</a> trovate un interessante post sul cercare aiuto su R.</p></li>
+<li><p><a href="https://community.rstudio.com">RStudio community</a> decisamente più specializzato su RStudio e tidyverse</p></li>
+<li><p><a href="https://stackoverflow.com/questions">Stack Overflow</a>: non è specifico su R ma qui potete trovare risposte alle vostre domande (se fate le domande giuste)</p></li>
+<li><p><a href="http://applied-r.com">Applied R</a>: un blog per utenti decisamente più esperti</p></li>
+</ul></li>
+<li><p>siti web per l’apprendimento di R:</p>
+<ul>
+<li><p><a href="https://www.statmethods.net">Quick-R</a>: decisamente completo ed efficace</p></li>
+<li><p><a href="http://www.cookbook-r.com">Cookbook for R</a>: un pochino disordinato, ma utile</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="niente-video" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Niente video?<a href="aiuto.html#niente-video" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Come avrai notato, da questo capitolo non metto più riferiementi a video didattici: sono troppo volatili e, soprattutto ce ne sono tanti di pessimi e la tortura di guardarli per trovare quelli “buoni” è davvero insopportabile. Canali YouTube come DataCamp(<a href="https://www.youtube.com/@DataCamp" class="uri">https://www.youtube.com/@DataCamp</a>) e <a href="https://www.youtube.com/@PositPBC/videos">Posit</a> offrono video di corsi e seminari gratuiti preparati in maniera professionale. Se ritieni che guardare video sia un buon modo di apprendere, puoi partire da lì.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="56">
+<li id="fn56"><p>in realtà questo non è proprio vero per la versione di base di R: molti pacchetti, specialmente quelli del tidyverse (vedi capitolo <a href="intro.html#intro">1</a> e <a href="datioggetti.html#datioggetti">4</a>)<a href="aiuto.html#fnref56" class="footnote-back">↩︎</a></p></li>
+<li id="fn57"><p>cioé ciascuno dei modi di esecuzione restituisce lo stesso risultato; il realtà, se fai girare lo script diverse volte senza fissare il seme dei numeri casuali il data frame sarà sempre diverso, proprio perché è ottenuto estraendo, in modo casuale, numeri da una distribuzione uniforme!<a href="aiuto.html#fnref57" class="footnote-back">↩︎</a></p></li>
+<li id="fn58"><p>un modo più efficace per fare il confronto è usare la funzione <code>microbenchmark()</code> del pacchetto omonimo<a href="aiuto.html#fnref58" class="footnote-back">↩︎</a></p></li>
+<li id="fn59"><p>mentre digiti, se il pacchetto che contiene la funzione è caricato in memoria, vedrai apparire dei suggerimenti, che potrai completare scorrendo la lista con le frecce e premendo <code>&lt;invio&gt;</code> per confermare<a href="aiuto.html#fnref59" class="footnote-back">↩︎</a></p></li>
+<li id="fn60"><p>alcune funzioni, come quelle che salvano oggetti in una posizione di memoria non restituiscono valori, ma hanno quelli che si chiamano effetti collatelari, come il salvataggio di un file o la “stampa” di qualcosa in Console<a href="aiuto.html#fnref60" class="footnote-back">↩︎</a></p></li>
+<li id="fn61"><p>questo codice può essere fatto girare nella console usando la funzione <code>example()</code>, vedi dopo, anche se le versioni più recenti di RStudio forniscono un link <code>Run example</code><a href="aiuto.html#fnref61" class="footnote-back">↩︎</a></p></li>
+<li id="fn62"><p>prova a cliccare su <code>Index</code> e ad esplorare la finestra che appare seguendo i diversi link<a href="aiuto.html#fnref62" class="footnote-back">↩︎</a></p></li>
+<li id="fn63"><p>ricordati che se digiti qualcosa nella console devi omettere il prompt, che già appare nella console…<a href="aiuto.html#fnref63" class="footnote-back">↩︎</a></p></li>
+<li id="fn64"><p>se vi sentite più orientati alla pirateria provate <a href="https://bookdown.org/ndphillips/YaRrr/">YaRrr!</a>, che ha un approccio simile<a href="aiuto.html#fnref64" class="footnote-back">↩︎</a></p></li>
+<li id="fn65"><p>se è quello che usate per guidare la vostra vita<a href="aiuto.html#fnref65" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="datioggetti.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

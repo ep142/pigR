@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Esplorare con i numeri | pigR: R, per pigri</title>
+  <meta name="description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Esplorare con i numeri | pigR: R, per pigri" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Esplorare con i numeri | pigR: R, per pigri" />
+  
+  <meta name="twitter:description" content="Un’introduzione all’uso di R per studenti pigri o frettolosi." />
+  
+
+<meta name="author" content="E. Parente, Scuola SAFE, Università degli Studi della Basilicata" />
+
+
+<meta name="date" content="2023-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="grafica.html"/>
+<link rel="next" href="reportR.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cos’è pigR?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#di-cosa-hai-bisogno-per-leggere-e-capire-questo-libro."><i class="fa fa-check"></i>Di cosa hai bisogno per leggere (e capire) questo libro.</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#chi-siamo-noi-noi-noi"><i class="fa fa-check"></i>Chi siamo noi (noi, noi)?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#se-ti-piace"><i class="fa fa-check"></i>Se ti piace…</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#caveat"><i class="fa fa-check"></i>Caveat</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#cookies"><i class="fa fa-check"></i>Cookies</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#la-foto-di-copertina."><i class="fa fa-check"></i>La foto di copertina.</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduzione</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#cosa-cè-da-imparare-in-questo-capitolo."><i class="fa fa-check"></i><b>1.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#convenzioni-e-guida-alla-lettura-e-alluso-del-codice."><i class="fa fa-check"></i><b>1.2</b> Convenzioni e guida alla lettura e all’uso del codice.</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#tutti-vogliono-imparare-a-usare-r."><i class="fa fa-check"></i><b>1.3</b> Tutti vogliono imparare a usare R.</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro.html"><a href="intro.html#provare-per-credere-app-gui-ide-e-altre-diavolerie."><i class="fa fa-check"></i><b>1.3.1</b> Provare per credere: App, GUI, IDE e altre diavolerie.</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#laltra-faccia-della-medaglia-troppa-fatica."><i class="fa fa-check"></i><b>1.4</b> L’altra faccia della medaglia: troppa fatica.</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#r-per-pigri."><i class="fa fa-check"></i><b>1.5</b> R, per pigri.</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="inter.html"><a href="inter.html"><i class="fa fa-check"></i><b>2</b> Interfacce e ambienti</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="inter.html"><a href="inter.html#cosa-cè-da-imparare-in-questo-capitolo.-1"><i class="fa fa-check"></i><b>2.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="2.2" data-path="inter.html"><a href="inter.html#rstudio."><i class="fa fa-check"></i><b>2.2</b> RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="inter.html"><a href="inter.html#linterfaccia-principale-di-rstudio."><i class="fa fa-check"></i><b>2.2.1</b> L’interfaccia principale di RStudio.</a></li>
+<li class="chapter" data-level="2.2.2" data-path="inter.html"><a href="inter.html#il-pannello-source."><i class="fa fa-check"></i><b>2.2.2</b> Il pannello Source.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="inter.html"><a href="inter.html#il-pannello-console."><i class="fa fa-check"></i><b>2.2.3</b> Il pannello Console.</a></li>
+<li class="chapter" data-level="2.2.4" data-path="inter.html"><a href="inter.html#il-pannello-environment."><i class="fa fa-check"></i><b>2.2.4</b> Il pannello Environment.</a></li>
+<li class="chapter" data-level="2.2.5" data-path="inter.html"><a href="inter.html#il-tab-environment."><i class="fa fa-check"></i><b>2.2.5</b> Il tab Environment.</a></li>
+<li class="chapter" data-level="2.2.6" data-path="inter.html"><a href="inter.html#il-tab-history."><i class="fa fa-check"></i><b>2.2.6</b> Il tab History.</a></li>
+<li class="chapter" data-level="2.2.7" data-path="inter.html"><a href="inter.html#il-pannello-plots."><i class="fa fa-check"></i><b>2.2.7</b> Il pannello Plots.</a></li>
+<li class="chapter" data-level="2.2.8" data-path="inter.html"><a href="inter.html#il-tab-plots."><i class="fa fa-check"></i><b>2.2.8</b> Il tab Plots.</a></li>
+<li class="chapter" data-level="2.2.9" data-path="inter.html"><a href="inter.html#il-tab-files."><i class="fa fa-check"></i><b>2.2.9</b> Il tab Files.</a></li>
+<li class="chapter" data-level="2.2.10" data-path="inter.html"><a href="inter.html#tabpackages"><i class="fa fa-check"></i><b>2.2.10</b> Il tab Packages.</a></li>
+<li class="chapter" data-level="2.2.11" data-path="inter.html"><a href="inter.html#il-tab-help."><i class="fa fa-check"></i><b>2.2.11</b> Il tab Help.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="inter.html"><a href="inter.html#esercizi."><i class="fa fa-check"></i><b>2.3</b> Esercizi.</a></li>
+<li class="chapter" data-level="2.4" data-path="inter.html"><a href="inter.html#altrerisinter"><i class="fa fa-check"></i><b>2.4</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="inter.html"><a href="inter.html#risorse-in-italiano."><i class="fa fa-check"></i><b>2.4.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="2.4.2" data-path="inter.html"><a href="inter.html#risorse-in-inglese."><i class="fa fa-check"></i><b>2.4.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aiuto.html"><a href="aiuto.html"><i class="fa fa-check"></i><b>3</b> Chiedere aiuto</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aiuto.html"><a href="aiuto.html#cosa-cè-da-imparare-in-questo-capitolo.-2"><i class="fa fa-check"></i><b>3.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aiuto.html"><a href="aiuto.html#premessa-1-nessuno-legge-i-manuali-figuriamoci-i-pigri"><i class="fa fa-check"></i><b>3.1.1</b> Premessa 1: nessuno legge i manuali (figuriamoci i pigRi)!</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aiuto.html"><a href="aiuto.html#gatti"><i class="fa fa-check"></i><b>3.1.2</b> Premessa 2: ci sono molti modi di pelare un gatto (e documentarlo).</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aiuto.html"><a href="aiuto.html#laiuto-di-r."><i class="fa fa-check"></i><b>3.2</b> L’aiuto di R.</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="aiuto.html"><a href="aiuto.html#tabhelp"><i class="fa fa-check"></i><b>3.2.1</b> Il tab Help di RStudio.</a></li>
+<li class="chapter" data-level="3.2.2" data-path="aiuto.html"><a href="aiuto.html#funzioni-per-chiedere-aiuto."><i class="fa fa-check"></i><b>3.2.2</b> <em>Funzioni per chiedere aiuto.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="aiuto.html"><a href="aiuto.html#strategieaiuto"><i class="fa fa-check"></i><b>3.3</b> Strategie per cercare aiuto (anche senza parere).</a></li>
+<li class="chapter" data-level="3.4" data-path="aiuto.html"><a href="aiuto.html#esercizi.-1"><i class="fa fa-check"></i><b>3.4</b> Esercizi.</a></li>
+<li class="chapter" data-level="3.5" data-path="aiuto.html"><a href="aiuto.html#altrerisaiuto"><i class="fa fa-check"></i><b>3.5</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="aiuto.html"><a href="aiuto.html#risorse-in-italiano.-1"><i class="fa fa-check"></i><b>3.5.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="3.5.2" data-path="aiuto.html"><a href="aiuto.html#risorse-in-inglese.-1"><i class="fa fa-check"></i><b>3.5.2</b> Risorse in inglese.</a></li>
+<li class="chapter" data-level="3.5.3" data-path="aiuto.html"><a href="aiuto.html#niente-video"><i class="fa fa-check"></i><b>3.5.3</b> Niente video?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datioggetti.html"><a href="datioggetti.html"><i class="fa fa-check"></i><b>4</b> Dati, oggetti, funzioni (e tutto il resto)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datioggetti.html"><a href="datioggetti.html#cosa-cè-da-imparare-in-questo-capitolo.-3"><i class="fa fa-check"></i><b>4.1</b> Cosa c’è da imparare in questo capitolo.</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="datioggetti.html"><a href="datioggetti.html#premessa-1-esperimenti-e-osservazioni."><i class="fa fa-check"></i><b>4.1.1</b> Premessa 1: esperimenti e osservazioni.</a></li>
+<li class="chapter" data-level="4.1.2" data-path="datioggetti.html"><a href="datioggetti.html#premessa2"><i class="fa fa-check"></i><b>4.1.2</b> Premessa 2. Misure e dati, osservazioni e variabili, tabelle.</a></li>
+<li class="chapter" data-level="4.1.3" data-path="datioggetti.html"><a href="datioggetti.html#anatab"><i class="fa fa-check"></i><b>4.1.3</b> Anatomia di una tabella.</a></li>
+<li class="chapter" data-level="4.1.4" data-path="datioggetti.html"><a href="datioggetti.html#un-piccolo-esercizio."><i class="fa fa-check"></i><b>4.1.4</b> Un piccolo esercizio.</a></li>
+<li class="chapter" data-level="4.1.5" data-path="datioggetti.html"><a href="datioggetti.html#tidyuntidydefinizione"><i class="fa fa-check"></i><b>4.1.5</b> Tidy vs. untidy (tabelle ordinate e disordinate).</a></li>
+<li class="chapter" data-level="4.1.6" data-path="datioggetti.html"><a href="datioggetti.html#missingdata"><i class="fa fa-check"></i><b>4.1.6</b> Dati mancanti (missing data).</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="datioggetti.html"><a href="datioggetti.html#r-è-un-linguaggio-funzionale-che-supporta-la-programmazione-orientata-a-oggetti"><i class="fa fa-check"></i><b>4.2</b> R è un linguaggio funzionale che supporta la programmazione orientata a oggetti…</a></li>
+<li class="chapter" data-level="4.3" data-path="datioggetti.html"><a href="datioggetti.html#ilnomedellecose"><i class="fa fa-check"></i><b>4.3</b> Il nome delle cose.</a></li>
+<li class="chapter" data-level="4.4" data-path="datioggetti.html"><a href="datioggetti.html#strutturedati"><i class="fa fa-check"></i><b>4.4</b> Strutture di dati.</a></li>
+<li class="chapter" data-level="4.5" data-path="datioggetti.html"><a href="datioggetti.html#vettoriatomici"><i class="fa fa-check"></i><b>4.5</b> Vettori atomici.</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="datioggetti.html"><a href="datioggetti.html#vettori1D"><i class="fa fa-check"></i><b>4.5.1</b> Vettori ad una dimensione.</a></li>
+<li class="chapter" data-level="4.5.2" data-path="datioggetti.html"><a href="datioggetti.html#vettori-atomici-a-2-o-più-dimensioni-matrici-e-array."><i class="fa fa-check"></i><b>4.5.2</b> Vettori atomici a 2 o più dimensioni: matrici e array.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="datioggetti.html"><a href="datioggetti.html#i-data-frame-e-le-liste."><i class="fa fa-check"></i><b>4.6</b> I data frame e le liste.</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="datioggetti.html"><a href="datioggetti.html#dataframebenemale"><i class="fa fa-check"></i><b>4.6.1</b> I data frame, nel bene e nel male.</a></li>
+<li class="chapter" data-level="4.6.2" data-path="datioggetti.html"><a href="datioggetti.html#le-liste."><i class="fa fa-check"></i><b>4.6.2</b> Le liste.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="datioggetti.html"><a href="datioggetti.html#altre-cose-strane-tabelle-di-conte-serie-temporali-date-e-ore."><i class="fa fa-check"></i><b>4.7</b> <em>Altre cose strane: tabelle di conte, serie temporali, date e ore.</em></a></li>
+<li class="chapter" data-level="4.8" data-path="datioggetti.html"><a href="datioggetti.html#indsel"><i class="fa fa-check"></i><b>4.8</b> Indirizzare, selezionare.</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="datioggetti.html"><a href="datioggetti.html#indirizzare-per-posizione."><i class="fa fa-check"></i><b>4.8.1</b> Indirizzare per posizione.</a></li>
+<li class="chapter" data-level="4.8.2" data-path="datioggetti.html"><a href="datioggetti.html#usare-i-nomi."><i class="fa fa-check"></i><b>4.8.2</b> Usare i nomi.</a></li>
+<li class="chapter" data-level="4.8.3" data-path="datioggetti.html"><a href="datioggetti.html#usare-valori-logici."><i class="fa fa-check"></i><b>4.8.3</b> Usare valori logici.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="datioggetti.html"><a href="datioggetti.html#attach-with-within."><i class="fa fa-check"></i><b>4.9</b> <code>attach()</code>, <code>with()</code>, <code>within()</code>.</a></li>
+<li class="chapter" data-level="4.10" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in-e-funzioni-definite-dallutente."><i class="fa fa-check"></i><b>4.10</b> <em>Funzioni “built-in” e funzioni definite dall’utente.</em></a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="datioggetti.html"><a href="datioggetti.html#operatorisemplici"><i class="fa fa-check"></i><b>4.10.1</b> Semplici funzioni matematiche, trigonometriche, statistiche, logiche, etc.</a></li>
+<li class="chapter" data-level="4.10.2" data-path="datioggetti.html"><a href="datioggetti.html#operatori."><i class="fa fa-check"></i><b>4.10.2</b> Operatori.</a></li>
+<li class="chapter" data-level="4.10.3" data-path="datioggetti.html"><a href="datioggetti.html#funzioni-built-in."><i class="fa fa-check"></i><b>4.10.3</b> Funzioni built-in.</a></li>
+<li class="chapter" data-level="4.10.4" data-path="datioggetti.html"><a href="datioggetti.html#userdeffunc"><i class="fa fa-check"></i><b>4.10.4</b> Funzioni definite dall’utente.</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="datioggetti.html"><a href="datioggetti.html#programmare-con-stile."><i class="fa fa-check"></i><b>4.11</b> Programmare, con stile.</a></li>
+<li class="chapter" data-level="4.12" data-path="datioggetti.html"><a href="datioggetti.html#un-ambiente-affollato."><i class="fa fa-check"></i><b>4.12</b> Un ambiente affollato.</a></li>
+<li class="chapter" data-level="4.13" data-path="datioggetti.html"><a href="datioggetti.html#altrerisorsedati"><i class="fa fa-check"></i><b>4.13</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="4.13.1" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-italiano.-2"><i class="fa fa-check"></i><b>4.13.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="4.13.2" data-path="datioggetti.html"><a href="datioggetti.html#risorse-in-inglese.-2"><i class="fa fa-check"></i><b>4.13.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html"><i class="fa fa-check"></i><b>5</b> Dentro e fuori R</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#cosa-cè-da-imparare-in-questo-capitolo.-4"><i class="fa fa-check"></i><b>5.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="5.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#ognicosaalsuoposto"><i class="fa fa-check"></i><b>5.2</b> Ogni cosa al suo posto: working directory, progetti, etc.</a></li>
+<li class="chapter" data-level="5.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#facciamolasemplice"><i class="fa fa-check"></i><b>5.3</b> Facciamola semplice: il menu <code>Import Dataset</code>.</a></li>
+<li class="chapter" data-level="5.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#usareadr"><i class="fa fa-check"></i><b>5.4</b> Gestire file di testo con <code>readr.</code></a></li>
+<li class="chapter" data-level="5.5" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#tutti-i-comandi-o-quasi-per-importare-file-di-testo"><i class="fa fa-check"></i><b>5.5</b> Tutti i comandi (o quasi) per importare file di testo…</a></li>
+<li class="chapter" data-level="5.6" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-di-dati."><i class="fa fa-check"></i><b>5.6</b> Altri formati di dati.</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#da-e-per-excel."><i class="fa fa-check"></i><b>5.6.1</b> Da e per Excel.</a></li>
+<li class="chapter" data-level="5.6.2" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altri-formati-foreign-e-hmisc-e-haven."><i class="fa fa-check"></i><b>5.6.2</b> Altri formati: <code>foreign</code> e <code>Hmisc</code> e <code>haven</code>.</a></li>
+<li class="chapter" data-level="5.6.3" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#un-richiamo-file-.rdata-e-.rds"><i class="fa fa-check"></i><b>5.6.3</b> Un richiamo: file <code>.Rdata</code> e <code>.rds</code></a></li>
+<li class="chapter" data-level="5.6.4" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#e-andato-tutto-bene"><i class="fa fa-check"></i><b>5.6.4</b> E’ andato tutto bene?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#lavorare-con-i-nomi-dei-file-e-le-directory."><i class="fa fa-check"></i><b>5.7</b> Lavorare con i nomi dei file e le directory.</a></li>
+<li class="chapter" data-level="5.8" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app1sintassi"><i class="fa fa-check"></i><b>5.8</b> <strong>Appendice 1</strong>. <em>Un piccolo dettaglio sulla sintassi.</em></a></li>
+<li class="chapter" data-level="5.9" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#app2finqui"><i class="fa fa-check"></i><b>5.9</b> <strong>Appendice 2</strong>. <em>Se sei arrivat* fin qui…</em></a></li>
+<li class="chapter" data-level="5.10" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#altrerisdentrofuori"><i class="fa fa-check"></i><b>5.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="dentroefuoriR.html"><a href="dentroefuoriR.html#risorse-in-inglese.-3"><i class="fa fa-check"></i><b>5.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="grafica.html"><a href="grafica.html"><i class="fa fa-check"></i><b>6</b> Introduzione alla grafica scientifica con R</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="grafica.html"><a href="grafica.html#cosa-cè-da-imparare-in-questo-capitolo.-5"><i class="fa fa-check"></i><b>6.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="6.2" data-path="grafica.html"><a href="grafica.html#igraficifattibene"><i class="fa fa-check"></i><b>6.2</b> I grafici, fatti bene.</a></li>
+<li class="chapter" data-level="6.3" data-path="grafica.html"><a href="grafica.html#sistemigrafici"><i class="fa fa-check"></i><b>6.3</b> I sistemi grafici in R.</a></li>
+<li class="chapter" data-level="6.4" data-path="grafica.html"><a href="grafica.html#visualizzare-o-salvare-i-grafici-i-device."><i class="fa fa-check"></i><b>6.4</b> Visualizzare o salvare i grafici: i device.</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="grafica.html"><a href="grafica.html#devicegrafici"><i class="fa fa-check"></i><b>6.4.1</b> Salvare i grafici: i file come device grafici.</a></li>
+<li class="chapter" data-level="6.4.2" data-path="grafica.html"><a href="grafica.html#ggsave"><i class="fa fa-check"></i><b>6.4.2</b> Salvare i grafici di <code>ggplot2</code> con <code>ggsave</code>.</a></li>
+<li class="chapter" data-level="6.4.3" data-path="grafica.html"><a href="grafica.html#le-dimensioni-del-device-e-le-opzioni-grafiche."><i class="fa fa-check"></i><b>6.4.3</b> <em>Le dimensioni del device e le opzioni grafiche.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="grafica.html"><a href="grafica.html#r-a-colori."><i class="fa fa-check"></i><b>6.5</b> R, a colori.</a></li>
+<li class="chapter" data-level="6.6" data-path="grafica.html"><a href="grafica.html#graficaggplot2"><i class="fa fa-check"></i><b>6.6</b> La grammatica della grafica con ggplot2.</a></li>
+<li class="chapter" data-level="6.7" data-path="grafica.html"><a href="grafica.html#grafqual"><i class="fa fa-check"></i><b>6.7</b> Grafici per variabili qualitative.</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="grafica.html"><a href="grafica.html#diagrammi-a-barre."><i class="fa fa-check"></i><b>6.7.1</b> Diagrammi a barre.</a></li>
+<li class="chapter" data-level="6.7.2" data-path="grafica.html"><a href="grafica.html#fare-di-più-con-i-grafici-per-variabili-qualitative."><i class="fa fa-check"></i><b>6.7.2</b> <em>Fare di più con i grafici per variabili qualitative.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="grafica.html"><a href="grafica.html#grafquant"><i class="fa fa-check"></i><b>6.8</b> Grafici per variabili quantitative.</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="grafica.html"><a href="grafica.html#istogrammi-e-altre-rappresentazioni-della-densità."><i class="fa fa-check"></i><b>6.8.1</b> Istogrammi e altre rappresentazioni della densità.</a></li>
+<li class="chapter" data-level="6.8.2" data-path="grafica.html"><a href="grafica.html#boxplot"><i class="fa fa-check"></i><b>6.8.2</b> Boxplot.</a></li>
+<li class="chapter" data-level="6.8.3" data-path="grafica.html"><a href="grafica.html#rappresentazioni-di-indicatori-di-tendenza-centrale-e-di-variabilità."><i class="fa fa-check"></i><b>6.8.3</b> Rappresentazioni di indicatori di tendenza centrale e di variabilità.</a></li>
+<li class="chapter" data-level="6.8.4" data-path="grafica.html"><a href="grafica.html#scatterplots"><i class="fa fa-check"></i><b>6.8.4</b> Grafici a dispersione.</a></li>
+<li class="chapter" data-level="6.8.5" data-path="grafica.html"><a href="grafica.html#personalizzare-i-grafici-con-ggplot2."><i class="fa fa-check"></i><b>6.8.5</b> <em>Personalizzare i grafici con ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.6" data-path="grafica.html"><a href="grafica.html#estensionigg"><i class="fa fa-check"></i><b>6.8.6</b> <em>Estensioni per ggplot2.</em></a></li>
+<li class="chapter" data-level="6.8.7" data-path="grafica.html"><a href="grafica.html#qplot"><i class="fa fa-check"></i><b>6.8.7</b> <em>Veloce veloce: qplot()</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="grafica.html"><a href="grafica.html#graficabase"><i class="fa fa-check"></i><b>6.9</b> <em>La grafica di base in R: un salvagente?</em></a></li>
+<li class="chapter" data-level="6.10" data-path="grafica.html"><a href="grafica.html#altrerisgraf"><i class="fa fa-check"></i><b>6.10</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="grafica.html"><a href="grafica.html#risorse-in-inglese.-4"><i class="fa fa-check"></i><b>6.10.1</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statdesc.html"><a href="statdesc.html"><i class="fa fa-check"></i><b>7</b> Esplorare con i numeri</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statdesc.html"><a href="statdesc.html#cosa-cè-da-imparare-in-questo-capitolo.-6"><i class="fa fa-check"></i><b>7.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="7.2" data-path="statdesc.html"><a href="statdesc.html#una-piccola-premessa-gruppi-livelli-sottoinsiemi."><i class="fa fa-check"></i><b>7.2</b> Una piccola premessa: gruppi, livelli, sottoinsiemi.</a></li>
+<li class="chapter" data-level="7.3" data-path="statdesc.html"><a href="statdesc.html#statcontinui"><i class="fa fa-check"></i><b>7.3</b> Statistiche riassuntive per dati continui.</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="statdesc.html"><a href="statdesc.html#misuretendcentrale"><i class="fa fa-check"></i><b>7.3.1</b> Misure di tendenza centrale e di variabilità.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="statdesc.html"><a href="statdesc.html#altre-funzioni-utili."><i class="fa fa-check"></i><b>7.4</b> <em>Altre funzioni utili.</em></a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="statdesc.html"><a href="statdesc.html#lavorare-sui-vettori."><i class="fa fa-check"></i><b>7.4.1</b> <em>Lavorare sui vettori.</em></a></li>
+<li class="chapter" data-level="7.4.2" data-path="statdesc.html"><a href="statdesc.html#funzioni-che-producono-statistiche-riassuntive."><i class="fa fa-check"></i><b>7.4.2</b> <em>Funzioni che producono statistiche riassuntive.</em></a></li>
+<li class="chapter" data-level="7.4.3" data-path="statdesc.html"><a href="statdesc.html#statsummarise"><i class="fa fa-check"></i><b>7.4.3</b> Statistiche, ordinate.</a></li>
+<li class="chapter" data-level="7.4.4" data-path="statdesc.html"><a href="statdesc.html#statgruppi"><i class="fa fa-check"></i><b>7.4.4</b> Statistiche riassuntive per gruppi.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="statdesc.html"><a href="statdesc.html#enormale"><i class="fa fa-check"></i><b>7.5</b> Ma è normale?</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="statdesc.html"><a href="statdesc.html#normal-probability-plot."><i class="fa fa-check"></i><b>7.5.1</b> Normal probability plot.</a></li>
+<li class="chapter" data-level="7.5.2" data-path="statdesc.html"><a href="statdesc.html#testnorm"><i class="fa fa-check"></i><b>7.5.2</b> Test statistici per la normalità.</a></li>
+<li class="chapter" data-level="7.5.3" data-path="statdesc.html"><a href="statdesc.html#comefaremeglio"><i class="fa fa-check"></i><b>7.5.3</b> <em>Come fare di meglio con i risultati dei test</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="statdesc.html"><a href="statdesc.html#intervalli-di-confidenza."><i class="fa fa-check"></i><b>7.6</b> Intervalli di confidenza.</a></li>
+<li class="chapter" data-level="7.7" data-path="statdesc.html"><a href="statdesc.html#statdesccat"><i class="fa fa-check"></i><b>7.7</b> Riassumere i dati per le variabili categoriche.</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="statdesc.html"><a href="statdesc.html#tabelle-di-frequenza-e-contingenza."><i class="fa fa-check"></i><b>7.7.1</b> Tabelle di frequenza e contingenza.</a></li>
+<li class="chapter" data-level="7.7.2" data-path="statdesc.html"><a href="statdesc.html#gmosaico"><i class="fa fa-check"></i><b>7.7.2</b> <em>Grafici a mosaico</em>.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="statdesc.html"><a href="statdesc.html#veloceveloce"><i class="fa fa-check"></i><b>7.8</b> <em>Veloce veloce</em></a></li>
+<li class="chapter" data-level="7.9" data-path="statdesc.html"><a href="statdesc.html#altrerisstatdesc"><i class="fa fa-check"></i><b>7.9</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="statdesc.html"><a href="statdesc.html#risorse-in-italiano.-3"><i class="fa fa-check"></i><b>7.9.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="7.9.2" data-path="statdesc.html"><a href="statdesc.html#risorse-in-inglese.-5"><i class="fa fa-check"></i><b>7.9.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="reportR.html"><a href="reportR.html"><i class="fa fa-check"></i><b>8</b> Creare report e notebook con R.</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="reportR.html"><a href="reportR.html#cosa-cè-da-imparare-in-questo-capitolo.-7"><i class="fa fa-check"></i><b>8.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="8.2" data-path="reportR.html"><a href="reportR.html#reportminimo"><i class="fa fa-check"></i><b>8.2</b> Il minimo indispensabile.</a></li>
+<li class="chapter" data-level="8.3" data-path="reportR.html"><a href="reportR.html#gli-elementi-di-un-report-in-r-markdown."><i class="fa fa-check"></i><b>8.3</b> <em>Gli elementi di un report in R Markdown.</em></a></li>
+<li class="chapter" data-level="8.4" data-path="reportR.html"><a href="reportR.html#altri-formati-di-documento-con-r-markdown."><i class="fa fa-check"></i><b>8.4</b> <em>Altri formati di documento con R Markdown.</em></a></li>
+<li class="chapter" data-level="8.5" data-path="reportR.html"><a href="reportR.html#quarto."><i class="fa fa-check"></i><b>8.5</b> <em>Quarto.</em></a></li>
+<li class="chapter" data-level="8.6" data-path="reportR.html"><a href="reportR.html#altrerisreport"><i class="fa fa-check"></i><b>8.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="reportR.html"><a href="reportR.html#risorse-in-italiano.-4"><i class="fa fa-check"></i><b>8.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="8.6.2" data-path="reportR.html"><a href="reportR.html#risorse-in-inglese.-6"><i class="fa fa-check"></i><b>8.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="wrangling.html"><a href="wrangling.html"><i class="fa fa-check"></i><b>9</b> Lottare con i dati.</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="wrangling.html"><a href="wrangling.html#cosa-cè-da-imparare-in-questo-capitolo.-8"><i class="fa fa-check"></i><b>9.1</b> Cosa c’è da imparare in questo capitolo.</a></li>
+<li class="chapter" data-level="9.2" data-path="wrangling.html"><a href="wrangling.html#rendere-tidy-i-dati."><i class="fa fa-check"></i><b>9.2</b> Rendere tidy i dati.</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="wrangling.html"><a href="wrangling.html#tidyresh"><i class="fa fa-check"></i><b>9.2.1</b> Riordinare con <code>tidyr</code> e <code>dplyr</code>: esempio minimo.</a></li>
+<li class="chapter" data-level="9.2.2" data-path="wrangling.html"><a href="wrangling.html#funzioni-avanzate-con-tidyr."><i class="fa fa-check"></i><b>9.2.2</b> <em>Funzioni avanzate con <code>tidyr</code>.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="wrangling.html"><a href="wrangling.html#dplyr"><i class="fa fa-check"></i><b>9.3</b> il cavallo di battaglia del <code>data wrangling</code>: <code>dplyr</code>.</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="wrangling.html"><a href="wrangling.html#filterselect"><i class="fa fa-check"></i><b>9.3.1</b> Estrarre gruppi di righe o colonne.</a></li>
+<li class="chapter" data-level="9.3.2" data-path="wrangling.html"><a href="wrangling.html#riordinare-i-dati."><i class="fa fa-check"></i><b>9.3.2</b> Riordinare i dati.</a></li>
+<li class="chapter" data-level="9.3.3" data-path="wrangling.html"><a href="wrangling.html#muta"><i class="fa fa-check"></i><b>9.3.3</b> Trasformare con <code>mutate()</code>.</a></li>
+<li class="chapter" data-level="9.3.4" data-path="wrangling.html"><a href="wrangling.html#summarise"><i class="fa fa-check"></i><b>9.3.4</b> Riassumere i dati con <code>summarise()</code>.</a></li>
+<li class="chapter" data-level="9.3.5" data-path="wrangling.html"><a href="wrangling.html#join"><i class="fa fa-check"></i><b>9.3.5</b> Database e tabelle relazionali: unire tabelle con _join.</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="wrangling.html"><a href="wrangling.html#strutturecontrollo"><i class="fa fa-check"></i><b>9.4</b> Strutture di controllo.</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="wrangling.html"><a href="wrangling.html#loop"><i class="fa fa-check"></i><b>9.4.1</b> <em>Loop (o cicli) e cose simili.</em></a></li>
+<li class="chapter" data-level="9.4.2" data-path="wrangling.html"><a href="wrangling.html#functional"><i class="fa fa-check"></i><b>9.4.2</b> <em>Un’alternativa (veloce e ordinata) ai loop: i “functional”.</em></a></li>
+<li class="chapter" data-level="9.4.3" data-path="wrangling.html"><a href="wrangling.html#ifelsestat"><i class="fa fa-check"></i><b>9.4.3</b> <em>Esecuzione condizionale.</em></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="wrangling.html"><a href="wrangling.html#Soluzione"><i class="fa fa-check"></i><b>9.5</b> La soluzione dell’esercizio.</a></li>
+<li class="chapter" data-level="9.6" data-path="wrangling.html"><a href="wrangling.html#altreriswrangling"><i class="fa fa-check"></i><b>9.6</b> Altre risorse.</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="wrangling.html"><a href="wrangling.html#risorse-in-italiano.-5"><i class="fa fa-check"></i><b>9.6.1</b> Risorse in italiano.</a></li>
+<li class="chapter" data-level="9.6.2" data-path="wrangling.html"><a href="wrangling.html#risorse-in-inglese.-7"><i class="fa fa-check"></i><b>9.6.2</b> Risorse in inglese.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html"><i class="fa fa-check"></i><b>10</b> Citazioni, crediti, copyright, ringraziamenti.</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#citazioni."><i class="fa fa-check"></i><b>10.1</b> Citazioni.</a></li>
+<li class="chapter" data-level="" data-path="citazioni-crediti-copyright-ringraziamenti..html"><a href="citazioni-crediti-copyright-ringraziamenti..html#credits-e-copyright."><i class="fa fa-check"></i>Credits e copyright.</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">pigR: R, per pigri</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="statdesc" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Esplorare con i numeri<a href="statdesc.html#statdesc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>v1.1.1 5/11/2023</p>
+<div id="cosa-cè-da-imparare-in-questo-capitolo.-6" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Cosa c’è da imparare in questo capitolo.<a href="statdesc.html#cosa-cè-da-imparare-in-questo-capitolo.-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In questo capitolo potrai imparare qualche concetto di base sull’a statistica descrittiva’analisi esplorativa dei dati e sui test delle ipotesi. In sostanza, quando abbiamo un insieme di dati, piccolo o grande che sia, il nostro scopo è, come minimo, descriverlo in maniera sintetica e cercare di estrarre informazioni che servano a supportare, contraddire o formulare ipotesi<a href="#fn147" class="footnote-ref" id="fnref147"><sup>147</sup></a>. Nel capitolo <a href="grafica.html#grafica">6</a> abbiamo visto come possiamo utilizzare diversi tipi di grafici per riassumere ed esplorare dati qualitativi o quantitativi, raggruppati o meno, e qualche funzione per calcolare statistiche riassuntive è già comparsa diverse volte. Come sempre cercherò di usare un approccio basato sull’uso degli strumenti, più “moderni”, del <code>tidyverse</code>, ma dovrò anche ricordare, quando possibile nelle note, l’uso delle funzioni di base.<br />
+Infine, si assume che tu abbia una conoscenza almeno elementare della statistica: non mi soffermerò particolarmente sui concetti di statistica e parametro, campione e popolazione né sui pro e contro delle varie statistiche (descrittive)media, mediana, etc.). Se ne hai bisogno, suggerisco di fare riferimento alle numerose risorse più orientate alla statistica, segnalate nella sezione <a href="statdesc.html#altrerisstatdesc">7.9</a>.
+Questo è un capitolo piuttosto corto (se ti sembra lungo è perché c’è parecchio codice), e credo tu possa fare uno sforzo per leggerlo tutto. In alternativa, ti consiglio una lettura delle Sezioni <a href="statdesc.html#statcontinui">7.3</a> e <a href="statdesc.html#statdesccat">7.7</a> “saltando” tutte le Sottosezioni che hanno titoli in <em>corsivo</em>.</p>
+</div>
+<div id="una-piccola-premessa-gruppi-livelli-sottoinsiemi." class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Una piccola premessa: gruppi, livelli, sottoinsiemi.<a href="statdesc.html#una-piccola-premessa-gruppi-livelli-sottoinsiemi." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Quasi sempre, in una stessa tabella (<code>data frame</code> o <code>tibble</code>, ma lo stesso vale per altri tipi di oggetti a due dimensioni) troviamo osservazioni appartenenti a gruppi diversi (magari definiti, in maniera gerarchica<a href="#fn148" class="footnote-ref" id="fnref148"><sup>148</sup></a> da più variabili qualitative). In generale, una volta calcolate le statistiche riassuntive, ci può essere utile raccoglierle in una nuova tabella (che a sua volta potrebbe essere usata per nuove elaborazioni grafiche e statistiche), possibilmente in maniera <code>tidy</code>, vedi paragrafo <a href="datioggetti.html#tidyuntidydefinizione">4.1.5</a>. Le funzioni che useremo per riassumere ed esplorare i dati operano su vettori e tipicamente su vettori atomici, ma qualcuna opera su vettori generici, vedi sezione <a href="datioggetti.html#strutturedati">4.4</a>. Tutte restituiscono come risultato un valore singolo o un nuovo oggetto contenente più di un valore, che può essere stampato a console con il comando generico <code>print()</code>. Tuttavia, a noi interessa in genere riutilizzare i risultati o raccoglierli in una nuova tabella, che potrebbe a sua volta diventare l’oggetto di nuove elaborazioni. L’approccio che dobbiamo usare è quello di dividere il data set in gruppi, applicare la funzione e combinare i risultati in un nuovo oggetto (<code>split - apply - combine</code>). Farlo in maniera interattiva (operando nella console, un comando per volta) sarebbe lungho e soggetto ad errori. Per questo sia in R base, che nei pacchetti più antichi (come per esempio <code>plyr</code>, <code>reshape</code> e <code>reshape2</code>), che nei pacchetti più recenti (<code>dplyr</code>, <code>purrr</code>, <code>broom</code>), compaiono funzioni che in maniera rapida ed elegante fanno questo lavoro. Inoltre, altrettanto spesso siamo interessati ad applicare le funzioni non ad una singola variabile, ma a più variabili. Anche qui, esistono funzioni che permettono di farlo in maniera automatizzata. Comprendere bene questi approcci senza aver compreso gli elementi di <code>data wrangling</code> e programmazione che saranno descritti nel capitolo <a href="wrangling.html#wrangling">9</a> non è facilissimo. Cercherò comunque di usare le funzioni più semplici e dirette.</p>
+</div>
+<div id="statcontinui" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Statistiche riassuntive per dati continui.<a href="statdesc.html#statcontinui" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Qui userò un data set piuttosto semplice (<code>MASS::survey</code>) che abbiamo già visto nel capitolo <a href="grafica.html#grafica">6</a>. Come esercizio, prova poi ad applicare lo stesso approccio ad altri data set (per esempio <code>ggplot2::mpg</code> oppure ai data set di R base <code>mpg</code> o <code>women</code>): cerca per favore di non eseguire meccanicamente i comandi ma di fare uno sforzo per interpretare i risultati.<br />
+<code>survey</code> raccoglie dati ottenuti in un questionario somministrato a studenti dell’Università di Adelaide, in Australia. I dati non sono ordinati. Prova a visualizzarli ed esplorarli con i seguenti comandi:</p>
+<pre><code># ricordati di installare e caricare il pacchetto necessario
+# library(MASS) 
+data(survey)
+View(survey)</code></pre>
+<p>Il risultato dovrebbe essere più o meno quello della tabella <a href="statdesc.html#tab:tabellasurvey">7.1</a>.</p>
+<hr />
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tabellasurvey">Tabella 7.1: </span>Una parte dei dati del data frame survey.
+Risultati di un sondaggio fra studenti dell’Università di Adelaide.
+Consulta l’aiuto con help(survey) per dettagli
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Sex
+</th>
+<th style="text-align:right;">
+Wr.Hnd
+</th>
+<th style="text-align:right;">
+NW.Hnd
+</th>
+<th style="text-align:left;">
+W.Hnd
+</th>
+<th style="text-align:left;">
+Fold
+</th>
+<th style="text-align:right;">
+Pulse
+</th>
+<th style="text-align:left;">
+Clap
+</th>
+<th style="text-align:left;">
+Exer
+</th>
+<th style="text-align:left;">
+Smoke
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:left;">
+M.I
+</th>
+<th style="text-align:right;">
+Age
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+18.5
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+R on L
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+173.00
+</td>
+<td style="text-align:left;">
+Metric
+</td>
+<td style="text-align:right;">
+18.250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19.5
+</td>
+<td style="text-align:right;">
+20.5
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+R on L
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:left;">
+Left
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+Regul
+</td>
+<td style="text-align:right;">
+177.80
+</td>
+<td style="text-align:left;">
+Imperial
+</td>
+<td style="text-align:right;">
+17.583
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+<td style="text-align:right;">
+13.3
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+L on R
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:left;">
+Neither
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+Occas
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+16.917
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+18.8
+</td>
+<td style="text-align:right;">
+18.9
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+R on L
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+Neither
+</td>
+<td style="text-align:left;">
+None
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+160.00
+</td>
+<td style="text-align:left;">
+Metric
+</td>
+<td style="text-align:right;">
+20.333
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Neither
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+165.00
+</td>
+<td style="text-align:left;">
+Metric
+</td>
+<td style="text-align:right;">
+23.667
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+18.0
+</td>
+<td style="text-align:right;">
+17.7
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+L on R
+</td>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+172.72
+</td>
+<td style="text-align:left;">
+Imperial
+</td>
+<td style="text-align:right;">
+21.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+17.7
+</td>
+<td style="text-align:right;">
+17.7
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+L on R
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Freq
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+182.88
+</td>
+<td style="text-align:left;">
+Imperial
+</td>
+<td style="text-align:right;">
+18.833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+17.0
+</td>
+<td style="text-align:right;">
+17.3
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+R on L
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Freq
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+157.00
+</td>
+<td style="text-align:left;">
+Metric
+</td>
+<td style="text-align:right;">
+35.833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20.0
+</td>
+<td style="text-align:right;">
+19.5
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+R on L
+</td>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+175.00
+</td>
+<td style="text-align:left;">
+Metric
+</td>
+<td style="text-align:right;">
+19.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+18.5
+</td>
+<td style="text-align:right;">
+18.5
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+R on L
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Right
+</td>
+<td style="text-align:left;">
+Some
+</td>
+<td style="text-align:left;">
+Never
+</td>
+<td style="text-align:right;">
+167.00
+</td>
+<td style="text-align:left;">
+Metric
+</td>
+<td style="text-align:right;">
+22.333
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr />
+<p>Il codice che segue ordina il <code>data frame</code>, ne estrae alcune righe e alcune colonne e usa due funzioni, una più “antica” e una più moderna, per riassumerli. I comandi utilizzati per filtrare e selezionare sono quelli di <code>dplyr</code> un pacchetto del <code>tidyverse</code> e sono collegati da pipes, un modo semplice per collegare catene i comandi reso disponibile dal pacchetto <code>magrittr</code><a href="#fn149" class="footnote-ref" id="fnref149"><sup>149</sup></a>.<br />
+Procediamo prima con la funzione <code>summary()</code></p>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="statdesc.html#cb646-1" tabindex="-1"></a>survey_ridotto <span class="ot">&lt;-</span> survey <span class="sc">%&gt;%</span></span>
+<span id="cb646-2"><a href="statdesc.html#cb646-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Sex <span class="sc">==</span> <span class="st">&quot;Male&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb646-3"><a href="statdesc.html#cb646-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Pulse, Exer, Smoke, Height, Age)</span>
+<span id="cb646-4"><a href="statdesc.html#cb646-4" tabindex="-1"></a>surv_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(survey_ridotto)</span>
+<span id="cb646-5"><a href="statdesc.html#cb646-5" tabindex="-1"></a>surv_summary</span></code></pre></div>
+<pre><code>##      Pulse         Exer      Smoke        Height           Age       
+##  Min.   : 35.0   Freq:65   Heavy: 6   Min.   :154.9   Min.   :16.75  
+##  1st Qu.: 65.0   None:13   Never:89   1st Qu.:172.8   1st Qu.:17.92  
+##  Median : 72.0   Some:40   Occas:10   Median :180.0   Median :18.88  
+##  Mean   : 73.2             Regul:12   Mean   :178.8   Mean   :20.33  
+##  3rd Qu.: 80.0             NA&#39;s : 1   3rd Qu.:185.0   3rd Qu.:20.29  
+##  Max.   :104.0                        Max.   :200.0   Max.   :70.42  
+##  NA&#39;s   :22                           NA&#39;s   :12</code></pre>
+<p>Il <code>data frame</code> che ho prodotto contiene solo gli studenti maschi (le osservazioni corrispondenti sono state estratte con <code>dplyr::filter()</code>) e solo 5 delle variabili originali (estratte con <code>select()</code>; se ne vuoi conoscere la natura prova con <code>str(summary_ridotto)</code>). Il risultato (che è stato assegnato ad un nome) è usato come argomento della funzione <code>summary()</code> e, come puoi facilmente vedere, è stato assegnato ad un nome, per poi essere “stampato” e mostra risultati diversi per i diversi tipi di colonna.</p>
+<ul>
+<li><p>per le due variabili qualitative, <code>Exer</code> e <code>Smoke</code>, viene mostrata la frequenza di ogni livello (si tratta di fattori) e il numero di dati mancanti (<code>NA</code>)</p></li>
+<li><p>per le tre variabili quantitative continue (<code>Pulse</code>, <code>Height</code> e <code>Age</code>) vengono mostrati la media e alcuni indicatori non parametrici (mediana, min, max e quartili)<a href="#fn150" class="footnote-ref" id="fnref150"><sup>150</sup></a></p></li>
+</ul>
+<p>Ma di che natura è l’oggetto prodotto da <code>summary()</code>? Prova con</p>
+<pre><code>&gt;str(surv_summary)</code></pre>
+<p>Si tratta di un oggetto di classe <code>table</code> e, credimi, se volessi estrarre qualcuno dei valori sareppe più difficile che farlo da un vettore, una matrice o un data frame.</p>
+<p>Proviamo adesso con una funzione un po’ più moderna, <code>skimr::skim()</code></p>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb649-1"><a href="statdesc.html#cb649-1" tabindex="-1"></a>surv_skim <span class="ot">&lt;-</span> <span class="fu">skim</span>(survey_ridotto)</span>
+<span id="cb649-2"><a href="statdesc.html#cb649-2" tabindex="-1"></a><span class="fu">kable</span>(surv_skim, <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb649-3"><a href="statdesc.html#cb649-3" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="st">&quot;striped&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb649-4"><a href="statdesc.html#cb649-4" tabindex="-1"></a>  <span class="fu">scroll_box</span>(<span class="at">width =</span> <span class="st">&quot;100%&quot;</span>)</span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+skim_type
+</th>
+<th style="text-align:left;">
+skim_variable
+</th>
+<th style="text-align:right;">
+n_missing
+</th>
+<th style="text-align:right;">
+complete_rate
+</th>
+<th style="text-align:left;">
+factor.ordered
+</th>
+<th style="text-align:right;">
+factor.n_unique
+</th>
+<th style="text-align:left;">
+factor.top_counts
+</th>
+<th style="text-align:right;">
+numeric.mean
+</th>
+<th style="text-align:right;">
+numeric.sd
+</th>
+<th style="text-align:right;">
+numeric.p0
+</th>
+<th style="text-align:right;">
+numeric.p25
+</th>
+<th style="text-align:right;">
+numeric.p50
+</th>
+<th style="text-align:right;">
+numeric.p75
+</th>
+<th style="text-align:right;">
+numeric.p100
+</th>
+<th style="text-align:left;">
+numeric.hist
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+Exer
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Fre: 65, Som: 40, Non: 13
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor
+</td>
+<td style="text-align:left;">
+Smoke
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.9915254
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Nev: 89, Reg: 12, Occ: 10, Hea: 6
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+Pulse
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0.8135593
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+73.19792
+</td>
+<td style="text-align:right;">
+11.999667
+</td>
+<td style="text-align:right;">
+35.00
+</td>
+<td style="text-align:right;">
+65.000
+</td>
+<td style="text-align:right;">
+72.000
+</td>
+<td style="text-align:right;">
+80.0000
+</td>
+<td style="text-align:right;">
+104.000
+</td>
+<td style="text-align:left;">
+▁▃▇▅▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+Height
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+0.8983051
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+178.82604
+</td>
+<td style="text-align:right;">
+8.380252
+</td>
+<td style="text-align:right;">
+154.94
+</td>
+<td style="text-align:right;">
+172.790
+</td>
+<td style="text-align:right;">
+180.000
+</td>
+<td style="text-align:right;">
+185.0000
+</td>
+<td style="text-align:right;">
+200.000
+</td>
+<td style="text-align:left;">
+▁▅▇▇▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+Age
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+20.33196
+</td>
+<td style="text-align:right;">
+6.069863
+</td>
+<td style="text-align:right;">
+16.75
+</td>
+<td style="text-align:right;">
+17.917
+</td>
+<td style="text-align:right;">
+18.875
+</td>
+<td style="text-align:right;">
+20.2915
+</td>
+<td style="text-align:right;">
+70.417
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Come puoi vedere facilmente, <code>skim</code> agisce sulle variabili quantitative producendo come risultato un data frame<a href="#fn151" class="footnote-ref" id="fnref151"><sup>151</sup></a> “tidy” (vedi paragrafo <a href="datioggetti.html#tidyuntidydefinizione">4.1.5</a>) con gli stessi risultati ottenuti per le variabili quantitative da summary, ma con una colonna in più che mostra un istogramma sparkline (un modo compresso per rappresentare grafici in una linea di testo o una cella di tabella). Per i fattori vengono calcolate le frequenze assolute dei livelli. Incidentalmente, <code>skim()</code> può essere collegato alle istruzioni precedenti con una <code>pipe.</code></p>
+<p>Ora, pensa un attimo a quali grafici potrebbero essere utili per riassumere sia le variabili qualitative che quantitative di questa tabella e scrivi tu stesso i comandi usando <code>ggplot2</code> come sistema grafico.</p>
+<div id="misuretendcentrale" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> Misure di tendenza centrale e di variabilità.<a href="statdesc.html#misuretendcentrale" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al di là della esplorazione grafica di un campione (magari fosse una popolazione!) di osservazioni, l’obiettivo di un* scienziat* è generalmente quello di riassumere, con pochi numeri, tipicamente qualche misura di tendenza centrale e di variabilità o incertezza, i dati. Di seguito ti presento una lista delle funzioni più importanti<a href="#fn152" class="footnote-ref" id="fnref152"><sup>152</sup></a>.</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Misure di tendenza centrale</strong>: hanno lo scopo di mostrare dove è localizzato il centro della distribuzione; misure diverse sono adatte a distribuzioni diverse e le diverse misure possono essere più o meno sensibili a dati estremi</p>
+<ul>
+<li><p><strong>media aritmetica</strong>: <code>mean(x, ...)</code> adatta soprattuto a distribuzioni simmetriche e, in particolare a distribuzioni normali, può essere molto sensibile ai dati estremi (outlier)</p></li>
+<li><p><strong>media winsorizzata</strong>: <code>mean(x, trim = 0.05, ...)</code> come la media aritmentica ma esclude i valori più estremi (in questo esempio il 5% per entrambi gli estremi); adatta quando si sospetta la presenza di outlier; in distribuzioni simmetriche coincide con la media aritmetica</p></li>
+<li><p><strong>mediana</strong>: <code>median(x, ...)</code> un ottimo indicatore non parametrico, indica il valore al di sotto (o al di sopra) del quale si trova il 50% delle osservazioni</p></li>
+</ul></li>
+<li><p><strong>Misure di variabilità</strong>: hanno lo scopo di mostrare la variabilità o l’incertezza della distribuzione (altrettanto importante della sua tendenza centrale)</p>
+<ul>
+<li><p><strong>varianza</strong>: <code>var(x, ...)</code>, è l’indicatore migliore ma non ha le stesse unità della media (è la somma degli scarti quadratici dalla media diviso i gradi di libertà); la funzione si applica anche a matrici e data frame<a href="#fn153" class="footnote-ref" id="fnref153"><sup>153</sup></a>, ma in questo caso non restituisce un numero ma una matrice</p></li>
+<li><p><strong>deviazione standard</strong>: <code>sd(x, ...)</code>, un indicatore di dispersione molto usato, perché è nelle stesse unità della media e perché, combinato con la media, permette di individuare facilmente in una distribuzione normale</p></li>
+<li><p><strong>deviazione mediana assoluta</strong>: <code>mad()</code> la mediana delle deviazioni assolute dal centro (tipicamente la mediana) della distribuzione; è un indicatore non parametrico robusto della variabilità o incertezza</p></li>
+<li><p><strong>range</strong>: <code>range(x, ...)</code>, restituisce un vettore numerico di lunghezza 2 con il minimo (<code>min()</code>) e il massimo (<code>max()</code>)</p></li>
+<li><p><strong>range interquartile</strong>: <code>IQR(x,...)</code>, una misura di variabilità non-parametrica meno robusta della deviazione mediana assoluta.</p></li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="altre-funzioni-utili." class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> <em>Altre funzioni utili.</em><a href="statdesc.html#altre-funzioni-utili." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R base non ha funzioni specifiche per la <strong>media geometrica</strong> (adatta per esempio a distribuzioni log-normali), la <strong>media armonica</strong> (appropriata per calcolare la media di rapporti o proporzioni) e la <strong>moda</strong> (il valore più frequente di una distribuzione, corrisponde alla media in una distribuzione normale), il <strong>coefficiente di variazione</strong> (un modo comodo per esprimere la deviazione standard come frazione della media, adatto a valori continui per scala di rapporti, vedi paragrafo <a href="datioggetti.html#premessa2">4.1.2</a>) e l’<strong>errore standard</strong> della media (una stima della variabilità delle medie campionarie)<a href="#fn154" class="footnote-ref" id="fnref154"><sup>154</sup></a>. Puoi facilmente trovare in rete il modo per costruire funzioni che calcolano queste statistiche.<br />
+Altre funzioni interessanti sono:</p>
+<ul>
+<li><p><code>weighted.mean(x, w, ...)</code>: restituisce la <strong>media pesata</strong></p></li>
+<li><p><code>quantile(x, ...)</code>: restituisce uno o più (default) <strong>percentili</strong> di una distribuzione (quindi un vettore di lunghezza ≥1)</p></li>
+<li><p><code>fivenum(x, ...)</code>: la funzione che restituisce i <strong>5 numeri di Tukey</strong> (se non ti ricordi che sono consulta il paragrafo <a href="grafica.html#boxplot">6.8.2</a>)</p></li>
+<li><p><code>stem(x, ...)</code>: <code>stem and leaf plots</code>, un sistema molto preciso per mostrare la distribuzione di un campione in una maniera che combina elementi grafici e numerici</p></li>
+<li><p><code>t.test(x, )</code>: è una funzione che consente di eseguire varie versioni del test t di Student per il confronto fra medie (dati appaiati o meno, con varianza costante o meno); se si indica solo il vettore numerico x restituisce un test che valuta l’ipotesi nulla che la media della popolazione non sia significativamente diversa da 0 e, fra le altre cose, permette di ricavare l’<strong>intervallo di confidenza della media</strong>; il risultato però è una lista di classe <code>htest</code>, dalla quale bisogna estrarre i valori di interesse; come molti altri test delle ipotesi, i risultati non sono <code>tidy</code>: nel paragrafo <a href="statdesc.html#comefaremeglio">7.5.3</a> vedremo come renderli più ordinati (e metterli sotto forma di data frame)</p></li>
+</ul>
+<p>Tieni presente che tutte queste funzioni, con l’eccezione di <code>var()</code>, usano come input un vettore numerico (vedi paragrafo <a href="datioggetti.html#vettori1D">4.5.1</a><a href="#fn155" class="footnote-ref" id="fnref155"><sup>155</sup></a>) e restituiscono vettori di lunghezza ≥ 1 (sapere cosa viene fuori da una funzione è piuttosto importante). Ricorda che questi possono essere all’interno di un oggetto più complesso. In ogni caso, se sono presenti <code>missing data</code> (<code>NA</code> in R, vedi <a href="datioggetti.html#missingdata">4.1.6</a>) le statistiche non possono essere calcolate. Per poterlo fare è necessario escluderli, eliminandoli dal vettore (sconsigliato) o usando l’apposita opzione presente in molte funzioni (<code>na.rm = T</code>, attenzione ai default!). Nota anche che alcune funzioni permettono, di fatto, di ottenere una stima (campionaria) dei parametri di una distribuzione. Mentre questo è probabilmente vero per la distribuzione delle medie campionarie (ti ricordi del teorema del limite centrale? Se no prova a <a href="https://chat.openai.com/share/ee218592-381d-4fb8-8486-2e3988daf902">chiedere a chatGPT</a>…), non lo è sempre, e media e deviazione standard hanno poco valore per distribuzioni asimmetriche o, peggio, multimodali. In molti casi è sicuramente meglio usare indicatori più robusti, non parametrici (mediana, mad).</p>
+<div id="lavorare-sui-vettori." class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> <em>Lavorare sui vettori.</em><a href="statdesc.html#lavorare-sui-vettori." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Giusto perché in qualche situazione può servire, ti mostro come usare le funzioni che ho appena illustrato lavorando su vettori (ma anche singole colonne di data frame). Prima di tutto, nota come <a href="https://rmarkdown.rstudio.com">R Markdown</a> (il particolare tipo di dialetto di Markdown usato per scrivere questo testo) ti consente di usare funzioni in line per inserire dei risultati in un testo (una cosa piuttosto utile), per esempio media ± deviazione standard dell’altezza degli studenti di sesso maschile nel data set survey è 178.83 ± 8.38<a href="#fn156" class="footnote-ref" id="fnref156"><sup>156</sup></a>. Le funzioni usate per ottenere questi risultati possono essere usate per mandare i risultati alla console. Guarda cosa fa il codice successivo:</p>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="statdesc.html#cb650-1" tabindex="-1"></a><span class="co"># applicare una singola funzione, una variabile alla volta può essere noioso ma utile</span></span>
+<span id="cb650-2"><a href="statdesc.html#cb650-2" tabindex="-1"></a><span class="fu">mean</span>(survey_ridotto<span class="sc">$</span>Height, <span class="at">na.rm =</span> T) </span></code></pre></div>
+<pre><code>## [1] 178.826</code></pre>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="statdesc.html#cb652-1" tabindex="-1"></a><span class="co">#se vuoi arrotondare</span></span>
+<span id="cb652-2"><a href="statdesc.html#cb652-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(survey_ridotto<span class="sc">$</span>Height, <span class="at">na.rm =</span> T), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 178.83</code></pre>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="statdesc.html#cb654-1" tabindex="-1"></a><span class="co"># oppure with(survey_ridotto, mean(Height, na.rm = T))</span></span>
+<span id="cb654-2"><a href="statdesc.html#cb654-2" tabindex="-1"></a><span class="fu">sd</span>(survey_ridotto<span class="sc">$</span>Height, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<pre><code>## [1] 8.380252</code></pre>
+<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb656-1"><a href="statdesc.html#cb656-1" tabindex="-1"></a><span class="co"># se tutte le variabili fossero numeriche potrei &quot;applicare&quot; una funzione ad </span></span>
+<span id="cb656-2"><a href="statdesc.html#cb656-2" tabindex="-1"></a><span class="co"># un margine</span></span>
+<span id="cb656-3"><a href="statdesc.html#cb656-3" tabindex="-1"></a>medie <span class="ot">&lt;-</span> <span class="fu">apply</span>(survey_ridotto[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>)], <span class="dv">2</span>, mean, <span class="at">trim =</span> <span class="fl">0.1</span>, <span class="at">na.rm =</span> T)</span>
+<span id="cb656-4"><a href="statdesc.html#cb656-4" tabindex="-1"></a>medie</span></code></pre></div>
+<pre><code>##     Pulse    Height       Age 
+##  72.88462 179.00326  19.15194</code></pre>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="statdesc.html#cb658-1" tabindex="-1"></a><span class="fu">class</span>(medie)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="statdesc.html#cb660-1" tabindex="-1"></a><span class="co"># due alternative</span></span>
+<span id="cb660-2"><a href="statdesc.html#cb660-2" tabindex="-1"></a></span>
+<span id="cb660-3"><a href="statdesc.html#cb660-3" tabindex="-1"></a><span class="co"># sapply, una funzione di base che, a differenza di apply semplifica l&#39;output </span></span>
+<span id="cb660-4"><a href="statdesc.html#cb660-4" tabindex="-1"></a><span class="co"># e lavora per colonne</span></span>
+<span id="cb660-5"><a href="statdesc.html#cb660-5" tabindex="-1"></a><span class="co"># qui calcolo le medie winsorizzate</span></span>
+<span id="cb660-6"><a href="statdesc.html#cb660-6" tabindex="-1"></a>medie_sapply <span class="ot">&lt;-</span> <span class="fu">sapply</span>(survey_ridotto[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>)], mean, <span class="at">na.rm =</span> T, <span class="at">trim =</span> <span class="fl">0.1</span>)</span>
+<span id="cb660-7"><a href="statdesc.html#cb660-7" tabindex="-1"></a>medie_sapply</span></code></pre></div>
+<pre><code>##     Pulse    Height       Age 
+##  72.88462 179.00326  19.15194</code></pre>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="statdesc.html#cb662-1" tabindex="-1"></a><span class="fu">class</span>(medie_sapply)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="statdesc.html#cb664-1" tabindex="-1"></a><span class="co"># map_dbl, una funzione del pacchetto purrr del tidyverse</span></span>
+<span id="cb664-2"><a href="statdesc.html#cb664-2" tabindex="-1"></a>medie_purrr <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(survey_ridotto[, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">5</span>)], mean, <span class="at">na.rm =</span> T, <span class="at">trim =</span> <span class="fl">0.1</span>)</span>
+<span id="cb664-3"><a href="statdesc.html#cb664-3" tabindex="-1"></a>medie_purrr</span></code></pre></div>
+<pre><code>##     Pulse    Height       Age 
+##  72.88462 179.00326  19.15194</code></pre>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="statdesc.html#cb666-1" tabindex="-1"></a><span class="fu">class</span>(medie_purrr)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Nota come in alcuni casi i parametri della funzione che viene “applicata” sono aggiunti dopo il nome della funzione stessa. In effetti, ogni volta che incontri <code>...</code> significa che puoi passare altri argomenti.<br />
+Ora prova tu con le funzioni presentate nel paragrafo <a href="statdesc.html#misuretendcentrale">7.3.1</a>. Incidentalmente, combinando varie funzioni in una funzione definita dall’utente è possibile ottenere una funzione che restituisce risultati multipli, magari sotto forma di un vettore con nomi, piuttosto utile in alcune situazioni.</p>
+</div>
+<div id="funzioni-che-producono-statistiche-riassuntive." class="section level3 hasAnchor" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> <em>Funzioni che producono statistiche riassuntive.</em><a href="statdesc.html#funzioni-che-producono-statistiche-riassuntive." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tre funzioni utili e con default piuttosto semplici per calcolare contemporaneamente i valori di più statistiche sono:</p>
+<ul>
+<li><p><code>Hmisc::describe()</code>: applicabile a vari oggetti, ma restituisce una lista, scomoda</p></li>
+<li><p><code>pastecs::stat.desc()</code>: restituisce un data frame, ma i risultati sono trasposti rispetto a come sarebbe carino averli per metterli in una tabella di dati riassuntivi</p></li>
+<li><p><code>psych::describe()</code>: restituisce un data frame, molte opzioni utili (include per esempio la <strong>curtosi</strong> e <strong>l’asimmetria</strong>, skewness in inglese, due parametri utili per capire la forma della distribuzione), e i risultati sono orientati correttamente</p></li>
+</ul>
+<p>Prova tu stess*</p>
+<pre><code>Hmisc::describe(survey_ridotto[, c(1,4,5)])
+pastecs::stat.desc(survey_ridotto[, c(1,4,5)])
+psych::describe(survey_ridotto[, c(1,4,5)])</code></pre>
+<p>Nota che due di queste funzioni hanno lo stesso nome: per essere sicuri di invocare quella giusta, se sono caricati entrambi i pacchetti, bisogna utilizzare anche il nome del pacchetto!!!</p>
+</div>
+<div id="statsummarise" class="section level3 hasAnchor" number="7.4.3">
+<h3><span class="header-section-number">7.4.3</span> Statistiche, ordinate.<a href="statdesc.html#statsummarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Oltre a <code>skim()</code> è possibile usare il verbo <code>summarise()</code> di dplyr per calcolare diverse utili statistiche riassuntive. Come vedremo nel capitolo <a href="wrangling.html#wrangling">9</a>, <code>summarise()</code>, a differenza di <code>mutate()</code> prende un vettore di valori e restituisce un singolo valore. Inoltre, alcune funzioni helper, come <code>across()</code> possono servire per applicare facilmente più statistiche a variabili multiple. Il risultato di queste operazioni è sempre un <code>data frame</code> (o meglio, una <code>tibble</code>) ed è possibile usare le <code>pipe</code>. Nota come con dplyr non è necessario usare l’operatore <code>$</code> per accedere alle variabili:</p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="statdesc.html#cb669-1" tabindex="-1"></a><span class="co"># qui i risultati vengono solo stampati, non assegnati</span></span>
+<span id="cb669-2"><a href="statdesc.html#cb669-2" tabindex="-1"></a></span>
+<span id="cb669-3"><a href="statdesc.html#cb669-3" tabindex="-1"></a>survey_ridotto <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mpulse =</span> <span class="fu">mean</span>(Pulse, <span class="at">na.rm =</span> T, <span class="at">trim =</span> <span class="fl">0.1</span>),</span>
+<span id="cb669-4"><a href="statdesc.html#cb669-4" tabindex="-1"></a>                    <span class="at">mheight =</span> <span class="fu">mean</span>(Height, <span class="at">na.rm =</span> T, <span class="at">trim =</span> <span class="fl">0.1</span>))</span></code></pre></div>
+<pre><code>##     mpulse  mheight
+## 1 72.88462 179.0033</code></pre>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="statdesc.html#cb671-1" tabindex="-1"></a><span class="co"># ripetere i nomi delle variabili è tedioso</span></span>
+<span id="cb671-2"><a href="statdesc.html#cb671-2" tabindex="-1"></a>survey_ridotto <span class="sc">%&gt;%</span> </span>
+<span id="cb671-3"><a href="statdesc.html#cb671-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> T, <span class="at">trim =</span> <span class="fl">0.1</span>)))</span></code></pre></div>
+<pre><code>##      Pulse   Height      Age
+## 1 72.88462 179.0033 19.15194</code></pre>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="statdesc.html#cb673-1" tabindex="-1"></a><span class="co"># o, addirittura, con funzioni multiple, passate come lista</span></span>
+<span id="cb673-2"><a href="statdesc.html#cb673-2" tabindex="-1"></a>media_sd <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb673-3"><a href="statdesc.html#cb673-3" tabindex="-1"></a>  <span class="at">media_w =</span> <span class="sc">~</span><span class="fu">mean</span>(.x, <span class="at">na.rm =</span> T, <span class="at">trim =</span> <span class="fl">0.1</span>),</span>
+<span id="cb673-4"><a href="statdesc.html#cb673-4" tabindex="-1"></a>  <span class="at">sd =</span> <span class="sc">~</span><span class="fu">sd</span>(.x, <span class="at">na.rm =</span> T)</span>
+<span id="cb673-5"><a href="statdesc.html#cb673-5" tabindex="-1"></a>)</span>
+<span id="cb673-6"><a href="statdesc.html#cb673-6" tabindex="-1"></a>survey_ridotto <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), media_sd))</span></code></pre></div>
+<pre><code>##   Pulse_media_w Pulse_sd Height_media_w Height_sd Age_media_w   Age_sd
+## 1      72.88462 11.99967       179.0033  8.380252    19.15194 6.069863</code></pre>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="statdesc.html#cb675-1" tabindex="-1"></a><span class="co"># infine, con purrr; qui prima usiamo select per estrarre le colonne</span></span>
+<span id="cb675-2"><a href="statdesc.html#cb675-2" tabindex="-1"></a><span class="co"># numeriche, poi passiamo la funzione di interesse e restituiamo un </span></span>
+<span id="cb675-3"><a href="statdesc.html#cb675-3" tabindex="-1"></a><span class="co"># data frame; i parametri sono passati all&#39;esterno della funzione</span></span>
+<span id="cb675-4"><a href="statdesc.html#cb675-4" tabindex="-1"></a></span>
+<span id="cb675-5"><a href="statdesc.html#cb675-5" tabindex="-1"></a>survey_ridotto <span class="sc">%&gt;%</span> </span>
+<span id="cb675-6"><a href="statdesc.html#cb675-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb675-7"><a href="statdesc.html#cb675-7" tabindex="-1"></a>  <span class="fu">map_df</span>(mean, <span class="at">na.rm =</span> T, <span class="at">trim =</span> <span class="fl">0.1</span>)         </span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   Pulse Height   Age
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1  72.9   179.  19.2</code></pre>
+<p>Insomma, molti modi per pelare un gatto…</p>
+</div>
+<div id="statgruppi" class="section level3 hasAnchor" number="7.4.4">
+<h3><span class="header-section-number">7.4.4</span> Statistiche riassuntive per gruppi.<a href="statdesc.html#statgruppi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I dati reali sono spesso raggruppati sulla base di variabili categoriche (che possono essere indicate da fattori). Nel capitolo <a href="grafica.html#grafica">6</a> ho già mostrato come sia possibile esplorare, p.es. con dei box plot, istogrammi o grafici a densità, gruppi diversi di dati in un data frame. Qui ti mostrerò alcune funzioni che operano per gruppi</p>
+<ul>
+<li><p><code>doBy::summaryBy()</code></p></li>
+<li><p><code>psych::describeBy()</code></p></li>
+<li><p><code>dplyr</code> con <code>group_by()</code> e <code>summarise()</code></p></li>
+</ul>
+<p>Ovviamente, gli stessi risultati possono essere ottenuti, con qualche difficoltà in più, con R base: prova ad esplorare l’aiuto di <code>aggregate()</code> e <code>by()</code>.</p>
+<p>Cominciamo con <code>doBy::summaryBy()</code>, che ha il vantaggio di accettare funzioni multiple e restituire un data frame, ma ha una sintassi un po’ curiosa, con le variabili su cui fare i calcoli e quella che li raggruppa definite da una formula. Qui non abbiamo bisogno di selezionare uno dei due gruppi di <code>survey</code></p>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="statdesc.html#cb677-1" tabindex="-1"></a><span class="co"># creo una funzione definita dall&#39;utente con le funzioni che mi interessano</span></span>
+<span id="cb677-2"><a href="statdesc.html#cb677-2" tabindex="-1"></a>Fun_riass <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...){</span>
+<span id="cb677-3"><a href="statdesc.html#cb677-3" tabindex="-1"></a>  <span class="fu">c</span>(</span>
+<span id="cb677-4"><a href="statdesc.html#cb677-4" tabindex="-1"></a>    <span class="at">media =</span> <span class="fu">mean</span>(x, <span class="at">na.rm =</span> T, ...),</span>
+<span id="cb677-5"><a href="statdesc.html#cb677-5" tabindex="-1"></a>    <span class="at">dev_st =</span> <span class="fu">sd</span>(x, <span class="at">na.rm =</span> T),</span>
+<span id="cb677-6"><a href="statdesc.html#cb677-6" tabindex="-1"></a>    <span class="at">num_non_na =</span> <span class="fu">length</span>(<span class="sc">!</span><span class="fu">is.na</span>(x))</span>
+<span id="cb677-7"><a href="statdesc.html#cb677-7" tabindex="-1"></a>  )</span>
+<span id="cb677-8"><a href="statdesc.html#cb677-8" tabindex="-1"></a>}</span>
+<span id="cb677-9"><a href="statdesc.html#cb677-9" tabindex="-1"></a>doBy<span class="sc">::</span><span class="fu">summaryBy</span>(<span class="fu">cbind</span>(Pulse, Height, Age) <span class="sc">~</span> Sex, <span class="at">data =</span> survey, <span class="at">FUN =</span> Fun_riass)</span></code></pre></div>
+<pre><code>##      Sex Pulse.media Pulse.dev_st Pulse.num_non_na Height.media Height.dev_st
+## 1 Female    75.12632     11.40664              118     165.6867      6.151777
+## 2   Male    73.19792     11.99967              118     178.8260      8.380252
+## 3   &lt;NA&gt;    73.00000           NA                1     172.0000            NA
+##   Height.num_non_na Age.media Age.dev_st Age.num_non_na
+## 1               118  20.40753   6.906053            118
+## 2               118  20.33196   6.069863            118
+## 3                 1  21.50000         NA              1</code></pre>
+<p>Oggettivamente bruttino, ma permette di fare cose interessanti ed è altamente personalizzabile.<br />
+<code>psych::describeBy()</code> è un’estensione di <code>psych:describe()</code>; molto comodo, restituisce un data frame in un formato facile da utilizzare; anche qui è possibile usare una formula:</p>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="statdesc.html#cb679-1" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describeBy</span>(Height <span class="sc">+</span> Pulse <span class="sc">~</span> Sex, <span class="at">data =</span> survey)</span></code></pre></div>
+<pre><code>## 
+##  Descriptive statistics by group 
+## Sex: Female
+##        vars   n   mean    sd median trimmed   mad min    max range  skew
+## Height    1 102 165.69  6.15 166.75  165.90  5.32 150 180.34 30.34 -0.33
+## Pulse     2  95  75.13 11.41  75.00   75.19 10.38  40 104.00 64.00 -0.14
+##        kurtosis   se
+## Height    -0.32 0.61
+## Pulse      0.41 1.17
+## ------------------------------------------------------------ 
+## Sex: Male
+##        vars   n   mean    sd median trimmed   mad    min max range  skew
+## Height    1 106 178.83  8.38    180  179.00  7.41 154.94 200 45.06 -0.20
+## Pulse     2  96  73.20 12.00     72   72.88 11.86  35.00 104 69.00  0.11
+##        kurtosis   se
+## Height    -0.11 0.81
+## Pulse      0.24 1.22</code></pre>
+<p>Infine, ecco un po’ di soluzioni <code>tidy</code>, un pochino più verbose, ma con un codice più semplice da leggere<a href="#fn157" class="footnote-ref" id="fnref157"><sup>157</sup></a>; i gruppi sono prodotti dalla funzione <code>group_by()</code>, che restituisce un <code>grouped_df</code>. Abbastanza prevedibilmente, per eliminare i gruppi, che restano nei risultati, si usa <code>ungroup()</code>.</p>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="statdesc.html#cb681-1" tabindex="-1"></a><span class="co"># cosa fa group_by?</span></span>
+<span id="cb681-2"><a href="statdesc.html#cb681-2" tabindex="-1"></a><span class="fu">str</span>(survey <span class="sc">%&gt;%</span></span>
+<span id="cb681-3"><a href="statdesc.html#cb681-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex))</span></code></pre></div>
+<pre><code>## gropd_df [237 × 12] (S3: grouped_df/tbl_df/tbl/data.frame)
+##  $ Sex   : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 2 1 2 1 2 2 ...
+##  $ Wr.Hnd: num [1:237] 18.5 19.5 18 18.8 20 18 17.7 17 20 18.5 ...
+##  $ NW.Hnd: num [1:237] 18 20.5 13.3 18.9 20 17.7 17.7 17.3 19.5 18.5 ...
+##  $ W.Hnd : Factor w/ 2 levels &quot;Left&quot;,&quot;Right&quot;: 2 1 2 2 2 2 2 2 2 2 ...
+##  $ Fold  : Factor w/ 3 levels &quot;L on R&quot;,&quot;Neither&quot;,..: 3 3 1 3 2 1 1 3 3 3 ...
+##  $ Pulse : int [1:237] 92 104 87 NA 35 64 83 74 72 90 ...
+##  $ Clap  : Factor w/ 3 levels &quot;Left&quot;,&quot;Neither&quot;,..: 1 1 2 2 3 3 3 3 3 3 ...
+##  $ Exer  : Factor w/ 3 levels &quot;Freq&quot;,&quot;None&quot;,..: 3 2 2 2 3 3 1 1 3 3 ...
+##  $ Smoke : Factor w/ 4 levels &quot;Heavy&quot;,&quot;Never&quot;,..: 2 4 3 2 2 2 2 2 2 2 ...
+##  $ Height: num [1:237] 173 178 NA 160 165 ...
+##  $ M.I   : Factor w/ 2 levels &quot;Imperial&quot;,&quot;Metric&quot;: 2 1 NA 2 2 1 1 2 2 2 ...
+##  $ Age   : num [1:237] 18.2 17.6 16.9 20.3 23.7 ...
+##  - attr(*, &quot;groups&quot;)= tibble [3 × 2] (S3: tbl_df/tbl/data.frame)
+##   ..$ Sex  : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 NA
+##   ..$ .rows: list&lt;int&gt; [1:3] 
+##   .. ..$ : int [1:118] 1 6 8 11 13 14 16 17 25 31 ...
+##   .. ..$ : int [1:118] 2 3 4 5 7 9 10 12 15 18 ...
+##   .. ..$ : int 137
+##   .. ..@ ptype: int(0) 
+##   ..- attr(*, &quot;.drop&quot;)= logi TRUE</code></pre>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="statdesc.html#cb683-1" tabindex="-1"></a><span class="co"># un primo esempio con un paio di funzioni e summarise</span></span>
+<span id="cb683-2"><a href="statdesc.html#cb683-2" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb683-3"><a href="statdesc.html#cb683-3" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex) <span class="sc">%&gt;%</span></span>
+<span id="cb683-4"><a href="statdesc.html#cb683-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb683-5"><a href="statdesc.html#cb683-5" tabindex="-1"></a>    <span class="at">media_alt =</span> <span class="fu">mean</span>(Height, <span class="at">na.rm =</span> T),</span>
+<span id="cb683-6"><a href="statdesc.html#cb683-6" tabindex="-1"></a>    <span class="at">sd_alt =</span> <span class="fu">sd</span>(Height, <span class="at">na.rm =</span> T)</span>
+<span id="cb683-7"><a href="statdesc.html#cb683-7" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 3
+##   Sex    media_alt sd_alt
+##   &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Female      166.   6.15
+## 2 Male        179.   8.38
+## 3 &lt;NA&gt;        172   NA</code></pre>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="statdesc.html#cb685-1" tabindex="-1"></a><span class="co"># un secondo esempio: elimino gli NA da Sex e uso due variabili per raggruppare</span></span>
+<span id="cb685-2"><a href="statdesc.html#cb685-2" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb685-3"><a href="statdesc.html#cb685-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sex) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Exer)) <span class="sc">%&gt;%</span></span>
+<span id="cb685-4"><a href="statdesc.html#cb685-4" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Exer) <span class="sc">%&gt;%</span></span>
+<span id="cb685-5"><a href="statdesc.html#cb685-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb685-6"><a href="statdesc.html#cb685-6" tabindex="-1"></a>    <span class="at">media_alt =</span> <span class="fu">mean</span>(Height, <span class="at">na.rm =</span> T),</span>
+<span id="cb685-7"><a href="statdesc.html#cb685-7" tabindex="-1"></a>    <span class="at">sd_alt =</span> <span class="fu">sd</span>(Height, <span class="at">na.rm =</span> T)</span>
+<span id="cb685-8"><a href="statdesc.html#cb685-8" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Sex&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<pre><code>## # A tibble: 6 × 4
+## # Groups:   Sex [2]
+##   Sex    Exer  media_alt sd_alt
+##   &lt;fct&gt;  &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Female Freq       167.   6.42
+## 2 Female None       163.   4.80
+## 3 Female Some       165.   5.89
+## 4 Male   Freq       180.   7.94
+## 5 Male   None       174.   9.62
+## 6 Male   Some       178.   8.20</code></pre>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="statdesc.html#cb688-1" tabindex="-1"></a><span class="co"># un terzo esempio, con funzioni multiple e variabili multiple</span></span>
+<span id="cb688-2"><a href="statdesc.html#cb688-2" tabindex="-1"></a><span class="co"># selezionate sulla base del nome, non del tipo</span></span>
+<span id="cb688-3"><a href="statdesc.html#cb688-3" tabindex="-1"></a>survey <span class="sc">%&gt;%</span></span>
+<span id="cb688-4"><a href="statdesc.html#cb688-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Sex) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(Exer)) <span class="sc">%&gt;%</span></span>
+<span id="cb688-5"><a href="statdesc.html#cb688-5" tabindex="-1"></a>  <span class="fu">group_by</span>(Sex, Exer) <span class="sc">%&gt;%</span></span>
+<span id="cb688-6"><a href="statdesc.html#cb688-6" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(Height, Pulse), media_sd))</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;Sex&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<pre><code>## # A tibble: 6 × 6
+## # Groups:   Sex [2]
+##   Sex    Exer  Height_media_w Height_sd Pulse_media_w Pulse_sd
+##   &lt;fct&gt;  &lt;fct&gt;          &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Female Freq            167.      6.42          73.5    12.5 
+## 2 Female None            163.      4.80          71.4    11.4 
+## 3 Female Some            165.      5.89          77.0    10.3 
+## 4 Male   Freq            180.      7.94          70.2     9.59
+## 5 Male   None            174.      9.62          80.1    15.2 
+## 6 Male   Some            178.      8.20          75.9    13.5</code></pre>
+<p>Perché non provare a fare lo stesso con R base? In effetti, il codice non è altrettanto semplice da seguire e l’output è più bruttino. Prova questo nella console:</p>
+<pre><code>aggregate(cbind(Pulse, Height) ~ Sex + Exer, data = survey, FUN = mean, na.rm = T)</code></pre>
+</div>
+</div>
+<div id="enormale" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Ma è normale?<a href="statdesc.html#enormale" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La distribuzione normale, o Gaussiana, è un tipo di distribuzione continua di probabilità piuttosto utile perché molte variabili che descrivono fenomeni naturali (e non solo) sono normalmente distribuite e perché, nota la media e la varianza, è facile calcolarne la distribuzione di densità di probabilità. Inoltre, nella statistica frequentista, è abbastanza comune che si assuma che le distribuzioni di variabili da sottoporre a test statistici siano normali e che da queste assunzioni dipenda quanto il livello di significatività al quale si rigetta un’ipotesi nulla corrisponda effettivamente a quello specificato<a href="#fn158" class="footnote-ref" id="fnref158"><sup>158</sup></a>. Naturalmente, qui, come in molti altri casi, usiamo un modello (per esempio gli errori sono normalmente distribuiti, con media 0 e varianza <span class="math inline">\(\sigma\)</span>) e sarebbe opportuno verificare che questo modello sia aderente alla realtà. Per dimostrare alcuni metodi con i quali si può verificare graficamente e con test inferenziali che le osservazioni per una variabile siano normalmente distribuiti useremo <code>Iris</code>, un famoso data set storicamente utilizzato per illustrare l’analisi lineare discriminante<a href="#fn159" class="footnote-ref" id="fnref159"><sup>159</sup></a>.<br />
+Il data set mostra le misure per la lunghezza e la larghezza dei petali e dei sepali per tre specie di <em>Iris</em> ( <em>I. setosa</em>, <em>I. versicolor</em> e <em>I. virginica</em>), con campioni (si assume estratti in modo casuale da una popolazione più grande di fiori) di 50 osservazioni ciascuno. Possiamo usare il data set per:</p>
+<ul>
+<li><p>visualizzare le differenze fra le tre specie</p></li>
+<li><p>usare le statistiche (media e varianza) dei campioni per fare inferenze sulla media e varianza delle popolazioni da cui sono estratti</p></li>
+<li><p>controllare che l’assunzione che i dati siano normalmente distribuiti non possa essere rifiutata usando:</p>
+<ul>
+<li><p>dei (normal) probability plot</p></li>
+<li><p>un test delle ipotesi, per esempio il test Shapiro-Wilks <code>shapiro.test()</code>, il test di Anderson-Darling <code>nortest::ad.test()</code> o quello di Kolmogorov-Smirnov (Lilliefors) <code>nortest::lillie.test()</code></p></li>
+</ul></li>
+</ul>
+<p>L’uso di questa funzione ci darà modo di esplorare l’uso dei test delle ipotesi in R e la natura degli oggetti che essi generano. Tutti e tre i test sono volti a rifiutare o accettare l’ipotesi nulla che i dati provengono da una distribuzione normale. Tuttavia, se l’ipotesi nulla H<sub>0</sub> viene scartata non ci dicono nulla sulla forma reale della distribuzione.<br />
+Naturalmente, prima di iniziare, dovresti provare a ricordare come, nel capitolo <a href="grafica.html#grafica">6</a> ti ho mostrato alcuni tipi di rappresentazioni dei dati particolarmente adatti a mostrare la distribuzione delle osservazioni (istogrammi, box plot, density plot etc.). Prova quindi a calcolare statistiche di base per gruppi per almeno una variabile e a rappresentarne graficamente in uno o due modi la distribuzione delle osservazioni. Se proprio non ci riesci troverai esempi di codice nel paragrafo <a href="statdesc.html#veloceveloce">7.8</a>.</p>
+<div id="normal-probability-plot." class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> Normal probability plot.<a href="statdesc.html#normal-probability-plot." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I probability plots della figura <a href="statdesc.html#fig:npp">7.1</a> sono grafici che confrontano la distribuzione campionaria dei quantili con quella attesa sulla base di una certa distribuzione di proabbilità. Qui userò le funzioni di <code>ggplot2</code> (anche se R base mette a disposizione le funzioni <code>qqnorm()</code> e <code>qqline()</code>)</p>
+<hr />
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="statdesc.html#cb692-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb692-2"><a href="statdesc.html#cb692-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> Sepal.Length, <span class="at">shape =</span> Species)) <span class="sc">+</span></span>
+<span id="cb692-3"><a href="statdesc.html#cb692-3" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb692-4"><a href="statdesc.html#cb692-4" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb692-5"><a href="statdesc.html#cb692-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb692-6"><a href="statdesc.html#cb692-6" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;quantili teorici&quot;</span>,</span>
+<span id="cb692-7"><a href="statdesc.html#cb692-7" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;quantili del campione&quot;</span>,</span>
+<span id="cb692-8"><a href="statdesc.html#cb692-8" tabindex="-1"></a>    <span class="at">caption =</span> <span class="fu">str_wrap</span>(<span class="st">&quot;Fisher, R. A. (1936) The use of multiple measurements in taxonomic problems. Annals of Eugenics, 7, Part II, 179–188.&quot;</span>,<span class="dv">80</span>)</span>
+<span id="cb692-9"><a href="statdesc.html#cb692-9" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:npp"></span>
+<img src="_main_files/figure-html/npp-1.png" alt="Normal probability plots con ggplot2: lunghezza dei sepali per diverse specie di Iris" width="1050" />
+<p class="caption">
+Figura 7.1: Normal probability plots con ggplot2: lunghezza dei sepali per diverse specie di Iris
+</p>
+</div>
+<hr />
+<p>Naturalmente con l’opzione <code>distribution = stats::qnorm</code> è possibile scegliere distribuzioni parentali diverse dalla normale.</p>
+</div>
+<div id="testnorm" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> Test statistici per la normalità.<a href="statdesc.html#testnorm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R base mette a disposizione il test di Shapiro-Wilk per testare l’ipotesi nulla che le osservazioni in un dato vettore siano distribuite normalmente. La funzione da utilizzare è <code>shapiro.test()</code>. Prova prima di tutto ad esplorare l’aiuto con:</p>
+<pre><code>&gt;?shapiro.test</code></pre>
+<p>Come molti test statistici, la funzione restituisce una lista. Facciamo un piccolo esempio con il dataset <code>ìris</code>. Qui provo a testare l’ipotesi che i valori della lunghezza dei sepali per la specie <code>setosa</code> siano normalmente distribuiti. Per usare il test, devo prima di tutto estrarre il vettore di dati che mi interessa dal data frame. Nell’esempio successivo userò una combinazione di funzioni del <code>tidyverse</code><a href="#fn160" class="footnote-ref" id="fnref160"><sup>160</sup></a>.</p>
+<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="statdesc.html#cb694-1" tabindex="-1"></a><span class="co"># estraggo il vettore test</span></span>
+<span id="cb694-2"><a href="statdesc.html#cb694-2" tabindex="-1"></a>vettore_test <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> </span>
+<span id="cb694-3"><a href="statdesc.html#cb694-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb694-4"><a href="statdesc.html#cb694-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Sepal.Length) <span class="sc">%&gt;%</span></span>
+<span id="cb694-5"><a href="statdesc.html#cb694-5" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb694-6"><a href="statdesc.html#cb694-6" tabindex="-1"></a></span>
+<span id="cb694-7"><a href="statdesc.html#cb694-7" tabindex="-1"></a><span class="co"># eseguo il test, assegnando i risultati ad un nome</span></span>
+<span id="cb694-8"><a href="statdesc.html#cb694-8" tabindex="-1"></a>test_shapiro <span class="ot">&lt;-</span> <span class="fu">shapiro.test</span>(vettore_test)</span>
+<span id="cb694-9"><a href="statdesc.html#cb694-9" tabindex="-1"></a></span>
+<span id="cb694-10"><a href="statdesc.html#cb694-10" tabindex="-1"></a><span class="co"># stampo i risultati del test</span></span>
+<span id="cb694-11"><a href="statdesc.html#cb694-11" tabindex="-1"></a>test_shapiro</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  vettore_test
+## W = 0.9777, p-value = 0.4595</code></pre>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="statdesc.html#cb696-1" tabindex="-1"></a><span class="co"># la struttura dell&#39;oggetto</span></span>
+<span id="cb696-2"><a href="statdesc.html#cb696-2" tabindex="-1"></a><span class="fu">str</span>(test_shapiro)</span></code></pre></div>
+<pre><code>## List of 4
+##  $ statistic: Named num 0.978
+##   ..- attr(*, &quot;names&quot;)= chr &quot;W&quot;
+##  $ p.value  : num 0.46
+##  $ method   : chr &quot;Shapiro-Wilk normality test&quot;
+##  $ data.name: chr &quot;vettore_test&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;htest&quot;</code></pre>
+<p>I singoli elementi della lista possono essere facilmente estratti usando i metodi descritti nella sezione <a href="datioggetti.html#indsel">4.8</a>. Per esempio, per estrarre il valore <code>p</code> (la probabilità con la quale, se l’ipotesi nulla è vera, possono essere ottenuti valori valori uguali o più estremi della statistica test), puoi usare <code>test_shapiro$p.value</code>.<br />
+Riportare in maniera chiara, esaustiva e trasparente i risultati di un test statistico è importante. Per esempio, nel caso precedente avremmo potuto scrivere:</p>
+<ul>
+<li>volendo essere logorroici: usando il test di Shapiro-Wilk per la normalità, non è stato possibile scartare l’ipotesi nulla che i dati per la lunghezza dei sepali per la specie <em>Iris setosa</em> siano normalmente distribuiti (W = 0.978, p = 0.46)</li>
+</ul>
+<p>In maniera più sintetica: i dati per la lunghezza dei sepali per la specie <em>Iris setosa</em> sono normalmente distribuiti (test di Shapiro-Wilk per la normalità, W = 0.978, p = 0.46)</p>
+<p>Nella sezione <a href="statdesc.html#altrerisstatdesc">7.9</a> troverai un link ad un documento con diversi esempi.<br />
+Prova ora a fare la stessa cosa con i due test offerti dal pacchetto <code>nortest</code>, il test di Anderson-Darling (<code>ad.test()</code>) e il test di Lilliefors (<code>lillie.test()</code>).</p>
+</div>
+<div id="comefaremeglio" class="section level3 hasAnchor" number="7.5.3">
+<h3><span class="header-section-number">7.5.3</span> <em>Come fare di meglio con i risultati dei test</em>.<a href="statdesc.html#comefaremeglio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Come avrai notato, i risultati del test non sono <code>tidy</code>, nel senso descritto nel paragrafo <a href="datioggetti.html#tidyuntidydefinizione">4.1.5</a>, e, benché la stampa a console sia piuttosto chiara, non è utile se vuoi presentare i dati di più gruppi (è il caso nostro). Usando R base potremmo per esempio usare un loop per eseguire il test sui tre livelli del fattore <code>Species</code> in <code>iris</code>. Prova ad eseguire questo codice in uno script:</p>
+<pre><code># prima di tutto creo una lista per ospitare i risultati del test
+test_shapiro_multipli &lt;- vector(mode = &quot;list&quot;, length = nlevels(iris$Species))
+for (i in 1:nlevels(iris$Species)){
+  # assegno i risultati del test allo slot
+  test_shapiro_multipli[[i]] &lt;- shapiro.test(iris$Sepal.Length[iris$Species==levels(iris$Species)[i]])
+  # dò il nome corretto allo slot della lista
+  names(test_shapiro_multipli)[i] &lt;- levels(iris$Species)[i]
+}
+# stampo la lista
+test_shapiro_multipli</code></pre>
+<p>Il risultato nella console è piuttosto bruttino da vedere (ma ci si può lavorare), ma i risultati sono stati conservati in una lista dalla quale possono essere estratti e riutilizzati per ulteriori analisi.</p>
+<p>Un modo più elegante usare i pacchetti <code>purrr</code> e <code>broom</code> con <code>dplyr</code> per produrre un data frame ordinato con i risultati del test:</p>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="statdesc.html#cb699-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb699-2"><a href="statdesc.html#cb699-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>Species) <span class="sc">%&gt;%</span></span>
+<span id="cb699-3"><a href="statdesc.html#cb699-3" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb699-4"><a href="statdesc.html#cb699-4" tabindex="-1"></a>    <span class="at">test =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">shapiro.test</span>(.x<span class="sc">$</span>Sepal.Length)), </span>
+<span id="cb699-5"><a href="statdesc.html#cb699-5" tabindex="-1"></a>    <span class="at">ordinato =</span> <span class="fu">map</span>(test, tidy)</span>
+<span id="cb699-6"><a href="statdesc.html#cb699-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb699-7"><a href="statdesc.html#cb699-7" tabindex="-1"></a>  <span class="fu">unnest</span>(ordinato)</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 6
+##   Species    data              test    statistic p.value method                 
+##   &lt;fct&gt;      &lt;list&gt;            &lt;list&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;                  
+## 1 setosa     &lt;tibble [50 × 4]&gt; &lt;htest&gt;     0.978   0.460 Shapiro-Wilk normality…
+## 2 versicolor &lt;tibble [50 × 4]&gt; &lt;htest&gt;     0.978   0.465 Shapiro-Wilk normality…
+## 3 virginica  &lt;tibble [50 × 4]&gt; &lt;htest&gt;     0.971   0.258 Shapiro-Wilk normality…</code></pre>
+<p>Queste cose diventeranno più chiare se vorrai arrivare al capitolo <a href="wrangling.html#wrangling">9</a>. Ecco però una descrizione passo passo del codice<a href="#fn161" class="footnote-ref" id="fnref161"><sup>161</sup></a> da usare in uno script per capire un po’ meglio cosa succede. Nota come <code>.x$Sepal.Length</code> venga usato qui per “pescare” la variabile che ci interessa dai data frame contenuti nella colonna <code>data.</code></p>
+<pre><code># creo una tibble annidata che contiene una colonna con le specie 
+# e una colonna con delle tibble contenenti i dati per ciascuna specie
+tibble_annidata &lt;- iris %&gt;%
+  nest(data = -Species)
+# uso mutate con la funzione map() di purrr per applicare il
+# test ai tre livelli delle specie e poi uso tidy() di broom
+# per rioridinare i risultati del test
+tibble_risultati  &lt;- tibble_annidata %&gt;% mutate(
+  test = map(data, ~ shapiro.test(.x$Sepal.Length)), 
+  ordinato = map(test, tidy)
+)
+# uso unnest() per estrarre i risultati in un data frame
+tibble_risultati %&gt;% unnest(ordinato)</code></pre>
+<p>Insomma, mi verrebbero in mente altri modi per fare la stessa cosa, più o meno utili in diverse situazioni. Prova a pensarci anche tu.</p>
+</div>
+</div>
+<div id="intervalli-di-confidenza." class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Intervalli di confidenza.<a href="statdesc.html#intervalli-di-confidenza." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La media e la varianza ottenute usando le osservazioni in uno specifico campione sono delle stime puntuali dei veri parametri della popolazione da cui quel campione è stato estratto. Un altro ipotetico campione risulterebbe in una stima diversa. Prova tu stesso con questo codice, che mostra come campioni di numeri casuali estratti da una distribuzione normale con media 5 e deviazione standard 2 abbiano tutti medie e deviazioni standard diverse.</p>
+<pre><code># estraggo 10000 numeri casuali da una distirbuzione normale con media 5 e 
+# deviazione standard 2
+
+numeri_casuali &lt;- rnorm(10000, mean = 5, sd = 2)
+
+# calcolo media e deviazione standard
+
+mean(numeri_casuali)
+sd(numeri_casuali)
+
+# faccio lo stesso, con campioni più piccoli, creando un data frame con una 
+# funzione di purrr
+
+numeri_casuali &lt;- map(rep(100,5), rnorm, mean = 5, sd = 2) 
+medie_sd &lt;- tibble(
+  medie = map_dbl(numeri_casuali, mean),
+  devst = map_dbl(numeri_casuali, sd)
+)</code></pre>
+<p>Nota come il codice è sufficientemente generico da poter generare vettori di numeri casuali di qualsiasi lunghezza e con qualsiasi media e deviazione standard.
+Nella statistica frequentista, un modo per rappresentare l’incertezza della stima della media è quella di mostrarne l’intervallo di confidenza. Qui proveremo a farlo con la funzione <code>t.test()</code> e alcune utilissime funzioni di <code>broom.</code><br />
+Quando viene usata con i parametri di default su un vettore, <code>t.test()</code> restituisce, fra le altre cose l’intervallo di confidenza della media (ben nascosto nella lista!). Guarda questo esempio con <code>iris</code>; qui uso <code>vettore_test</code>, che contiene i valori della lunghezza dei sepali per la specie <em>Iris setosa</em> (vedi paragrafo <a href="statdesc.html#testnorm">7.5.2</a>):</p>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="statdesc.html#cb703-1" tabindex="-1"></a><span class="fu">t.test</span>(vettore_test)</span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  vettore_test
+## t = 100.42, df = 49, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  4.905824 5.106176
+## sample estimates:
+## mean of x 
+##     5.006</code></pre>
+<p>Il test appena condotto è l’equivalente di valutare l’ipotesi nulla che la media non è significativamente diversa da 0, usando un test a due code con un livello di significatività <span class="math inline">\(\alpha\)</span> = 0.05.<br />
+Come sempre, sarebbe bello avere i risultati ordinati: la funzione <code>tidy()</code> di <code>broom</code> lo fa per noi:</p>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="statdesc.html#cb705-1" tabindex="-1"></a><span class="fu">tidy</span>(<span class="fu">t.test</span>(vettore_test))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 8
+##   estimate statistic  p.value parameter conf.low conf.high method    alternative
+##      &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      
+## 1     5.01      100. 2.11e-58        49     4.91      5.11 One Samp… two.sided</code></pre>
+<p>Qui la variabile <code>parameter</code> contiene i gradi di libertà<a href="#fn162" class="footnote-ref" id="fnref162"><sup>162</sup></a>.<br />
+Ovviamente, usando il codice dimostrato nel paragrafo <a href="statdesc.html#comefaremeglio">7.5.3</a>, possiamo operare in modo da ottenere i risultati per tutti i gruppi del nostro data frame e usare il data frame <code>tidy</code> che otteniamo per fare tabelle e grafici!</p>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="statdesc.html#cb707-1" tabindex="-1"></a>medie_conf <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb707-2"><a href="statdesc.html#cb707-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
+<span id="cb707-3"><a href="statdesc.html#cb707-3" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span> Species) <span class="sc">%&gt;%</span></span>
+<span id="cb707-4"><a href="statdesc.html#cb707-4" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb707-5"><a href="statdesc.html#cb707-5" tabindex="-1"></a>    <span class="at">test =</span> <span class="fu">map</span>(data, <span class="sc">~</span> <span class="fu">t.test</span>(.x<span class="sc">$</span>Sepal.Length)), </span>
+<span id="cb707-6"><a href="statdesc.html#cb707-6" tabindex="-1"></a>    <span class="at">ordinato =</span> <span class="fu">map</span>(test, tidy)</span>
+<span id="cb707-7"><a href="statdesc.html#cb707-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb707-8"><a href="statdesc.html#cb707-8" tabindex="-1"></a>  <span class="fu">unnest</span>(ordinato) <span class="sc">%&gt;%</span></span>
+<span id="cb707-9"><a href="statdesc.html#cb707-9" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Species, <span class="at">media =</span> estimate, conf.low, conf.high)</span>
+<span id="cb707-10"><a href="statdesc.html#cb707-10" tabindex="-1"></a>medie_conf</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 4
+## # Groups:   Species [3]
+##   Species    media conf.low conf.high
+##   &lt;fct&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1 setosa      5.01     4.91      5.11
+## 2 versicolor  5.94     5.79      6.08
+## 3 virginica   6.59     6.41      6.77</code></pre>
+<p>O possiamo tirarne fuori un grafico come quello della figura <a href="statdesc.html#fig:medieconfgrafico">7.2</a>…</p>
+<hr />
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="statdesc.html#cb709-1" tabindex="-1"></a>medie_conf <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Species)) <span class="sc">+</span></span>
+<span id="cb709-2"><a href="statdesc.html#cb709-2" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">y =</span> media, <span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high)) <span class="sc">+</span></span>
+<span id="cb709-3"><a href="statdesc.html#cb709-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;specie&quot;</span>,</span>
+<span id="cb709-4"><a href="statdesc.html#cb709-4" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Fisher, R. A. (1936) The use of multiple measurements in taxonomic problems. Annals of Eugenics, 7, Part II, 179–188.&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:medieconfgrafico"></span>
+<img src="_main_files/figure-html/medieconfgrafico-1.png" alt="Media e intervallo di confidenza al 95% per la lunghezza dei sepali di divcerse specie di Iris." width="1050" />
+<p class="caption">
+Figura 7.2: Media e intervallo di confidenza al 95% per la lunghezza dei sepali di divcerse specie di Iris.
+</p>
+</div>
+<hr />
+<p>Se non ti senti troppo pigr* potresti provare a migliorare questo grafico o leggere <a href="https://cran.r-project.org/web/packages/broom/vignettes/broom_and_dplyr.html">questa vignetta</a> che spiega bene come usare indieme <code>dplyr</code> e <code>broom</code> per ordinare i risultati di test statistici.</p>
+<p>Come la media, la varianza campionaria è il migliore stimatore lineare senza bias (BLUE) della varianza della popolazione. In pacchetto <code>DescTools</code> mette a disposizione la funzione <code>VarCI()</code> per calcolare l’intervallo di confidenza di una varianza.</p>
+</div>
+<div id="statdesccat" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Riassumere i dati per le variabili categoriche.<a href="statdesc.html#statdesccat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>I dati categorici possono essere classificati, contati e riassunti in grafici come grafici a barre, a torta, a ventaglio, a mosaico, etc. (vedi sezione <a href="grafica.html#grafqual">6.7</a>) ma anche in tabelle di frequenza (a una via, <em>one-way</em>) o contingenza (due o più vie, <em>two-, multi-way</em>). In questa sezione useremo prevalentemente il data set <code>Arthritis</code>, ma un altro classico data set per dati categorici è <code>Titanic</code>, che mostra la sopravvivenza dei passeggeri del Titanic in funzione della classe in cui viaggiavano. L’array può essere “esplorato” e convertito in un data frame con i seguenti comandi:</p>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="statdesc.html#cb710-1" tabindex="-1"></a>?Titanic</span>
+<span id="cb710-2"><a href="statdesc.html#cb710-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Titanic&quot;</span>)</span>
+<span id="cb710-3"><a href="statdesc.html#cb710-3" tabindex="-1"></a><span class="fu">class</span>(Titanic)</span></code></pre></div>
+<pre><code>## [1] &quot;table&quot;</code></pre>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="statdesc.html#cb712-1" tabindex="-1"></a>Titanic</span></code></pre></div>
+<pre><code>## , , Age = Child, Survived = No
+## 
+##       Sex
+## Class  Male Female
+##   1st     0      0
+##   2nd     0      0
+##   3rd    35     17
+##   Crew    0      0
+## 
+## , , Age = Adult, Survived = No
+## 
+##       Sex
+## Class  Male Female
+##   1st   118      4
+##   2nd   154     13
+##   3rd   387     89
+##   Crew  670      3
+## 
+## , , Age = Child, Survived = Yes
+## 
+##       Sex
+## Class  Male Female
+##   1st     5      1
+##   2nd    11     13
+##   3rd    13     14
+##   Crew    0      0
+## 
+## , , Age = Adult, Survived = Yes
+## 
+##       Sex
+## Class  Male Female
+##   1st    57    140
+##   2nd    14     80
+##   3rd    75     76
+##   Crew  192     20</code></pre>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="statdesc.html#cb714-1" tabindex="-1"></a>Titanic_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame.table</span>(Titanic)</span></code></pre></div>
+<p>Nota come i dati di <code>Titanic</code> siano già tabulati.</p>
+<div id="tabelle-di-frequenza-e-contingenza." class="section level3 hasAnchor" number="7.7.1">
+<h3><span class="header-section-number">7.7.1</span> Tabelle di frequenza e contingenza.<a href="statdesc.html#tabelle-di-frequenza-e-contingenza." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Anche se i diversi tipi di rappresentazione grafica per dati categorici ci possono dare un’eccellente idea d’insieme sulla distribuzione dei dati nei diversi gruppi, le tabelle di frequenza e contingenza ci danno un’idea precisa del numero di osservazioni in ogni categoria e ci permettono di eseguire test inferenziali (in genere per testare l’ipotesi che le variabili che raggruppano i dati non hanno un effetto significativo sulla frequenza dei dati in ogni cella della tabella). Le tabelle possono essere arricchite calcolando totali e frequenze di riga e colonna.<br />
+Come sempre, ci sono diverse funzioni per ottenere lo stesso risultato:</p>
+<ul>
+<li><p><code>table()</code>: è la funzione di base, molto flessibile (vedi dopo), restituisce una tabella di contingenza, un oggetto di classe <code>table</code>;</p></li>
+<li><p><code>xtabs()</code>: funzione di base, usa un’interfaccia a formula (vedi dopo), più semplice da gestire di <code>table()</code>, restituisce lo stesso tipo di oggetti;</p></li>
+<li><p><code>gmodels::CrossTable()</code>: ha un numero maggiore di opzioni e restituisce un output simile a quello prodotto da SPSS</p></li>
+</ul>
+<p>Prova il seguente codice in uno script per vedere come funziona <code>table()</code>; fai attenzione a cosa va nelle righe e colonne delle tabelle a più vie. Nota anche come gli oggetti di classe <code>table</code> possono essere usati direttamente per la stampa o per produrre grafici (a barre, a torta, a mosaico).</p>
+<pre><code>?table
+# nota l&#39;uso di with()
+# una tabella di frequenza, a una via
+una_tabella &lt;- with(Arthritis, table(Improved))
+# in alternativa table(Arthritis$Improved)
+una_tabella
+class(una_tabella)
+# una funzione utile per aggiungere somme per le diverse vie o margini è
+?addmargins
+addmargins(una_tabella,1)
+# invece, per trasformare le conte in proporzioni
+?prop.table
+prop.table(una_tabella)
+# una tabella a due vie
+tabella_2_vie &lt;- with(Arthritis, table(Treatment,Improved))
+# nota che con l&#39;opzione useNA puoi decidere se includere la conta degli NAs 
+# con le opzioni &quot;no&quot;, &quot;ifany&quot;, &quot;always&quot;; &quot;ifany&quot; 
+tabella_2_vie
+# per aggiungere margini
+margin.table(tabella_2_vie,1)
+margin.table(tabella_2_vie,2)
+# add sums to all margins
+addmargins(tabella_2_vie)
+# solo per Treatment
+addmargins(tabella_2_vie, 1)
+# le due funzioni possono essere combinate
+addmargins(prop.table(tabella_2_vie),c(1,2))
+pie(una_tabella)
+barplot(tabella_2_vie, beside = T, legend = T)</code></pre>
+<p>Personalmente, preferisco <code>xtabs</code>, perché secondo me l’interfaccia a formula rende più chiaro quello che si vuole fare: dopo la tilde si aggiungono, in sequenza, righe, colonne, strati, separati dal segno <code>+</code>. Se i dati sono già tabulati, come in <code>Titanic_df</code>, le conte vanno sul lato sinistro della formula. Nell’esempio successivo creo gli oggetti tabella senza assegnarli ad un nome.</p>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="statdesc.html#cb716-1" tabindex="-1"></a><span class="co"># con Arthritis</span></span>
+<span id="cb716-2"><a href="statdesc.html#cb716-2" tabindex="-1"></a>tabella_3_vie <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span>Treatment<span class="sc">+</span>Improved<span class="sc">+</span>Sex, <span class="at">data =</span> Arthritis)</span>
+<span id="cb716-3"><a href="statdesc.html#cb716-3" tabindex="-1"></a>tabella_3_vie</span></code></pre></div>
+<pre><code>## , , Sex = Female
+## 
+##          Improved
+## Treatment None Some Marked
+##   Placebo   19    7      6
+##   Treated    6    5     16
+## 
+## , , Sex = Male
+## 
+##          Improved
+## Treatment None Some Marked
+##   Placebo   10    0      1
+##   Treated    7    2      5</code></pre>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="statdesc.html#cb718-1" tabindex="-1"></a><span class="co"># con il data frame ottenuto da Titanic</span></span>
+<span id="cb718-2"><a href="statdesc.html#cb718-2" tabindex="-1"></a><span class="fu">xtabs</span>(Freq<span class="sc">~</span>Survived<span class="sc">+</span>Class, <span class="at">data =</span> Titanic_df)</span></code></pre></div>
+<pre><code>##         Class
+## Survived 1st 2nd 3rd Crew
+##      No  122 167 528  673
+##      Yes 203 118 178  212</code></pre>
+<p>Naturalmente, anche in questo caso è possibile usare <code>addmargins()</code>, <code>proptable()</code>, <code>margin.table()</code>, etc.<br />
+Nota anche come un oggetto di classe <code>table</code> è un array, quindi è possibile accedere ai diversi strati usando <code>[]</code>. Prova questi comandi nella console:</p>
+<pre><code>&gt;tabella_3_vie &lt;- xtabs(~Treatment+Improved+Sex, data = Arthritis)
+&gt;is.array(tabella_3_vie)
+&gt;dim(tabella_3_vie)
+&gt;tabella_3_vie[1,,]
+&gt;tabella_3_vie[1,2,]</code></pre>
+<p>Prova tu stess* a esplorare <code>gmodels::CrossTable()</code> con gli stessi data set. Quali sono le opzioni? Che tipo di output è possibile ottenere? Che oggetto restituisce la funzione? Che tipo di test inferenziali è possibile fare?</p>
+</div>
+<div id="gmosaico" class="section level3 hasAnchor" number="7.7.2">
+<h3><span class="header-section-number">7.7.2</span> <em>Grafici a mosaico</em>.<a href="statdesc.html#gmosaico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>I grafici a mosaico sono un modo visualmente molto efficace di rappresentare dati tabulari. La funzione della grafica di base per ottenere questo tipo di grafici è <code>mosaicplot()</code> che prende come input un oggetto di classe <code>table</code>, che può essere anche creato “al volo”. Prova questo codice nella console:</p>
+<pre><code>&gt;mosaicplot(xtabs(~Treatment+Improved+Sex, data = Arthritis), color = 2:3,
+           main = &quot;Effetto del trattamento sui sintomi dell&#39;artrite&quot;)</code></pre>
+<p>La funzione è utile, per esempio, per vedere rapidamente se un esperimento con diverse variabili esplicative è bilanciato (ogni gruppo individuato da una combinazione di variabili categoriche contiene lo stesso numero di casi).<br />
+La funzione <code>vcd::mosaic()</code> è più efficace ma ha una sintassi un po’ più complessa (figura <a href="statdesc.html#fig:mosaiciTitanic">7.3</a>).</p>
+<hr />
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="statdesc.html#cb722-1" tabindex="-1"></a><span class="fu">mosaic</span>(Titanic, <span class="at">shade =</span> T, <span class="at">legend =</span> T)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:mosaiciTitanic"></span>
+<img src="_main_files/figure-html/mosaiciTitanic-1.png" alt="I sopravvissuti al disastro del Titanic: un grafico a mosaico" width="1050" />
+<p class="caption">
+Figura 7.3: I sopravvissuti al disastro del Titanic: un grafico a mosaico
+</p>
+</div>
+<hr />
+</div>
+</div>
+<div id="veloceveloce" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> <em>Veloce veloce</em><a href="statdesc.html#veloceveloce" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un po’ di codice per la sezione <a href="statdesc.html#enormale">7.5</a>. Il codice è un po’ ridondante, in modo che tu lo possa far girare indipendentemente da questo capitolo (ma è necessario che tu installi i pacchetti necessari) e ti permette di ottenere qualche grafico esporativo, senza troppi fronzoli, perché ti basta tornare al capitolo <a href="grafica.html#grafica">6</a>.</p>
+<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="statdesc.html#cb723-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb723-2"><a href="statdesc.html#cb723-2" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb723-3"><a href="statdesc.html#cb723-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb723-4"><a href="statdesc.html#cb723-4" tabindex="-1"></a></span>
+<span id="cb723-5"><a href="statdesc.html#cb723-5" tabindex="-1"></a><span class="co"># esplora brevemente i dati</span></span>
+<span id="cb723-6"><a href="statdesc.html#cb723-6" tabindex="-1"></a><span class="co"># ometto questi comandi perché ti basta cliccare sulla riga corrispondente</span></span>
+<span id="cb723-7"><a href="statdesc.html#cb723-7" tabindex="-1"></a><span class="co"># nel tab Environment</span></span>
+<span id="cb723-8"><a href="statdesc.html#cb723-8" tabindex="-1"></a><span class="co"># View(iris)</span></span>
+<span id="cb723-9"><a href="statdesc.html#cb723-9" tabindex="-1"></a><span class="co"># str(iris)</span></span>
+<span id="cb723-10"><a href="statdesc.html#cb723-10" tabindex="-1"></a></span>
+<span id="cb723-11"><a href="statdesc.html#cb723-11" tabindex="-1"></a><span class="co"># una selezione casuale dei dati</span></span>
+<span id="cb723-12"><a href="statdesc.html#cb723-12" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">some</span>(iris)</span></code></pre></div>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 2            4.9         3.0          1.4         0.2     setosa
+## 25           4.8         3.4          1.9         0.2     setosa
+## 31           4.8         3.1          1.6         0.2     setosa
+## 51           7.0         3.2          4.7         1.4 versicolor
+## 52           6.4         3.2          4.5         1.5 versicolor
+## 63           6.0         2.2          4.0         1.0 versicolor
+## 72           6.1         2.8          4.0         1.3 versicolor
+## 81           5.5         2.4          3.8         1.1 versicolor
+## 122          5.6         2.8          4.9         2.0  virginica
+## 149          6.2         3.4          5.4         2.3  virginica</code></pre>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="statdesc.html#cb725-1" tabindex="-1"></a><span class="co"># concentriamoci su una sola variabile ma il codice si applica anche alle altre</span></span>
+<span id="cb725-2"><a href="statdesc.html#cb725-2" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb725-3"><a href="statdesc.html#cb725-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb725-4"><a href="statdesc.html#cb725-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">notch =</span> T) <span class="sc">+</span></span>
+<span id="cb725-5"><a href="statdesc.html#cb725-5" tabindex="-1"></a>  <span class="fu">geom_jitter</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/irisnormale-1.png" width="672" /></p>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="statdesc.html#cb726-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb726-2"><a href="statdesc.html#cb726-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length)) <span class="sc">+</span></span>
+<span id="cb726-3"><a href="statdesc.html#cb726-3" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Species) <span class="sc">+</span></span>
+<span id="cb726-4"><a href="statdesc.html#cb726-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() </span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="_main_files/figure-html/irisnormale-2.png" width="672" /></p>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="statdesc.html#cb728-1" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
+<span id="cb728-2"><a href="statdesc.html#cb728-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">color =</span> Species)) <span class="sc">+</span> </span>
+<span id="cb728-3"><a href="statdesc.html#cb728-3" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/irisnormale-3.png" width="672" /></p>
+</div>
+<div id="altrerisstatdesc" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> Altre risorse.<a href="statdesc.html#altrerisstatdesc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="risorse-in-italiano.-3" class="section level3 hasAnchor" number="7.9.1">
+<h3><span class="header-section-number">7.9.1</span> Risorse in italiano.<a href="statdesc.html#risorse-in-italiano.-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Oltre alla <a href="https://www.agnesevardanega.eu/wiki/r/start">wiki</a> che ho citato molte volte potete provare a consultare <a href="https://sergioventurini.github.io/manuale_R/">questo libro</a> che descrive abbastanza bene molti comandi per la statistica descrittiva con R. Per il resto, come di consueto è sufficiente usare le funzioni di ricerca di Google (prova con “statistica descrittiva con R”) per trovare moltissimo materiale (sono pigro anch’io, non mi va di leggerlo) prodotto generalmente a supporto di corsi universitari.</p>
+</div>
+<div id="risorse-in-inglese.-5" class="section level3 hasAnchor" number="7.9.2">
+<h3><span class="header-section-number">7.9.2</span> Risorse in inglese.<a href="statdesc.html#risorse-in-inglese.-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In inglese c’è un’enorme quantità di materiale. Non credo valga nemmeno la pena di proporre le decinde e decine di pagine web e filmati. Se sei pigr*, oltre ai molti eccellenti testi di statistica di base (che richiedono un po’ di tempo e fatica, ma ne vale la pena), puoi consultare questi testi on line</p>
+<ul>
+<li><p>un eccellente manuale per la <a href="https://www.biostathandbook.com/">statistica nelle scienze biologiche</a> e il suo <a href="https://rcompanion.org/rcompanion/index.html">companion</a> con il codice R (che però usa prevalentemente funzioni di R base)</p></li>
+<li><p>se proprio vuoi essere minimalista puoi usare <a href="https://benwhalley.github.io/just-enough-r/">Just enough R</a> o <a href="https://bookdown.org/ndphillips/YaRrr/">YaRrr!</a></p></li>
+<li><p>se vuoi guardare testi un pochino più completi prova:</p>
+<ul>
+<li><p><a href="https://dtkaplan.github.io/SM2-bookdown/">Statistical modeling</a> (specialmente il capitolo 3)</p></li>
+<li><p><a href="https://web.stanford.edu/class/bios221/book/02-chap.html">Modern statistics for modern biology</a> è molto completo ma decisamente più difficile da leggere e digerire</p></li>
+</ul></li>
+</ul>
+<p>Resta fermo il fatto che per usare bene le funzioni di R ad un certo punto bisogna studiarne l’aiuto.</p>
+<p>Esempi su come riportare correttamente i risuyltati di un test statistico possono essere trovati <a href="https://psych.uw.edu/storage/writing_center/stats.pdf">qui</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="147">
+<li id="fn147"><p>anche se sarebbe buona regola formulare solo ipotesi falsificabili, che restano accettabili finché non si prova che sono false<a href="statdesc.html#fnref147" class="footnote-back">↩︎</a></p></li>
+<li id="fn148"><p>un gruppo può contenere dei sottogruppi<a href="statdesc.html#fnref148" class="footnote-back">↩︎</a></p></li>
+<li id="fn149"><p>dalla versione 4.1 di R è disponibile una <code>pipe</code> nativa, <code>|&gt;</code><a href="statdesc.html#fnref149" class="footnote-back">↩︎</a></p></li>
+<li id="fn150"><p>quindi si combina il risultato delle funzioni <code>mean()</code> e <code>fivenum()</code><a href="statdesc.html#fnref150" class="footnote-back">↩︎</a></p></li>
+<li id="fn151"><p>anche qui, se usassi <code>str(surv_skim)</code> o leggessi l’aiuto di <code>skim</code> ne sapresti di più<a href="statdesc.html#fnref151" class="footnote-back">↩︎</a></p></li>
+<li id="fn152"><p>fai riferimento ad un testo di statistica, anche per capire meglio le differenze fra statistiche, calcolate su un campione e parametri, che rappresentano la popolazione, che poi è quello che ci interessa<a href="statdesc.html#fnref152" class="footnote-back">↩︎</a></p></li>
+<li id="fn153"><p>ovvimante a porzioni di data frame che contengono solo dati numerici<a href="statdesc.html#fnref153" class="footnote-back">↩︎</a></p></li>
+<li id="fn154"><p>però <code>ggplot2</code> ha una funzione <code>mean_se()</code> ;-)<a href="statdesc.html#fnref154" class="footnote-back">↩︎</a></p></li>
+<li id="fn155"><p>e approfitta per domandarsi che succederebbe se facessi la media di una matrice numerica<a href="statdesc.html#fnref155" class="footnote-back">↩︎</a></p></li>
+<li id="fn156"><p>questo risultato è ottenuto scrivendo nel testo le sue funzioni e mettendole fra “``”<a href="statdesc.html#fnref156" class="footnote-back">↩︎</a></p></li>
+<li id="fn157"><p>incidentalmente qui non è necessario trasformare le variabili categoriche presenti come caratteri in fattori<a href="statdesc.html#fnref157" class="footnote-back">↩︎</a></p></li>
+<li id="fn158"><p>se questo è arabo dovresti leggere un libro di statistica o, per esempio, leggere questo <a href="http://www.biostathandbook.com/hypothesistesting.html">articolo</a><a href="statdesc.html#fnref158" class="footnote-back">↩︎</a></p></li>
+<li id="fn159"><p>una tecnica di analisi statistica multivariata che permette di discriminare dei gruppi sulla base di un certo numero di proprietà<a href="statdesc.html#fnref159" class="footnote-back">↩︎</a></p></li>
+<li id="fn160"><p>in R base avrei potuto usare <code>vettore_test &lt;- iris$Sepal.Length[iris$Species == "setosa"]</code>, meno verboso ma anche più oscuro<a href="statdesc.html#fnref160" class="footnote-back">↩︎</a></p></li>
+<li id="fn161"><p>per riprodurre i risultati ti basta far girare le istruzioni a gruppi, selezionando dalla prima fino ad arrivare prima del segno<code>%&gt;%</code> che segue l’ultima istruzione che vuoi testare<a href="statdesc.html#fnref161" class="footnote-back">↩︎</a></p></li>
+<li id="fn162"><p>Sono 1 in meno del numero di osservazioni. Perché? Perché una volta fissata la media, solo n-1 dei valori possono variare liberamente, l’ultimo è determinato dal valore della media e dagli altri valori…<a href="statdesc.html#fnref162" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="grafica.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reportR.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
